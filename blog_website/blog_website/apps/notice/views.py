@@ -1,16 +1,16 @@
 from django import http
 from django.shortcuts import render
 
-
 # Create your views here.
 from django.views import View
 
-from blog_website.response_code import RETCODE
+from blog_website.utils.response_code import RETCODE
 from notice.models import Notice
 
 
 class NoticeView(View):
     """获取所有公告"""
+
     def get(self, request):
 
         try:
@@ -29,14 +29,18 @@ class NoticeView(View):
 
 class NoticeDetailView(View):
     """公告详情"""
+
     def get(self, request, notice_id):
 
         try:
             notice = Notice.objects.get(id=notice_id)
         except:
-            return http.HttpResponse('查询失败')
+            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})
+
+        # 没访问一次此页面阅读数+1
+        notice.read_count += 1
+        notice.save()
+
         context = {'notice': notice}
 
-        return render(request, 'info.html', context=context)
-
-
+        return render(request, 'notice_detail.html', context=context)

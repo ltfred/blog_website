@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 注册子应用
     'notice',
+    'article',
+    'user',
+    'index',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +190,6 @@ LOGGING = {
         },
     }
 }
+
+# 指定用户模型类
+AUTH_USER_MODEL = 'user.User'

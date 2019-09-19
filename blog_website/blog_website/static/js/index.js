@@ -4,17 +4,15 @@ var vm = new Vue({
     delimiters: ['[[', ']]'],
     data: {
 
-
         notice_list: [], // 公告数据,
-
+        user_profile: '', // 用户数据
 
     },
-
 
     mounted(){
         // 获取购物车数据
         this.get_notices();
-
+        this.get_profile();
 
     },
     methods: {
@@ -32,6 +30,19 @@ var vm = new Vue({
                     console.log(error.response);
                 })
         },
+
+        get_profile(){
+            var url = '/profile/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response =>{
+                    this.user_profile = response.data.profile;
+                })
+                .catch(error =>{
+                    console.log(error.response);
+                })
+        }
 
     }
 });

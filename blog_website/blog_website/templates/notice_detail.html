@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>文章内容页-杨青青个人博客模板主题《今夕何夕》</title>
+<title>公告详情页-Fred个人博客</title>
 <meta name="keywords" content="blog" />
 <meta name="description" content="blog" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +60,7 @@
     <div class="content_box whitebg">
       <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a href="/">公告</a></span>个人博客模板</h2>
       <h1 class="con_tilte">{{ notice.title }}</h1>
-      <p class="bloginfo"><i class="avatar"><img src="images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/">程序人生</a>】</span><span>109990人已围观</span></p>
+      <p class="bloginfo"><i class="avatar"><img src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.username }}</span><span>{{ notice.create_time }}</span><span>【<a href="/">程序人生</a>】</span><span>{{ notice.read_count }}人已围观</span></p>
       <p class="con_info"><b>简介</b>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
       <div class="con_text">
         <p>{{ notice.content }}</p>

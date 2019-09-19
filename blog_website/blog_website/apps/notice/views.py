@@ -40,5 +40,3 @@ class NoticeDetailView(View):
         return render(request, 'info.html', context=context)
 
 
-def test(request):
-    return render(request, 'index.html')

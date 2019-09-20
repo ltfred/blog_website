@@ -6,6 +6,9 @@ var vm = new Vue({
 
         notice_list: [], // 公告数据,
         user_profile: '', // 用户数据
+        top_list: [],  // 点击排行
+        recommend_list: [],  // 推荐
+
 
     },
 
@@ -13,6 +16,8 @@ var vm = new Vue({
         // 获取购物车数据
         this.get_notices();
         this.get_profile();
+        this.get_top();
+        this.get_recommend();
 
     },
     methods: {
@@ -42,7 +47,32 @@ var vm = new Vue({
                 .catch(error =>{
                     console.log(error.response);
                 })
-        }
+        },
+
+        get_top(){
+            var url = '/top/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response =>{
+                    this.top_list = response.data.top_list;
+                })
+                .catch(error =>{
+                    console.log(error.response)
+                })
+        },
+        get_recommend(){
+            var url = '/recommend/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response =>{
+                    this.recommend_list = response.data.recommend_list;
+                })
+                .catch(error =>{
+                    console.log(error.response)
+                })
+        },
 
     }
 });

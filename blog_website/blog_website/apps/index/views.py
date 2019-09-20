@@ -1,3 +1,4 @@
+import markdown
 from django import http
 from django.shortcuts import render
 
@@ -10,6 +11,7 @@ from blog_website.utils.response_code import RETCODE
 
 class IndexView(View):
     """返回首页"""
+
     def get(self, request):
 
         try:

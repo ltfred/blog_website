@@ -5,18 +5,18 @@ var vm = new Vue({
     data: {
 
         notice_list: [], // 公告数据,
-        user_profile: '', // 用户数据
         top_list: [],  // 点击排行
         recommend_list: [],  // 推荐
-
+        cat_list: []
 
     },
 
     mounted(){
+
         this.get_notices();
-        this.get_profile();
         this.get_top();
         this.get_recommend();
+        this.get_cat();
 
     },
     methods: {
@@ -31,19 +31,6 @@ var vm = new Vue({
 
                 })
                 .catch(error => {
-                    console.log(error.response);
-                })
-        },
-
-        get_profile(){
-            var url = '/profile/';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response =>{
-                    this.user_profile = response.data.profile;
-                })
-                .catch(error =>{
                     console.log(error.response);
                 })
         },
@@ -72,6 +59,18 @@ var vm = new Vue({
                     console.log(error.response)
                 })
         },
+        get_cat(){
+            var url = '/category/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response =>{
+                    this.cat_list = response.data.cat_list;
+                })
+                .catch(error =>{
+                    console.log(error.response)
+                })
+        }
 
     }
 });

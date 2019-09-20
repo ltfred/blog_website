@@ -26,25 +26,16 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    {#                    <li><a href="list.html"></a></li>#}
                     {% for cat in cat_list %}
                         <li class="menu"><a href="list2.html">{{ cat.name }}</a>
-
                             <ul class="sub">
                                 {% for sub in cat.subs %}
                                     <li><a href="/6">{{ sub.name }}</a></li>
                                 {% endfor %}
-                                {#                            <li><a href="/7">JS经典实例</a></li>#}
-                                {#                            <li><a href="/8">网站建设</a></li>#}
-                                {#                            <li><a href="/7">CSS3|Html5</a></li>#}
-                                {#                            <li><a href="/8">心得笔记</a></li>#}
                             </ul>
                             <span></span>
                         </li>
                     {% endfor %}
-                    {#                    <li><a href="list3.html">网页设计心得</a></li>#}
-                    {#                    <li><a href="daohang.html">优秀个人博客</a></li>#}
-                    {#                    <li><a href="about.html">关于我</a></li>#}
                 </ul>
             </nav>
             <div class="searchico"></div>

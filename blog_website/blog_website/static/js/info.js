@@ -20,7 +20,6 @@ var vm = new Vue({
 
     },
     methods: {
-        // 获取购物车数据
         get_notices(){
             var url = '/notices/';
             axios.get(url, {

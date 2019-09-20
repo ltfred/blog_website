@@ -61,3 +61,16 @@ class RecommendView(View):
                           articles]
 
         return http.JsonResponse({'code': RETCODE.OK, 'recommend_list': recommend_list})
+
+
+class ArticleCountView(View):
+    """获取文章数量"""
+    def get(self, request):
+
+        try:
+            count = Article.objects.count()
+        except Exception as e:
+            return http.HttpResponse('数据库错误')
+
+        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count})
+

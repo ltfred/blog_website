@@ -1758,117 +1758,129 @@ model</ColNames>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="412" parent="307" name="username">
+    <column id="412" parent="307" name="bio">
+      <Position>15</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="413" parent="307" name="soliloquy">
+      <Position>16</Position>
+      <DataType>longtext|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="414" parent="307" name="username">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="413" parent="307" name="PRIMARY">
+    <key id="415" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="414" parent="307" name="username">
+    <key id="416" parent="307" name="username">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>username</UnderlyingIndexName>
     </key>
-    <column id="415" parent="308" name="id">
+    <column id="417" parent="308" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="416" parent="308" name="user_id">
+    <column id="418" parent="308" name="user_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="417" parent="308" name="group_id">
+    <column id="419" parent="308" name="group_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="418" parent="308" name="user_groups_user_id_group_id_40beef00_uniq">
+    <index id="420" parent="308" name="user_groups_user_id_group_id_40beef00_uniq">
       <ColNames>user_id
 group_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="419" parent="308" name="user_groups_group_id_b76f8aba_fk_auth_group_id">
+    <index id="421" parent="308" name="user_groups_group_id_b76f8aba_fk_auth_group_id">
       <ColNames>group_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="420" parent="308" name="PRIMARY">
+    <key id="422" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="421" parent="308" name="user_groups_user_id_group_id_40beef00_uniq">
+    <key id="423" parent="308" name="user_groups_user_id_group_id_40beef00_uniq">
       <ColNames>user_id
 group_id</ColNames>
       <UnderlyingIndexName>user_groups_user_id_group_id_40beef00_uniq</UnderlyingIndexName>
     </key>
-    <foreign-key id="422" parent="308" name="user_groups_user_id_abaea130_fk_user_id">
+    <foreign-key id="424" parent="308" name="user_groups_user_id_abaea130_fk_user_id">
       <ColNames>user_id</ColNames>
       <RefSchemaName>blog_website</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="423" parent="308" name="user_groups_group_id_b76f8aba_fk_auth_group_id">
+    <foreign-key id="425" parent="308" name="user_groups_group_id_b76f8aba_fk_auth_group_id">
       <ColNames>group_id</ColNames>
       <RefSchemaName>blog_website</RefSchemaName>
       <RefTableName>auth_group</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="424" parent="309" name="id">
+    <column id="426" parent="309" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="425" parent="309" name="user_id">
+    <column id="427" parent="309" name="user_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="426" parent="309" name="permission_id">
+    <column id="428" parent="309" name="permission_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="427" parent="309" name="user_user_permissions_user_id_permission_id_7dc6e2e0_uniq">
+    <index id="429" parent="309" name="user_user_permissions_user_id_permission_id_7dc6e2e0_uniq">
       <ColNames>user_id
 permission_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="428" parent="309" name="user_user_permission_permission_id_9deb68a3_fk_auth_perm">
+    <index id="430" parent="309" name="user_user_permission_permission_id_9deb68a3_fk_auth_perm">
       <ColNames>permission_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="429" parent="309" name="PRIMARY">
+    <key id="431" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="430" parent="309" name="user_user_permissions_user_id_permission_id_7dc6e2e0_uniq">
+    <key id="432" parent="309" name="user_user_permissions_user_id_permission_id_7dc6e2e0_uniq">
       <ColNames>user_id
 permission_id</ColNames>
       <UnderlyingIndexName>user_user_permissions_user_id_permission_id_7dc6e2e0_uniq</UnderlyingIndexName>
     </key>
-    <foreign-key id="431" parent="309" name="user_user_permissions_user_id_ed4a47ea_fk_user_id">
+    <foreign-key id="433" parent="309" name="user_user_permissions_user_id_ed4a47ea_fk_user_id">
       <ColNames>user_id</ColNames>
       <RefSchemaName>blog_website</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="432" parent="309" name="user_user_permission_permission_id_9deb68a3_fk_auth_perm">
+    <foreign-key id="434" parent="309" name="user_user_permission_permission_id_9deb68a3_fk_auth_perm">
       <ColNames>permission_id</ColNames>
       <RefSchemaName>blog_website</RefSchemaName>
       <RefTableName>auth_permission</RefTableName>

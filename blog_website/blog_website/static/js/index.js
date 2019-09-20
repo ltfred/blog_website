@@ -8,6 +8,7 @@ var vm = new Vue({
         user_profile: '', // 用户数据
         top_list: [],  // 点击排行
         recommend_list: [],  // 推荐
+        article_count: ''
 
 
     },
@@ -17,6 +18,7 @@ var vm = new Vue({
         this.get_profile();
         this.get_top();
         this.get_recommend();
+        this.get_article_count();
 
     },
     methods: {
@@ -67,6 +69,19 @@ var vm = new Vue({
             })
                 .then(response =>{
                     this.recommend_list = response.data.recommend_list;
+                })
+                .catch(error =>{
+                    console.log(error.response)
+                })
+        },
+
+         get_article_count(){
+            var url = '/article/count/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response =>{
+                    this.article_count = response.data.article_count;
                 })
                 .catch(error =>{
                     console.log(error.response)

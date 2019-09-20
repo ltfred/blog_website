@@ -10,7 +10,8 @@ class User(AbstractUser):
     address = models.CharField(max_length=10, verbose_name='地址')
     avatar_url = models.CharField(max_length=200, null=True, verbose_name='用户头像路径')
     bio = models.CharField(max_length=200, default='', verbose_name='个人简介')
-    
+    soliloquy = models.TextField(default='', verbose_name='独白')
+
 
     class Meta:
         db_table = 'user'

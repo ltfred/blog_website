@@ -28,16 +28,14 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-
-                        <li class="menu" v-for="cat in cat_list"><a href="list2.html">[[ cat.name ]]</a>
-                            <ul class="sub">
-
-                                    <li v-for="sub in cat.subs"><a href="/6">[[ sub.name ]]</a></li>
-
-                            </ul>
-                            <span></span>
-                        </li>
-
+                    <li class="menu" v-for="cat in cat_list"><a href="list2.html">[[ cat.name ]]</a>
+                        <ul class="sub">
+                            <li v-for="sub in cat.subs"><a href="/6">[[ sub.name ]]</a></li>
+                        </ul>
+                        <span></span>
+                    </li>
+                    <li><a href='#'>所有文章</a></li>
+                    <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
             </nav>
             <div class="searchico"></div>

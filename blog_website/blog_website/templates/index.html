@@ -355,7 +355,7 @@
 {#                <section class="topnews imgscale"><a href="/"><img src="images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
 {#                </section>#}
                 <ul>
-                    <li v-for="article in recommend_list"><a :href="article/detail/' + article.id"><i><img :src="article.index_image"></i>
+                    <li v-for="article in recommend_list"><a :href="'article/detail/' + article.id"><i><img :src="article.index_image"></i>
                         <p>[[ article.title ]]</p>
                     </a></li>
 

@@ -49,3 +49,23 @@ class ArticleTopView(View):
             })
 
         return http.JsonResponse({'code': RETCODE.OK, 'top_list': top_list})
+
+
+class RecommendView(View):
+    """站长推荐"""
+    def get(self, request):
+
+        try:
+            articles = Article.objects.filter(is_top=True)[0:6]
+        except:
+            return http.HttpResponse('数据库错误')
+
+        recommend_list = []
+        for article in articles:
+            recommend_list.append({
+                'title': article.title,
+                'id': article.id,
+                'index_image': article.index_image
+            })
+
+        return http.JsonResponse({'code': RETCODE.OK, 'recommend_list': recommend_list})

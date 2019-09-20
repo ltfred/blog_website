@@ -14,7 +14,7 @@ class ArticleDetailView(View):
 
         try:
             article = Article.objects.get(id=article_id)
-        except:
+        except Exception as e:
             return http.HttpResponse('获取文章失败')
 
         # 阅读次数+1
@@ -34,38 +34,30 @@ class ArticleDetailView(View):
 
 class ArticleTopView(View):
     """点击排行"""
+
     def get(self, request):
 
         try:
             articles = Article.objects.order_by('-read_count').all()[0:7]
-        except:
+        except Exception as e:
             return http.HttpResponse('数据库错误')
 
-        top_list = []
-        for article in articles:
-            top_list.append({
-                'title': article.title,
-                'id': article.id
-            })
+        top_list = [{'title': article.title, 'id': article.id} for article in articles]
 
         return http.JsonResponse({'code': RETCODE.OK, 'top_list': top_list})
 
 
 class RecommendView(View):
     """站长推荐"""
+
     def get(self, request):
 
         try:
             articles = Article.objects.filter(is_top=True)[0:6]
-        except:
+        except Exception as e:
             return http.HttpResponse('数据库错误')
 
-        recommend_list = []
-        for article in articles:
-            recommend_list.append({
-                'title': article.title,
-                'id': article.id,
-                'index_image': article.index_image
-            })
+        recommend_list = [{'title': article.title, 'id': article.id, 'index_image': article.index_image} for article in
+                          articles]
 
         return http.JsonResponse({'code': RETCODE.OK, 'recommend_list': recommend_list})

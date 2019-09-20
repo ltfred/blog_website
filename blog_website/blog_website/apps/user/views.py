@@ -13,7 +13,7 @@ class UserProfileView(View):
 
         try:
             user = User.objects.get(id=1)
-        except:
+        except Exception as e:
             return http.HttpResponse('数据库错误')
 
         profile = {

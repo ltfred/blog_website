@@ -34,7 +34,7 @@ class NoticeDetailView(View):
 
         try:
             notice = Notice.objects.get(id=notice_id)
-        except:
+        except Exception as e:
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})
 
         # 没访问一次此页面阅读数+1

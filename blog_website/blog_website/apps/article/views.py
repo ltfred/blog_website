@@ -65,6 +65,7 @@ class RecommendView(View):
 
 class ArticleCountView(View):
     """获取文章数量"""
+
     def get(self, request):
 
         try:
@@ -74,3 +75,24 @@ class ArticleCountView(View):
 
         return http.JsonResponse({'code': RETCODE.OK, 'article_count': count})
 
+
+class AllArticleView(View):
+    """所有文章"""
+
+    def get(self, request):
+
+        try:
+            articles = Article.objects.order_by('-create_time').all()
+        except Exception as e:
+            return http.HttpResponse('数据库错误')
+
+        article_list = []
+        for article in articles:
+            article_list.append({
+                'id': article.id,
+                'title': article.title,
+                'create_time': article.create_time
+            })
+        context = {'all_article': article_list}
+
+        return render(request, 'time.html', context=context)

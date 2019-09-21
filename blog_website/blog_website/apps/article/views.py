@@ -110,9 +110,10 @@ class CategoryAllArticleView(View):
         # 判断是否为一级分类
         if category.parent is None:
             articles = Article.objects.filter(category1=category)
+            category_article_count = articles.count()
 
             data_dict = {}
-            cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
+            # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
 
             # data_dict['categories'] = []
             #
@@ -124,10 +125,12 @@ class CategoryAllArticleView(View):
             data_dict['articles'] = articles
 
             data_dict['category'] = category.name
+            data_dict['count'] = category_article_count
 
         else:
             # 为二级分类
             articles = Article.objects.filter(category2=category)
+            category_article_count = articles.count()
 
             # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
             #
@@ -145,7 +148,8 @@ class CategoryAllArticleView(View):
             data_dict = {
                 'category': category.name,
                 # 'categories': category2_list,
-                'articles': articles
+                'articles': articles,
+                'count': category_article_count
             }
 
         context = {'data': data_dict}

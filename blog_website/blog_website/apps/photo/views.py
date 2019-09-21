@@ -39,3 +39,20 @@ class AllPhotosView(View):
         context = {'photos': photo_query_set}
 
         return render(request, 'photo.html', context=context)
+
+
+class CategoryPhotoView(View):
+    """获取该类别下的所有照片"""
+
+    def get(self, request, category_id):
+
+        try:
+            photos = Photo.objects.filter(category_id=category_id)
+        except Exception as e:
+            logger.error(e)
+            return http.HttpResponse('获取照片失败')
+
+        context = {'photos': photos}
+
+        return render(request, 'photo.html', context=context)
+

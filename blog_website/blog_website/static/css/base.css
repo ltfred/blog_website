@@ -179,7 +179,7 @@ a.viewmore { display: block; right: 10px; bottom: 20px; position: absolute; padd
 a.iconfont.icon-zhuye {color: #ef5509;font-size: 36px;background: url(../images/c01.png) no-repeat center ;}
 a.iconfont.icon-youxiang { color: #FF991A; font-size: 28px;    background: url(../images/c02.png) no-repeat center ; }
 a.iconfont.icon--- { color: #1296DB;    background: url(../images/c03.png) no-repeat center; }
-a.iconfont.icon-weixin { color: #07AF12;    background: url(../images/c04.png) no-repeat center; }
+a.iconfont.icon-weixin { color: #07AF12;    background: url(../images/github.png) no-repeat center; }
 #weixin { position: relative }
 #weixin i { display: block; position: absolute; bottom: 55px; right: 0 }
 #weixin i img { height: 100px; display: none }

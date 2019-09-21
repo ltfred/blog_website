@@ -27,9 +27,11 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[ cat.name ]]</a>
+                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[
+                        cat.name ]]</a>
                         <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name ]]</a></li>
+                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name
+                                ]]</a></li>
                         </ul>
                         <span></span>
                     </li>
@@ -72,10 +74,10 @@
 
             </ul>
 
-            {#        <ul id="list2">#}
-            {#        </ul>#}
-            {#        <div class="clear"></div>#}
-            {#        <script src="{{ static('js/page2.js') }}"></script>#}
+                    <ul id="list2">
+                    </ul>
+                    <div class="clear"></div>
+                    <script src="{{ static('js/page2.js') }}"></script>
 
 
         </div>

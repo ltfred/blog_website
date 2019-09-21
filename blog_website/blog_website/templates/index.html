@@ -39,7 +39,7 @@
                     {% endfor %}
                     <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a href="/6">[[ category.name ]]</a></li>
+                            <li v-for="category in photo_categories"><a :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a></li>
 
                         </ul>
                         <span></span></li>
@@ -324,8 +324,7 @@
                            target="_blank" class="iconfont icon-youxiang" title="我的邮箱"></a></li>
                     <li><a href="http://wpa.qq.com/msgrd?v=3&uin=813298239&site=qq&menu=yes" target="_blank"
                            class="iconfont icon---" title="QQ联系我"></a></li>
-                    <li id="weixin"><a href="#" target="_blank" class="iconfont icon-weixin" title="关注我的微信"></a><i><img
-                            src="{{ static('images/wx.png') }}"></i></li>
+                    <li id="weixin"><a href="https://github.com/ltfred" target="_blank" class="iconfont icon-weixin" title="Github"></a></li>
                 </ul>
             </div>
             <div class="whitebg notice">
@@ -366,24 +365,6 @@
                     <a href="/"><img src="{{ static('images/ad.jpg') }}"></a>
                 </ul>
             </div>
-            {#            <div class="whitebg wenzi">#}
-            {#                <h2 class="htitle">猜你喜欢</h2>#}
-            {#                <ul>#}
-            {#                    <li><a href="/">十条设计原则教你学会如何设计网页布局!</a></li>#}
-            {#                    <li><a href="/">用js+css3来写一个手机栏目导航</a></li>#}
-            {#                    <li><a href="/">6条网页设计配色原则,让你秒变配色高手</a></li>#}
-            {#                    <li><a href="/">三步实现滚动条触动css动画效果</a></li>#}
-            {#                    <li><a href="/">个人博客，属于我的小世界！</a></li>#}
-            {#                    <li><a href="/">安静地做一个爱设计的女子</a></li>#}
-            {#                    <li><a href="/">个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>#}
-            {#                    <li><a href="/">做个人博客如何用帝国cms美化留言增加头像选择</a></li>#}
-            {#                </ul>#}
-            {#            </div>#}
-            {#            <div class="ad whitebg imgscale">#}
-            {#                <ul>#}
-            {#                    <a href="/"><img src="{{ static('images/ad02.jpg') }}"></a>#}
-            {#                </ul>#}
-            {#            </div>#}
             <div class="whitebg tongji">
                 <h2 class="htitle">站点信息</h2>
                 <ul>

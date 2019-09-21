@@ -281,31 +281,16 @@
             <div class="whitebg bloglist">
                 <h2 class="htitle">最新博文</h2>
                 <ul>
-                    <!--多图模式 置顶设计-->
-                    {#                    <li>#}
-                    {#                        <h3 class="blogtitle"><a href="/" target="_blank"><b>【顶】</b>别让这些闹心的套路，毁了你的网页设计!</a></h3>#}
-                    {#                        <span class="bplist"><a href="/"> <img src="images/b02.jpg" alt=""></a> <a href="/"><img#}
-                    {#                                src="images/b03.jpg" alt=""></a> <a href="/"><img src="images/b04.jpg" alt=""> </a><a#}
-                    {#                                href="/"><img src="images/b05.jpg" alt=""> </a></span>#}
-                    {#                        <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if#}
-                    {#                            来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>#}
-                    {#                        <p class="bloginfo"><i class="avatar"><img#}
-                    {#                                src="{{ static('images/avatar.jpg') }}"></i><span>杨青青</span><span>2018-10-28</span><span>【<a#}
-                    {#                                href="/">原创模板</a>】</span></p>#}
-                    {#                    </li>#}
-                    <!--单图-->
                     {% for article in articles %}
                         <li>
-                            <h3 class="blogtitle"><a href="article/detail/{{ article.id }}"
-                                                     target="_blank">{{ article.title }}</a></h3>
-                            <span class="blogpic imgscale"><i><a href="/">原创模板</a></i><a href="/" title=""><img
+                            <h3 class="blogtitle"><a href="{{ url('article:article_detail', args=(article.id,)) }}" target="_blank">{{ article.title }}</a></h3>
+                            <span class="blogpic imgscale"><i><a href="{{ url('article:category_list', args=(article.category1.id,)) }}">{{ article.category1.name }}</a></i><a href="{{ url('article:article_detail', args=(article.id,)) }}" title=""><img
                                     src="{{ article.index_image }}" alt=""></a></span>
-                            <p class="blogtext">
-                                {{ article.content }} </p>
+                            <p class="blogtext">{{ article.content }} </p>
                             <p class="bloginfo"><i class="avatar"><img
                                     src="{{ article.author.avatar_url }}"></i><span>{{ article.author.username }}</span><span>{{ article.create_time }}</span><span>【<a
-                                    href="/">{{ article.category2.name }}</a>】</span></p>
-                            <a href="article/detail/{{ article.id }}" class="viewmore">阅读更多</a>
+                                    href="{{ url('article:category_list', args=(article.category2.id,)) }}">{{ article.category2.name }}</a>】</span></p>
+                            <a href="{{ url('article:article_detail', args=(article.id,)) }}" class="viewmore">阅读更多</a>
                         </li>
                     {% endfor %}
 

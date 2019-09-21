@@ -28,9 +28,11 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[ cat.name ]]</a>
+                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[
+                        cat.name ]]</a>
                         <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name ]]</a></li>
+                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name
+                                ]]</a></li>
                         </ul>
                         <span></span>
                     </li>
@@ -123,7 +125,8 @@
                 {#                </section>#}
                 <ul>
 
-                    <li v-for="article in top_list"><i></i><a :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id">[[ article.title
+                    <li v-for="article in top_list"><i></i><a
+                            :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id">[[ article.title
                         ]]</a></li>
                 </ul>
             </div>
@@ -132,7 +135,8 @@
                 {#                <section class="topnews imgscale"><a href="/"><img src="images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
                 {#                </section>#}
                 <ul>
-                    <li v-for="article in recommend_list"><a :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id"><i><img
+                    <li v-for="article in recommend_list"><a
+                            :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id"><i><img
                             :src="article.index_image"></i>
                         <p>[[ article.title ]]</p>
                     </a></li>
@@ -147,12 +151,8 @@
             <div class="whitebg cloud">
                 <h2 class="htitle">标签云</h2>
                 <ul>
-                    <a href="" target="_blank">个人博客模板</a> <a href="" target="_blank">css动画</a> <a href=""
-                                                                                                  target="_blank">布局</a>
-                    <a href="" target="_blank">今夕何夕</a> <a href="" target="_blank">SEO</a> <a href=""
-                                                                                              target="_blank">女程序员</a>
-                    <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a> <a href=""
-                                                                                              target="_blank">网页设计</a>
+                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id" target="_blank">[[
+                        label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>
             <div class="ad whitebg imgscale">
@@ -164,13 +164,8 @@
                 <h2 class="htitle">站点信息</h2>
                 <ul>
                     <li><b>建站时间</b>：2018-10-24</li>
-                    <li><b>网站程序</b>：帝国cms</li>
-                    <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>
-                    <li><b>文章统计</b>：299条</li>
+                    <li><b>文章统计</b>：[[ article_count ]]</li>
                     <li><b>文章评论</b>：490条</li>
-                    <li><b>统计数据</b>：<a href="/">百度统计</a></li>
-                    <li><b>微信公众号</b>：扫描二维码，关注我们</li>
-                    <img src="images/wxgzh.jpg" class="tongji_gzh">
                 </ul>
             </div>
         </div>
@@ -179,7 +174,6 @@
         <div class="box">
             <div class="wxbox">
                 <ul>
-                    <li><img src="images/wxgzh.jpg"><span>微信公众号</span></li>
                     <li><img src="images/wx.png"><span>我的微信</span></li>
                 </ul>
             </div>

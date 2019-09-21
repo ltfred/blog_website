@@ -8,7 +8,7 @@ var vm = new Vue({
         recommend_list: [],  // 推荐
         article_count: '',  // 文章统计
         cat_list: [],  // 分类
-
+        labels: [], // 标签
     },
 
     mounted() {
@@ -17,6 +17,7 @@ var vm = new Vue({
         this.get_recommend();
         this.get_article_count();
         this.get_cat();
+        this.get_labels();
 
     },
     methods: {
@@ -83,7 +84,20 @@ var vm = new Vue({
                 .catch(error => {
                     console.log(error.response)
                 })
-        }
+        },
+
+        get_labels() {
+            var url = '/labels/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response => {
+                    this.labels = response.data.labels;
+                })
+                .catch(error => {
+                    console.log(error.response)
+                })
+        },
 
     }
 });

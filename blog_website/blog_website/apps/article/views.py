@@ -114,13 +114,13 @@ class CategoryAllArticleView(View):
             data_dict = {}
             cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
 
-            data_dict['categories'] = []
-
-            for cat2 in cat2_list:
-                data_dict['categories'].append({
-                    'id': cat2.id,
-                    'name': cat2.name
-                })
+            # data_dict['categories'] = []
+            #
+            # for cat2 in cat2_list:
+            #     data_dict['categories'].append({
+            #         'id': cat2.id,
+            #         'name': cat2.name
+            #     })
             data_dict['articles'] = articles
 
             data_dict['category'] = category.name
@@ -129,25 +129,49 @@ class CategoryAllArticleView(View):
             # 为二级分类
             articles = Article.objects.filter(category2=category)
 
-            cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
-
-            category2_list = []
-
-            for cat2 in cat2_list:
-                category2_list.append({
-                    'id': cat2.id,
-                    'name': cat2.name
-                })
+            # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
+            #
+            # category2_list = []
+            #
+            # for cat2 in cat2_list:
+            #     category2_list.append({
+            #         'id': cat2.id,
+            #         'name': cat2.name
+            #     })
             # data_dict['articles'] = articles
             #
             # data_dict['category'] = category.name
 
             data_dict = {
                 'category': category.name,
-                'categories': category2_list,
+                # 'categories': category2_list,
                 'articles': articles
             }
 
         context = {'data': data_dict}
 
         return render(request, 'list2_1.html', context=context)
+
+
+class LabelView(View):
+    """获取标签"""
+
+    def get(self, request):
+
+        try:
+            cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
+
+        except Exception as e:
+            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取标签失败'})
+
+        # labels = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
+        labels = []
+
+        for cat2 in cat2_list:
+            labels.append({
+                'id': cat2.id,
+                'name': cat2.name,
+                'article_count': Article.objects.filter(category2=cat2).count()
+            })
+
+        return http.JsonResponse({'code': RETCODE.OK, 'labels': labels})

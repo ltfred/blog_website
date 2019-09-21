@@ -1,7 +1,7 @@
 from django import http
 from django.shortcuts import render
 from django.views import View
-from article.models import Article
+from article.models import Article, ArticleCategory
 import markdown
 
 from blog_website.utils.response_code import RETCODE
@@ -96,3 +96,58 @@ class AllArticleView(View):
         context = {'all_article': article_list}
 
         return render(request, 'time.html', context=context)
+
+
+class CategoryAllArticleView(View):
+    """当前类别下的所有文章"""
+
+    def get(self, request, category_id):
+
+        try:
+            category = ArticleCategory.objects.get(id=category_id)
+        except Exception as e:
+            return http.HttpResponse('数据库错误')
+        # 判断是否为一级分类
+        if category.parent is None:
+            articles = Article.objects.filter(category1=category)
+
+            data_dict = {}
+            cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
+
+            data_dict['categories'] = []
+
+            for cat2 in cat2_list:
+                data_dict['categories'].append({
+                    'id': cat2.id,
+                    'name': cat2.name
+                })
+            data_dict['articles'] = articles
+
+            data_dict['category'] = category.name
+
+        else:
+            # 为二级分类
+            articles = Article.objects.filter(category2=category)
+
+            cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
+
+            category2_list = []
+
+            for cat2 in cat2_list:
+                category2_list.append({
+                    'id': cat2.id,
+                    'name': cat2.name
+                })
+            # data_dict['articles'] = articles
+            #
+            # data_dict['category'] = category.name
+
+            data_dict = {
+                'category': category.name,
+                'categories': category2_list,
+                'articles': articles
+            }
+
+        context = {'data': data_dict}
+
+        return render(request, 'list2_1.html', context=context)

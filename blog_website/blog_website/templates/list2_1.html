@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>列表页-Fred个人博客</title>
+    <meta name="keywords" content="blog"/>
+    <meta name="description" content="blog"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ static('css/base.css') }}" rel="stylesheet">
+    <link href="{{ static('css/m.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ static('js/vue-2.5.16.js') }}"></script>
+    <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
+    <script src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ static('js/comm.js') }}"></script>
+    <!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<!--top begin-->
+<div id="app">
+    <header id="header">
+        <div class="navbox">
+            <h2 id="mnavh"><span class="navicon"></span></h2>
+            <div class="logo"><a href="{{ url('index:index_list') }}">Fred个人博客</a></div>
+            <nav>
+                <ul id="starlist">
+                    <li><a href={{ url('index:index_list') }}>首页</a></li>
+                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[ cat.name ]]</a>
+                        <ul class="sub">
+                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name ]]</a></li>
+                        </ul>
+                        <span></span>
+                    </li>
+                    <li><a href='{{ url('article:articles') }}'>所有文章</a></li>
+                    <li><a href={{ url('user:about') }}>关于我</a></li>
+                </ul>
+            </nav>
+            <div class="searchico"></div>
+        </div>
+    </header>
+    <div class="searchbox">
+        <div class="search">
+            <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+                <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词"
+                       style="color: rgb(153, 153, 153);"
+                       onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
+                       onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+                <input name="show" value="title" type="hidden">
+                <input name="tempid" value="1" type="hidden">
+                <input name="tbname" value="news" type="hidden">
+                <input name="Submit" class="input_submit" value="搜索" type="submit">
+            </form>
+        </div>
+        <div class="searchclose"></div>
+    </div>
+    <!--top end-->
+    <article>
+        <!--lbox begin-->
+        <div class="lbox">
+            <div class="whitebg lanmu"><img src="images/lm03.jpg">
+                <h1>技术文章</h1>
+                <p>博客网站制作，本栏目主要是分享关于域名选择、空间购买，个人博客网站模板制作，网站后期维护运营，优化等相关文章，以及提供帝国cms建站过程中遇到问题的解决办法。</p>
+            </div>
+            <div class="whitebg bloglist">
+                <h2 class="htitle"><span class="hnav">
+{#            {% for cat2 in data.categories %}#}
+{#                <a href="/">{{ cat2.name }}</a>#}
+{#            {% endfor %}#}
+      </span>{{ data.category }}</h2>
+                <ul>
+                    {% for article in data.articles %}
+
+                        <li>
+                            <h3 class="blogtitle"><a href="{{ url('article:article_detail', args=(article.id,)) }}"
+                                                     target="_blank">{{ article.title }}</a></h3>
+                            <span class="blogpic imgscale"><i><a href="{{ url('article:category_list', args=(article.category1.id,)) }}">{{ article.category1.name }}</a></i><a href="{{ url('article:article_detail', args=(article.id,)) }}" title=""><img
+                                    src="{{ article.index_image }}" alt=""></a></span>
+                            <p class="blogtext">
+                                {{ article.content }} </p>
+                            <p class="bloginfo"><i class="avatar"><img
+                                    src="{{ article.author.avatar_url }}"></i><span>{{ article.author.username }}</span><span>{{ article.create_time }}</span><span>【<a
+                                    href="{{ url('article:category_list', args=(article.category2.id,)) }}">{{ article.category2.name }}</a>】</span></p>
+                            <a href="{{ url('article:article_detail', args=(article.id,)) }}" class="viewmore">阅读更多</a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+                <!--pagelist-->
+                <div class="pagelist"><a title="Total record">&nbsp;<b>67</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a
+                        href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_3.html">3</a>&nbsp;<a
+                        href="/download/index_2.html">下一页</a>&nbsp;<a href="/download/index_3.html">尾页</a></div>
+                <!--pagelist end-->
+            </div>
+
+            <!--bloglist end-->
+        </div>
+        <div class="rbox">
+            <div class="whitebg paihang">
+                <h2 class="htitle">点击排行</h2>
+                {#                <section class="topnews imgscale"><a href="/"><img src="images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
+                {#                </section>#}
+                <ul>
+
+                    <li v-for="article in top_list"><i></i><a :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id">[[ article.title
+                        ]]</a></li>
+                </ul>
+            </div>
+            <div class="whitebg tuijian">
+                <h2 class="htitle">本栏推荐</h2>
+                {#                <section class="topnews imgscale"><a href="/"><img src="images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
+                {#                </section>#}
+                <ul>
+                    <li v-for="article in recommend_list"><a :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id"><i><img
+                            :src="article.index_image"></i>
+                        <p>[[ article.title ]]</p>
+                    </a></li>
+
+                </ul>
+            </div>
+            <div class="ad whitebg imgscale">
+                <ul>
+                    <a href="/"><img src="images/ad.jpg"></a>
+                </ul>
+            </div>
+            <div class="whitebg cloud">
+                <h2 class="htitle">标签云</h2>
+                <ul>
+                    {% for cat2 in data.categories %}
+                        <a href="list/{{ cat2.id }}" target="_blank">{{ cat2.name }}</a>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ad whitebg imgscale">
+                <ul>
+                    <a href="/"><img src="images/ad02.jpg"></a>
+                </ul>
+            </div>
+            <div class="whitebg tongji">
+                <h2 class="htitle">站点信息</h2>
+                <ul>
+                    <li><b>建站时间</b>：2018-10-24</li>
+                    <li><b>文章统计</b>：[[ article_count ]]</li>
+                    <li><b>文章评论</b>：490条</li>
+                    {#                    <li><b>微信公众号</b>：扫描二维码，关注我们</li>#}
+                    {#                    <img src="{{ static('images/wxgzh.jpg') }}" class="tongji_gzh">#}
+                </ul>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="box">
+            <div class="wxbox">
+                <ul>
+                    <li><img src="images/wxgzh.jpg"><span>微信公众号</span></li>
+                    <li><img src="images/wx.png"><span>我的微信</span></li>
+                </ul>
+            </div>
+            <div class="endnav">
+                <p><b>站点声明：</b></p>
+                <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+                <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a
+                        href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E"
+                        target="_blank">dacesmiling@qq.com</a></p>
+                <p>Copyright © <a href="http://www.yangqq.com" target="_blank">www.yangqq.com</a> All Rights Reserved.
+                    备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
+            </div>
+        </div>
+        <a href="#">
+            <div class="top"></div>
+        </a></footer>
+    <script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
+</div>
+</body>
+</html>

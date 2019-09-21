@@ -3,26 +3,26 @@ var vm = new Vue({
     // 修改Vue变量的读取语法，避免和django模板语法冲突
     delimiters: ['[[', ']]'],
     data: {
-
+        host: 'http://127.0.0.1:8000/',
         cat_list: []
 
     },
 
-    mounted(){
+    mounted() {
 
         this.get_cat();
     },
     methods: {
 
-        get_cat(){
+        get_cat() {
             var url = '/category/';
             axios.get(url, {
                 responseType: 'json',
             })
-                .then(response =>{
+                .then(response => {
                     this.cat_list = response.data.cat_list;
                 })
-                .catch(error =>{
+                .catch(error => {
                     console.log(error.response)
                 })
         }

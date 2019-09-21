@@ -27,17 +27,17 @@
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
                     {% for cat in cat_list %}
-                        <li class="menu"><a href="list2.html">{{ cat.name }}</a>
+                        <li class="menu"><a href="{{ url('article:category_list', args=(cat.id,)) }}">{{ cat.name }}</a>
                             <ul class="sub">
                                 {% for sub in cat.subs %}
-                                    <li><a href="/6">{{ sub.name }}</a></li>
+                                    <li><a href="{{ url('article:category_list', args=(sub.id,)) }}">{{ sub.name }}</a></li>
                                 {% endfor %}
                             </ul>
                             <span></span>
                         </li>
                     {% endfor %}
-                 <li><a href={{ url('article:articles') }}>所有文章</a></li>
-                 <li><a href={{ url('user:about') }}>关于我</a></li>
+                    <li><a href={{ url('article:articles') }}>所有文章</a></li>
+                    <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
             </nav>
             <div class="searchico"></div>
@@ -346,7 +346,7 @@
                 {#                </section>#}
                 <ul>
 
-                    <li v-for="article in top_list"><i></i><a :href="'article/detail/' + article.id">[[ article.title
+                    <li v-for="article in top_list"><i></i><a :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id">[[ article.title
                         ]]</a></li>
                 </ul>
             </div>
@@ -355,7 +355,7 @@
                 {#                <section class="topnews imgscale"><a href="/"><img src="images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
                 {#                </section>#}
                 <ul>
-                    <li v-for="article in recommend_list"><a :href="'article/detail/' + article.id"><i><img
+                    <li v-for="article in recommend_list"><a :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id"><i><img
                             :src="article.index_image"></i>
                         <p>[[ article.title ]]</p>
                     </a></li>

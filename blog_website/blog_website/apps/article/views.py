@@ -1,4 +1,5 @@
 from django import http
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views import View
 from article.models import Article, ArticleCategory
@@ -79,21 +80,31 @@ class ArticleCountView(View):
 class AllArticleView(View):
     """所有文章"""
 
-    def get(self, request):
+    def get(self, request, page_num):
 
         try:
             articles = Article.objects.order_by('-create_time').all()
         except Exception as e:
             return http.HttpResponse('数据库错误')
 
-        article_list = []
-        for article in articles:
-            article_list.append({
-                'id': article.id,
-                'title': article.title,
-                'create_time': article.create_time
-            })
-        context = {'all_article': article_list}
+        # article_list = []
+        # for article in articles:
+        #     article_list.append({
+        #         'id': article.id,
+        #         'title': article.title,
+        #         'create_time': article.create_time
+        #     })
+        # 分页
+        paginator = Paginator(articles, 2)
+        page_articles = paginator.page(page_num)
+        # 获取列表页总页数
+        total_page = paginator.num_pages
+
+        context = {
+            'page_num': page_num,
+            'total_page': total_page,
+            'page_articles': page_articles
+        }
 
         return render(request, 'time.html', context=context)
 

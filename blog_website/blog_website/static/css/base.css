@@ -315,7 +315,7 @@ about
 .gd_title { margin: 20px 0; font-size: 18px; background: url(../images/hline.png) no-repeat bottom right; width: 120px; clear: both; background-size: 40px; border-bottom: #000 1px dashed; padding-left: 10px; padding-bottom: 5px; display: inline-block; }
 .xinlu li { width: 25%; float: left; overflow: hidden; margin-bottom: 20px }
 .xinlu li a { display: block; margin: 0 10px; background: #f3f3f3; padding: 20px; }
-.xinlu li i { display: block; overflow: hidden; height: 120px; margin-bottom: 10px }
+.xinlu li i { display: block; overflow: hidden; height: 250px; margin-bottom: 10px }
 .xinlu li i img { width: 100%; min-height: 120px; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; transition: all 0.5s; }
 .xinlu li i:hover img { transform: scale(1.1); }
 .xinlu li p { font-weight: bold; margin-bottom: 10px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }

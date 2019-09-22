@@ -35,18 +35,27 @@ class NoticeDetailView(View):
             notice = Notice.objects.get(id=notice_id)
         except Exception as e:
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})
-
+        # 获取上一条数据和下一条数据
+        next_notice = Notice.objects.filter(id__gt=notice.id).first()
+        pre_notice = Notice.objects.filter(id__lt=notice.id).order_by('-id').first()
+        # 相关数据10条
+        notices = Notice.objects.all()[0:9]
         # 每访问一次此页面阅读数+1
         notice.read_count += 1
         notice.save()
 
-        context = {'notice': notice}
+        context = {
+            'notice': notice,
+            'next_notice': next_notice,
+            'pre_notice': pre_notice,
+            'notices': notices
+        }
 
         return render(request, 'notice_detail.html', context=context)
 
 
 class NoticeLikeView(View):
-    """文章点赞"""
+    """公告点赞"""
     def get(self, request, notice_id):
 
         try:

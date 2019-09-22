@@ -9,7 +9,8 @@ var vm = new Vue({
         top_list: [],  // 点击排行
         recommend_list: [],  // 推荐
         article_count: '',
-        photo_categories: []
+        photo_categories: [],
+        labels: [], // 标签
 
     },
 
@@ -20,6 +21,7 @@ var vm = new Vue({
         this.get_recommend();
         this.get_article_count();
         this.get_photo_categories();
+        this.get_labels();
 
 
     },
@@ -97,6 +99,19 @@ var vm = new Vue({
             })
                 .then(response => {
                     this.photo_categories = response.data.photo_categories;
+                })
+                .catch(error => {
+                    console.log(error.response)
+                })
+        },
+
+        get_labels() {
+            var url = '/labels/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response => {
+                    this.labels = response.data.labels;
                 })
                 .catch(error => {
                     console.log(error.response)

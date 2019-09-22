@@ -95,28 +95,21 @@
                     <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站长或者朋友圈，但转载请说明文章出处“来源Fred个人博客”。</p>
                     <p><span class="diggit" onclick="like_article()">很赞哦！ ({{ article.like_count }})</span></p>
                     <div class="nextinfo">
-                        <p>上一篇：<a href="/download/f/886.html">html5 个人博客模板《蓝色畅想》</a></p>
-                        <p>下一篇：<a href="/download/f/907.html">个人博客模板《tree》-响应式个人网站模板</a></p>
+                        {% if pre_article %}
+                        <p>上一篇：<a href="{{ url('article:article_detail', args=(pre_article.id,)) }}">{{ pre_article.title }}</a></p>
+                        {% endif %}
+                        {% if next_article %}
+                        <p>下一篇：<a href="{{ url('article:article_detail', args=(next_article.id,)) }}">{{ next_article.title }}</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
             <div class="whitebg">
                 <h2 class="htitle">相关文章</h2>
                 <ul class="otherlink">
-                    <li><a href="/download/div/2018-04-22/815.html" title="html5个人博客模板《黑色格调》">html5个人博客模板《黑色格调》</a></li>
-                    <li><a href="/download/div/2018-04-18/814.html" title="html5个人博客模板主题《清雅》">html5个人博客模板主题《清雅》</a></li>
-                    <li><a href="/download/div/2018-03-18/807.html" title="html5个人博客模板《绅士》">html5个人博客模板《绅士》</a></li>
-                    <li><a href="/download/div/2018-02-22/798.html" title="html5时尚个人博客模板-技术门户型">html5时尚个人博客模板-技术门户型</a>
-                    </li>
-                    <li><a href="/download/div/2017-09-08/789.html"
-                           title="html5个人博客模板主题《心蓝时间轴》">html5个人博客模板主题《心蓝时间轴》</a></li>
-                    <li><a href="/download/div/2017-07-16/785.html" title="古典个人博客模板《江南墨卷》">古典个人博客模板《江南墨卷》</a></li>
-                    <li><a href="/download/div/2017-07-13/783.html" title="古典风格-个人博客模板">古典风格-个人博客模板</a></li>
-                    <li><a href="/download/div/2015-06-28/748.html" title="个人博客《草根寻梦》—手机版模板">个人博客《草根寻梦》—手机版模板</a></li>
-                    <li><a href="/download/div/2015-04-10/746.html" title="【活动作品】柠檬绿兔小白个人博客模板">【活动作品】柠檬绿兔小白个人博客模板</a>
-                    </li>
-                    <li><a href="/jstt/bj/2015-01-09/740.html" title="【匆匆那些年】总结个人博客经历的这四年…">【匆匆那些年】总结个人博客经历的这四年…</a>
-                    </li>
+                    {% for article in articles %}
+                    <li><a href="{{ url('article:article_detail', args=(article.id,)) }}" title="{{ article.title }}">{{ article.title }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
 

@@ -27,10 +27,12 @@
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
                     {% for cat in cat_list %}
-                        <li class="menu"><a href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
+                        <li class="menu"><a
+                                href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
                             <ul class="sub">
                                 {% for sub in cat.subs %}
-                                    <li><a href="{{ url('article:category_list', args=(sub.id, 1)) }}">{{ sub.name }}</a>
+                                    <li>
+                                        <a href="{{ url('article:category_list', args=(sub.id, 1)) }}">{{ sub.name }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -39,7 +41,9 @@
                     {% endfor %}
                     <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a></li>
+                            <li v-for="category in photo_categories"><a
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                            </li>
 
                         </ul>
                         <span></span></li>
@@ -324,7 +328,8 @@
                            target="_blank" class="iconfont icon-youxiang" title="我的邮箱"></a></li>
                     <li><a href="http://wpa.qq.com/msgrd?v=3&uin=813298239&site=qq&menu=yes" target="_blank"
                            class="iconfont icon---" title="QQ联系我"></a></li>
-                    <li id="weixin"><a href="https://github.com/ltfred" target="_blank" class="iconfont icon-weixin" title="Github"></a></li>
+                    <li id="weixin"><a href="https://github.com/ltfred" target="_blank" class="iconfont icon-weixin"
+                                       title="Github"></a></li>
                 </ul>
             </div>
             <div class="whitebg notice">
@@ -358,6 +363,13 @@
                         <p>[[ article.title ]]</p>
                     </a></li>
 
+                </ul>
+            </div>
+            <div class="whitebg cloud">
+                <h2 class="htitle">标签云</h2>
+                <ul>
+                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id" target="_blank">[[
+                        label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>
             <div class="ad whitebg imgscale">

@@ -23,6 +23,12 @@ class ArticleDetailView(View):
         except Exception as e:
             return http.HttpResponse('获取文章失败')
 
+        # 获取上一条数据和下一条数据
+        next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).first()
+        pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).order_by('-id').first()
+        # 相关数据10条
+        articles = Article.objects.filter(category2=article.category2)[0:9]
+
         # 阅读次数+1
         article.read_count += 1
         article.save()
@@ -33,7 +39,12 @@ class ArticleDetailView(View):
         # 将markdown语法渲染成html样式
         article.content = markdown.markdown(article.content, extensions=exts)
 
-        context = {'article': article}
+        context = {
+            'article': article,
+            'next_article': next_article,
+            'pre_article': pre_article,
+            'articles': articles
+        }
 
         return render(request, 'info.html', context=context)
 

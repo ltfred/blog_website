@@ -19,15 +19,15 @@ class ArticleDetailView(View):
     def get(self, request, article_id):
 
         try:
+            # 获取本条数据
             article = Article.objects.get(id=article_id)
+            # 获取上一条数据和下一条数据
+            next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).first()
+            pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).order_by('-id').first()
+            # 相关数据10条
+            articles = Article.objects.filter(category2=article.category2)[0:9]
         except Exception as e:
             return http.HttpResponse('获取文章失败')
-
-        # 获取上一条数据和下一条数据
-        next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).first()
-        pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).order_by('-id').first()
-        # 相关数据10条
-        articles = Article.objects.filter(category2=article.category2)[0:9]
 
         # 阅读次数+1
         article.read_count += 1

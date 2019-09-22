@@ -32,14 +32,16 @@ class NoticeDetailView(View):
     def get(self, request, notice_id):
 
         try:
+            # 获取本条数据
             notice = Notice.objects.get(id=notice_id)
+            # 获取上一条数据和下一条数据
+            next_notice = Notice.objects.filter(id__gt=notice.id).first()
+            pre_notice = Notice.objects.filter(id__lt=notice.id).order_by('-id').first()
+            # 相关数据10条
+            notices = Notice.objects.all()[0:9]
         except Exception as e:
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})
-        # 获取上一条数据和下一条数据
-        next_notice = Notice.objects.filter(id__gt=notice.id).first()
-        pre_notice = Notice.objects.filter(id__lt=notice.id).order_by('-id').first()
-        # 相关数据10条
-        notices = Notice.objects.all()[0:9]
+
         # 每访问一次此页面阅读数+1
         notice.read_count += 1
         notice.save()

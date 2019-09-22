@@ -24,6 +24,7 @@ var vm = new Vue({
         this.get_article_count();
         this.get_photo_categories();
 
+
     },
     methods: {
         get_notices() {
@@ -115,6 +116,8 @@ var vm = new Vue({
                     console.log(error.response)
                 })
         },
+
+
 
     }
 });

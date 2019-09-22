@@ -17,4 +17,6 @@ urlpatterns = [
     url(r'^list/(?P<category_id>\d+)/(?P<page_num>\d+)/$', views.CategoryAllArticleView.as_view(), name='category_list'),
     # 获取标签
     url(r'^labels/$', views.LabelView.as_view(), name='labels'),
+    # 文章点赞
+    url(r'article/like/(?P<article_id>\d+)/$', views.ArticleLikeView.as_view(), name='article_like')
 ]

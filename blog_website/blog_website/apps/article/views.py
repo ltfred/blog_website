@@ -4,9 +4,10 @@ from django.shortcuts import render
 from django.views import View
 from article.models import Article, ArticleCategory
 import markdown
-
 from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
+import logging
+logger = logging.getLogger('blog')
 
 
 class ArticleDetailView(View):
@@ -217,3 +218,19 @@ class LabelView(View):
             })
 
         return http.JsonResponse({'code': RETCODE.OK, 'labels': labels})
+
+
+class ArticleLikeView(View):
+    """文章点赞"""
+    def get(self, request, article_id):
+
+        try:
+            article = Article.objects.get(id=article_id)
+        except Exception as e:
+            logger.error(e)
+            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取失败'})
+
+        article.like_count += 1
+        article.save()
+
+        return http.JsonResponse({'code': RETCODE.OK, 'errmsg': 'ok'})

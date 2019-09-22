@@ -12,6 +12,7 @@ class Notice(BaseModel):
     content = models.CharField(max_length=500, verbose_name='公告内容', help_text='不能超过500个字')
     is_up = models.BooleanField(default=False, verbose_name='是否置顶')
     read_count = models.IntegerField(default=0, verbose_name='阅读数')
+    like_count = models.IntegerField(default=0, verbose_name='点赞数')
 
     class Meta:
         db_table = 'notice'

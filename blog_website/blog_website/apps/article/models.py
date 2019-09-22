@@ -30,12 +30,10 @@ class Article(BaseModel):
                                   related_name='cat1', verbose_name='一级分类')
     category2 = models.ForeignKey(ArticleCategory, on_delete=models.PROTECT,
                                   related_name='cat2', verbose_name='二级分类')
-
     read_count = models.IntegerField(default=0, verbose_name='阅读量')
-
     index_image = models.CharField(max_length=300, null=True, verbose_name='文章主图')
-
     is_top = models.BooleanField(default=False, verbose_name='是否置顶')
+    like_count = models.IntegerField(default=0, verbose_name='点赞数')
 
     class Meta:
         db_table = 'article'
@@ -44,4 +42,3 @@ class Article(BaseModel):
 
     def __str__(self):
         return self.title
-

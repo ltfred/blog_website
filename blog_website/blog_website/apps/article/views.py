@@ -2,11 +2,14 @@ from django import http
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.views import View
+from django_redis import get_redis_connection
+
 from article.models import Article, ArticleCategory
 import markdown
 from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 import logging
+
 logger = logging.getLogger('blog')
 
 
@@ -222,6 +225,7 @@ class LabelView(View):
 
 class ArticleLikeView(View):
     """文章点赞"""
+
     def get(self, request, article_id):
 
         try:
@@ -229,6 +233,20 @@ class ArticleLikeView(View):
         except Exception as e:
             logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取失败'})
+
+        # 获取请求的ip，一个ip只能点赞一次
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')  # 判断是否使用代理
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]  # 使用代理获取真实的ip
+        else:
+            ip = request.META.get('REMOTE_ADDR')  # 未使用代理获取IP
+
+        redis = get_redis_connection('default')
+        key = 'like_{}_flag_{}'.format(article_id, ip)
+        if redis.get(key):
+            return http.JsonResponse({'code': RETCODE.ALLOWERR, 'errmsg': '只能点击一次'})
+
+        redis.set(key, 1, 600)
 
         article.like_count += 1
         article.save()

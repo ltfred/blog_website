@@ -2,88 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/js/info.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/static/js/info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/CREDITS.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/DONATIONS.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/bin/showdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/cli/cli.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/cli/makehtml.cmd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/cli/messenger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/converter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/helpers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/loader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/options.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/showdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/anchors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/autoLinks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/blockGamut.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/blockQuotes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/codeBlocks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/codeSpans.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/completeHTMLDocument.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/detab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/ellipsis.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/emoji.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/encodeAmpsAndAngles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/encodeBackslashEscapes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/encodeCode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/escapeSpecialCharsWithinTagAttributes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/githubCodeBlocks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/hashBlock.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/hashCodeTags.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/hashElement.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/hashHTMLBlocks.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/hashHTMLSpans.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/hashPreCodeTags.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/headers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/horizontalRule.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/images.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/italicsAndBold.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/lists.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/blockquote.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/codeBlock.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/codeSpan.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/emphasis.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/image.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/links.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/list.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/listItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/node.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/paragraph.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/pre.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/strikethrough.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/strong.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/tableCell.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/makeMarkdown/txt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/metadata.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/outdent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/paragraphs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/runExtension.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/spanGamut.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/strikethrough.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/stripLinkDefinitions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/tables.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/underline.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/showdown-1.9.0/src/subParsers/unescapeSpecialChars.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/notice_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/notice_detail.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,10 +49,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/apps/article/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="222" selection-start-line="222" selection-end-line="235" selection-end-column="70" />
+            <state relative-caret-position="580">
+              <caret line="252" column="22" selection-start-line="252" selection-start-column="22" selection-end-line="252" selection-end-column="22" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog_website/utils/response_code.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog_website/settings/dev.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1577">
+              <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+              <folding>
+                <element signature="e#317#326#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/blog_website/apps/article/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="619">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -150,44 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/apps/notice/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1034">
-              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blog_website/apps/notice/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="97" selection-start-line="10" selection-start-column="97" selection-end-line="10" selection-end-column="97" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2716">
-              <caret line="198" selection-start-line="198" selection-end-line="211" selection-end-column="9" />
+            <state relative-caret-position="269">
+              <caret line="210" column="49" selection-start-line="210" selection-start-column="49" selection-end-line="210" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -290,16 +198,16 @@
         <option value="$PROJECT_DIR$/blog_website/apps/notice/models.py" />
         <option value="$PROJECT_DIR$/blog_website/static/js/info.js" />
         <option value="$PROJECT_DIR$/blog_website/apps/article/urls.py" />
-        <option value="$PROJECT_DIR$/blog_website/templates/info.html" />
-        <option value="$PROJECT_DIR$/blog_website/apps/article/views.py" />
         <option value="$PROJECT_DIR$/blog_website/templates/notice_detail.html" />
         <option value="$PROJECT_DIR$/blog_website/apps/notice/views.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/notice/urls.py" />
+        <option value="$PROJECT_DIR$/blog_website/apps/article/views.py" />
+        <option value="$PROJECT_DIR$/blog_website/templates/info.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="192" />
+    <option name="x" value="256" />
     <option name="y" value="23" />
     <option name="width" value="1371" />
     <option name="height" value="934" />
@@ -347,13 +255,13 @@
               <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog_website" type="462c0819:PsiDirectoryNode" />
               <item name="blog_website" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog_website" type="462c0819:PsiDirectoryNode" />
               <item name="blog_website" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
@@ -451,15 +359,15 @@
       <workItem from="1568989834532" duration="7573000" />
       <workItem from="1569041614216" duration="20621000" />
       <workItem from="1569074981612" duration="12472000" />
-      <workItem from="1569112016091" duration="15234000" />
+      <workItem from="1569112016091" duration="16906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111106000" />
+    <option name="totallyTimeSpent" value="112778000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="192" y="23" width="1371" height="934" extended-state="0" />
+    <frame x="257" y="23" width="1371" height="934" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1918736" />
@@ -575,16 +483,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog_website/apps/photo/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="101" selection-start-line="11" selection-start-column="101" selection-end-line="11" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/static/js/jquery.pagination.min.js" />
     <entry file="file://$PROJECT_DIR$/blog_website/static/css/jquery.pagination.css" />
     <entry file="das://d8c424bd-fcd4-4ed5-b785-18bcbb72d852/schema/blog_website/table/article">
@@ -649,16 +547,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/static/css/zxf_page.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/settings/dev.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
-          <folding>
-            <element signature="e#317#326#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="das://d8c424bd-fcd4-4ed5-b785-18bcbb72d852/schema/blog_website/table/soup">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -878,44 +766,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/static/js/info.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2252">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/apps/article/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2716">
-          <caret line="198" selection-start-line="198" selection-end-line="211" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="503">
           <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/apps/article/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="222" selection-start-line="222" selection-end-line="235" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -946,6 +800,57 @@
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/settings/dev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1577">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+          <folding>
+            <element signature="e#317#326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/utils/response_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/apps/article/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="252" column="22" selection-start-line="252" selection-start-column="22" selection-end-line="252" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/static/js/info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2252">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/apps/article/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="210" column="49" selection-start-line="210" selection-start-column="49" selection-end-line="210" selection-end-column="49" />
         </state>
       </provider>
     </entry>

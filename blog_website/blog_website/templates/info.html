@@ -203,7 +203,14 @@
                 responseType: 'json',
             })
                 .then(response =>{
-                    window.location.reload();
+                    code = response.data.code;
+                    if(code == '4009'){
+                        alert('只能点赞一次')
+                    }
+                    else{
+                        window.location.reload();
+                    }
+
                 })
                 .catch(error =>{
                     console.log(error.response)

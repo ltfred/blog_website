@@ -1,10 +1,11 @@
 from django import http
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.views import View
 from article.models import Article, ArticleCategory
 import markdown
 
+from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 
 
@@ -84,26 +85,25 @@ class AllArticleView(View):
 
         try:
             articles = Article.objects.order_by('-create_time').all()
+            all_counts = articles.count()
         except Exception as e:
             return http.HttpResponse('数据库错误')
 
-        # article_list = []
-        # for article in articles:
-        #     article_list.append({
-        #         'id': article.id,
-        #         'title': article.title,
-        #         'create_time': article.create_time
-        #     })
         # 分页
-        paginator = Paginator(articles, 2)
-        page_articles = paginator.page(page_num)
+        paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
+        try:
+            page_articles = paginator.page(page_num)
+        except EmptyPage:
+            return http.HttpResponseNotFound('empty page')
         # 获取列表页总页数
         total_page = paginator.num_pages
 
         context = {
             'page_num': page_num,
             'total_page': total_page,
-            'page_articles': page_articles
+            'page_articles': page_articles,
+            'all_counts': all_counts
+
         }
 
         return render(request, 'time.html', context=context)
@@ -112,7 +112,7 @@ class AllArticleView(View):
 class CategoryAllArticleView(View):
     """当前类别下的所有文章"""
 
-    def get(self, request, category_id):
+    def get(self, request, category_id, page_num):
 
         try:
             category = ArticleCategory.objects.get(id=category_id)
@@ -122,8 +122,24 @@ class CategoryAllArticleView(View):
         if category.parent is None:
             articles = Article.objects.filter(category1=category)
             category_article_count = articles.count()
+            # 分页
+            # paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
+            paginator = Paginator(articles, 2)
+            try:
+                page_articles = paginator.page(page_num)
+            except EmptyPage:
+                return http.HttpResponseNotFound('empty page')
+            # 获取列表页总页数
+            total_page = paginator.num_pages
+            page_list = [i for i in range(total_page)]
 
-            data_dict = {}
+            data_dict = {
+                'category_id': category.id,
+                'articles': page_articles,
+                'category': category.name,
+                'article_count': category_article_count,
+                'total_page': page_list
+            }
             # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
 
             # data_dict['categories'] = []
@@ -133,15 +149,25 @@ class CategoryAllArticleView(View):
             #         'id': cat2.id,
             #         'name': cat2.name
             #     })
-            data_dict['articles'] = articles
-
-            data_dict['category'] = category.name
-            data_dict['count'] = category_article_count
+            # data_dict['articles'] = page_articles
+            #
+            # data_dict['category'] = category.name
+            # data_dict['count'] = category_article_count
 
         else:
             # 为二级分类
             articles = Article.objects.filter(category2=category)
             category_article_count = articles.count()
+
+            # 分页
+            paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
+            try:
+                page_articles = paginator.page(page_num)
+            except EmptyPage:
+                return http.HttpResponseNotFound('empty page')
+            # 获取列表页总页数
+            total_page = paginator.num_pages
+            page_list = [i for i in range(total_page)]
 
             # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
             #
@@ -157,10 +183,12 @@ class CategoryAllArticleView(View):
             # data_dict['category'] = category.name
 
             data_dict = {
+                'category_id': category.id,
                 'category': category.name,
                 # 'categories': category2_list,
-                'articles': articles,
-                'count': category_article_count
+                'articles': page_articles,
+                'article_count': category_article_count,
+                'total_page': page_list
             }
 
         context = {'data': data_dict}

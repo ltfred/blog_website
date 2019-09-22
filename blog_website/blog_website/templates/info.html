@@ -36,7 +36,7 @@
                         </ul>
                         <span></span>
                     </li>
-                    <li><a href={{ url('article:articles') }}>所有文章</a></li>
+                    <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
@@ -65,13 +65,13 @@
         <div class="lbox">
             <div class="content_box whitebg">
                 <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="{{ url('index:index_list') }}">网站首页</a>><a
-                        href="{{ url('article:category_list', args=(article.category1.id,)) }}">{{ article.category1.name }}></a><a
-                        href="{{ url('article:category_list', args=(article.category2.id,)) }}">{{ article.category2.name }}</a></span>个人博客模板
+                        href="{{ url('article:category_list', args=(article.category1.id,1 )) }}">{{ article.category1.name }}></a><a
+                        href="{{ url('article:category_list', args=(article.category2.id, 1)) }}">{{ article.category2.name }}</a></span>个人博客模板
                 </h2>
                 <h1 class="con_tilte">{{ article.title }}</h1>
                 <p class="bloginfo"><i class="avatar"><img
                         src="{{ article.author.avatar_url }}"></i><span>{{ article.author.username }}</span><span>{{ article.create_time }}</span><span>【<a
-                        href="{{ url('article:category_list', args=(article.category2.id,)) }}">{{ article.category2.name }}</a>】</span><span>{{ article.read_count }}人已围观</span>
+                        href="{{ url('article:category_list', args=(article.category2.id, 1)) }}">{{ article.category2.name }}</a>】</span><span>{{ article.read_count }}人已围观</span>
                 </p>
                 <p class="con_info"><b>简介</b>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。
                 </p>

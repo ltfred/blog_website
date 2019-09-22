@@ -14,7 +14,7 @@ urlpatterns = [
     # 所有文章
     url(r'^articles/(?P<page_num>\d+)/$', views.AllArticleView.as_view(), name='articles'),
     # 该类别下的所有文章
-    url(r'^list/(?P<category_id>\d+)/$', views.CategoryAllArticleView.as_view(), name='category_list'),
+    url(r'^list/(?P<category_id>\d+)/(?P<page_num>\d+)/$', views.CategoryAllArticleView.as_view(), name='category_list'),
     # 获取标签
     url(r'^labels/$', views.LabelView.as_view(), name='labels'),
 ]

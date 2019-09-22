@@ -73,7 +73,8 @@
                     </li>
                 {% endfor %}
             </ul>
-            <!-- 分页器: -->
+            <!--pagelist-->
+            <br><br>
             <br><br>
             <div id="pagination" class="pagination"></div>
 
@@ -109,8 +110,8 @@
             id: 'pagination',
             curPage: {{ page_num }}, //初始页码
             pageTotal: {{ total_page }}, //总页数
-            pageAmount: 2,  //每页多少条
-            dataTotal: 500, //总共多少条数据
+            pageAmount: 10,  //每页多少条
+            dataTotal: {{ all_counts }}, //总共多少条数据
             pageSize: 3, //可选,分页个数
             showPageTotalFlag: true, //是否显示数据统计
             showSkipInputFlag: false, //是否支持跳转

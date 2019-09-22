@@ -9,6 +9,7 @@ var vm = new Vue({
         article_count: '',  // 文章统计
         cat_list: [],  // 分类
         labels: [], // 标签
+        photo_categories: [],
     },
 
     mounted() {
@@ -18,6 +19,7 @@ var vm = new Vue({
         this.get_article_count();
         this.get_cat();
         this.get_labels();
+        this.get_photo_categories();
 
     },
     methods: {
@@ -93,6 +95,19 @@ var vm = new Vue({
             })
                 .then(response => {
                     this.labels = response.data.labels;
+                })
+                .catch(error => {
+                    console.log(error.response)
+                })
+        },
+
+        get_photo_categories() {
+            var url = '/photo/categories/';
+            axios.get(url, {
+                responseType: 'json',
+            })
+                .then(response => {
+                    this.photo_categories = response.data.photo_categories;
                 })
                 .catch(error => {
                     console.log(error.response)

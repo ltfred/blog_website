@@ -34,6 +34,14 @@
                         </ul>
                         <span></span>
                     </li>
+                    <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
+                        <ul class="sub">
+                            <li v-for="category in photo_categories"><a
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                            </li>
+
+                        </ul>
+                        <span></span></li>
                     <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
@@ -66,7 +74,7 @@
             </div>
             <h2 class="gd_title">内心独白</h2>
             <div><p class="ab_dubai">&nbsp;&nbsp;&nbsp;&nbsp;{{ dubai }}</p></div>
-            <span class="ly_button"><a href="http://www.yangqq.com/e/tool/gbook/?bid=1" target="_blank">留言</a></span>
+            <span class="ly_button"><a href="http://127.0.0.1:8000/comment" target="_blank">留言</a></span>
             <div><h2 class="gd_title">心路历程</h2></div>
 
             <ul class="xinlu">
@@ -103,20 +111,20 @@
     </article>
     <footer>
         <div class="box">
-            </div>
-            <div class="endnav">
-                <p><b>站点声明：</b></p>
-                <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a
-                        href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E"
-                        target="_blank">dacesmiling@qq.com</a></p>
-                <p>Copyright © <a href="http://www.yangqq.com" target="_blank">www.yangqq.com</a> All Rights Reserved.
-                    备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
-            </div>
         </div>
-        <a href="#">
-            <div class="top"></div>
-        </a></footer>
+        <div class="endnav">
+            <p><b>站点声明：</b></p>
+            <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+            <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a
+                    href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E"
+                    target="_blank">dacesmiling@qq.com</a></p>
+            <p>Copyright © <a href="http://www.yangqq.com" target="_blank">www.yangqq.com</a> All Rights Reserved.
+                备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
+        </div>
+</div>
+<a href="#">
+    <div class="top"></div>
+</a></footer>
 </div>
 <script type="text/javascript" src="{{ static('js/about.js') }}"></script>
 

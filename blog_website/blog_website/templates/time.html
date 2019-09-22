@@ -37,6 +37,14 @@
                         </ul>
                         <span></span>
                     </li>
+                    <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
+                        <ul class="sub">
+                            <li v-for="category in photo_categories"><a
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                            </li>
+
+                        </ul>
+                        <span></span></li>
                     <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>

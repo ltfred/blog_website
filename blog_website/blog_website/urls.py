@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'', include('user.urls', namespace='user')),
     url(r'', include('article.urls', namespace='article')),
     url(r'', include('links.urls', namespace='links')),
-    url(r'', include('photo.urls', namespace='photo'))
+    url(r'', include('photo.urls', namespace='photo')),
+    url(r'', include('comment.urls', namespace='comment')),
 ]

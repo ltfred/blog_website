@@ -34,6 +34,14 @@
                         </ul>
                         <span></span>
                     </li>
+                    <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
+                        <ul class="sub">
+                            <li v-for="category in photo_categories"><a
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                            </li>
+
+                        </ul>
+                        <span></span></li>
                     <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
@@ -67,7 +75,7 @@
                     <li>
                         <a href="{{ photo.url }}" target="_blank"><i><img src="{{ photo.url }}"></i>
                             <p>{{ photo.title }}</p>
-{#                            <span>我性格属于好静的，喜欢写写画画，自从读了计算机专业，那就更好静了，我可以两星期都不出门，但是半刻钟也不能离开电脑。</span>#}
+                            {#                            <span>我性格属于好静的，喜欢写写画画，自从读了计算机专业，那就更好静了，我可以两星期都不出门，但是半刻钟也不能离开电脑。</span>#}
                         </a>
                     </li>
                 {% endfor %}

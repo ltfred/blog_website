@@ -37,6 +37,14 @@
                         </ul>
                         <span></span>
                     </li>
+                    <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
+                        <ul class="sub">
+                            <li v-for="category in photo_categories"><a
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                            </li>
+
+                        </ul>
+                        <span></span></li>
                     <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
@@ -93,15 +101,16 @@
                 </ul>
                 <!--pagelist-->
 
-                                <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ data.article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
-{#                                    <b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;#}
-                                    {% for article in data.total_page %}
-                                    <a href="http://127.0.0.1:8000/list/{{ data.category_id }}/{{ article + 1 }}">{{ loop.index }}</a>&nbsp;
-                                    {% endfor %}
-{#                                    <a href="/download/index_3.html">3</a>&nbsp;#}
-{#                                    <a href="/download/index_2.html">下一页</a>&nbsp;#}
-{#                                    <a href="/download/index_3.html">尾页</a></div>#}
-                                </div>
+                <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ data.article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
+                    {#                                    <b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;#}
+                    {% for article in data.total_page %}
+                        <a href="http://127.0.0.1:8000/list/{{ data.category_id }}/{{ article + 1 }}">{{ loop.index }}</a>
+                        &nbsp;
+                    {% endfor %}
+                    {#                                    <a href="/download/index_3.html">3</a>&nbsp;#}
+                    {#                                    <a href="/download/index_2.html">下一页</a>&nbsp;#}
+                    {#                                    <a href="/download/index_3.html">尾页</a></div>#}
+                </div>
             </div>
 
             <!--bloglist end-->
@@ -197,7 +206,7 @@
             showSkipInputFlag: false, //是否支持跳转
             getPage: function (page) {
                 //获取当前页数
-console.log(page);
+                console.log(page);
                 // 点击之后跳转:
                 location.href = '/list/' + {{ category_id }} +'/' + page + '/';
             }

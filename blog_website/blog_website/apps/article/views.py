@@ -123,8 +123,7 @@ class CategoryAllArticleView(View):
             articles = Article.objects.filter(category1=category)
             category_article_count = articles.count()
             # 分页
-            # paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
-            paginator = Paginator(articles, 2)
+            paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
             try:
                 page_articles = paginator.page(page_num)
             except EmptyPage:

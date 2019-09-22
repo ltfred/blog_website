@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'index',
     'links',
     'photo',
+    'soup',
 ]
 
 MIDDLEWARE = [

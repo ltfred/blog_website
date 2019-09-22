@@ -34,7 +34,7 @@
                         </ul>
                         <span></span>
                     </li>
-                    <li><a href={{ url('article:articles') }}>所有文章</a></li>
+                    <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
@@ -60,7 +60,7 @@
     <!--top end-->
     <article>
         <div class="whitebg">
-            <h2 class="htitle"><span class="hnav">可能，你觉得自己没有足够得优秀，但我始终相信你仍然在努力坚持着!</span>站长推荐</h2>
+            <h2 class="htitle"><span class="hnav">{{ soup }}</span>站长推荐</h2>
             <ul class="site_tj">
                 {% for link in recommend_links %}
                     <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>

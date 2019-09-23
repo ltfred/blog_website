@@ -85,12 +85,16 @@ class ArticleCountView(View):
 
     def get(self, request):
 
+        conn = get_redis_connection('default')
+        pv = conn.get('24_hours_pv')
+
+
         try:
             count = Article.objects.count()
         except Exception as e:
             return http.HttpResponse('数据库错误')
 
-        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count})
+        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count, 'pv': int(pv)})
 
 
 class AllArticleView(View):

@@ -22,10 +22,10 @@ class ArticleDetailView(View):
             # 获取本条数据
             article = Article.objects.get(id=article_id)
             # 获取上一条数据和下一条数据
-            next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).first()
-            pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).order_by('-id').first()
+            next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).only('id', 'title').first()
+            pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).only('id', 'title').order_by('-id').first()
             # 相关数据10条
-            articles = Article.objects.filter(category2=article.category2)[0:9]
+            articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
         except Exception as e:
             return http.HttpResponse('获取文章失败')
 
@@ -55,7 +55,7 @@ class ArticleTopView(View):
     def get(self, request):
 
         try:
-            articles = Article.objects.order_by('-read_count').all()[0:7]
+            articles = Article.objects.order_by('-read_count').all().only('id', 'title')[0:7]
         except Exception as e:
             return http.HttpResponse('数据库错误')
 
@@ -70,7 +70,7 @@ class RecommendView(View):
     def get(self, request):
 
         try:
-            articles = Article.objects.filter(is_top=True)[0:6]
+            articles = Article.objects.filter(is_top=True).only('id', 'title', 'index_image')[0:6]
         except Exception as e:
             return http.HttpResponse('数据库错误')
 
@@ -99,7 +99,7 @@ class AllArticleView(View):
     def get(self, request, page_num):
 
         try:
-            articles = Article.objects.order_by('-create_time').all()
+            articles = Article.objects.order_by('-create_time').all().only('id', 'title')
             all_counts = articles.count()
         except Exception as e:
             return http.HttpResponse('数据库错误')

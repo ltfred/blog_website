@@ -153,7 +153,7 @@
             <div class="whitebg cloud">
                 <h2 class="htitle">标签云</h2>
                 <ul>
-                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id" target="_blank">[[
+                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id + '/1'" target="_blank">[[
                         label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>

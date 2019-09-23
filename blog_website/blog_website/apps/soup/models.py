@@ -14,3 +14,4 @@ class Soup(models.Model):
 
     def __str__(self):
         return self.content
+

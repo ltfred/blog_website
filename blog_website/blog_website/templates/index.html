@@ -47,7 +47,7 @@
 
                         </ul>
                         <span></span></li>
-                    <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
+                    <li><a href='{{ url('article:article', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
@@ -57,15 +57,15 @@
     </header>
     <div class="searchbox">
         <div class="search">
-            <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-                <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词"
+            <form action="/search/" method="get" name="searchform" id="searchform">
+                <input name="q" id="keyboard" class="input_text" value="请输入关键字词"
                        style="color: rgb(153, 153, 153);"
                        onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
                        onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-                <input name="show" value="title" type="hidden">
-                <input name="tempid" value="1" type="hidden">
-                <input name="tbname" value="news" type="hidden">
-                <input name="Submit" class="input_submit" value="搜索" type="submit">
+{#                <input name="show" value="title" type="hidden">#}
+{#                <input name="tempid" value="1" type="hidden">#}
+{#                <input name="tbname" value="news" type="hidden">#}
+                <input class="input_submit" value="搜索" type="submit">
             </form>
         </div>
         <div class="searchclose"></div>

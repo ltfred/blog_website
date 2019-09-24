@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 全文检索,需放在第一个
+    'haystack',
     # 注册子应用
     'notice',
     'article',
@@ -197,3 +199,16 @@ LOGGING = {
 
 # 指定用户模型类
 AUTH_USER_MODEL = 'user.User'
+
+# Haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        # 'URL': 'http://172.16.190.128:9200/',  # Elasticsearch服务器ip地址，端口号固定为9200
+        # 'INDEX_NAME': 'blog',  # Elasticsearch建立的索引库的名称
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+
+# 当添加、修改、删除数据时，自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

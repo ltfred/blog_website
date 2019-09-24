@@ -45,7 +45,7 @@
 
                         </ul>
                         <span></span></li>
-                    <li><a href='{{ url('article:articles', args=(1,)) }}'>所有文章</a></li>
+                    <li><a href='{{ url('article:article', args=(1,)) }}'>所有文章</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
@@ -127,7 +127,7 @@
                 //获取当前页数
                 {#console.log(page);#}
                 // 点击之后跳转:
-                location.href = '/articles/' + page + '/';
+                location.href = '/article/' + page + '/';
             }
         })
 

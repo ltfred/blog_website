@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'', include('links.urls', namespace='links')),
     url(r'', include('photo.urls', namespace='photo')),
     url(r'', include('comment.urls', namespace='comment')),
+    # Haystack 注册
+    url(r'^search/', include('haystack.urls')),
 ]

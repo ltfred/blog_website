@@ -12,7 +12,7 @@ urlpatterns = [
     # 文章总数统计
     url(r'^article/count/$', views.ArticleCountView.as_view(), name='article_count'),
     # 所有文章
-    url(r'^articles/(?P<page_num>\d+)/$', views.AllArticleView.as_view(), name='articles'),
+    url(r'^articles/(?P<page_num>\d+)/$', views.AllArticleView.as_view(), name='article'),
     # 该类别下的所有文章
     url(r'^list/(?P<category_id>\d+)/(?P<page_num>\d+)/$', views.CategoryAllArticleView.as_view(), name='category_list'),
     # 获取标签

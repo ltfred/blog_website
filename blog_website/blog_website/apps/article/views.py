@@ -153,7 +153,7 @@ class CategoryAllArticleView(View):
 
             data_dict = {
                 'category_id': category.id,
-                'articles': page_articles,
+                'article': page_articles,
                 'category': category.name,
                 'article_count': category_article_count,
                 'total_page': page_list
@@ -167,7 +167,7 @@ class CategoryAllArticleView(View):
             #         'id': cat2.id,
             #         'name': cat2.name
             #     })
-            # data_dict['articles'] = page_articles
+            # data_dict['article'] = page_articles
             #
             # data_dict['category'] = category.name
             # data_dict['count'] = category_article_count
@@ -196,7 +196,7 @@ class CategoryAllArticleView(View):
             #         'id': cat2.id,
             #         'name': cat2.name
             #     })
-            # data_dict['articles'] = articles
+            # data_dict['article'] = article
             #
             # data_dict['category'] = category.name
 

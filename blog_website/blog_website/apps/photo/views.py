@@ -1,6 +1,9 @@
 from django import http
+from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.views import View
+
+from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 from photo.models import PhotoCategory, Photo
 import logging
@@ -28,7 +31,7 @@ class PhotoCategoryView(View):
 class AllPhotosView(View):
     """获取所有照片"""
 
-    def get(self, request):
+    def get(self, request, page_num):
 
         try:
             photo_query_set = Photo.objects.all().order_by('-create_time')
@@ -36,7 +39,20 @@ class AllPhotosView(View):
             logger.error(e)
             return http.HttpResponse('获取照片页失败')
 
-        context = {'photos': photo_query_set}
+        # 分页
+        paginator = Paginator(photo_query_set, constants.PHOTO_LIST_LIMIT)
+        try:
+            page_photos = paginator.page(page_num)
+        except EmptyPage:
+            return http.HttpResponseNotFound('empty page')
+        # 获取列表页总页数
+        total_page = paginator.num_pages
+
+        context = {
+            'photos': page_photos,
+            'total_page': total_page,
+            'page_num': page_num
+        }
 
         return render(request, 'photo.html', context=context)
 
@@ -44,15 +60,27 @@ class AllPhotosView(View):
 class CategoryPhotoView(View):
     """获取该类别下的所有照片"""
 
-    def get(self, request, category_id):
+    def get(self, request, category_id, page_num):
 
         try:
             photos = Photo.objects.filter(category_id=category_id)
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('获取照片失败')
+        # 分页
+        paginator = Paginator(photos, constants.PHOTO_LIST_LIMIT)
+        try:
+            page_photos = paginator.page(page_num)
+        except EmptyPage:
+            return http.HttpResponseNotFound('empty page')
+        # 获取列表页总页数
+        total_page = paginator.num_pages
 
-        context = {'photos': photos}
+        context = {
+            'photos': page_photos,
+            'total_page': total_page,
+            'page_num': page_num
+        }
 
         return render(request, 'photo.html', context=context)
 

@@ -39,10 +39,10 @@
                             <span></span>
                         </li>
                     {% endfor %}
-                    <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
+                    <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
                             <li v-for="category in photo_categories"><a
-                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id + '/1'">[[ category.name ]]</a>
                             </li>
 
                         </ul>

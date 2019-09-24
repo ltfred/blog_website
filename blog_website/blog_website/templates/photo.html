@@ -34,10 +34,10 @@
                         </ul>
                         <span></span>
                     </li>
-                    <li class="menu"><a href="{{ url('photo:photos') }}">相册</a>
+                    <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
                             <li v-for="category in photo_categories"><a
-                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id">[[ category.name ]]</a>
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id + '/1'">[[ category.name ]]</a>
                             </li>
 
                         </ul>
@@ -52,15 +52,15 @@
     </header>
     <div class="searchbox">
         <div class="search">
-            <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-                <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词"
+            <form action="/search/" method="get" name="searchform" id="searchform">
+                <input name="q" id="keyboard" class="input_text" value="请输入关键字词"
                        style="color: rgb(153, 153, 153);"
                        onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
                        onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-                <input name="show" value="title" type="hidden">
-                <input name="tempid" value="1" type="hidden">
-                <input name="tbname" value="news" type="hidden">
-                <input name="Submit" class="input_submit" value="搜索" type="submit">
+                {#                <input name="show" value="title" type="hidden">#}
+                {#                <input name="tempid" value="1" type="hidden">#}
+                {#                <input name="tbname" value="news" type="hidden">#}
+                <input class="input_submit" value="搜索" type="submit">
             </form>
         </div>
         <div class="searchclose"></div>
@@ -75,11 +75,18 @@
                     <li>
                         <a href="{{ photo.url }}" target="_blank"><i><img src="{{ photo.url }}"></i>
                             <p>{{ photo.title }}</p>
-                            {#                            <span>我性格属于好静的，喜欢写写画画，自从读了计算机专业，那就更好静了，我可以两星期都不出门，但是半刻钟也不能离开电脑。</span>#}
                         </a>
                     </li>
                 {% endfor %}
             </ul>
+            <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ total_page }}页</b> </a>&nbsp;&nbsp;&nbsp;
+                {#                                    <b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;#}
+                {#                    {% for article in data.total_page %}#}
+                {#                        <a href="http://127.0.0.1:8000/list/{{ data.category_id }}/{{ article + 1 }}">{{ loop.index }}</a>#}
+                {#                        &nbsp;#}
+                {#                    {% endfor %}#}
+                <a href="#" onclick="nextpage()">下一页</a>&nbsp;
+            </div>
         </div>
     </article>
     <footer>
@@ -100,6 +107,18 @@
 </a></footer>
 </div>
 <script type="text/javascript" src="{{ static('js/base.js') }}"></script>
+<script>
+    function nextpage() {
+        var curpage = {{ page_num }} + 1;
+        var total_page = {{ total_page }};
+        if(curpage > total_page){
+            alert('已经是最后一页了')
+        }
+        else{
+            location.href = '/photos/' + curpage + '/';
+        }
 
+    }
+</script>
 </body>
 </html>

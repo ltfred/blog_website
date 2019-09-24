@@ -22,8 +22,11 @@ class ArticleDetailView(View):
             # 获取本条数据
             article = Article.objects.get(id=article_id)
             # 获取上一条数据和下一条数据
-            next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).only('id', 'title').first()
-            pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).only('id', 'title').order_by('-id').first()
+            next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).only('id',
+                                                                                                       'title').first()
+            pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).only('id',
+                                                                                                      'title').order_by(
+                '-id').first()
             # 相关数据10条
             articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
         except Exception as e:
@@ -88,7 +91,6 @@ class ArticleCountView(View):
         conn = get_redis_connection('default')
         pv = conn.get('24_hours_pv')
 
-
         try:
             count = Article.objects.count()
         except Exception as e:
@@ -116,7 +118,6 @@ class AllArticleView(View):
             return http.HttpResponseNotFound('empty page')
         # 获取列表页总页数
         total_page = paginator.num_pages
-
         context = {
             'page_num': page_num,
             'total_page': total_page,
@@ -134,11 +135,14 @@ class CategoryAllArticleView(View):
     def get(self, request, category_id, page_num):
 
         try:
+            # 查出该类别
             category = ArticleCategory.objects.get(id=category_id)
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
         # 判断是否为一级分类
         if category.parent is None:
+            # 获取一级下的所有文章
             articles = Article.objects.filter(category1=category)
             category_article_count = articles.count()
             # 分页
@@ -153,10 +157,11 @@ class CategoryAllArticleView(View):
 
             data_dict = {
                 'category_id': category.id,
-                'article': page_articles,
+                'articles': page_articles,
                 'category': category.name,
                 'article_count': category_article_count,
-                'total_page': page_list
+                'total_page': page_list,
+                'page_num': page_num
             }
             # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
 
@@ -173,7 +178,7 @@ class CategoryAllArticleView(View):
             # data_dict['count'] = category_article_count
 
         else:
-            # 为二级分类
+            # 为二级分类，二级类下的所有文章
             articles = Article.objects.filter(category2=category)
             category_article_count = articles.count()
 
@@ -206,7 +211,8 @@ class CategoryAllArticleView(View):
                 # 'categories': category2_list,
                 'articles': page_articles,
                 'article_count': category_article_count,
-                'total_page': page_list
+                'total_page': page_list,
+                'page_num': page_num
             }
 
         context = {'data': data_dict}
@@ -220,19 +226,19 @@ class LabelView(View):
     def get(self, request):
 
         try:
+            # 文章的二级分类
             cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
-
         except Exception as e:
+            logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取标签失败'})
 
         # labels = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
         labels = []
-
         for cat2 in cat2_list:
             labels.append({
                 'id': cat2.id,
                 'name': cat2.name,
-                'article_count': Article.objects.filter(category2=cat2).count()
+                'article_count': Article.objects.filter(category2=cat2).count()  # 每个二级分类的文章的数量
             })
 
         return http.JsonResponse({'code': RETCODE.OK, 'labels': labels})
@@ -244,12 +250,13 @@ class ArticleLikeView(View):
     def get(self, request, article_id):
 
         try:
+            # 查出该文章
             article = Article.objects.get(id=article_id)
         except Exception as e:
             logger.error(e)
-            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取失败'})
+            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取文章失败'})
 
-        # 获取请求的ip，一个ip只能点赞一次
+        # 获取请求的ip
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')  # 判断是否使用代理
         if x_forwarded_for:
             ip = x_forwarded_for.split(',')[0]  # 使用代理获取真实的ip
@@ -260,9 +267,9 @@ class ArticleLikeView(View):
         key = 'like_{}_flag_{}'.format(article_id, ip)
         if redis.get(key):
             return http.JsonResponse({'code': RETCODE.ALLOWERR, 'errmsg': '只能点击一次'})
-
-        redis.set(key, 1, 600)
-
+        # 24小时内只能点赞一次
+        redis.set(key, 1, 24 * 60 * 60)
+        # 文章点赞次数+1
         article.like_count += 1
         article.save()
 

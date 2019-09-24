@@ -103,13 +103,11 @@
 
                 <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ data.article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
                     {#                                    <b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;#}
-                    {% for article in data.total_page %}
-                        <a href="http://127.0.0.1:8000/list/{{ data.category_id }}/{{ article + 1 }}">{{ loop.index }}</a>
-                        &nbsp;
-                    {% endfor %}
-                    {#                                    <a href="/download/index_3.html">3</a>&nbsp;#}
-                    {#                                    <a href="/download/index_2.html">下一页</a>&nbsp;#}
-                    {#                                    <a href="/download/index_3.html">尾页</a></div>#}
+{#                    {% for article in data.total_page %}#}
+{#                        <a href="http://127.0.0.1:8000/list/{{ data.category_id }}/{{ article + 1 }}">{{ loop.index }}</a>#}
+{#                        &nbsp;#}
+{#                    {% endfor %}#}
+                     <a href="#" onclick="nextpage()">下一页</a>&nbsp;
                 </div>
             </div>
 
@@ -193,24 +191,37 @@
 
 </div>
 <script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
+{#<script>#}
+{#    window.onload = function () {#}
+{#        new myPagination({#}
+{#            id: 'pagination',#}
+{#            curPage: {{ page_num }}, //初始页码#}
+{#            pageTotal: {{ total_page }}, //总页数#}
+{#            pageAmount: 10,  //每页多少条#}
+{#            dataTotal: {{ article_count }}, //总共多少条数据#}
+{#            pageSize: 3, //可选,分页个数#}
+{#            showPageTotalFlag: true, //是否显示数据统计#}
+{#            showSkipInputFlag: false, //是否支持跳转#}
+{#            getPage: function (page) {#}
+{#                //获取当前页数#}
+{#                console.log(page);#}
+{#                // 点击之后跳转:#}
+{#                location.href = '/list/' + {{ category_id }} +'/' + page + '/';#}
+{#            }#}
+{#        })#}
+{##}
+{#    }#}
+{#</script>#}
 <script>
-    window.onload = function () {
-        new myPagination({
-            id: 'pagination',
-            curPage: {{ page_num }}, //初始页码
-            pageTotal: {{ total_page }}, //总页数
-            pageAmount: 10,  //每页多少条
-            dataTotal: {{ article_count }}, //总共多少条数据
-            pageSize: 3, //可选,分页个数
-            showPageTotalFlag: true, //是否显示数据统计
-            showSkipInputFlag: false, //是否支持跳转
-            getPage: function (page) {
-                //获取当前页数
-                console.log(page);
-                // 点击之后跳转:
-                location.href = '/list/' + {{ category_id }} +'/' + page + '/';
-            }
-        })
+    function nextpage() {
+        var curpage = {{ data.page_num }} + 1;
+        var total_page = {{ data.total_page }};
+        if(curpage > total_page){
+            alert('已经是最后一页了')
+        }
+        else{
+            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+        }
 
     }
 </script>

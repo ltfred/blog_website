@@ -30,6 +30,7 @@ class ArticleDetailView(View):
             # 相关数据10条
             articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('获取文章失败')
 
         # 阅读次数+1
@@ -60,6 +61,7 @@ class ArticleTopView(View):
         try:
             articles = Article.objects.order_by('-read_count').all().only('id', 'title')[0:7]
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
 
         top_list = [{'title': article.title, 'id': article.id} for article in articles]
@@ -75,6 +77,7 @@ class RecommendView(View):
         try:
             articles = Article.objects.filter(is_top=True).only('id', 'title', 'index_image')[0:6]
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
 
         recommend_list = [{'title': article.title, 'id': article.id, 'index_image': article.index_image} for article in
@@ -94,6 +97,7 @@ class ArticleCountView(View):
         try:
             count = Article.objects.count()
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
 
         return http.JsonResponse({'code': RETCODE.OK, 'article_count': count, 'pv': int(pv)})
@@ -108,6 +112,7 @@ class AllArticleView(View):
             articles = Article.objects.order_by('-create_time').all().only('id', 'title')
             all_counts = articles.count()
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
 
         # 分页
@@ -268,7 +273,7 @@ class ArticleLikeView(View):
         if redis.get(key):
             return http.JsonResponse({'code': RETCODE.ALLOWERR, 'errmsg': '只能点击一次'})
         # 24小时内只能点赞一次
-        redis.set(key, 1, 24 * 60 * 60)
+        redis.set(key, 'article_stars', constants.ARTICLE_STARS_EXPIRE)
         # 文章点赞次数+1
         article.like_count += 1
         article.save()

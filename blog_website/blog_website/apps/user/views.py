@@ -1,9 +1,10 @@
 from django import http
 from django.shortcuts import render
 from django.views import View
-
 from blog_website.utils.response_code import RETCODE
 from user.models import User
+import logging
+logger = logging.getLogger('blog')
 
 
 class UserProfileView(View):
@@ -14,6 +15,7 @@ class UserProfileView(View):
         try:
             user = User.objects.get(id=1)
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
 
         profile = {
@@ -34,6 +36,7 @@ class AboutUserView(View):
         try:
             user = User.objects.get(id=1)
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库错误')
 
         context = {'bio': user.bio, 'dubai': user.soliloquy, 'name': user.username,

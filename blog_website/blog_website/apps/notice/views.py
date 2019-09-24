@@ -15,6 +15,7 @@ class NoticeView(View):
         try:
             notices = Notice.objects.all()
         except Exception as e:
+            logger.error(e)
             return http.HttpResponse('数据库查询错误')
 
         notice_list = []
@@ -40,6 +41,7 @@ class NoticeDetailView(View):
             # 相关数据10条
             notices = Notice.objects.all()[0:9]
         except Exception as e:
+            logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})
 
         # 每访问一次此页面阅读数+1

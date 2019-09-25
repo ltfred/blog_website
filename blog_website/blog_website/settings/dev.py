@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'photo',
     'soup',
     'site_statistics',
+    'markdown_deux'
+
 ]
 
 MIDDLEWARE = [

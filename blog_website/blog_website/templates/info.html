@@ -12,7 +12,7 @@
     <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ static('js/comm.js') }}"></script>
-    <link rel="stylesheet" href="{{ static('md_css/default.css') }} ">
+    <link rel="stylesheet" href="{{ static('md_css/github.css') }} ">
     <!--[if lt IE 9]>
 
 <script src="js/modernizr.js"></script>
@@ -28,10 +28,12 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[
+                    <li class="menu" v-for="cat in cat_list"><a
+                            :href="'http://127.0.0.1:8000/'+'list/' + cat.id + '/1'">[[
                         cat.name ]]</a>
                         <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name
+                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id +'/1'">[[
+                                sub.name
                                 ]]</a></li>
                         </ul>
                         <span></span>
@@ -39,7 +41,8 @@
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
                             <li v-for="category in photo_categories"><a
-                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id + '/1'">[[ category.name ]]</a>
+                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id + '/1'">[[ category.name
+                                ]]</a>
                             </li>
 
                         </ul>
@@ -59,9 +62,9 @@
                        style="color: rgb(153, 153, 153);"
                        onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
                        onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-{#                <input name="show" value="title" type="hidden">#}
-{#                <input name="tempid" value="1" type="hidden">#}
-{#                <input name="tbname" value="news" type="hidden">#}
+                {#                <input name="show" value="title" type="hidden">#}
+                {#                <input name="tempid" value="1" type="hidden">#}
+                {#                <input name="tbname" value="news" type="hidden">#}
                 <input class="input_submit" value="搜索" type="submit">
             </form>
         </div>
@@ -84,22 +87,21 @@
                 <p class="con_info"><b>简介</b>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。
                 </p>
                 <div class="con_text">
-
-                    <p class="codehilite">
-                        {#                        <div class="codehilite">#}
+                    <div class="codehilite">
                         {{ article.content | safe }}
-                        {#                        </div>#}
-                    </p>
-
-
+                    </div>
                     <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站长或者朋友圈，但转载请说明文章出处“来源Fred个人博客”。</p>
                     <p><span class="diggit" onclick="like_article()">很赞哦！ ({{ article.like_count }})</span></p>
                     <div class="nextinfo">
                         {% if pre_article %}
-                        <p>上一篇：<a href="{{ url('article:article_detail', args=(pre_article.id,)) }}">{{ pre_article.title }}</a></p>
+                            <p>上一篇：<a
+                                    href="{{ url('article:article_detail', args=(pre_article.id,)) }}">{{ pre_article.title }}</a>
+                            </p>
                         {% endif %}
                         {% if next_article %}
-                        <p>下一篇：<a href="{{ url('article:article_detail', args=(next_article.id,)) }}">{{ next_article.title }}</a></p>
+                            <p>下一篇：<a
+                                    href="{{ url('article:article_detail', args=(next_article.id,)) }}">{{ next_article.title }}</a>
+                            </p>
                         {% endif %}
                     </div>
                 </div>
@@ -108,7 +110,8 @@
                 <h2 class="htitle">相关文章</h2>
                 <ul class="otherlink">
                     {% for article in articles %}
-                    <li><a href="{{ url('article:article_detail', args=(article.id,)) }}" title="{{ article.title }}">{{ article.title }}</a></li>
+                        <li><a href="{{ url('article:article_detail', args=(article.id,)) }}"
+                               title="{{ article.title }}">{{ article.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -116,6 +119,16 @@
             <div class="whitebg gbook">
                 <h2 class="htitle">文章评论</h2>
                 <ul>
+                    <!--PC版-->
+                    <div id="SOHUCS"></div>
+                    <script charset="utf-8" type="text/javascript"
+                            src="https://changyan.sohu.com/upload/changyan.js"></script>
+                    <script type="text/javascript">
+                        window.changyan.api.config({
+                            appid: 'cyurPKNuR',
+                            conf: 'prod_40f065b65d473b2fd62db802aa069635'
+                        });
+                    </script>
                 </ul>
             </div>
         </div>
@@ -153,7 +166,8 @@
             <div class="whitebg cloud">
                 <h2 class="htitle">标签云</h2>
                 <ul>
-                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id + '/1'" target="_blank">[[
+                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id + '/1'"
+                       target="_blank">[[
                         label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>
@@ -190,25 +204,24 @@
 </div>
 <script type="text/javascript" src="{{ static('js/info.js') }}"></script>
 <script>
-    function like_article(){
-            var url = '/article/like/{{ article.id }}';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response =>{
-                    code = response.data.code;
-                    if(code == '4009'){
-                        alert('只能点赞一次')
-                    }
-                    else{
-                        window.location.reload();
-                    }
+    function like_article() {
+        var url = '/article/like/{{ article.id }}';
+        axios.get(url, {
+            responseType: 'json',
+        })
+            .then(response => {
+                code = response.data.code;
+                if (code == '4009') {
+                    alert('只能点赞一次')
+                } else {
+                    window.location.reload();
+                }
 
-                })
-                .catch(error =>{
-                    console.log(error.response)
-                })
-        }
+            })
+            .catch(error => {
+                console.log(error.response)
+            })
+    }
 </script>
 </body>
 </html>

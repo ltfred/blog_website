@@ -6,7 +6,8 @@ from django.db import models
 
 class User(AbstractUser):
     """用户模型类"""
-    profession = models.CharField(max_length=10, verbose_name='职业')
+    webname = models.CharField(max_length=20, verbose_name='网名', default='')
+    profession = models.CharField(max_length=30, verbose_name='职业')
     address = models.CharField(max_length=10, verbose_name='地址')
     avatar_url = models.CharField(max_length=200, null=True, verbose_name='用户头像路径')
     bio = models.CharField(max_length=200, default='', verbose_name='个人简介')

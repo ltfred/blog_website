@@ -53,8 +53,11 @@ class IndexView(View):
             logger.error(e)
             return http.HttpResponse('数据库错误')
         # 随机选择
-        carousel_articles = random.sample(list(index_images), 2)
-        static_articles = random.sample(list(index_images), 2)
+        carousel_articles = []
+        static_articles = []
+        if index_images.count() > 2:
+            carousel_articles = random.sample(list(index_images), 2)
+            static_articles = random.sample(list(index_images), 2)
 
         context = {
             'articles': articles,

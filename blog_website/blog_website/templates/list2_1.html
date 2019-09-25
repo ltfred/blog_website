@@ -89,7 +89,7 @@
                                     href="{{ url('article:category_list', args=(article.category1.id, 1)) }}">{{ article.category1.name }}</a></i><a
                                     href="{{ url('article:article_detail', args=(article.id,)) }}" title=""><img
                                     src="{{ article.index_image }}" alt=""></a></span>
-                            <p class="blogtext">{{ article.content }} </p>
+                            <p class="blogtext">{{ article.describe }} </p>
                             <p class="bloginfo"><i class="avatar"><img
                                     src="{{ article.author.avatar_url }}"></i><span>{{ article.author.username }}</span><span>{{ article.create_time }}</span><span>【<a
                                     href="{{ url('article:category_list', args=(article.category2.id, 1)) }}">{{ article.category2.name }}</a>】</span>

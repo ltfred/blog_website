@@ -19,7 +19,7 @@ class UserProfileView(View):
             return http.HttpResponse('数据库错误')
 
         profile = {
-            'username': user.username,
+            'webname': user.webname,
             'profession': user.profession,
             'address': user.address,
             'email': user.email

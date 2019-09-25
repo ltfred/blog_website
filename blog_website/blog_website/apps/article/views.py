@@ -37,11 +37,11 @@ class ArticleDetailView(View):
         article.read_count += 1
         article.save()
 
-        exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'markdown.extensions.tables',
-                'markdown.extensions.toc']
+        # exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'markdown.extensions.tables',
+        #         'markdown.extensions.toc']
 
         # 将markdown语法渲染成html样式
-        article.content = markdown.markdown(article.content, extensions=exts)
+        # article.content = markdown.markdown(article.content, extensions=exts)
 
         context = {
             'article': article,

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>公告详情-Fred个人博客</title>
+    <title>公告详情-Fred个人网站</title>
     <meta name="keywords" content="blog"/>
     <meta name="description" content="blog"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,14 +23,16 @@
     <header id="header">
         <div class="navbox">
             <h2 id="mnavh"><span class="navicon"></span></h2>
-            <div class="logo"><a href="{{ url('index:index_list') }}">Fred个人博客</a></div>
+            <div class="logo"><a href="{{ url('index:index_list') }}">Fred个人网站</a></div>
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a :href="'http://127.0.0.1:8000/'+'list/' + cat.id">[[
+                    <li class="menu" v-for="cat in cat_list"><a
+                            :href="'/list/' + cat.id + '/1'">[[
                         cat.name ]]</a>
                         <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'http://127.0.0.1:8000/'+'list/' + sub.id">[[ sub.name
+                            <li v-for="sub in cat.subs"><a :href="'/list/' + sub.id + '/1'">[[
+                                sub.name
                                 ]]</a></li>
                         </ul>
                         <span></span>
@@ -38,12 +40,12 @@
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
                             <li v-for="category in photo_categories"><a
-                                    :href="'http://127.0.0.1:8000/'+'photos/' + category.id + '/1'">[[ category.name ]]</a>
+                                    :href="'/photos/' + category.id + '/1'">[[ category.name
+                                ]]</a>
                             </li>
-
                         </ul>
                         <span></span></li>
-                    <li><a href='{{ url('article:article', args=(1,)) }}'>所有文章</a></li>
+                    <li><a href='{{ url('article:article', args=(1,)) }}'>日记归档</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
                 </ul>
@@ -58,9 +60,6 @@
                        style="color: rgb(153, 153, 153);"
                        onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
                        onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-{#                <input name="show" value="title" type="hidden">#}
-{#                <input name="tempid" value="1" type="hidden">#}
-{#                <input name="tbname" value="news" type="hidden">#}
                 <input class="input_submit" value="搜索" type="submit">
             </form>
         </div>
@@ -71,7 +70,7 @@
         <!--lbox begin-->
         <div class="lbox">
             <div class="content_box whitebg">
-                <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a href="/">公告</a></span>个人博客模板
+                <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a href="#">公告</a></span>个人网站
                 </h2>
                 <h1 class="con_tilte">{{ notice.title }}</h1>
                 <p class="bloginfo"><i class="avatar"><img
@@ -81,7 +80,7 @@
                 </p>
                 <div class="con_text">
                     <p>{{ notice.content }}</p>
-                    <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站点或者朋友圈，但转载请说明文章出处“来源Fred个人博客”。</p>
+                    <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站点或者朋友圈，但转载请说明文章出处“来源Fred个人网站”。</p>
                     <p><span class="diggit" onclick="like_notice()">很赞哦！ ({{ notice.like_count }})</span></p>
                     <div class="nextinfo">
                         {% if pre_notice %}
@@ -117,7 +116,7 @@
                 <ul>
 
                     <li v-for="article in top_list"><i></i><a
-                            :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id">[[ article.title
+                            :href="'/article/detail/' + article.id">[[ article.title
                         ]]</a></li>
                 </ul>
             </div>
@@ -127,7 +126,7 @@
                 {#                </section>#}
                 <ul>
                     <li v-for="article in recommend_list"><a
-                            :href="'http://127.0.0.1:8000/'+'article/detail/' + article.id"><i><img
+                            :href="'/article/detail/' + article.id"><i><img
                             :src="article.index_image"></i>
                         <p>[[ article.title ]]</p>
                     </a></li>
@@ -142,7 +141,7 @@
             <div class="whitebg cloud">
                 <h2 class="htitle">标签云</h2>
                 <ul>
-                    <a v-for="label in labels" :href="'http://127.0.0.1:8000/'+'list/' + label.id" target="_blank">[[
+                    <a v-for="label in labels" :href="'/list/' + label.id" target="_blank">[[
                         label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>

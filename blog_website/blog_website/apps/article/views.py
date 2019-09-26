@@ -3,7 +3,6 @@ from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
-
 from article.models import Article, ArticleCategory
 import markdown
 from blog_website.utils import constants
@@ -37,8 +36,7 @@ class ArticleDetailView(View):
         article.read_count += 1
         article.save()
 
-        # exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'markdown.extensions.tables',
-        #         'markdown.extensions.toc']
+        # exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'markdown.extensions.tables', 'markdown.extensions.toc']
 
         # 将markdown语法渲染成html样式
         # article.content = markdown.markdown(article.content, extensions=exts)
@@ -163,7 +161,7 @@ class CategoryAllArticleView(View):
             data_dict = {
                 'category_id': category.id,
                 'articles': page_articles,
-                'category': category.name,
+                'category': category,
                 'article_count': category_article_count,
                 'total_page': page_list,
                 'page_num': page_num
@@ -212,7 +210,7 @@ class CategoryAllArticleView(View):
 
             data_dict = {
                 'category_id': category.id,
-                'category': category.name,
+                'category': category,
                 # 'categories': category2_list,
                 'articles': page_articles,
                 'article_count': category_article_count,

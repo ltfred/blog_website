@@ -1,6 +1,4 @@
 from django.db import models
-
-# Create your models here.
 from blog_website.utils.models import BaseModel
 from user.models import User
 
@@ -10,6 +8,8 @@ class ArticleCategory(BaseModel):
     name = models.CharField(max_length=10, verbose_name='名称')
     parent = models.ForeignKey('self', null=True, blank=True, related_name='subs',
                                on_delete=models.CASCADE, verbose_name='父类别')
+    describe = models.CharField(max_length=100, default='', verbose_name='类别描述')
+    image_url = models.CharField(max_length=100, default='', verbose_name='类别图片')
 
     class Meta:
         db_table = 'article_category'

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 全文检索,需放在第一个
     'haystack',
+    'rest_framework',
     # 注册子应用
     'notice',
     'article',
@@ -215,3 +216,16 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # 指定搜索结果每页显示多少条信息
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+
+# REST_FRAMEWORK = {
+#     # 针对匿名用户和认证用户进行统一的限流控制
+#     'DEFAULT_THROTTLE_CLASSES': (
+#         'rest_framework.throttling.ScopedRateThrottle',
+#     ),
+#
+#     # 指定限流频次选择项
+#     'DEFAULT_THROTTLE_RATES': {
+#         'upload': '2/minute',
+#         # 'contacts': '5/minute'
+#     },
+# }

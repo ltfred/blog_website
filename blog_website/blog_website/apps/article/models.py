@@ -34,7 +34,7 @@ class Article(BaseModel):
     index_image = models.CharField(max_length=300, null=True, verbose_name='文章主图')
     is_top = models.BooleanField(default=False, verbose_name='是否置顶')
     like_count = models.IntegerField(default=0, verbose_name='点赞数')
-    describe = models.TextField(default='', verbose_name='文章描述')
+    describe = models.TextField(default='', verbose_name='文章描述', help_text='用于列表页展示文章简介')
 
     class Meta:
         db_table = 'article'

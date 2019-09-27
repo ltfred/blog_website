@@ -8,7 +8,7 @@ class Link(BaseModel):
     """链接模型类"""
     name = models.CharField(max_length=20, verbose_name='名字')
     url = models.CharField(max_length=20, verbose_name='链接')
-    is_recommend = models.BooleanField(default=False, verbose_name='推荐')
+    is_recommend = models.BooleanField(default=False, verbose_name='是否推荐')
 
     class Meta:
         db_table = 'link'

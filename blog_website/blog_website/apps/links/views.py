@@ -20,15 +20,14 @@ class LinkView(View):
             recommend_links = Link.objects.filter(is_recommend=True)
             links = Link.objects.filter(is_recommend=False)
             # 随机一句心灵鸡汤
-            content = ''
             soups = Soup.objects.all()
-            if soups:
-                soup = random.choice(soups)
-                content = soup.content
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('获取界面失败')
-
-        context = {'recommend_links': recommend_links, 'links': links, 'soup': content}
+        context = {
+            'recommend_links': recommend_links,
+            'links': links,
+            'soup': random.choice(soups).content if soups else ''
+        }
 
         return render(request, 'daohang.html', context=context)

@@ -1,7 +1,10 @@
 Django==1.11.11
+django-ckeditor==5.7.1
 django-haystack==2.8.1
+django-js-asset==1.2.2
 django-markdown-deux==1.0.5
 django-redis==4.10.0
+djangorestframework==3.10.3
 elasticsearch==2.4.1
 jieba==0.39
 Jinja2==2.10.1

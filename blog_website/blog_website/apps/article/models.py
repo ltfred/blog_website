@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from blog_website.utils.models import BaseModel
 from user.models import User
@@ -25,7 +26,7 @@ class Article(BaseModel):
     author = models.ForeignKey(User, null=True, blank=True,
                                on_delete=models.CASCADE, verbose_name='作者')
     title = models.CharField(max_length=50, verbose_name='标题')
-    content = models.TextField(verbose_name='内容')
+    content = RichTextField(verbose_name='内容')
     category1 = models.ForeignKey(ArticleCategory, on_delete=models.PROTECT,
                                   related_name='cat1', verbose_name='一级分类')
     category2 = models.ForeignKey(ArticleCategory, on_delete=models.PROTECT,

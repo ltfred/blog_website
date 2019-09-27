@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 全文检索,需放在第一个
     'haystack',
     'rest_framework',
+    'ckeditor',  # 富文本编辑器
     # 注册子应用
     'notice',
     'article',
@@ -243,3 +244,38 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 #         # 'contacts': '5/minute'
 #     },
 # }
+
+# 富文本编辑器设置
+CKEDITOR_CONFIGS = {
+    # django-ckeditor默认使用default配置
+    'default': {
+        # 编辑器宽度自适应
+        'width': 'auto',
+        'height': '400px',
+        # tab键转换空格数
+        'tabSpaces': 4,
+        # 工具栏风格
+        'toolbar': 'Custom',
+        # 工具栏按钮
+        'toolbar_Custom': [
+            # 表情 代码块
+            ['Smiley', 'CodeSnippet'],
+            # 字体风格
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote', 'FontSize', 'Font'],
+            # 图片
+            ['Image'],
+            # 字体颜色
+            ['TextColor', 'BGColor'],
+            # 链接
+            ['Link', 'Unlink'],
+            # 列表, 表格
+            ['NumberedList', 'BulletedList', 'Table'],
+            # 格式
+            ['JustifyCenter', 'JustifyLeft', 'JustifyRight'],
+            # 最大化
+            ['Maximize']
+        ],
+        # 加入代码块插件
+        'extraPlugins': ','.join(['codesnippet', 'prism', 'widget', 'lineutils']),
+    }
+}

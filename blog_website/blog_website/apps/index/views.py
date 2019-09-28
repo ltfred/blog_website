@@ -10,12 +10,12 @@ from article.models import Article, ArticleCategory
 from blog_website.utils.response_code import RETCODE
 import logging
 
-
 logger = logging.getLogger('blog')
 
 
 class IndexView(View):
     """返回首页"""
+
     # throttle_scope = 'upload'
 
     def get(self, request):
@@ -63,11 +63,19 @@ class IndexView(View):
             carousel_articles = random.sample(list(index_images), 2)
             static_articles = random.sample(list(index_images), 2)
 
+        # 精彩专题数据
+        like_articles = []
+        try:
+            like_articles = Article.objects.order_by('-like_count').only('id', 'title', 'index_image', 'describe')[0:6]
+        except Exception as e:
+            logger.error(e)
+
         context = {
             'articles': articles,
             'cat_list': cat_list,
             'carousel_articles': carousel_articles,
             'static_articles': static_articles,
+            'like_articles': like_articles
 
         }
 

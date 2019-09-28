@@ -1,9 +1,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>留言板-Fred个人网站</title>
-    <meta name="keywords" content="留言板"/>
-    <meta name="description" content="留言板"/>
+    <title>留言板-Fred个人网站-只要还有明天，今天永远都是起跑线</title>
+    <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
+    <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
+    <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ static('css/base.css') }}" rel="stylesheet">
     <link href="{{ static('css/m.css') }}" rel="stylesheet">
@@ -27,21 +28,15 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a
-                            :href="'/list/' + cat.id + '/1'">[[
-                        cat.name ]]</a>
+                    <li class="menu" v-for="cat in cat_list"><a :href="'/list/' + cat.id + '/1'">[[ cat.name ]]</a>
                         <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'/list/' + sub.id + '/1'">[[
-                                sub.name
-                                ]]</a></li>
+                            <li v-for="sub in cat.subs"><a :href="'/list/' + sub.id + '/1'">[[ sub.name ]]</a></li>
                         </ul>
                         <span></span>
                     </li>
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a
-                                    :href="'/photos/' + category.id + '/1'">[[ category.name
-                                ]]</a>
+                            <li v-for="category in photo_categories"><a :href="'/photos/' + category.id + '/1'">[[ category.name ]]</a>
                             </li>
                         </ul>
                         <span></span></li>
@@ -90,11 +85,8 @@
         <div class="box">
             <div class="endnav">
                 <p><b>站点声明：</b></p>
-                <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a
-                        href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E"
-                        target="_blank">dacesmiling@qq.com</a></p>
-                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.yangqq.com</a> All Rights Reserved.
+                <p>本站所有文章，均为本人书写(如有转载会标出)，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.ltfred.com</a> All Rights Reserved.
                     备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
             </div>
         </div>

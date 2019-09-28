@@ -8,12 +8,12 @@ logger = logging.getLogger('blog')
 
 
 class NoticeView(View):
-    """获取所有公告"""
+    """获取前8条公告"""
 
     def get(self, request):
 
         try:
-            notices = Notice.objects.all()
+            notices = Notice.objects.all().only('id', 'title')[0:8]
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库查询错误')
@@ -72,3 +72,15 @@ class NoticeLikeView(View):
         notice.save()
 
         return http.JsonResponse({'code': RETCODE.OK, 'errmsg': 'ok'})
+
+
+class AllNoticeView(View):
+    """所有公告"""
+    def get(self, request):
+        try:
+            notices = Notice.objects.all()
+        except Exception as e:
+            logger.error(e)
+            return http.HttpResponse('服务器出错了')
+        context = {'notices': notices}
+        return render(request, 'notice_list.html', context=context)

@@ -1,11 +1,9 @@
 import random
-
 from django import http
 from django.shortcuts import render
 from django.views import View
 from links.models import Link
 import logging
-
 from soup.models import Soup
 
 logger = logging.getLogger('blog')

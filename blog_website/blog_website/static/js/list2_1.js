@@ -16,7 +16,7 @@ var vm = new Vue({
 
         this.get_top();
         this.get_recommend();
-        this.get_article_count();
+        // this.get_article_count();
         this.get_cat();
         this.get_labels();
         this.get_photo_categories();

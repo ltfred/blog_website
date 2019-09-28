@@ -39,7 +39,7 @@ class AboutUserView(View):
             logger.error(e)
             return http.HttpResponse('数据库错误')
 
-        context = {'bio': user.bio, 'dubai': user.soliloquy, 'name': user.username,
+        context = {'bio': user.bio, 'dubai': user.soliloquy, 'name': user.webname,
                    'avatar': user.avatar_url }
 
         return render(request, 'about.html', context=context)

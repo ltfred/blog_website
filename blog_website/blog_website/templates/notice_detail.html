@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>公告详情-Fred个人网站</title>
-    <meta name="keywords" content="blog"/>
-    <meta name="description" content="blog"/>
+    <title>公告详情-Fred个人网站-只要还有明天，今天永远都是起跑线</title>
+    <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
+    <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
+    <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ static('css/base.css') }}" rel="stylesheet">
     <link href="{{ static('css/m.css') }}" rel="stylesheet">
@@ -70,13 +71,15 @@
         <!--lbox begin-->
         <div class="lbox">
             <div class="content_box whitebg">
-                <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a href="#">公告</a></span>个人网站
+                <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a
+                        href="{{ url('notice:notice_list') }}">公告</a></span>个人网站
                 </h2>
                 <h1 class="con_tilte">{{ notice.title }}</h1>
                 <p class="bloginfo"><i class="avatar"><img
                         src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.username }}</span><span>{{ notice.create_time }}</span><span>【<a
-                        href="/">公告</a>】</span><span>{{ notice.read_count }}人已围观</span></p>
-                <p class="con_info"><b>简介</b>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。
+                        href="{{ url('notice:notice_list') }}">公告</a>】</span><span>{{ notice.read_count }}人已围观</span>
+                </p>
+                <p class="con_info"><b>简介</b>个人网站，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，也会放上一些照片。后来也用来记录自己所学习的知识。
                 </p>
                 <div class="con_text">
                     <p>{{ notice.content }}</p>
@@ -84,10 +87,14 @@
                     <p><span class="diggit" onclick="like_notice()">很赞哦！ ({{ notice.like_count }})</span></p>
                     <div class="nextinfo">
                         {% if pre_notice %}
-                        <p>上一篇：<a href="{{ url('notice:notice_detail', args=(pre_notice.id,)) }}">{{ pre_notice.title }}</a></p>
+                            <p>上一篇：<a
+                                    href="{{ url('notice:notice_detail', args=(pre_notice.id,)) }}">{{ pre_notice.title }}</a>
+                            </p>
                         {% endif %}
                         {% if next_notice %}
-                        <p>下一篇：<a href="{{ url('notice:notice_detail', args=(next_notice.id,)) }}">{{ next_notice.title }}</a></p>
+                            <p>下一篇：<a
+                                    href="{{ url('notice:notice_detail', args=(next_notice.id,)) }}">{{ next_notice.title }}</a>
+                            </p>
                         {% endif %}
                     </div>
                 </div>
@@ -96,7 +103,8 @@
                 <h2 class="htitle">相关文章</h2>
                 <ul class="otherlink">
                     {% for notice in notices %}
-                    <li><a href="{{ url('notice:notice_detail', args=(notice.id,)) }}" title="{{ notice.title }}">{{ notice.title }}</a></li>
+                        <li><a href="{{ url('notice:notice_detail', args=(notice.id,)) }}"
+                               title="{{ notice.title }}">{{ notice.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -151,29 +159,17 @@
                     <a href="/"><img src="images/ad02.jpg"></a>
                 </ul>
             </div>
-            <div class="whitebg tongji">
-                <h2 class="htitle">站点信息</h2>
-                <ul>
-                    <li><b>建站时间</b>：2018-10-24</li>
-                    <li><b>文章统计</b>：[[ article_count ]]</li>
-                    <li><b>文章评论</b>：490条</li>
-                </ul>
-            </div>
         </div>
     </article>
     <footer>
+
         <div class="box">
-            <div class="wxbox">
-                <div class="endnav">
-                    <p><b>站点声明：</b></p>
-                    <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                    <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a
-                            href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E"
-                            target="_blank">dacesmiling@qq.com</a></p>
-                    <p>Copyright © <a href="http://www.yangqq.com" target="_blank">www.yangqq.com</a> All Rights
-                        Reserved.
-                        备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
-                </div>
+            <div class="endnav">
+                <p><b>站点声明：</b></p>
+                <p>本站所有文章，均为本人书写(如有转载会标出)，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.ltfred.com</a> All Rights Reserved.
+                    备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
+
             </div>
             <a href="#">
                 <div class="top"></div>
@@ -183,25 +179,24 @@
 </div>
 <script type="text/javascript" src="{{ static('js/info.js') }}"></script>
 <script>
-    function like_notice(){
-            var url = '/notice/like/{{ notice.id }}';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response =>{
-                    code = response.data.code;
-                    if(code == '4009'){
-                        alert('只能点赞一次')
-                    }
-                    else{
-                        window.location.reload();
-                    }
+    function like_notice() {
+        var url = '/notice/like/{{ notice.id }}';
+        axios.get(url, {
+            responseType: 'json',
+        })
+            .then(response => {
+                code = response.data.code;
+                if (code == '4009') {
+                    alert('只能点赞一次')
+                } else {
+                    window.location.reload();
+                }
 
-                })
-                .catch(error =>{
-                    console.log(error.response)
-                })
-        }
+            })
+            .catch(error => {
+                console.log(error.response)
+            })
+    }
 </script>
 </body>
 </html>

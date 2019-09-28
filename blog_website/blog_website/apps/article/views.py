@@ -145,7 +145,7 @@ class CategoryAllArticleView(View):
             return http.HttpResponse('数据库错误')
         # 判断是否为一级分类
         if category.parent is None:
-            # 获取一级下的所有文章
+            # 获取二级下的所有文章
             articles = Article.objects.filter(category1=category)
             category_article_count = articles.count()
             # 分页
@@ -166,20 +166,6 @@ class CategoryAllArticleView(View):
                 'total_page': page_list,
                 'page_num': page_num
             }
-            # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
-
-            # data_dict['categories'] = []
-            #
-            # for cat2 in cat2_list:
-            #     data_dict['categories'].append({
-            #         'id': cat2.id,
-            #         'name': cat2.name
-            #     })
-            # data_dict['article'] = page_articles
-            #
-            # data_dict['category'] = category.name
-            # data_dict['count'] = category_article_count
-
         else:
             # 为二级分类，二级类下的所有文章
             articles = Article.objects.filter(category2=category)
@@ -194,19 +180,6 @@ class CategoryAllArticleView(View):
             # 获取列表页总页数
             total_page = paginator.num_pages
             page_list = [i for i in range(total_page)]
-
-            # cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
-            #
-            # category2_list = []
-            #
-            # for cat2 in cat2_list:
-            #     category2_list.append({
-            #         'id': cat2.id,
-            #         'name': cat2.name
-            #     })
-            # data_dict['article'] = article
-            #
-            # data_dict['category'] = category.name
 
             data_dict = {
                 'category_id': category.id,

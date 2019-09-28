@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>关于我-Fred个人网站</title>
-    <meta name="keywords" content="blog"/>
-    <meta name="description" content="blog"/>
+    <title>关于我-Fred个人网站-只要还有明天，今天永远都是起跑线</title>
+    <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
+    <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
+    <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ static('css/base.css') }}" rel="stylesheet">
     <link href="{{ static('css/m.css') }}" rel="stylesheet">
@@ -26,21 +27,15 @@
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a
-                            :href="'/list/' + cat.id + '/1'">[[
-                        cat.name ]]</a>
+                    <li class="menu" v-for="cat in cat_list"><a :href="'/list/' + cat.id + '/1'">[[ cat.name ]]</a>
                         <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'/list/' + sub.id + '/1'">[[
-                                sub.name
-                                ]]</a></li>
+                            <li v-for="sub in cat.subs"><a :href="'/list/' + sub.id + '/1'">[[ sub.name ]]</a></li>
                         </ul>
                         <span></span>
                     </li>
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a
-                                    :href="'/photos/' + category.id + '/1'">[[ category.name
-                                ]]</a>
+                            <li v-for="category in photo_categories"><a :href="'/photos/' + category.id + '/1'">[[ category.name ]]</a>
                             </li>
                         </ul>
                         <span></span></li>
@@ -74,49 +69,14 @@
             <h2 class="gd_title">内心独白</h2>
             <div><p class="ab_dubai">&nbsp;&nbsp;&nbsp;&nbsp;{{ dubai }}</p></div>
             <span class="ly_button"><a href="/comment" target="_blank">留言</a></span>
-            <div><h2 class="gd_title">心路历程</h2></div>
-
-            <ul class="xinlu">
-                <li><a href="/" target="_blank"><i><img src="images/1.jpg"></i>
-                    <p>我是怎么评价自己的？</p>
-                    <span>我性格属于好静的，喜欢写写画画，自从读了计算机专业，那就更好静了，我可以两星期都不出门，但是半刻钟也不能离开电脑。</span></a></li>
-                <li><a href="/" target="_blank"><i><img src="images/2.jpg"></i>
-                    <p>个人博客，属于我的小世界！</p>
-                    <span>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</span></a>
-                </li>
-                <li><a href="/" target="_blank"><i><img src="images/3.jpg"></i>
-                    <p>【爱设计】安静地做一个爱设计的女子</p>
-                    <span>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</span></a></li>
-                <li><a href="/" target="_blank"><i><img src="images/4.jpg"></i>
-                    <p>【匆匆那些年】总结个人博客经历的这四年</p>
-                    <span>博客从最初的域名购买，到上线已经有四年的时间了，这四年的时间，有笑过，有怨过，有悔过，有执着过，也有放弃过…但最后还是坚持了下来，时间如此匆匆，等再回过头已来不及去弥补</span></a>
-                </li>
-                <li><a href="/" target="_blank"><i><img src="images/ad.jpg"></i>
-                    <p>我是怎么评价自己的？</p>
-                    <span>我性格属于好静的，喜欢写写画画，自从读了计算机专业，那就更好静了，我可以两星期都不出门，但是半刻钟也不能离开电脑。</span></a></li>
-                <li><a href="/" target="_blank"><i><img src="images/ad02.jpg"></i>
-                    <p>个人博客，属于我的小世界！</p>
-                    <span>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</span></a>
-                </li>
-                <li><a href="/" target="_blank"><i><img src="images/b01.jpg"></i>
-                    <p>【爱设计】安静地做一个爱设计的女子</p>
-                    <span>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</span></a></li>
-                <li><a href="/" target="_blank"><i><img src="images/b05.jpg"></i>
-                    <p>【匆匆那些年】总结个人博客经历的这四年</p>
-                    <span>博客从最初的域名购买，到上线已经有四年的时间了，这四年的时间，有笑过，有怨过，有悔过，有执着过，也有放弃过…但最后还是坚持了下来，时间如此匆匆，等再回过头已来不及去弥补</span></a>
-                </li>
-            </ul>
         </div>
     </article>
     <footer>
         <div class="box">
             <div class="endnav">
                 <p><b>站点声明：</b></p>
-                <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a
-                        href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E"
-                        target="_blank">dacesmiling@qq.com</a></p>
-                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.yangqq.com</a> All Rights Reserved.
+                <p>本站所有文章，均为本人书写(如有转载会标出)，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.ltfred.com</a> All Rights Reserved.
                     备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
             </div>
         </div>

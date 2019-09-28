@@ -28,7 +28,7 @@ class IndexView(View):
 
         # 最新博文
         try:
-            articles = Article.objects.order_by('create_time')[0:10]
+            articles = Article.objects.order_by('-create_time')[0:10]
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库错误')

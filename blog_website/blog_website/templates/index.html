@@ -285,7 +285,7 @@
                                     src="{{ article.index_image }}" alt=""></a></span>
                             <p class="blogtext">{{ article.describe }} </p>
                             <p class="bloginfo"><i class="avatar"><img
-                                    src="{{ article.author.avatar_url }}"></i><span>{{ article.author.username }}</span><span>{{ article.create_time }}</span><span>【<a
+                                    src="{{ article.author.avatar_url }}"></i><span>{{ article.author.webname }}</span><span>{{ article.create_time }}</span><span>【<a
                                     href="{{ url('article:category_list', args=(article.category2.id, 1)) }}">{{ article.category2.name }}</a>】</span>
                             </p>
                             <a href="{{ url('article:article_detail', args=(article.id,)) }}" class="viewmore">阅读更多</a>

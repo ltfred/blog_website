@@ -1,4 +1,6 @@
 <!doctype html>
+
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -285,7 +287,7 @@
                                     src="{{ article.index_image }}" alt=""></a></span>
                             <p class="blogtext">{{ article.describe }} </p>
                             <p class="bloginfo"><i class="avatar"><img
-                                    src="{{ article.author.avatar_url }}"></i><span>{{ article.author.webname }}</span><span>{{ article.create_time }}</span><span>【<a
+                                    src="{{ article.author.avatar_url }}"></i><span>{{ article.author.webname }}</span><span>{{ article.create_time | time_filter }}</span><span>【<a
                                     href="{{ url('article:category_list', args=(article.category2.id, 1)) }}">{{ article.category2.name }}</a>】</span>
                             </p>
                             <a href="{{ url('article:article_detail', args=(article.id,)) }}" class="viewmore">阅读更多</a>
@@ -317,10 +319,8 @@
             <div class="whitebg notice">
                 <h2 class="htitle">网站公告</h2>
                 <ul>
-
                     <li v-for="notice in notice_list"><a :href="'notice/detail/' + notice.id">[[ notice.title ]]</a>
                     </li>
-
                 </ul>
             </div>
             <div class="whitebg paihang">

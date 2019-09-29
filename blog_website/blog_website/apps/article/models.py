@@ -44,3 +44,17 @@ class Article(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class Label(BaseModel):
+    """文章标签"""
+    name = models.CharField(max_length=10, verbose_name='文章标签',help_text='不超过10个字')
+    article = models.ManyToManyField(Article)
+
+    class Meta:
+        db_table = 'label'
+        verbose_name = '标签'
+        verbose_name_plural=verbose_name
+
+    def __str__(self):
+        return self.name

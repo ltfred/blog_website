@@ -74,7 +74,7 @@
                 </h2>
                 <h1 class="con_tilte">{{ article.title }}</h1>
                 <p class="bloginfo"><i class="avatar"><img
-                        src="{{ article.author.avatar_url }}"></i><span>{{ article.author.webname }}</span><span>{{ article.create_time }}</span><span>【<a
+                        src="{{ article.author.avatar_url }}"></i><span>{{ article.author.webname }}</span><span>{{ article.create_time | time_filter }}</span><span>【<a
                         href="{{ url('article:category_list', args=(article.category2.id, 1)) }}">{{ article.category2.name }}</a>】</span><span>{{ article.read_count }}人已围观</span>
                 </p>
                 <p class="con_info"><b>简介</b>个人网站，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，也会放上一些照片。后来也用来记录自己所学习的知识。

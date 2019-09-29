@@ -13,7 +13,7 @@ class NoticeView(View):
     def get(self, request):
 
         try:
-            notices = Notice.objects.all().only('id', 'title')[0:8]
+            notices = Notice.objects.all().only('id', 'title').order_by('-create_time')[0:8]
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库查询错误')
@@ -21,7 +21,7 @@ class NoticeView(View):
         notice_list = []
         for notice in notices:
             if notice.is_up is True:
-                notice_list.insert(0, {'title': notice.title, 'id': notice_list.id})
+                notice_list.insert(0, {'title': notice.title, 'id': notice.id})
             else:
                 notice_list.append({'title': notice.title, 'id': notice.id})
         return http.JsonResponse({"code": RETCODE.OK, "notice_list": notice_list})

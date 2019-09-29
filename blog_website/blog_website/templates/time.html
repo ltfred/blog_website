@@ -76,7 +76,7 @@
             {#            <ul id="list" style="display:none;">#}
             <ul id="list">
                 {% for article in page_articles %}
-                    <li><span>{{ article.create_time }}</span><i><a href="/article/detail/{{ article.id }}"
+                    <li><span>{{ article.create_time | date_time}}</span><i><a href="/article/detail/{{ article.id }}"
                                                                     target="_blank">{{ article.title }}</a></i>
                     </li>
                 {% endfor %}
@@ -117,7 +117,7 @@
                 //获取当前页数
                 {#console.log(page);#}
                 // 点击之后跳转:
-                location.href = '/article/' + page + '/';
+                location.href = '/articles/' + page + '/';
             }
         })
 

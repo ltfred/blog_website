@@ -81,7 +81,7 @@
                                     src="{{ result.object.index_image }}" alt=""></a></span>
                             <p class="blogtext">{{ result.object.describe }} </p>
                             <p class="bloginfo"><i class="avatar"><img
-                                    src="{{ result.object.author.avatar_url }}"></i><span>{{ result.object.author.webname }}</span><span>{{ result.object.create_time }}</span><span>【<a
+                                    src="{{ result.object.author.avatar_url }}"></i><span>{{ result.object.author.webname }}</span><span>{{ result.object.create_time | time_filter }}</span><span>【<a
                                     href="{{ url('article:category_list', args=(result.object.category2.id, 1)) }}">{{ result.object.category2.name }}</a>】</span>
                             </p>
                             <a href="{{ url('article:article_detail', args=(result.object.id,)) }}"

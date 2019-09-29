@@ -74,16 +74,16 @@
                 <h2 class="htitle"><span class="hnav">
       </span>所有公告</h2>
                 <ul>
-                    {% for notice in noticess %}
+                    {% for notice in notices %}
                         <li>
                             <h3 class="blogtitle"><a href="{{ url('notice:notice_detail', args=(notice.id,)) }}"
                                                      target="_blank">{{ notice.title }}</a></h3>
                             <span class="blogpic imgscale"><i><a
                                     href="{{ url('notice:notice_list') }}">公告</a></i><a
                                     href="{{ url('notice:notice_detail', args=(notice.id,)) }}" title=""></a></span>
-                            <p class="blogtext">{{ article.content }} </p>
+                            <p class="blogtext">{{ notice.content | safe }} </p>
                             <p class="bloginfo"><i class="avatar"><img
-                                    src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time }}</span><span>【<a
+                                    src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time | time_filter}}</span><span>【<a
                                     href="{{ url('notice:notice_list') }}">公告</a>】</span>
                             </p>
                             <a href="{{ url('notice:notice_detail', args=(notice.id,)) }}" class="viewmore">阅读更多</a>
@@ -148,8 +148,6 @@
     </a>
 
 </footer>
-
-
 <script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
 </body>
 </html>

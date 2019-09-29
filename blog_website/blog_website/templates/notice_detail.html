@@ -13,7 +13,8 @@
     <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ static('js/comm.js') }}"></script>
-    <link rel="stylesheet" href="{{ static('md_css/default.css') }} ">
+    <script src="{{ static('lib/prism/prism_patched.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ static('prism/prism.css') }}">
     <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
@@ -76,13 +77,13 @@
                 </h2>
                 <h1 class="con_tilte">{{ notice.title }}</h1>
                 <p class="bloginfo"><i class="avatar"><img
-                        src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time }}</span><span>【<a
+                        src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time | time_filter }}</span><span>【<a
                         href="{{ url('notice:notice_list') }}">公告</a>】</span><span>{{ notice.read_count }}人已围观</span>
                 </p>
                 <p class="con_info"><b>简介</b>个人网站，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，也会放上一些照片。后来也用来记录自己所学习的知识。
                 </p>
                 <div class="con_text">
-                    <p>{{ notice.content }}</p>
+                    <p>{{ notice.content | safe }}</p>
                     <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站点或者朋友圈，但转载请说明文章出处“来源Fred个人网站”。</p>
                     <p><span class="diggit" onclick="like_notice()">很赞哦！ ({{ notice.like_count }})</span></p>
                     <div class="nextinfo">
@@ -138,12 +139,6 @@
                             :src="article.index_image"></i>
                         <p>[[ article.title ]]</p>
                     </a></li>
-
-                </ul>
-            </div>
-            <div class="ad whitebg imgscale">
-                <ul>
-                    <a href="/"><img src="images/ad.jpg"></a>
                 </ul>
             </div>
             <div class="whitebg cloud">
@@ -154,11 +149,6 @@
                 </ul>
             </div>
 
-            <div class="ad whitebg imgscale">
-                <ul>
-                    <a href="/"><img src="images/ad02.jpg"></a>
-                </ul>
-            </div>
         </div>
     </article>
     <footer>

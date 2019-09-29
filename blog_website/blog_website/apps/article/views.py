@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
-from article.models import Article, ArticleCategory
+from article.models import Article, ArticleCategory, Label
 import markdown
 from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
@@ -202,23 +202,57 @@ class LabelView(View):
     def get(self, request):
 
         try:
-            # 文章的二级分类
-            cat2_list = ArticleCategory.objects.filter(parent__isnull=False)
+            # 获取所有标签
+            labels_queryset = Label.objects.all()
         except Exception as e:
             logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取标签失败'})
 
         # labels = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
         labels = []
-        for cat2 in cat2_list:
+        for label in labels_queryset:
             labels.append({
-                'id': cat2.id,
-                'name': cat2.name,
-                'article_count': Article.objects.filter(category2=cat2).count()  # 每个二级分类的文章的数量
+                'id': label.id,
+                'name': label.name,
+                'article_count': label.articles.all().count()  # 每个标签下的文章的数量
             })
 
         return http.JsonResponse({'code': RETCODE.OK, 'labels': labels})
 
+
+class LabelArticlesView(View):
+    """获取该标签下所有文章"""
+    def get(self, request, label_id, page_num):
+
+        try:
+            label = Label.objects.get(id=label_id)
+        except Exception as e:
+            logger.error(e)
+            return http.JsonResponse('标签错误')
+        try:
+            # 查出该标签下所有文章
+            articles = label.articles.all()
+            article_count = articles.count()
+        except Exception as e:
+            logger.error(e)
+            return http.JsonResponse('获取文章失败')
+        # 分页
+        paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
+        try:
+            page_articles = paginator.page(page_num)
+        except EmptyPage:
+            return http.HttpResponseNotFound('empty page')
+        # 获取列表页总页数
+        total_page = paginator.num_pages
+
+        context = {
+            'label': label,
+            'articles': page_articles,
+            'article_count': article_count,
+            'total_page': total_page,
+            'page_num': page_num
+        }
+        return render(request, 'label_list.html', context=context)
 
 class ArticleLikeView(View):
     """文章点赞"""

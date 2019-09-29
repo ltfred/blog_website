@@ -15,3 +15,9 @@ class ArticleAdmin(admin.ModelAdmin):
 class ArticleCategoryAdmin(admin.ModelAdmin):
     ordering = ('-create_time',)
     list_display = ['name', 'parent']
+
+
+@admin.register(models.Label)
+class LabelAdmin(admin.ModelAdmin):
+    ordering = ('-create_time',)
+    list_display = ['name']

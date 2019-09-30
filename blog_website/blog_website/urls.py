@@ -13,8 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views import static
+
+from blog_website import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,4 +31,10 @@ urlpatterns = [
     url(r'', include('comment.urls', namespace='comment')),
     # Haystack 注册
     url(r'^search/', include('haystack.urls')),
+    # 增加以下一行，以识别静态资源
+    # url(r'^static/(?P<path>.*)$', static.serve,
+    #     {'document_root': settings.STATIC_ROOT}, name='static')
+
 ]
+
+# handler404 = views.page_not_found

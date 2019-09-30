@@ -31,13 +31,21 @@ class IndexView(View):
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库错误')
+        article_labels = []
+        for article in articles:
+            # 该文章的标签
+            labels = article.label_set.all()
+            article_labels.append({
+                'article': article,
+                'labels': labels
+            })
+
         # 分类信息
         try:
             cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库错误')
-
         cat_list = []
         for cat1 in cat1_list:
             cat2_list = ArticleCategory.objects.filter(parent=cat1)
@@ -70,7 +78,7 @@ class IndexView(View):
             logger.error(e)
 
         context = {
-            'articles': articles,
+            'articles': article_labels,
             'cat_list': cat_list,
             'carousel_articles': carousel_articles,
             'static_articles': static_articles,

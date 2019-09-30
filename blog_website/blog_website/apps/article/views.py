@@ -157,10 +157,18 @@ class CategoryAllArticleView(View):
             # 获取列表页总页数
             total_page = paginator.num_pages
             page_list = [i for i in range(total_page)]
+            article_labels = []
+            for article in page_articles:
+                # 该文章的标签
+                labels = article.label_set.all()
+                article_labels.append({
+                    'article': article,
+                    'labels': labels
+                })
 
             data_dict = {
                 'category_id': category.id,
-                'articles': page_articles,
+                'articles': article_labels,
                 'category': category,
                 'article_count': category_article_count,
                 'total_page': page_list,
@@ -180,12 +188,20 @@ class CategoryAllArticleView(View):
             # 获取列表页总页数
             total_page = paginator.num_pages
             page_list = [i for i in range(total_page)]
+            article_labels = []
+            for article in page_articles:
+                # 该文章的标签
+                labels = article.label_set.all()
+                article_labels.append({
+                    'article': article,
+                    'labels': labels
+                })
 
             data_dict = {
                 'category_id': category.id,
                 'category': category,
                 # 'categories': category2_list,
-                'articles': page_articles,
+                'articles': article_labels,
                 'article_count': category_article_count,
                 'total_page': page_list,
                 'page_num': page_num
@@ -222,6 +238,7 @@ class LabelView(View):
 
 class LabelArticlesView(View):
     """获取该标签下所有文章"""
+
     def get(self, request, label_id, page_num):
 
         try:
@@ -245,14 +262,24 @@ class LabelArticlesView(View):
         # 获取列表页总页数
         total_page = paginator.num_pages
 
+        article_labels = []
+        for article in page_articles:
+            # 该文章的标签
+            labels = article.label_set.all()
+            article_labels.append({
+                'article': article,
+                'labels': labels
+            })
+
         context = {
             'label': label,
-            'articles': page_articles,
+            'articles': article_labels,
             'article_count': article_count,
             'total_page': total_page,
             'page_num': page_num
         }
         return render(request, 'label_list.html', context=context)
+
 
 class ArticleLikeView(View):
     """文章点赞"""

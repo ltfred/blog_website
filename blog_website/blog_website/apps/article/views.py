@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
-import markdown
 from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 import logging
@@ -35,11 +34,6 @@ class ArticleDetailView(View):
         # 阅读次数+1
         article.read_count += 1
         article.save()
-
-        # exts = ['markdown.extensions.extra', 'markdown.extensions.codehilite', 'markdown.extensions.tables', 'markdown.extensions.toc']
-
-        # 将markdown语法渲染成html样式
-        # article.content = markdown.markdown(article.content, extensions=exts)
 
         context = {
             'article': article,
@@ -85,7 +79,7 @@ class RecommendView(View):
 
 
 class ArticleCountView(View):
-    """获取文章数量"""
+    """获取文章数量和pv"""
 
     def get(self, request):
 
@@ -102,7 +96,7 @@ class ArticleCountView(View):
 
 
 class AllArticleView(View):
-    """所有文章"""
+    """文章归档"""
 
     def get(self, request, page_num):
 
@@ -160,7 +154,7 @@ class CategoryAllArticleView(View):
             article_labels = []
             for article in page_articles:
                 # 该文章的标签
-                labels = article.label_set.all()
+                labels = article.labels.all()
                 article_labels.append({
                     'article': article,
                     'labels': labels
@@ -191,7 +185,7 @@ class CategoryAllArticleView(View):
             article_labels = []
             for article in page_articles:
                 # 该文章的标签
-                labels = article.label_set.all()
+                labels = article.label.all()
                 article_labels.append({
                     'article': article,
                     'labels': labels
@@ -224,13 +218,12 @@ class LabelView(View):
             logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取标签失败'})
 
-        # labels = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
         labels = []
         for label in labels_queryset:
             labels.append({
                 'id': label.id,
                 'name': label.name,
-                'article_count': label.articles.all().count()  # 每个标签下的文章的数量
+                'article_count': label.article_set.all().count()  # 每个标签下的文章的数量
             })
 
         return http.JsonResponse({'code': RETCODE.OK, 'labels': labels})
@@ -248,7 +241,7 @@ class LabelArticlesView(View):
             return http.JsonResponse('标签错误')
         try:
             # 查出该标签下所有文章
-            articles = label.articles.all()
+            articles = label.article_set.all()
             article_count = articles.count()
         except Exception as e:
             logger.error(e)
@@ -265,7 +258,7 @@ class LabelArticlesView(View):
         article_labels = []
         for article in page_articles:
             # 该文章的标签
-            labels = article.label_set.all()
+            labels = article.labels.all()
             article_labels.append({
                 'article': article,
                 'labels': labels

@@ -1,5 +1,4 @@
 import random
-import markdown
 from django import http
 from django.shortcuts import render
 from django.views import View
@@ -14,8 +13,6 @@ logger = logging.getLogger('blog')
 
 class IndexView(View):
     """返回首页"""
-
-    # throttle_scope = 'upload'
 
     def get(self, request):
 
@@ -34,7 +31,7 @@ class IndexView(View):
         article_labels = []
         for article in articles:
             # 该文章的标签
-            labels = article.label_set.all()
+            labels = article.labels.all()
             article_labels.append({
                 'article': article,
                 'labels': labels
@@ -59,7 +56,7 @@ class IndexView(View):
 
         # 轮播图
         try:
-            index_images = Article.objects.filter(index_image__isnull=False).only('id', 'index_image', 'title')
+            index_images = Article.objects.all().only('id', 'index_image', 'title')
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库错误')

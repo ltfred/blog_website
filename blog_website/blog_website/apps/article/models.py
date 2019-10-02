@@ -36,6 +36,7 @@ class Article(BaseModel):
     is_top = models.BooleanField(default=False, verbose_name='是否置顶')
     like_count = models.IntegerField(default=0, verbose_name='点赞数')
     describe = models.TextField(default='', verbose_name='文章描述', help_text='用于列表页展示文章简介')
+    labels = models.ManyToManyField('Label', verbose_name='文章标签')
 
     class Meta:
         db_table = 'article'
@@ -49,7 +50,6 @@ class Article(BaseModel):
 class Label(BaseModel):
     """文章标签"""
     name = models.CharField(max_length=10, verbose_name='文章标签',help_text='不超过10个字')
-    articles = models.ManyToManyField(Article)
 
     class Meta:
         db_table = 'label'

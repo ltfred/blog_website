@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+import xadmin
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
@@ -22,6 +23,7 @@ from blog_website import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^xadmin/', xadmin.site.urls),
     url(r'', include('notice.urls', namespace='notice')),
     url(r'', include('index.urls', namespace='index')),
     url(r'', include('user.urls', namespace='user')),
@@ -38,3 +40,4 @@ urlpatterns = [
 ]
 
 handler404 = views.page_not_found
+# handler500 = views.server_error

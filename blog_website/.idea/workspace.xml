@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog_website/templates/category_photo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/category_photo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+            <state relative-caret-position="707">
+              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
             </state>
           </provider>
         </entry>
@@ -236,9 +234,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1008" />
-    <option name="y" value="70" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="69" />
+    <option name="y" value="23" />
     <option name="width" value="1471" />
     <option name="height" value="969" />
   </component>
@@ -447,15 +445,15 @@
       <workItem from="1569905077708" duration="4817000" />
       <workItem from="1570027410131" duration="1274000" />
       <workItem from="1570162301987" duration="6320000" />
-      <workItem from="1570254519060" duration="3353000" />
+      <workItem from="1570254519060" duration="3733000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251486000" />
+    <option name="totallyTimeSpent" value="251866000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="634" y="23" width="1471" height="969" extended-state="0" />
+    <frame x="71" y="23" width="1471" height="969" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19244227" />
@@ -898,8 +896,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/category_photo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="108" column="5" lean-forward="true" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+        <state relative-caret-position="707">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
         </state>
       </provider>
     </entry>

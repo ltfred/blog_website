@@ -140,7 +140,7 @@ class CategoryAllArticleView(View):
         # 判断是否为一级分类
         if category.parent is None:
             # 获取二级下的所有文章
-            articles = Article.objects.filter(category1=category)
+            articles = Article.objects.filter(category1=category).order_by('-create_time')
             category_article_count = articles.count()
             # 分页
             paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
@@ -170,7 +170,7 @@ class CategoryAllArticleView(View):
             }
         else:
             # 为二级分类，二级类下的所有文章
-            articles = Article.objects.filter(category2=category)
+            articles = Article.objects.filter(category2=category).order_by('-create_time')
             category_article_count = articles.count()
 
             # 分页

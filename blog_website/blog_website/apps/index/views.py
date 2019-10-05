@@ -18,8 +18,8 @@ class IndexView(View):
 
         # 24小时内PV记录
         conn = get_redis_connection('default')
-        conn.setnx('24_hours_pv', 0)
-        conn.expire('24_hours_pv', 24 * 60 * 60)
+        if conn.setnx('24_hours_pv', 0):
+            conn.expire('24_hours_pv', 24 * 60 * 60)
         conn.incr('24_hours_pv')
 
         # 最新博文

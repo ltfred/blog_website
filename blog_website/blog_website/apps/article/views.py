@@ -185,7 +185,7 @@ class CategoryAllArticleView(View):
             article_labels = []
             for article in page_articles:
                 # 该文章的标签
-                labels = article.label.all()
+                labels = article.labels.all()
                 article_labels.append({
                     'article': article,
                     'labels': labels

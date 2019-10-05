@@ -156,7 +156,7 @@ STATIC_URL = '/static/'
 # 配置静态文件加载路径
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # 配置redis
 CACHES = {
@@ -269,7 +269,7 @@ CKEDITOR_CONFIGS = {
             # 字体风格
             ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote', 'FontSize', 'Font'],
             # 图片
-            ['Image'],
+            ['Image',],
             # 字体颜色
             ['TextColor', 'BGColor'],
             # 链接

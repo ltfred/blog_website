@@ -63,7 +63,7 @@ class CategoryPhotoView(View):
     def get(self, request, category_id, page_num):
 
         try:
-            photos = Photo.objects.filter(category_id=category_id)
+            photos = Photo.objects.filter(category_id=category_id).order_by('-create_time')
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('获取照片失败')
@@ -77,10 +77,11 @@ class CategoryPhotoView(View):
         total_page = paginator.num_pages
 
         context = {
+            'categort_id': category_id,
             'photos': page_photos,
             'total_page': total_page,
             'page_num': page_num
         }
 
-        return render(request, 'photo.html', context=context)
+        return render(request, 'category_photo.html', context=context)
 

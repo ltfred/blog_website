@@ -8,6 +8,8 @@ from article.models import Article, ArticleCategory
 from blog_website.utils.response_code import RETCODE
 import logging
 
+from user.models import User
+
 logger = logging.getLogger('blog')
 
 
@@ -74,12 +76,27 @@ class IndexView(View):
         except Exception as e:
             logger.error(e)
 
+        # 获取个人信息
+        try:
+            user = User.objects.all()[0]
+        except Exception as e:
+            logger.error(e)
+            return http.HttpResponse('数据库错误')
+
+        profile = {
+            'webname': user.webname,
+            'profession': user.profession,
+            'address': user.address,
+            'email': user.email
+        }
+
         context = {
             'articles': article_labels,
             'cat_list': cat_list,
             'carousel_articles': carousel_articles,
             'static_articles': static_articles,
-            'like_articles': like_articles
+            'like_articles': like_articles,
+            'profile': profile
 
         }
 

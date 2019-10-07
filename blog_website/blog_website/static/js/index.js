@@ -5,7 +5,6 @@ var vm = new Vue({
     data: {
 
         notice_list: [], // 公告数据,
-        user_profile: '', // 用户数据
         top_list: [],  // 点击排行
         recommend_list: [],  // 推荐
         article_count: '',
@@ -17,7 +16,6 @@ var vm = new Vue({
 
     mounted() {
         this.get_notices();
-        this.get_profile();
         this.get_top();
         this.get_recommend();
         this.get_article_count();
@@ -42,18 +40,6 @@ var vm = new Vue({
                 })
         },
 
-        get_profile() {
-            var url = '/profile/';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response => {
-                    this.user_profile = response.data.profile;
-                })
-                .catch(error => {
-                    console.log(error.response);
-                })
-        },
 
         get_top() {
             var url = '/top/';

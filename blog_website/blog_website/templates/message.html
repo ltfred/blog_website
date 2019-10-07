@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>留言-Fred的个人网站-只要还有明天，今天永远都是起跑线</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ static('comment/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ static('comment/vendor/select2/select2.min.css') }}">
+	<link rel="stylesheet" href="{{ static('comment/css/util.css') }}">
+	<link rel="stylesheet" href="{{ static('comment/css/main.css') }}">
+</head>
+
+<body>
+<div class="dowebok container-contact100">
+	<div class="wrap-contact100">
+		<form class="contact100-form validate-form" action="/comment/" method="post">
+             <input type ='hidden' name='csrfmiddlewaretoken' value ='{{csrf_token}}'>
+			<span class="contact100-form-title">给我留言</span>
+
+			<div class="wrap-input100 validate-input" data-validate="姓名不能为空">
+				<label class="label-input100" for="name">姓名</label>
+				<input id="name" class="input100" type="text" name="name" placeholder="请输入姓名">
+				<span class="focus-input100"></span>
+			</div>
+
+			<div class="wrap-input100 validate-input" data-validate="请收入合法的邮箱地址">
+				<label class="label-input100" for="email">电子邮箱</label>
+				<input id="email" class="input100" type="text" name="email" placeholder="请输入电子邮箱，方便我联系您">
+				<span class="focus-input100"></span>
+			</div>
+
+
+			<div class="wrap-input100 validate-input" data-validate="留言不能为空">
+				<label class="label-input100" for="message">留言</label>
+				<textarea id="message" class="input100" name="message" placeholder="请输入留言"></textarea>
+				<span class="focus-input100"></span>
+			</div>
+
+			<div class="container-contact100-form-btn">
+				<button class="contact100-form-btn">提 交</button>
+			</div>
+
+		</form>
+
+		<div class="contact100-more flex-col-c-m" style="background-image: url('../static/comment/images/013.jpeg');">
+		</div>
+	</div>
+</div>
+
+<script src="{{ static('comment/vendor/jquery/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ static('comment/vendor/select2/select2.min.js') }}"></script>
+<script>
+	$(".js-select2").each(function(){
+		$(this).select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $(this).next('.dropDownSelect2')
+		});
+	})
+	$(".js-select2").each(function(){
+		$(this).on('select2:open', function (e){
+			$(this).parent().next().addClass('eff-focus-selection');
+		});
+	});
+	$(".js-select2").each(function(){
+		$(this).on('select2:close', function (e){
+			$(this).parent().next().removeClass('eff-focus-selection');
+		});
+	});
+</script>
+<script src="{{ static('comment/js/main.js') }}"></script>
+
+</body>
+</html>

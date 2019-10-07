@@ -194,7 +194,6 @@ class CategoryAllArticleView(View):
             data_dict = {
                 'category_id': category.id,
                 'category': category,
-                # 'categories': category2_list,
                 'articles': article_labels,
                 'article_count': category_article_count,
                 'total_page': page_list,

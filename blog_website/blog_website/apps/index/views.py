@@ -3,8 +3,8 @@ from django import http
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
-from rest_framework.views import APIView
 from article.models import Article, ArticleCategory
+from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 import logging
 
@@ -21,7 +21,7 @@ class IndexView(View):
         # 24小时内PV记录
         conn = get_redis_connection('default')
         if conn.setnx('24_hours_pv', 0):
-            conn.expire('24_hours_pv', 24 * 60 * 60)
+            conn.expire('24_hours_pv', constants.PV_EXPIRE)
         conn.incr('24_hours_pv')
 
         # 最新博文

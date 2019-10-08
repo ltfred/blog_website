@@ -67,7 +67,7 @@ class NoticeLikeView(View):
         except Exception as e:
             logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取失败'})
-
+        # 阅读数 + 1
         notice.like_count += 1
         notice.save()
 

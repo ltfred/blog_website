@@ -2,7 +2,6 @@ from django import http
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render
 from django.views import View
-
 from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 from photo.models import PhotoCategory, Photo

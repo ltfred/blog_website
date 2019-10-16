@@ -49,7 +49,7 @@ class Article(BaseModel):
 
 class Label(BaseModel):
     """文章标签"""
-    name = models.CharField(max_length=10, verbose_name='文章标签',help_text='不超过10个字')
+    name = models.CharField(max_length=20, verbose_name='文章标签',help_text='不超过20个字')
 
     class Meta:
         db_table = 'label'

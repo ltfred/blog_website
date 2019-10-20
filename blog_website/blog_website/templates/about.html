@@ -42,6 +42,7 @@
                     <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
+                     <li><a href="/comment" target="_blank">留言</a></li>
                 </ul>
             </nav>
             <div class="searchico"></div>
@@ -68,7 +69,7 @@
             </div>
             <h2 class="gd_title">内心独白</h2>
             <div><p class="ab_dubai">&nbsp;&nbsp;&nbsp;&nbsp;{{ dubai }}</p></div>
-            <span class="ly_button"><a href="/comment" target="_blank">留言</a></span>
+{#            <span class="ly_button"><a href="/comment" target="_blank">留言</a></span>#}
         </div>
     </article>
     <footer>

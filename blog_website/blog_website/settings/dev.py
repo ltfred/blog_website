@@ -278,7 +278,7 @@ CKEDITOR_CONFIGS = {
             # 列表, 表格
             ['NumberedList', 'BulletedList', 'Table'],
             # 格式
-            ['JustifyCenter', 'JustifyLeft', 'JustifyRight'],
+            ['JustifyCenter', 'JustifyLeft', 'JustifyRight', 'Outdent', 'Indent'],
             # 最大化
             ['Maximize']
         ],

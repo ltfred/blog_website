@@ -98,7 +98,9 @@
                 </ul>
                 <!--pagelist-->
 
-                <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
+                <div class="pagelist">
+                    <a href="#" onclick="pretpage()">上一页</a>
+                    <a title="Total record">&nbsp;<b>共{{ article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
                     <a href="#" onclick="nextpage()">下一页</a>&nbsp;
                 </div>
             </div>
@@ -169,6 +171,17 @@
             alert('已经是最后一页了')
         } else {
             location.href = '/label/articles/' + {{ label.id }} +'/' + curpage + '/';
+        }
+
+    }
+
+    function pretpage() {
+        var curpage = {{ page_num }} - 1;
+        var total_page = {{ total_page }};
+        if (curpage == 0) {
+            alert('前面没有了')
+        } else {
+             location.href = '/label/articles/' + {{ label.id }} +'/' + curpage + '/';
         }
 
     }

@@ -77,6 +77,7 @@
                 {% endfor %}
             </ul>
             <div class="pagelist">
+                 <a href="#" onclick="pretpage()">上一页</a>
                 <a title="Total record">&nbsp;<b>共{{ total_page }}页</b></a>&nbsp;&nbsp;&nbsp;
                 <a href="#" onclick="nextpage()">下一页</a>&nbsp;
             </div>
@@ -107,6 +108,17 @@
             location.href = '/photos/' + {{ category_id }}+ '/'+ curpage + '/';
         }
 
+    }
+
+    function pretpage() {
+    var curpage = {{ page_num }} - 1;
+    var total_page = {{ total_page }};
+    if(curpage == 0){
+        alert('前面没有了')
+    }
+    else{
+        location.href = '/photos/' + {{ category_id }}+ '/'+ curpage + '/';
+        }
     }
 </script>
 </body>

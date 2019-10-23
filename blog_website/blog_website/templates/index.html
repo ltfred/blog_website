@@ -78,9 +78,9 @@
             <div class="banbox">
                 <div class="banner">
                     <div id="banner" class="fader">
-                        {% for article in carousel_articles %}
-                            <li class="slide"><a href="{{ url('article:article_detail', args=(article.id,)) }}"
-                                                 target="_blank"><img src="{{ article.index_image }}"></a></li>
+                        {% for carousel in carousel_articles %}
+                            <li class="slide"><a href="{{ carousel.url }}"
+                                                 target="_blank"><img src="{{ carousel.image_url }}"></a></li>
                         {% endfor %}
                         <div class="fader_controls">
                             <div class="page prev" data-target="prev"></div>

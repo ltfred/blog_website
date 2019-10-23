@@ -8,6 +8,7 @@ from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 import logging
 
+from index.models import Carousel
 from user.models import User
 
 logger = logging.getLogger('blog')
@@ -56,18 +57,22 @@ class IndexView(View):
                 'subs': subs
             })
 
-        # 轮播图
+        # 静态随机图
         try:
             index_images = Article.objects.all().only('id', 'index_image', 'title')
         except Exception as e:
             logger.error(e)
             return http.HttpResponse('数据库错误')
         # 随机选择
-        carousel_articles = []
         static_articles = []
         if index_images.count() > 3:
-            carousel_articles = random.sample(list(index_images), 3)
             static_articles = random.sample(list(index_images), 2)
+        # 轮播图
+        try:
+            carousel_articles = Carousel.objects.all()
+        except Exception as e:
+            logger.error(e)
+            return http.HttpResponse('数据库错误')
 
         # 精彩专题数据
         like_articles = []

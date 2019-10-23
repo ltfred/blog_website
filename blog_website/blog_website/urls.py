@@ -22,7 +22,7 @@ from django.views import static
 from blog_website import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
     url(r'', include('notice.urls', namespace='notice')),
     url(r'', include('index.urls', namespace='index')),

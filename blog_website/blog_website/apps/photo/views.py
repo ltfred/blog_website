@@ -76,7 +76,7 @@ class CategoryPhotoView(View):
         total_page = paginator.num_pages
 
         context = {
-            'categort_id': category_id,
+            'category_id': category_id,
             'photos': page_photos,
             'total_page': total_page,
             'page_num': page_num

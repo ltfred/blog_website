@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/category_photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/category_photo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/daohang.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/daohang.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/label_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/label_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/list2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/list2_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/notice_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/notice_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/notice_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/notice_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/time.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,44 +48,52 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_list.html">
+        <entry file="file://$PROJECT_DIR$/blog_website/templates/category_photo.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="647">
-              <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+              <caret line="110" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/templates/category_photo.html">
+        <entry file="file://$PROJECT_DIR$/blog_website/templates/search/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
+            <state relative-caret-position="562">
+              <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog_website/templates/photo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="673">
               <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blog_website/templates/about.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog_website/apps/photo/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1480">
-              <caret line="74" column="12" lean-forward="true" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+            <state relative-caret-position="180">
+              <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/templates/404_01.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog_website/apps/photo/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-258" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/templates/daohang.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="44" column="71" selection-start-line="44" selection-start-column="71" selection-end-line="44" selection-end-column="71" />
+            <state relative-caret-position="608">
+              <caret line="81" column="32" lean-forward="true" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,7 +101,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="960">
               <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
             </state>
           </provider>
@@ -110,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/label_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
+            <state relative-caret-position="1020">
               <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
             </state>
           </provider>
@@ -119,7 +119,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/message.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="320">
               <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
             </state>
           </provider>
@@ -128,7 +128,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/list2_1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
+            <state relative-caret-position="1020">
               <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
             </state>
           </provider>
@@ -137,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="622">
+            <state relative-caret-position="1040">
               <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
             </state>
           </provider>
@@ -180,7 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/blog_website/apps/notice/models.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/article/urls.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/article/admin.py" />
         <option value="$PROJECT_DIR$/blog_website/templates/404.html" />
@@ -213,7 +212,6 @@
         <option value="$PROJECT_DIR$/blog_website/utils/constants.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/index/views.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/notice/views.py" />
-        <option value="$PROJECT_DIR$/blog_website/apps/photo/views.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/comment/models.py" />
         <option value="$PROJECT_DIR$/blog_website/celery_tasks/config.py" />
         <option value="$PROJECT_DIR$/blog_website/celery_tasks/main.py" />
@@ -229,13 +227,15 @@
         <option value="$PROJECT_DIR$/blog_website/templates/label_list.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/info.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/daohang.html" />
-        <option value="$PROJECT_DIR$/blog_website/templates/category_photo.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/about.html" />
+        <option value="$PROJECT_DIR$/blog_website/templates/search/search.html" />
+        <option value="$PROJECT_DIR$/blog_website/templates/category_photo.html" />
+        <option value="$PROJECT_DIR$/blog_website/apps/photo/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="145" />
+    <option name="x" value="192" />
     <option name="y" value="23" />
     <option name="width" value="1471" />
     <option name="height" value="969" />
@@ -264,6 +264,26 @@
               <item name="blog_website" type="462c0819:PsiDirectoryNode" />
               <item name="blog_website" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog_website" type="462c0819:PsiDirectoryNode" />
+              <item name="blog_website" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="photo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog_website" type="462c0819:PsiDirectoryNode" />
+              <item name="blog_website" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog_website" type="462c0819:PsiDirectoryNode" />
+              <item name="blog_website" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="search" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blog_website" type="b2602c69:ProjectViewProjectNode" />
@@ -440,17 +460,19 @@
       <workItem from="1571018681509" duration="311000" />
       <workItem from="1571198661691" duration="53000" />
       <workItem from="1571203956138" duration="385000" />
-      <workItem from="1571580677331" duration="564000" />
+      <workItem from="1571580677331" duration="863000" />
+      <workItem from="1571818332480" duration="1293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264529000" />
+    <option name="totallyTimeSpent" value="266121000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="145" y="23" width="1471" height="969" extended-state="0" />
+    <frame x="192" y="23" width="1471" height="969" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2316305" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23442967" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -566,29 +588,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog_website/apps/user/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/apps/comment/adminx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/blog_website.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/apps/article/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -678,16 +677,6 @@
         <state>
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/apps/photo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -805,13 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/photo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
@@ -819,64 +801,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_detail.html">
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
+        <state relative-caret-position="1480">
+          <caret line="74" column="12" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/404_01.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/daohang.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="44" column="71" selection-start-line="44" selection-start-column="71" selection-end-line="44" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/label_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/message.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="320">
           <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/list2_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
+        <state relative-caret-position="1020">
           <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/label_list.html">
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/notice_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+        <state relative-caret-position="1040">
+          <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/search/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
+        <state relative-caret-position="562">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/daohang.html">
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/photo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="44" column="71" selection-start-line="44" selection-start-column="71" selection-end-line="44" selection-end-column="71" />
+        <state relative-caret-position="673">
+          <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/env_workspaces/blog_website/lib/python3.6/site-packages/django/views/generic/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/apps/photo/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/category_photo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="47" column="71" selection-start-line="47" selection-start-column="71" selection-end-line="47" selection-end-column="71" />
+        <state relative-caret-position="647">
+          <caret line="110" column="9" lean-forward="true" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/404_01.html">
+    <entry file="file://$PROJECT_DIR$/blog_website/apps/photo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-258" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1480">
-          <caret line="74" column="12" lean-forward="true" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+        <state relative-caret-position="608">
+          <caret line="81" column="32" lean-forward="true" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

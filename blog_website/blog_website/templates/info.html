@@ -46,7 +46,7 @@
                     <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>
                     <li><a href={{ url('links:list') }}>优秀个人博客</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
-                     <li><a href="/comment" target="_blank">留言</a></li>
+                    <li><a href="/comment" target="_blank">留言</a></li>
                 </ul>
             </nav>
             <div class="searchico"></div>
@@ -114,16 +114,19 @@
             <div class="whitebg gbook">
                 <h2 class="htitle">文章评论</h2>
                 <ul>
-                    <!--PC版-->
-                    <div id="SOHUCS"></div>
-                    <script charset="utf-8" type="text/javascript"
-                            src="https://changyan.sohu.com/upload/changyan.js"></script>
-                    <script type="text/javascript">
-                        window.changyan.api.config({
-                            appid: 'cyurPKNuR',
-                            conf: 'prod_40f065b65d473b2fd62db802aa069635'
-                        });
-                    </script>
+                    <link rel="stylesheet" href="//c.fansx.com/tc.css"/>
+                    <div id="tc_s77p{{ article.id }}"></div>
+                    <script src="//c.fansx.com/?m=c1&sid=77&pid={{ article.id }}"></script>
+                                        <!--PC版-->
+{#                                        <div id="SOHUCS"></div>#}
+{#                                        <script charset="utf-8" type="text/javascript"#}
+{#                                                src="https://changyan.sohu.com/upload/changyan.js"></script>#}
+{#                                        <script type="text/javascript">#}
+{#                                            window.changyan.api.config({#}
+{#                                                appid: 'cyurPKNuR',#}
+{#                                                conf: 'prod_40f065b65d473b2fd62db802aa069635'#}
+{#                                            });#}
+{#                                        </script>#}
                 </ul>
             </div>
         </div>

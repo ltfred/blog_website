@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_90xv9m9vge7kqnpi.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_khxc0761kgk13x2k.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_tfh777e0yadmhy9z.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_tlh0ypr1pp30l6td.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_72.toc" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,11 +73,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog_website/apps/index/apps.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/apps/index/adminx.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -120,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/apps/article/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-138">
-              <caret line="150" column="22" lean-forward="true" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+            <state relative-caret-position="233">
+              <caret line="151" column="44" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -129,11 +129,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog_website/templates/list2_1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1975">
-              <caret line="177" selection-start-line="177" selection-end-line="186" selection-end-column="5" />
+            <state relative-caret-position="449">
+              <caret line="175" selection-start-line="175" selection-end-line="175" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="636">
+              <caret line="133" column="26" lean-forward="true" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -220,7 +229,6 @@
         <option value="$PROJECT_DIR$/blog_website/templates/time.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/notice_list.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/notice_detail.html" />
-        <option value="$PROJECT_DIR$/blog_website/templates/info.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/daohang.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/about.html" />
         <option value="$PROJECT_DIR$/blog_website/templates/search/search.html" />
@@ -236,11 +244,12 @@
         <option value="$PROJECT_DIR$/blog_website/apps/index/adminx.py" />
         <option value="$PROJECT_DIR$/blog_website/urls.py" />
         <option value="$PROJECT_DIR$/blog_website/apps/article/views.py" />
+        <option value="$PROJECT_DIR$/blog_website/templates/info.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="157" />
+    <option name="x" value="126" />
     <option name="y" value="23" />
     <option name="width" value="1471" />
     <option name="height" value="969" />
@@ -461,16 +470,15 @@
       <workItem from="1571580677331" duration="863000" />
       <workItem from="1571818332480" duration="3210000" />
       <workItem from="1571824090450" duration="1530000" />
-      <workItem from="1571886005410" duration="667000" />
+      <workItem from="1571886005410" duration="3204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270235000" />
+    <option name="totallyTimeSpent" value="272772000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="159" y="23" width="1471" height="969" extended-state="0" />
-    <editor active="true" />
+    <frame x="126" y="23" width="1471" height="969" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.240028" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -748,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/env_workspaces/blog_website/lib/python3.6/site-packages/django/views/generic/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -914,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/apps/article/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="150" column="22" lean-forward="true" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+        <state relative-caret-position="233">
+          <caret line="151" column="44" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -924,8 +925,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog_website/templates/list2_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1975">
-          <caret line="177" selection-start-line="177" selection-end-line="186" selection-end-column="5" />
+        <state relative-caret-position="449">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog_website/templates/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="133" column="26" lean-forward="true" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
         </state>
       </provider>
     </entry>

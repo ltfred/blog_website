@@ -139,7 +139,7 @@ class CategoryAllArticleView(View):
             return http.HttpResponse('数据库错误')
         # 判断是否为一级分类
         if category.parent is None:
-            # 获取二级下的所有文章
+            # 获取一级下的所有文章
             articles = Article.objects.filter(category1=category).order_by('-create_time')
             category_article_count = articles.count()
             # 分页
@@ -150,7 +150,6 @@ class CategoryAllArticleView(View):
                 return http.HttpResponseNotFound('empty page')
             # 获取列表页总页数
             total_page = paginator.num_pages
-            page_list = [i for i in range(total_page)]
             article_labels = []
             for article in page_articles:
                 # 该文章的标签
@@ -165,7 +164,7 @@ class CategoryAllArticleView(View):
                 'articles': article_labels,
                 'category': category,
                 'article_count': category_article_count,
-                'total_page': page_list,
+                'total_page': total_page,
                 'page_num': page_num
             }
         else:
@@ -181,7 +180,7 @@ class CategoryAllArticleView(View):
                 return http.HttpResponseNotFound('empty page')
             # 获取列表页总页数
             total_page = paginator.num_pages
-            page_list = [i for i in range(total_page)]
+
             article_labels = []
             for article in page_articles:
                 # 该文章的标签
@@ -196,7 +195,7 @@ class CategoryAllArticleView(View):
                 'category': category,
                 'articles': article_labels,
                 'article_count': category_article_count,
-                'total_page': page_list,
+                'total_page': total_page,
                 'page_num': page_num
             }
 

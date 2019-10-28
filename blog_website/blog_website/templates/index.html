@@ -79,8 +79,7 @@
                 <div class="banner">
                     <div id="banner" class="fader">
                         {% for carousel in carousel_articles %}
-                            <li class="slide"><a href="{{ carousel.url }}"
-                                                 target="_blank"><img src="{{ carousel.image_url }}"></a></li>
+                            <li class="slide"><a href="{{ carousel.url }}" target="_blank"><img src="{{ carousel.image_url }}"></a></li>
                         {% endfor %}
                         <div class="fader_controls">
                             <div class="page prev" data-target="prev"></div>
@@ -97,21 +96,18 @@
                 <ul>
                     {% for article in static_articles %}
                         <li><a href="{{ url('article:article_detail', args=(article.id,)) }}"
-                               title="{{ article.title }}"><img src="{{ article.index_image }}"
-                                                                alt="{{ article.title }}"><span>{{ article.title }}</span></a>
+                               title="{{ article.title }}"><img src="{{ article.index_image }}" alt="{{ article.title }}"><span>{{ article.title }}</span></a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
             <!--headline end-->
             <div class="clearblank"></div>
-
             <div class="zhuanti whitebg">
                 <h2 class="htitle"><span class="hnav"></span>精彩专题</h2>
                 <ul>
                     {% for article in like_articles %}
-                        <li><i class="ztpic"><a href="{{ url('article:article_detail', args=(article.id,)) }}"
-                                                target="_blank"><img src="{{ article.index_image }}"></a></i>
+                        <li><i class="ztpic"><a href="{{ url('article:article_detail', args=(article.id,)) }}" target="_blank"><img src="{{ article.index_image }}"></a></i>
                             <b>{{ article.title }}</b><span>{{ article.describe }}</span><a
                                     href="{{ url('article:article_detail', args=(article.id,)) }}" target="_blank"
                                     class="readmore">文章阅读</a></li>
@@ -141,7 +137,6 @@
                             <a href="{{ url('article:article_detail', args=(article.article.id,)) }}" class="viewmore">阅读更多</a>
                         </li>
                     {% endfor %}
-
                 </ul>
             </div>
             <!--bloglist end-->
@@ -173,8 +168,8 @@
             </div>
             <div class="whitebg paihang">
                 <h2 class="htitle">点击排行</h2>
-                {#                <section class="topnews imgscale"><a href="/"><img src="images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
-                {#                </section>#}
+{#                                <section class="topnews imgscale"><a href="/"><img src="{{ static('images/h1.jpg') }}"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
+{#                                </section>#}
                 <ul>
 
                     <li v-for="article in top_list"><i></i><a
@@ -184,8 +179,8 @@
             </div>
             <div class="whitebg tuijian">
                 <h2 class="htitle">站长推荐</h2>
-                {#                <section class="topnews imgscale"><a href="/"><img src="images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
-                {#                </section>#}
+{#                                <section class="topnews imgscale"><a href="/"><img src="{{ static('images/h2.jpg') }}"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
+{#                                </section>#}
                 <ul>
                     <li v-for="article in recommend_list"><a
                             :href="'/article/detail/' + article.id"><i><img
@@ -210,9 +205,9 @@
             <div class="whitebg tongji">
                 <h2 class="htitle">站点信息</h2>
                 <ul>
-                    <li><b>建站时间</b>：2019-03-29</li>
                     <li><b>文章统计</b>：[[ article_count ]]</li>
                     <li><b>24小时PV</b>：[[ pv ]]</li>
+                    <li><b>运行时间</b>：[[ days ]]天</li>
                 </ul>
             </div>
         </div>

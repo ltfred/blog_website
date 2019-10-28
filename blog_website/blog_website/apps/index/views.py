@@ -1,5 +1,6 @@
 import random
 from django import http
+from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
@@ -30,7 +31,8 @@ class IndexView(View):
             articles = Article.objects.order_by('-create_time')[0:10]
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         article_labels = []
         for article in articles:
             # 该文章的标签
@@ -45,7 +47,8 @@ class IndexView(View):
             cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         cat_list = []
         for cat1 in cat1_list:
             cat2_list = ArticleCategory.objects.filter(parent=cat1)
@@ -62,7 +65,8 @@ class IndexView(View):
             index_images = Article.objects.all().only('id', 'index_image', 'title')
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         # 随机选择
         static_articles = []
         if index_images.count() > 3:
@@ -72,8 +76,8 @@ class IndexView(View):
             carousel_articles = Carousel.objects.all()
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
-
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         # 精彩专题数据
         like_articles = []
         try:
@@ -86,8 +90,8 @@ class IndexView(View):
             user = User.objects.all()[0]
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
-
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         profile = {
             'webname': user.webname,
             'profession': user.profession,
@@ -116,7 +120,8 @@ class CategoryView(View):
             cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
+            # return http.HttpResponse('数据库错误')
+            raise Http404
 
         cat_list = []
         for cat1 in cat1_list:

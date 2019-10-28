@@ -1,4 +1,5 @@
 from django import http
+from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from blog_website.utils.response_code import RETCODE
@@ -16,8 +17,8 @@ class NoticeView(View):
             notices = Notice.objects.all().only('id', 'title').order_by('-create_time')[0:8]
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库查询错误')
-
+            # return http.HttpResponse('数据库查询错误')
+            raise Http404
         notice_list = []
         for notice in notices:
             if notice.is_up is True:
@@ -81,6 +82,7 @@ class AllNoticeView(View):
             notices = Notice.objects.all()
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('服务器出错了')
+            # return http.HttpResponse('服务器出错了')
+            raise Http404
         context = {'notices': notices}
         return render(request, 'notice_list.html', context=context)

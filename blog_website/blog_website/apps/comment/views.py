@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import View
 from comment.models import Message
 import logging
+
 logger = logging.getLogger('blog')
 
 
@@ -27,4 +28,4 @@ class CommentView(View):
             logger.error(e)
             return http.HttpResponse('留言失败')
 
-        return redirect(reverse('user:about'))
+        return redirect(reverse('index:index_list'))

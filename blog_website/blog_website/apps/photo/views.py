@@ -1,5 +1,6 @@
 from django import http
 from django.core.paginator import Paginator, EmptyPage
+from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from blog_website.utils import constants
@@ -36,14 +37,15 @@ class AllPhotosView(View):
             photo_query_set = Photo.objects.all().order_by('-create_time')
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('获取照片页失败')
-
+            # return http.HttpResponse('获取照片页失败')
+            raise Http404
         # 分页
         paginator = Paginator(photo_query_set, constants.PHOTO_LIST_LIMIT)
         try:
             page_photos = paginator.page(page_num)
         except EmptyPage:
-            return http.HttpResponseNotFound('empty page')
+            # return http.HttpResponseNotFound('empty page')
+            raise Http404
         # 获取列表页总页数
         total_page = paginator.num_pages
 
@@ -65,13 +67,15 @@ class CategoryPhotoView(View):
             photos = Photo.objects.filter(category_id=category_id).order_by('-create_time')
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('获取照片失败')
+            # return http.HttpResponse('获取照片失败')
+            raise Http404
         # 分页
         paginator = Paginator(photos, constants.PHOTO_LIST_LIMIT)
         try:
             page_photos = paginator.page(page_num)
         except EmptyPage:
-            return http.HttpResponseNotFound('empty page')
+            # return http.HttpResponseNotFound('empty page')
+            raise Http404
         # 获取列表页总页数
         total_page = paginator.num_pages
 

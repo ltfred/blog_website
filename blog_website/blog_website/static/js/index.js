@@ -9,6 +9,7 @@ var vm = new Vue({
         recommend_list: [],  // 推荐
         article_count: '',
         pv: '',
+        days: '',
         photo_categories: [],
         labels: [], // 标签
 
@@ -74,6 +75,7 @@ var vm = new Vue({
                 .then(response => {
                     this.article_count = response.data.article_count;
                     this.pv = response.data.pv;
+                    this.days = response.data.days;
                 })
                 .catch(error => {
                     console.log(error.response)

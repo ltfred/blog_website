@@ -1,5 +1,6 @@
 import random
 from django import http
+from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from links.models import Link
@@ -21,7 +22,8 @@ class LinkView(View):
             soups = Soup.objects.all()
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('获取界面失败')
+            # return http.HttpResponse('获取界面失败')
+            raise Http404
         context = {
             'recommend_links': recommend_links,
             'links': links,

@@ -1,5 +1,8 @@
+import datetime
+import time
 from django import http
 from django.core.paginator import Paginator, EmptyPage
+from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
@@ -29,8 +32,8 @@ class ArticleDetailView(View):
             articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('获取文章失败')
-
+            # return http.HttpResponse('获取文章失败')
+            raise Http404
         # 阅读次数+1
         article.read_count += 1
         article.save()
@@ -54,8 +57,8 @@ class ArticleTopView(View):
             articles = Article.objects.order_by('-read_count').all().only('id', 'title')[0:7]
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
-
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         top_list = [{'title': article.title, 'id': article.id} for article in articles]
 
         return http.JsonResponse({'code': RETCODE.OK, 'top_list': top_list})
@@ -70,8 +73,8 @@ class RecommendView(View):
             articles = Article.objects.filter(is_top=True).only('id', 'title', 'index_image')[0:6]
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
-
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         recommend_list = [{'title': article.title, 'id': article.id, 'index_image': article.index_image} for article in
                           articles]
 
@@ -85,14 +88,18 @@ class ArticleCountView(View):
 
         conn = get_redis_connection('default')
         pv = conn.get('24_hours_pv')
+        now_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+        now_time = datetime.datetime.strptime(now_time, '%Y-%m-%d')
+        begin_time = datetime.datetime.strptime('2019-08-29', '%Y-%m-%d')
+        days = (now_time - begin_time).days
 
         try:
             count = Article.objects.count()
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
-
-        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count, 'pv': int(pv)})
+            # return http.HttpResponse('数据库错误')
+            raise Http404
+        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count, 'pv': int(pv), 'days': days})
 
 
 class AllArticleView(View):
@@ -105,14 +112,15 @@ class AllArticleView(View):
             all_counts = articles.count()
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
-
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         # 分页
         paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
         try:
             page_articles = paginator.page(page_num)
         except EmptyPage:
-            return http.HttpResponseNotFound('empty page')
+            # return http.HttpResponseNotFound('empty page')
+            raise Http404
         # 获取列表页总页数
         total_page = paginator.num_pages
         context = {
@@ -136,7 +144,8 @@ class CategoryAllArticleView(View):
             category = ArticleCategory.objects.get(id=category_id)
         except Exception as e:
             logger.error(e)
-            return http.HttpResponse('数据库错误')
+            # return http.HttpResponse('数据库错误')
+            raise Http404
         # 判断是否为一级分类
         if category.parent is None:
             # 获取一级下的所有文章
@@ -147,7 +156,8 @@ class CategoryAllArticleView(View):
             try:
                 page_articles = paginator.page(page_num)
             except EmptyPage:
-                return http.HttpResponseNotFound('empty page')
+                # return http.HttpResponseNotFound('empty page')
+                raise Http404
             # 获取列表页总页数
             total_page = paginator.num_pages
             article_labels = []
@@ -177,7 +187,8 @@ class CategoryAllArticleView(View):
             try:
                 page_articles = paginator.page(page_num)
             except EmptyPage:
-                return http.HttpResponseNotFound('empty page')
+                # return http.HttpResponseNotFound('empty page')
+                raise Http404
             # 获取列表页总页数
             total_page = paginator.num_pages
 
@@ -236,20 +247,23 @@ class LabelArticlesView(View):
             label = Label.objects.get(id=label_id)
         except Exception as e:
             logger.error(e)
-            return http.JsonResponse('标签错误')
+            # return http.JsonResponse('标签错误')
+            raise Http404
         try:
             # 查出该标签下所有文章
             articles = label.article_set.all()
             article_count = articles.count()
         except Exception as e:
             logger.error(e)
-            return http.JsonResponse('获取文章失败')
+            # return http.JsonResponse('获取文章失败')
+            raise Http404
         # 分页
         paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
         try:
             page_articles = paginator.page(page_num)
         except EmptyPage:
-            return http.HttpResponseNotFound('empty page')
+            # return http.HttpResponseNotFound('empty page')
+            raise Http404
         # 获取列表页总页数
         total_page = paginator.num_pages
 

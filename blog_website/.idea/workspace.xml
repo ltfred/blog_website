@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/comment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/comment/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/links/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/user/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/static/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/404_01.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/404_01.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/message.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/message.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_ndgmwngq7wvtyusm.seg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_q9vc4dids5x1l41n.seg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_qyf4pcax6aucb19v.seg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_tf6vkqeoa992lerm.seg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_ykttnj26drb3pge1.seg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_83.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_91.toc" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +266,7 @@
       <workItem from="1571999370160" duration="386000" />
       <workItem from="1572185163698" duration="593000" />
       <workItem from="1572185835971" duration="726000" />
-      <workItem from="1572225842220" duration="337000" />
+      <workItem from="1572225842220" duration="3158000" />
     </task>
     <servers />
   </component>

@@ -150,65 +150,37 @@ class CategoryAllArticleView(View):
         if category.parent is None:
             # 获取一级下的所有文章
             articles = Article.objects.filter(category1=category).order_by('-create_time')
-            category_article_count = articles.count()
-            # 分页
-            paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
-            try:
-                page_articles = paginator.page(page_num)
-            except EmptyPage:
-                # return http.HttpResponseNotFound('empty page')
-                raise Http404
-            # 获取列表页总页数
-            total_page = paginator.num_pages
-            article_labels = []
-            for article in page_articles:
-                # 该文章的标签
-                labels = article.labels.all()
-                article_labels.append({
-                    'article': article,
-                    'labels': labels
-                })
-
-            data_dict = {
-                'category_id': category.id,
-                'articles': article_labels,
-                'category': category,
-                'article_count': category_article_count,
-                'total_page': total_page,
-                'page_num': page_num
-            }
         else:
             # 为二级分类，二级类下的所有文章
             articles = Article.objects.filter(category2=category).order_by('-create_time')
-            category_article_count = articles.count()
 
-            # 分页
-            paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
-            try:
-                page_articles = paginator.page(page_num)
-            except EmptyPage:
-                # return http.HttpResponseNotFound('empty page')
-                raise Http404
-            # 获取列表页总页数
-            total_page = paginator.num_pages
+        category_article_count = articles.count()
+        # 分页
+        paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
+        try:
+            page_articles = paginator.page(page_num)
+        except EmptyPage:
+            # return http.HttpResponseNotFound('empty page')
+            raise Http404
+        # 获取列表页总页数
+        total_page = paginator.num_pages
+        article_labels = []
+        for article in page_articles:
+            # 该文章的标签
+            labels = article.labels.all()
+            article_labels.append({
+                'article': article,
+                'labels': labels
+            })
 
-            article_labels = []
-            for article in page_articles:
-                # 该文章的标签
-                labels = article.labels.all()
-                article_labels.append({
-                    'article': article,
-                    'labels': labels
-                })
-
-            data_dict = {
-                'category_id': category.id,
-                'category': category,
-                'articles': article_labels,
-                'article_count': category_article_count,
-                'total_page': total_page,
-                'page_num': page_num
-            }
+        data_dict = {
+            'category_id': category.id,
+            'articles': article_labels,
+            'category': category,
+            'article_count': category_article_count,
+            'total_page': total_page,
+            'page_num': page_num
+        }
 
         context = {'data': data_dict}
 

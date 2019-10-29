@@ -223,7 +223,7 @@ class LabelArticlesView(View):
             raise Http404
         try:
             # 查出该标签下所有文章
-            articles = label.article_set.all()
+            articles = label.article_set.all().order_by('-create_time')
             article_count = articles.count()
         except Exception as e:
             logger.error(e)

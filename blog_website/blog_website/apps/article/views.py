@@ -18,34 +18,40 @@ class ArticleDetailView(View):
     """文章详情"""
 
     def get(self, request, article_id):
-
+        context = {}
         try:
             # 获取本条数据
             article = Article.objects.get(id=article_id)
             # 获取上一条数据和下一条数据
-            next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).only('id',
-                                                                                                       'title').first()
-            pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).only('id',
-                                                                                                      'title').order_by(
-                '-id').first()
+            context['next_article'] = self.get_next_article(article)
+            context['pre_article'] = self.get_pre_article(article)
             # 相关数据10条
-            articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
+            context['articles'] = self.get_connected_article(article)
+            # 阅读次数+1
+            article.read_count += 1
+            article.save()
         except Exception as e:
             logger.error(e)
             # return http.HttpResponse('获取文章失败')
             raise Http404
-        # 阅读次数+1
-        article.read_count += 1
-        article.save()
-
-        context = {
-            'article': article,
-            'next_article': next_article,
-            'pre_article': pre_article,
-            'articles': articles
-        }
+        context['article'] = article
 
         return render(request, 'info.html', context=context)
+
+    def get_next_article(self, article):
+        next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).only('id',
+                                                                                                   'title').first()
+        return next_article
+
+    def get_pre_article(self, article):
+        pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).only('id',
+                                                                                                  'title').order_by(
+            '-id').first()
+        return pre_article
+
+    def get_connected_article(self, article):
+        articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
+        return articles
 
 
 class ArticleTopView(View):

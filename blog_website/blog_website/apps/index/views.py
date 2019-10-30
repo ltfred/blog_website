@@ -8,7 +8,6 @@ from article.models import Article, ArticleCategory
 from blog_website.utils import constants
 from blog_website.utils.response_code import RETCODE
 import logging
-
 from index.models import Carousel
 from user.models import User
 

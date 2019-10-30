@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_12lke1eexel4hrye.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_539t6lbafht63h9f.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_pt5vf8bm3mqlvv5y.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_spahkkgoo840u971.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_92.toc" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -278,6 +285,7 @@
       <workItem from="1572313784770" duration="647000" />
       <workItem from="1572316239345" duration="502000" />
       <workItem from="1572342246893" duration="319000" />
+      <workItem from="1572403370277" duration="1470000" />
     </task>
     <servers />
   </component>

@@ -8,6 +8,7 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
+from blog_website.utils.paginator import paginator_function
 from blog_website.utils.response_code import RETCODE
 import logging
 
@@ -148,30 +149,15 @@ class CategoryAllArticleView(View):
         try:
             # 查出该类别
             category = ArticleCategory.objects.get(id=category_id)
+            # 获取文章及数量
+            articles, category_article_count = self.get_articles(category)
         except Exception as e:
             logger.error(e)
             # return http.HttpResponse('数据库错误')
             raise Http404
-        # 判断是否为一级分类
-        if category.parent is None:
-            # 获取一级下的所有文章
-            articles = Article.objects.filter(category1=category).order_by('-create_time')
-        else:
-            # 为二级分类，二级类下的所有文章
-            articles = Article.objects.filter(category2=category).order_by('-create_time')
-
-        category_article_count = articles.count()
-        # 分页
-        paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
-        try:
-            page_articles = paginator.page(page_num)
-        except EmptyPage:
-            # return http.HttpResponseNotFound('empty page')
-            raise Http404
-        # 获取列表页总页数
-        total_page = paginator.num_pages
+        page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
         article_labels = []
-        for article in page_articles:
+        for article in page_query_set:
             # 该文章的标签
             labels = article.labels.all()
             article_labels.append({
@@ -191,6 +177,17 @@ class CategoryAllArticleView(View):
         context = {'data': data_dict}
 
         return render(request, 'list2_1.html', context=context)
+
+    def get_articles(self, category):
+        # 判断是否为一级分类
+        if category.parent is None:
+            # 获取一级下的所有文章
+            articles = Article.objects.filter(category1=category).order_by('-create_time')
+        else:
+            # 为二级分类，二级类下的所有文章
+            articles = Article.objects.filter(category2=category).order_by('-create_time')
+        category_article_count = articles.count()
+        return articles, category_article_count
 
 
 class LabelView(View):
@@ -235,18 +232,11 @@ class LabelArticlesView(View):
             logger.error(e)
             # return http.JsonResponse('获取文章失败')
             raise Http404
-        # 分页
-        paginator = Paginator(articles, constants.ARTICLE_LIST_LIMIT)
-        try:
-            page_articles = paginator.page(page_num)
-        except EmptyPage:
-            # return http.HttpResponseNotFound('empty page')
-            raise Http404
-        # 获取列表页总页数
-        total_page = paginator.num_pages
+
+        page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
 
         article_labels = []
-        for article in page_articles:
+        for article in page_query_set:
             # 该文章的标签
             labels = article.labels.all()
             article_labels.append({

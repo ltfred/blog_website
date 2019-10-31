@@ -6,6 +6,7 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory
 from blog_website.utils import constants
+from blog_website.utils.ip import get_ip
 from blog_website.utils.response_code import RETCODE
 import logging
 from index.models import Carousel
@@ -23,7 +24,7 @@ class IndexView(View):
         if conn.setnx('24_hours_pv', 0):
             conn.expire('24_hours_pv', constants.PV_EXPIRE)
         conn.incr('24_hours_pv')
-        context = {}
+        context = dict()
         # 最新博文
         context['article_labels'] = self.get_new_articles()
         # 分类信息
@@ -33,7 +34,7 @@ class IndexView(View):
         # 轮播图
         context['carousel_articles'] = self.get_carousel_articles()
         # 精彩专题数据
-        context['like_articles'] = self.get_like_articles()
+        context['like_articles'] = self.get_like_articles()[0:6]
         # 个人信息
         context['profile'] = self.get_profile()
 
@@ -41,16 +42,15 @@ class IndexView(View):
 
     def get_profile(self):
         user = User.objects.all()[0]
-        profile = {
-            'webname': user.webname,
-            'profession': user.profession,
-            'address': user.address,
-            'email': user.email
-        }
+        profile = dict()
+        profile['webname'] = user.webname
+        profile['profession'] = user.profession
+        profile['address'] = user.address
+        profile['email'] = user.email
         return profile
 
     def get_like_articles(self):
-        like_articles = Article.objects.order_by('-like_count').only('id', 'title', 'index_image', 'describe')[0:6]
+        like_articles = Article.objects.order_by('-like_count').only('id', 'title', 'index_image', 'describe')
         return like_articles
 
     def get_carousel_articles(self):
@@ -58,8 +58,7 @@ class IndexView(View):
         return carousel_articles
 
     def get_static_articles(self):
-        index_images = Article.objects.all().only('id', 'index_image', 'title')
-        # 随机选择
+        index_images = self.get_like_articles()
         static_articles = []
         if index_images.count() > 3:
             static_articles = random.sample(list(index_images), 2)
@@ -72,7 +71,6 @@ class IndexView(View):
         for cat1 in cat1_list:
             cat2_list = ArticleCategory.objects.filter(parent=cat1)
             subs = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
-
             cat_list.append({
                 'id': cat1.id,
                 'name': cat1.name,
@@ -82,7 +80,7 @@ class IndexView(View):
 
     def get_new_articles(self):
         articles = Article.objects.order_by('-create_time')[0:10]
-        article_labels = []
+        article_labels = list()
         for article in articles:
             # 该文章的标签
             labels = article.labels.all()

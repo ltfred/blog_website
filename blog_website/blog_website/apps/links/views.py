@@ -14,20 +14,15 @@ class LinkView(View):
     """友情链接"""
 
     def get(self, request):
-
+        context = dict()
         try:
-            recommend_links = Link.objects.filter(is_recommend=True)
-            links = Link.objects.filter(is_recommend=False)
+            context['recommend_links'] = Link.objects.filter(is_recommend=True)
+            context['links'] = Link.objects.filter(is_recommend=False)
             # 随机一句心灵鸡汤
             soups = Soup.objects.all()
+            context['soup'] = random.choice(soups).content if soups else ''
         except Exception as e:
-            logger.error(e)
-            # return http.HttpResponse('获取界面失败')
+            logger.error('LinkView:get:' + str(e))
             raise Http404
-        context = {
-            'recommend_links': recommend_links,
-            'links': links,
-            'soup': random.choice(soups).content if soups else ''
-        }
 
         return render(request, 'daohang.html', context=context)

@@ -8,7 +8,6 @@ def paginator_function(query_set, page_num, page_size):
     try:
         page_query_set = paginator.page(page_num)
     except EmptyPage:
-        # return http.HttpResponseNotFound('empty page')
         raise Http404
     # 获取列表页总页数
     total_page = paginator.num_pages

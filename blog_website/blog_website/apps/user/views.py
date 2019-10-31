@@ -16,7 +16,6 @@ class AboutUserView(View):
 
         try:
             user = User.objects.all()[0]
-            lst = User.objects.values('username')
         except Exception as e:
             logger.error(e)
             # return http.HttpResponse('数据库错误')

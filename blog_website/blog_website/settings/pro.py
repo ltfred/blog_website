@@ -17,6 +17,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 添加导包路径
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_app'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'links',
     'photo',
     'soup',
+    'comment',
     'site_statistics',
     'xadmin',
     'crispy_forms',
@@ -155,7 +157,7 @@ STATIC_URL = '/static/'
 # 配置静态文件加载路径
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# STATIC_ROOT = '/tmp/static'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # 配置redis
 CACHES = {
@@ -268,7 +270,7 @@ CKEDITOR_CONFIGS = {
             # 字体风格
             ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote', 'FontSize', 'Font'],
             # 图片
-            ['Image'],
+            ['Image',],
             # 字体颜色
             ['TextColor', 'BGColor'],
             # 链接
@@ -276,7 +278,7 @@ CKEDITOR_CONFIGS = {
             # 列表, 表格
             ['NumberedList', 'BulletedList', 'Table'],
             # 格式
-            ['JustifyCenter', 'JustifyLeft', 'JustifyRight'],
+            ['JustifyCenter', 'JustifyLeft', 'JustifyRight', 'Outdent', 'Indent'],
             # 最大化
             ['Maximize']
         ],

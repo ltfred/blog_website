@@ -7,6 +7,7 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
+from blog_website.utils.ip import get_ip
 from blog_website.utils.paginator import paginator_function
 from blog_website.utils.response_code import RETCODE
 import logging
@@ -111,22 +112,15 @@ class AllArticleView(View):
     """文章归档"""
 
     def get(self, request, page_num):
-
+        context = {}
         try:
             articles = Article.objects.order_by('-create_time').all().only('id', 'title')
-            all_counts = articles.count()
+            context['all_counts'] = articles.count()
         except Exception as e:
             logger.error('AllArticleView:get:' + str(e))
             raise Http404
-        page_articles, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
-        context = {
-            'page_num': page_num,
-            'total_page': total_page,
-            'page_articles': page_articles,
-            'all_counts': all_counts
-
-        }
-
+        context['page_articles'], context['total_page'] = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
+        context['page_num'] = page_num
         return render(request, 'time.html', context=context)
 
 
@@ -134,7 +128,6 @@ class CategoryAllArticleView(View):
     """当前类别下的所有文章"""
 
     def get(self, request, category_id, page_num):
-
         try:
             # 查出该类别
             category = ArticleCategory.objects.get(id=category_id)
@@ -252,18 +245,11 @@ class ArticleLikeView(View):
         except Exception as e:
             logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取文章失败'})
-
-        # 获取请求的ip
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')  # 判断是否使用代理
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]  # 使用代理获取真实的ip
-        else:
-            ip = request.META.get('REMOTE_ADDR')  # 未使用代理获取IP
-
+        ip = get_ip(request)
         redis = get_redis_connection('default')
         key = 'like_{}_flag_{}'.format(article_id, ip)
         if redis.get(key):
-            return http.JsonResponse({'code': RETCODE.ALLOWERR, 'errmsg': '只能点击一次'})
+            return http.JsonResponse({'code': RETCODE.ALLOWERR, 'errmsg': '只能点赞一次'})
         # 24小时内只能点赞一次
         redis.set(key, 'article_stars', constants.ARTICLE_STARS_EXPIRE)
         # 文章点赞次数+1

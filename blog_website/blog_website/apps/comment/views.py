@@ -25,7 +25,7 @@ class CommentView(View):
         try:
             Message.objects.create(name=name, email=email, content=message)
         except Exception as e:
-            logger.error(e)
+            logger.error('CommentView:post:' + str(e))
             return http.HttpResponse('留言失败')
 
         return redirect(reverse('index:index_list'))

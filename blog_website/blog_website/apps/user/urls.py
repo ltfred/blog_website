@@ -4,5 +4,5 @@ from user import views
 
 urlpatterns = [
     # 关于我
-    url(r'about/$', views.AboutUserView.as_view(), name='about'),
+    url(r'^about/$', views.AboutUserView.as_view(), name='about'),
 ]

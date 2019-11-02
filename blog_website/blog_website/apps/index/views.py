@@ -1,13 +1,11 @@
 import random
 from django import http
-from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory
 from blog_website.utils import constants
-from blog_website.utils.ip import get_ip
-from blog_website.utils.response_code import RETCODE
+from blog_website.utils.responseCode import RETCODE
 import logging
 from index.models import Carousel
 from user.models import User
@@ -26,7 +24,7 @@ class IndexView(View):
         conn.incr('24_hours_pv')
         context = dict()
         # 最新博文
-        context['article_labels'] = self.get_new_articles()
+        context['articles'] = self.get_new_articles()
         # 分类信息
         context['cat_list'] = self.get_cat_lst()
         # 静态随机图
@@ -90,9 +88,9 @@ class IndexView(View):
             })
         return article_labels
 
-class CategoryView(View):
+class CategoryView(IndexView):
     """分类"""
 
     def get(self, request):
-        cat_list = IndexView.get_cat_lst()
+        cat_list = IndexView.get_cat_lst(self)
         return http.JsonResponse({'code': RETCODE.OK, 'cat_list': cat_list})

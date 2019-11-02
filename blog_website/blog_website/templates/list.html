@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>列表页-Fred个人网站-只要还有明天，今天永远都是起跑线</title>
+    <title>Fred个人网站-只要还有明天，今天永远都是起跑线</title>
     <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
     <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
     <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
@@ -71,28 +71,41 @@
     <article>
         <!--lbox begin-->
         <div class="lbox">
+            <div class="whitebg lanmu"><img src="{{ data.category.image_url }}">
+                <h1>{{ data.category.name }}</h1>
+                <p>{{ data.category.describe }}</p>
+            </div>
             <div class="whitebg bloglist">
                 <h2 class="htitle"><span class="hnav">
-      </span>所有公告</h2>
+      </span>{{ data.category }}</h2>
                 <ul>
-                    {% for notice in notices %}
+                    {% for article in data.articles %}
                         <li>
-                            <h3 class="blogtitle"><a href="{{ url('notice:notice_detail', args=(notice.id,)) }}"
-                                                     target="_blank">{{ notice.title }}</a></h3>
+                            <h3 class="blogtitle"><a
+                                    href="{{ url('article:article_detail', args=(article.article.id,)) }}"
+                                    target="_blank">{{ article.article.title }}</a></h3>
                             <span class="blogpic imgscale"><i><a
-                                    href="{{ url('notice:notice_list') }}">公告</a></i><a
-                                    href="{{ url('notice:notice_detail', args=(notice.id,)) }}" title=""></a></span>
-                            <p class="blogtext">{{ notice.content | safe }} </p>
+                                    href="{{ url('article:category_list', args=(article.article.category1.id, 1)) }}">{{ article.article.category2.name }}</a></i><a
+                                    href="{{ url('article:article_detail', args=(article.article.id,)) }}" title=""><img
+                                    src="{{ article.article.index_image }}" alt=""></a></span>
+                            <p class="blogtext">{{ article.article.describe }} </p>
                             <p class="bloginfo"><i class="avatar"><img
-                                    src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time | time_filter}}</span><span>【<a
-                                    href="{{ url('notice:notice_list') }}">公告</a>】</span>
+                                    src="{{ article.article.author.avatar_url }}"></i><span>{{ article.article.author.webname }}</span><span>{{ article.article.create_time | time_filter }}</span>
+                                {% for label in article.labels %}
+                                    <span>【<a href="{{ url('article:label_articles', args=(label.id, 1)) }}">{{ label.name }}</a>】</span>
+                                {% endfor %}
                             </p>
-                            <a href="{{ url('notice:notice_detail', args=(notice.id,)) }}" class="viewmore">阅读更多</a>
+                            <a href="{{ url('article:article_detail', args=(article.article.id,)) }}" class="viewmore">阅读更多</a>
                         </li>
                     {% endfor %}
                 </ul>
                 <!--pagelist-->
 
+                <div class="pagelist">
+                    <a href="javascript:;" onclick="pretpage()">上一页</a>
+                    <a title="Total record">&nbsp;<b>共{{ data.article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
+                    <a href="javascript:;" onclick="nextpage()">下一页</a>&nbsp;
+                </div>
             </div>
 
             <!--bloglist end-->
@@ -120,6 +133,7 @@
                     </a></li>
                 </ul>
             </div>
+
             <div class="whitebg cloud">
                 <h2 class="htitle">标签云</h2>
                 <ul>
@@ -127,25 +141,48 @@
                         label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>
+
         </div>
 
     </article>
 </div>
 
-<footer>
+    <footer>
         <div class="box">
             <div class="endnav">
-                <p><b>站点声明：</b></p>
-                <p>本站所有文章，均为本人书写(如有转载会标出)，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.ltfred.com</a> All Rights Reserved.
-                    备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
+                <p><b>关于本站：</b></p>
+                <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>
+                <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
             </div>
         </div>
-    <a href="#">
-        <div class="top"></div>
-    </a>
+        <a href="#">
+            <div class="top"></div>
+        </a>
+    </footer>
 
-</footer>
+
 <script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
+<script>
+    function nextpage() {
+        var curpage = {{ data.page_num }} +1;
+        var total_page = {{ data.total_page }};
+        if (curpage > total_page) {
+            alert('已经是最后一页了')
+        } else {
+            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+        }
+
+    }
+    function pretpage() {
+        var curpage = {{ data.page_num }} - 1;
+        var total_page = {{ data.total_page }};
+        if (curpage == 0) {
+            alert('前面没有了')
+        } else {
+            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+        }
+
+    }
+</script>
 </body>
 </html>

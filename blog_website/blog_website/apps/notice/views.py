@@ -2,7 +2,7 @@ from django import http
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
-from blog_website.utils.response_code import RETCODE
+from blog_website.utils.responseCode import RETCODE
 from notice.models import Notice
 import logging
 logger = logging.getLogger('blog')
@@ -56,7 +56,7 @@ class NoticeDetailView(View):
             'notices': notices
         }
 
-        return render(request, 'notice_detail.html', context=context)
+        return render(request, 'noticeDetail.html', context=context)
 
 
 class NoticeLikeView(View):
@@ -85,4 +85,4 @@ class AllNoticeView(View):
             # return http.HttpResponse('服务器出错了')
             raise Http404
         context = {'notices': notices}
-        return render(request, 'notice_list.html', context=context)
+        return render(request, 'noticeList.html', context=context)

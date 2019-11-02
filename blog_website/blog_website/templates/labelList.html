@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>列表页-Fred个人网站-只要还有明天，今天永远都是起跑线</title>
+    <title>Fred个人网站-只要还有明天，今天永远都是起跑线</title>
     <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
     <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
     <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
@@ -71,15 +71,11 @@
     <article>
         <!--lbox begin-->
         <div class="lbox">
-            <div class="whitebg lanmu"><img src="{{ data.category.image_url }}">
-                <h1>{{ data.category.name }}</h1>
-                <p>{{ data.category.describe }}</p>
-            </div>
             <div class="whitebg bloglist">
                 <h2 class="htitle"><span class="hnav">
-      </span>{{ data.category }}</h2>
+      </span>{{ label.name }}</h2>
                 <ul>
-                    {% for article in data.articles %}
+                    {% for article in articles %}
                         <li>
                             <h3 class="blogtitle"><a
                                     href="{{ url('article:article_detail', args=(article.article.id,)) }}"
@@ -98,13 +94,14 @@
                             <a href="{{ url('article:article_detail', args=(article.article.id,)) }}" class="viewmore">阅读更多</a>
                         </li>
                     {% endfor %}
+
                 </ul>
                 <!--pagelist-->
 
                 <div class="pagelist">
-                    <a href="javascript:" onclick="pretpage()">上一页</a>
-                    <a title="Total record">&nbsp;<b>共{{ data.article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
-                    <a href="javascript:" onclick="nextpage()">下一页</a>&nbsp;
+                    <a href="javascript:;" onclick="pretpage()">上一页</a>
+                    <a title="Total record">&nbsp;<b>共{{ article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
+                    <a href="javascript:;" onclick="nextpage()">下一页</a>&nbsp;
                 </div>
             </div>
 
@@ -136,10 +133,12 @@
 
             <div class="whitebg cloud">
                 <h2 class="htitle">标签云</h2>
+
                 <ul>
                     <a v-for="label in labels" :href="'/label/articles/' + label.id + '/1'" target="_blank">[[
                         label.name ]]([[ label.article_count ]])</a>
                 </ul>
+
             </div>
 
         </div>
@@ -147,41 +146,40 @@
     </article>
 </div>
 
-<footer>
+    <footer>
         <div class="box">
             <div class="endnav">
-                <p><b>站点声明：</b></p>
-                <p>本站所有文章，均为本人书写(如有转载会标出)，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.ltfred.com</a> All Rights Reserved.
-                    备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
+                <p><b>关于本站：</b></p>
+                <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>
+                <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
             </div>
         </div>
-    <a href="#">
-        <div class="top"></div>
-    </a>
-
-</footer>
+        <a href="#">
+            <div class="top"></div>
+        </a>
+    </footer>
 
 
 <script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
 <script>
     function nextpage() {
-        var curpage = {{ data.page_num }} +1;
-        var total_page = {{ data.total_page }};
+        var curpage = {{ page_num }} +1;
+        var total_page = {{ total_page }};
         if (curpage > total_page) {
             alert('已经是最后一页了')
         } else {
-            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+            location.href = '/label/articles/' + {{ label.id }} +'/' + curpage + '/';
         }
 
     }
+
     function pretpage() {
-        var curpage = {{ data.page_num }} - 1;
-        var total_page = {{ data.total_page }};
+        var curpage = {{ page_num }} - 1;
+        var total_page = {{ total_page }};
         if (curpage == 0) {
             alert('前面没有了')
         } else {
-            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+             location.href = '/label/articles/' + {{ label.id }} +'/' + curpage + '/';
         }
 
     }

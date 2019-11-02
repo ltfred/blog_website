@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>公告详情-Fred个人网站-只要还有明天，今天永远都是起跑线</title>
+    <title>Fred个人网站-只要还有明天，今天永远都是起跑线</title>
     <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
     <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
     <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
@@ -11,10 +11,9 @@
     <link href="{{ static('css/m.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ static('js/vue-2.5.16.js') }}"></script>
     <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ static('js/comm.js') }}"></script>
-    <script src="{{ static('lib/prism/prism_patched.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ static('prism/prism.css') }}">
+    <script src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ static('js/comm.js') }}"></script>
+    <script src="{{ static('js/page.js') }}"></script>
     <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
@@ -72,76 +71,45 @@
     <article>
         <!--lbox begin-->
         <div class="lbox">
-            <div class="content_box whitebg">
-                <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a
-                        href="{{ url('notice:notice_list') }}">公告</a></span>个人网站
-                </h2>
-                <h1 class="con_tilte">{{ notice.title }}</h1>
-                <p class="bloginfo"><i class="avatar"><img
-                        src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time | time_filter }}</span><span>【<a
-                        href="{{ url('notice:notice_list') }}">公告</a>】</span><span>{{ notice.read_count }}人已围观</span>
-                </p>
-                <p class="con_info"><b>简介</b>个人网站，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，也会放上一些照片。后来也用来记录自己所学习的知识。
-                </p>
-                <div class="con_text">
-                    <p>{{ notice.content | safe }}</p>
-                    <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站点或者朋友圈，但转载请说明文章出处“来源Fred个人网站”。</p>
-                    <p><span class="diggit" onclick="like_notice()">很赞哦！ ({{ notice.like_count }})</span></p>
-                    <div class="nextinfo">
-                        {% if pre_notice %}
-                            <p>上一篇：<a
-                                    href="{{ url('notice:notice_detail', args=(pre_notice.id,)) }}">{{ pre_notice.title }}</a>
-                            </p>
-                        {% endif %}
-                        {% if next_notice %}
-                            <p>下一篇：<a
-                                    href="{{ url('notice:notice_detail', args=(next_notice.id,)) }}">{{ next_notice.title }}</a>
-                            </p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="whitebg">
-                <h2 class="htitle">其他公告</h2>
-                <ul class="otherlink">
+            <div class="whitebg bloglist">
+                <h2 class="htitle"><span class="hnav">
+      </span>所有公告</h2>
+                <ul>
                     {% for notice in notices %}
-                        <li><a href="{{ url('notice:notice_detail', args=(notice.id,)) }}"
-                               title="{{ notice.title }}">{{ notice.title }}</a></li>
+                        <li>
+                            <h3 class="blogtitle"><a href="{{ url('notice:notice_detail', args=(notice.id,)) }}"
+                                                     target="_blank">{{ notice.title }}</a></h3>
+                            <span class="blogpic imgscale"><i><a
+                                    href="{{ url('notice:notice_list') }}">公告</a></i><a
+                                    href="{{ url('notice:notice_detail', args=(notice.id,)) }}" title=""></a></span>
+                            <p class="blogtext">{{ notice.content | safe }} </p>
+                            <p class="bloginfo"><i class="avatar"><img
+                                    src="{{ notice.user.avatar_url }}"></i><span>{{ notice.user.webname }}</span><span>{{ notice.create_time | time_filter}}</span><span>【<a
+                                    href="{{ url('notice:notice_list') }}">公告</a>】</span>
+                            </p>
+                            <a href="{{ url('notice:notice_detail', args=(notice.id,)) }}" class="viewmore">阅读更多</a>
+                        </li>
                     {% endfor %}
                 </ul>
+                <!--pagelist-->
+
             </div>
 
-{#            <div class="whitebg gbook">#}
-{#                <h2 class="htitle">文章评论</h2>#}
-{#                <ul>#}
-{#                    <!--PC版-->#}
-{#                    <div id="SOHUCS"></div>#}
-{#                    <script charset="utf-8" type="text/javascript"#}
-{#                            src="https://changyan.sohu.com/upload/changyan.js"></script>#}
-{#                    <script type="text/javascript">#}
-{#                        window.changyan.api.config({#}
-{#                            appid: 'cyurPKNuR',#}
-{#                            conf: 'prod_40f065b65d473b2fd62db802aa069635'#}
-{#                        });#}
-{#                    </script>#}
-{#                </ul>#}
-{#            </div>#}
+            <!--bloglist end-->
         </div>
-        <!--lbox end-->
         <div class="rbox">
             <div class="whitebg paihang">
                 <h2 class="htitle">点击排行</h2>
                 {#                <section class="topnews imgscale"><a href="/"><img src="images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
                 {#                </section>#}
                 <ul>
-
                     <li v-for="article in top_list"><i></i><a
                             :href="'/article/detail/' + article.id">[[ article.title
                         ]]</a></li>
                 </ul>
             </div>
             <div class="whitebg tuijian">
-                <h2 class="htitle">站长推荐</h2>
+                <h2 class="htitle">本栏推荐</h2>
                 {#                <section class="topnews imgscale"><a href="/"><img src="images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a>#}
                 {#                </section>#}
                 <ul>
@@ -159,45 +127,23 @@
                         label.name ]]([[ label.article_count ]])</a>
                 </ul>
             </div>
-
         </div>
-    </article>
-    <footer>
 
+    </article>
+</div>
+
+    <footer>
         <div class="box">
             <div class="endnav">
-                <p><b>站点声明：</b></p>
-                <p>本站所有文章，均为本人书写(如有转载会标出)，个人可以使用，但是未经许可不得用于任何商业目的。</p>
-                <p>Copyright © <a href="http://www.ltfred.com" target="_blank">www.ltfred.com</a> All Rights Reserved.
-                    备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
-
+                <p><b>关于本站：</b></p>
+                <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>
+                <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a></p>
             </div>
-            <a href="#">
-                <div class="top"></div>
-            </a>
         </div>
+        <a href="#">
+            <div class="top"></div>
+        </a>
     </footer>
-</div>
-<script type="text/javascript" src="{{ static('js/info.js') }}"></script>
-<script>
-    function like_notice() {
-        var url = '/notice/like/{{ notice.id }}';
-        axios.get(url, {
-            responseType: 'json',
-        })
-            .then(response => {
-                code = response.data.code;
-                if (code == '4009') {
-                    alert('只能点赞一次')
-                } else {
-                    window.location.reload();
-                }
-
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
-    }
-</script>
+<script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
 </body>
 </html>

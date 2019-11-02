@@ -2,7 +2,7 @@ from django import http
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
-from blog_website.utils.response_code import RETCODE
+from blog_website.utils.responseCode import RETCODE
 from user.models import User
 import logging
 

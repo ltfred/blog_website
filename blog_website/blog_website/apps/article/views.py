@@ -7,9 +7,8 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
-from blog_website.utils.ip import get_ip
-from blog_website.utils.paginator import paginator_function
-from blog_website.utils.response_code import RETCODE
+from blog_website.utils.common import get_ip, paginator_function, str2datetime
+from blog_website.utils.responseCode import RETCODE
 import logging
 
 logger = logging.getLogger('blog')
@@ -95,8 +94,8 @@ class ArticleCountView(View):
         conn = get_redis_connection('default')
         pv = conn.get('24_hours_pv')
         now_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-        now_time = datetime.datetime.strptime(now_time, '%Y-%m-%d')
-        begin_time = datetime.datetime.strptime('2019-08-29', '%Y-%m-%d')
+        now_time = str2datetime(now_time)
+        begin_time = str2datetime('2019-08-29')
         days = (now_time - begin_time).days
 
         try:
@@ -158,7 +157,7 @@ class CategoryAllArticleView(View):
 
         context = {'data': data_dict}
 
-        return render(request, 'list2_1.html', context=context)
+        return render(request, 'list.html', context=context)
 
     def get_articles(self, category):
         # 判断是否为一级分类
@@ -225,7 +224,7 @@ class LabelArticlesView(View):
             'total_page': total_page,
             'page_num': page_num
         }
-        return render(request, 'label_list.html', context=context)
+        return render(request, 'labelList.html', context=context)
 
     def get_label_articles(self, label):
 

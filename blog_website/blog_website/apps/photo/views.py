@@ -3,10 +3,12 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from blog_website.utils import constants
-from blog_website.utils.paginator import paginator_function
-from blog_website.utils.response_code import RETCODE
+from blog_website.utils.common import get_image_size, paginator_function
+from blog_website.utils.responseCode import RETCODE
 from photo.models import PhotoCategory, Photo
 import logging
+
+from user.models import User
 
 logger = logging.getLogger('blog')
 
@@ -71,5 +73,17 @@ class CategoryPhotoView(View):
             'page_num': page_num
         }
 
-        return render(request, 'category_photo.html', context=context)
+        return render(request, 'categoryPhoto.html', context=context)
 
+
+class PhotoDetailView(View):
+
+    def get(self, request):
+        id = request.GET.get('photo_id')
+        photo = Photo.objects.get(id=id)
+        try:
+            size = get_image_size(photo.url)
+        except:
+            size = ''
+        user = User.objects.get(is_staff=True)
+        return render(request, 'photoDetail.html', context={'photo': photo, 'size': size, 'user': user})

@@ -30,8 +30,7 @@
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
                     {% for cat in cat_list %}
-                        <li class="menu"><a
-                                href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
+                        <li class="menu"><a href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
                             <ul class="sub">
                                 {% for sub in cat.subs %}
                                     <li>
@@ -44,9 +43,7 @@
                     {% endfor %}
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a
-                                    :href="'/photos/' + category.id + '/1'">[[ category.name ]]</a>
-                            </li>
+                            <li v-for="category in photo_categories"><a :href="'/photos/' + category.id + '/1'">[[ category.name ]]</a></li>
                         </ul>
                         <span></span></li>
                     <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>

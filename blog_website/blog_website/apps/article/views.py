@@ -1,4 +1,3 @@
-import datetime
 import time
 from django import http
 from django.http import Http404
@@ -33,7 +32,6 @@ class ArticleDetailView(View):
         # 阅读次数+1
         article.read_count += 1
         article.save()
-
         context['article'] = article
 
         return render(request, 'info.html', context=context)

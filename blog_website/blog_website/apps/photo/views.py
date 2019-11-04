@@ -7,7 +7,6 @@ from blog_website.utils.common import get_image_size, paginator_function
 from blog_website.utils.responseCode import RETCODE
 from photo.models import PhotoCategory, Photo
 import logging
-
 from user.models import User
 
 logger = logging.getLogger('blog')

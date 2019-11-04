@@ -25,4 +25,4 @@ class LinkView(View):
             logger.error('LinkView:get:' + str(e))
             raise Http404
 
-        return render(request, 'daohang.html', context=context)
+        return render(request, 'link.html', context=context)

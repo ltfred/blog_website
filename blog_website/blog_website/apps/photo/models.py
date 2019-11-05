@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.utils.translation import ugettext_lazy as _
 from blog_website.utils.models import BaseModel
 
 
@@ -20,7 +19,7 @@ class PhotoCategory(BaseModel):
 class Photo(BaseModel):
     """照片"""
 
-    title = models.CharField(max_length=10, verbose_name='照片标题')
+    title = models.CharField(max_length=10, verbose_name='照片标题', help_text=_('No more than 10 characters'))
     url = models.CharField(max_length=200, verbose_name='照片地址')
     category = models.ForeignKey(PhotoCategory, on_delete=models.PROTECT, verbose_name='照片类别', related_name='photos')
 

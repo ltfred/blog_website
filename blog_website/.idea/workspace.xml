@@ -2,16 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/liutao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/links/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/static/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/daohang.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/link.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/labelList.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/labelList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/link.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/link.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/noticeDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/noticeDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_112.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/noticeList.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/noticeList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/photoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photoDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/search/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_ccd8u0q5co7d1iuk.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_gbld0si24t6jzxqz.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_j86l4hlx1oak2s5q.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_us536v1gekbq3ue0.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/MAIN_wbbsw69bxave4uko.seg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_113.toc" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -342,6 +353,11 @@
       <workItem from="1572703155325" duration="3449000" />
       <workItem from="1572746405569" duration="3337000" />
       <workItem from="1572830186790" duration="239000" />
+      <workItem from="1572834577345" duration="382000" />
+      <workItem from="1572836328019" duration="53000" />
+      <workItem from="1572849805787" duration="181000" />
+      <workItem from="1572861010066" duration="108000" />
+      <workItem from="1572919532956" duration="250000" />
     </task>
     <servers />
   </component>

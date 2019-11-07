@@ -1,0 +1,12 @@
+document.writeln("<footer>");
+document.writeln("    <div class=\'box\'>");
+document.writeln("        <div class=\'endnav\'>");
+document.writeln("            <p><b>关于本站：</b></p>");
+document.writeln("            <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>");
+document.writeln("            <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：备案中...</p>");
+document.writeln("        </div>");
+document.writeln("    </div>");
+document.writeln("    <a href=\'#\'>");
+document.writeln("        <div class=\'top\'></div>");
+document.writeln("    </a>");
+document.writeln("</footer>");

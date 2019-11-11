@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog_website/static/html_js/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d8c424bd-fcd4-4ed5-b785-18bcbb72d852.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d8c424bd-fcd4-4ed5-b785-18bcbb72d852.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/settings/dev.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
@@ -17,7 +18,6 @@
       <change beforePath="$PROJECT_DIR$/blog_website/templates/photoDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photoDetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/search/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/time.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/whoosh_index/_MAIN_116.toc" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +99,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -338,7 +338,8 @@
       <workItem from="1572921637699" duration="38000" />
       <workItem from="1573007087612" duration="12000" />
       <workItem from="1573030450612" duration="5869000" />
-      <workItem from="1573090082399" duration="321000" />
+      <workItem from="1573090082399" duration="728000" />
+      <workItem from="1573459716360" duration="1783000" />
     </task>
     <servers />
   </component>

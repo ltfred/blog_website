@@ -270,7 +270,7 @@ CKEDITOR_CONFIGS = {
             # 字体风格
             ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote', 'FontSize', 'Font'],
             # 图片
-            ['Image',],
+            ['Image', ],
             # 字体颜色
             ['TextColor', 'BGColor'],
             # 链接

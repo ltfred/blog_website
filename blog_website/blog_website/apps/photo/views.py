@@ -3,7 +3,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from blog_website.utils import constants
-from blog_website.utils.common import get_image_size, paginator_function
+from blog_website.utils.common import get_image_size, paginator_function, get_cat_lst, get_photo_category
 from blog_website.utils.responseCode import RETCODE
 from photo.models import PhotoCategory, Photo
 import logging
@@ -16,16 +16,7 @@ class PhotoCategoryView(View):
     """相册分类"""
 
     def get(self, request):
-
-        try:
-            photo_category_query_set = PhotoCategory.objects.all()
-        except Exception as e:
-            logger.error(e)
-            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库查询失败'})
-
-        photo_categories = [{'id': photo_category.id, 'name': photo_category.name} for photo_category in
-                            photo_category_query_set]
-
+        photo_categories = get_photo_category()
         return http.JsonResponse({'code': RETCODE.OK, 'photo_categories': photo_categories})
 
 
@@ -46,7 +37,9 @@ class AllPhotosView(View):
         context = {
             'photos': page_photos,
             'total_page': total_page,
-            'page_num': page_num
+            'page_num': page_num,
+            'cat_list': get_cat_lst(),
+            'photo_category': get_photo_category()
         }
 
         return render(request, 'photo.html', context=context)
@@ -69,7 +62,9 @@ class CategoryPhotoView(View):
             'category_id': category_id,
             'photos': page_photos,
             'total_page': total_page,
-            'page_num': page_num
+            'page_num': page_num,
+            'cat_list': get_cat_lst(),
+            'photo_category': get_photo_category()
         }
 
         return render(request, 'categoryPhoto.html', context=context)
@@ -85,4 +80,7 @@ class PhotoDetailView(View):
         except:
             size = ''
         user = User.objects.get(is_staff=True)
-        return render(request, 'photoDetail.html', context={'photo': photo, 'size': size, 'user': user})
+
+        return render(request, 'photoDetail.html',
+                      context={'photo': photo, 'size': size, 'user': user, 'cat_list': get_cat_lst(),
+                               'photo_category': get_photo_category()})

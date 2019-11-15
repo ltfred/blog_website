@@ -2,6 +2,7 @@ from django import http
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
+from blog_website.utils.common import get_cat_lst, get_photo_category
 from blog_website.utils.responseCode import RETCODE
 from user.models import User
 import logging
@@ -22,6 +23,7 @@ class AboutUserView(View):
             raise Http404
 
         context = {'bio': user.bio, 'dubai': user.soliloquy, 'name': user.webname,
-                   'avatar': user.avatar_url}
+                   'avatar': user.avatar_url, 'cat_list': get_cat_lst(),
+                   'photo_category': get_photo_category()}
 
         return render(request, 'about.html', context=context)

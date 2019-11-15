@@ -25,28 +25,36 @@
     <header id="header">
         <div class="navbox">
             <h2 id="mnavh"><span class="navicon"></span></h2>
-            <div class="logo"><a href="{{ url('index:index_list') }}">Fred的个人网站</a></div>
+            <div class="logo"><a href={{ url('index:index_list') }}>Fred的个人网站</a></div>
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    <li class="menu" v-for="cat in cat_list"><a :href="'/list/' + cat.id + '/1'">[[ cat.name ]]</a>
-                        <ul class="sub">
-                            <li v-for="sub in cat.subs"><a :href="'/list/' + sub.id + '/1'">[[ sub.name ]]</a></li>
-                        </ul>
-                        <span></span>
-                    </li>
+                    {% for cat in cat_list %}
+                        <li class="menu"><a
+                                href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
+                            <ul class="sub">
+                                {% for sub in cat.subs %}
+                                    <li>
+                                        <a href="{{ url('article:category_list', args=(sub.id, 1)) }}">{{ sub.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <span></span>
+                        </li>
+                    {% endfor %}
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a
-                                    :href="'/photos/' + category.id + '/1'">[[ category.name
-                                ]]</a>
-                            </li>
+                            {% for category in photo_category %}
+                                <li>
+                                    <a href="{{ url('photo:photo_category', args=(category.id, 1)) }}">{{ category.name }}</a>
+                                </li>
+                            {% endfor %}
                         </ul>
                         <span></span></li>
                     <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>
                     <li><a href={{ url('links:list') }}>友情链接</a></li>
                     <li><a href={{ url('user:about') }}>关于我</a></li>
-                     <li><a href="/comment" target="_blank">留言</a></li>
+                    <li><a href="/comment" target="_blank">留言</a></li>
                 </ul>
             </nav>
             <div class="searchico"></div>

@@ -30,7 +30,8 @@
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
                     {% for cat in cat_list %}
-                        <li class="menu"><a href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
+                        <li class="menu"><a
+                                href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
                             <ul class="sub">
                                 {% for sub in cat.subs %}
                                     <li>
@@ -43,7 +44,11 @@
                     {% endfor %}
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
-                            <li v-for="category in photo_categories"><a :href="'/photos/' + category.id + '/1'">[[ category.name ]]</a></li>
+                            {% for category in photo_category %}
+                                <li>
+                                    <a href="{{ url('photo:photo_category', args=(category.id, 1)) }}">{{ category.name }}</a>
+                                </li>
+                            {% endfor %}
                         </ul>
                         <span></span></li>
                     <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>
@@ -76,7 +81,8 @@
                 <div class="banner">
                     <div id="banner" class="fader">
                         {% for carousel in carousel_articles %}
-                            <li class="slide"><a href="{{ carousel.url }}" target="_blank" title="{{ carousel.title }}"><img src="{{ carousel.image_url }}"></a></li>
+                            <li class="slide"><a href="{{ carousel.url }}" target="_blank" title="{{ carousel.title }}"><img
+                                    src="{{ carousel.image_url }}"></a></li>
                         {% endfor %}
                         <div class="fader_controls">
                             <div class="page prev" data-target="prev"></div>
@@ -93,7 +99,8 @@
                 <ul>
                     {% for article in static_articles %}
                         <li><a href="{{ url('article:article_detail', args=(article.id,)) }}"
-                               title="{{ article.title }}"><img src="{{ article.index_image }}" alt="{{ article.title }}"><span>{{ article.title }}</span></a>
+                               title="{{ article.title }}"><img src="{{ article.index_image }}"
+                                                                alt="{{ article.title }}"><span>{{ article.title }}</span></a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -104,7 +111,8 @@
                 <h2 class="htitle"><span class="hnav"></span>精彩专题</h2>
                 <ul>
                     {% for article in like_articles %}
-                        <li><i class="ztpic"><a href="{{ url('article:article_detail', args=(article.id,)) }}" target="_blank"><img src="{{ article.index_image }}"></a></i>
+                        <li><i class="ztpic"><a href="{{ url('article:article_detail', args=(article.id,)) }}"
+                                                target="_blank"><img src="{{ article.index_image }}"></a></i>
                             <b>{{ article.title }}</b><span>{{ article.describe }}</span><a
                                     href="{{ url('article:article_detail', args=(article.id,)) }}" target="_blank"
                                     class="readmore">文章阅读</a></li>
@@ -128,7 +136,8 @@
                             <p class="bloginfo"><i class="avatar"><img
                                     src="{{ article.article.author.avatar_url }}"></i><span>{{ article.article.author.webname }}</span><span>{{ article.article.create_time | time_filter }}</span>
                                 {% for label in article.labels %}
-                                    <span>【<a href="{{ url('article:label_articles', args=(label.id, 1)) }}">{{ label.name }}</a>】</span>
+                                    <span>【<a
+                                            href="{{ url('article:label_articles', args=(label.id, 1)) }}">{{ label.name }}</a>】</span>
                                 {% endfor %}
                             </p>
                             <a href="{{ url('article:article_detail', args=(article.article.id,)) }}" class="viewmore">阅读更多</a>
@@ -205,19 +214,19 @@
             </div>
         </div>
     </article>
-{#    <footer>#}
-{#        <div class="box">#}
-{#            <div class="endnav">#}
-{#                <p><b>关于本站：</b></p>#}
-{#                <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>#}
-{#                <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">备案中...</a></p>#}
-{#            </div>#}
-{#        </div>#}
-{#        <a href="#">#}
-{#            <div class="top"></div>#}
-{#        </a>#}
-{#    </footer>#}
-<script type="text/javascript" src="{{ static('html_js/footer.js') }}"></script>
+    {#    <footer>#}
+    {#        <div class="box">#}
+    {#            <div class="endnav">#}
+    {#                <p><b>关于本站：</b></p>#}
+    {#                <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>#}
+    {#                <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">备案中...</a></p>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <a href="#">#}
+    {#            <div class="top"></div>#}
+    {#        </a>#}
+    {#    </footer>#}
+    <script type="text/javascript" src="{{ static('html_js/footer.js') }}"></script>
 </div>
 <script type="text/javascript" src="{{ static('js/index.js') }}"></script>
 </body>

@@ -17,9 +17,7 @@ var vm = new Vue({
         this.get_top();
         this.get_recommend();
         // this.get_article_count();
-        this.get_cat();
         this.get_labels();
-        this.get_photo_categories();
 
     },
     methods: {
@@ -75,18 +73,6 @@ var vm = new Vue({
                 })
         },
 
-        get_cat() {
-            var url = '/category/';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response => {
-                    this.cat_list = response.data.cat_list;
-                })
-                .catch(error => {
-                    console.log(error.response)
-                })
-        },
 
         get_labels() {
             var url = '/labels/';
@@ -101,18 +87,6 @@ var vm = new Vue({
                 })
         },
 
-        get_photo_categories() {
-            var url = '/photo/categories/';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response => {
-                    this.photo_categories = response.data.photo_categories;
-                })
-                .catch(error => {
-                    console.log(error.response)
-                })
-        },
 
     }
 });

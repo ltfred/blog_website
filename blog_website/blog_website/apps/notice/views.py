@@ -2,9 +2,12 @@ from django import http
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
+
+from blog_website.utils.common import get_cat_lst, get_photo_category
 from blog_website.utils.responseCode import RETCODE
 from notice.models import Notice
 import logging
+
 logger = logging.getLogger('blog')
 
 
@@ -53,7 +56,9 @@ class NoticeDetailView(View):
             'notice': notice,
             'next_notice': next_notice,
             'pre_notice': pre_notice,
-            'notices': notices
+            'notices': notices,
+            'cat_list': get_cat_lst(),
+            'photo_category': get_photo_category()
         }
 
         return render(request, 'noticeDetail.html', context=context)
@@ -61,6 +66,7 @@ class NoticeDetailView(View):
 
 class NoticeLikeView(View):
     """公告点赞"""
+
     def get(self, request, notice_id):
 
         try:
@@ -77,6 +83,7 @@ class NoticeLikeView(View):
 
 class AllNoticeView(View):
     """所有公告"""
+
     def get(self, request):
         try:
             notices = Notice.objects.all()
@@ -84,5 +91,9 @@ class AllNoticeView(View):
             logger.error(e)
             # return http.HttpResponse('服务器出错了')
             raise Http404
-        context = {'notices': notices}
+        context = {
+            'notices': notices,
+            'cat_list': get_cat_lst(),
+            'photo_category': get_photo_category()
+        }
         return render(request, 'noticeList.html', context=context)

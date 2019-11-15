@@ -6,7 +6,7 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
-from blog_website.utils.common import get_ip, paginator_function, str2datetime
+from blog_website.utils.common import get_ip, paginator_function, str2datetime, get_cat_lst, get_photo_category
 from blog_website.utils.responseCode import RETCODE
 import logging
 
@@ -33,6 +33,10 @@ class ArticleDetailView(View):
         article.read_count += 1
         article.save()
         context['article'] = article
+        # 分类信息
+        context['cat_list'] = get_cat_lst()
+        # 相册分类
+        context['photo_category'] = get_photo_category()
 
         return render(request, 'info.html', context=context)
 
@@ -116,8 +120,13 @@ class AllArticleView(View):
         except Exception as e:
             logger.error('AllArticleView:get:' + str(e))
             raise Http404
-        context['page_articles'], context['total_page'] = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
+        context['page_articles'], context['total_page'] = paginator_function(articles, page_num,
+                                                                             constants.ARTICLE_LIST_LIMIT)
         context['page_num'] = page_num
+        # 分类信息
+        context['cat_list'] = get_cat_lst()
+        # 相册分类
+        context['photo_category'] = get_photo_category()
         return render(request, 'time.html', context=context)
 
 
@@ -150,7 +159,9 @@ class CategoryAllArticleView(View):
             'category': category,
             'article_count': category_article_count,
             'total_page': total_page,
-            'page_num': page_num
+            'page_num': page_num,
+            'cat_list': get_cat_lst(),
+            'photo_category': get_photo_category()
         }
 
         context = {'data': data_dict}
@@ -220,8 +231,11 @@ class LabelArticlesView(View):
             'articles': article_labels,
             'article_count': article_count,
             'total_page': total_page,
-            'page_num': page_num
+            'page_num': page_num,
+            'cat_list': get_cat_lst(),
+            'photo_category': get_photo_category()
         }
+
         return render(request, 'labelList.html', context=context)
 
     def get_label_articles(self, label):

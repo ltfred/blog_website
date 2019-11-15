@@ -5,9 +5,11 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory
 from blog_website.utils import constants
+from blog_website.utils.common import get_photo_category, get_cat_lst
 from blog_website.utils.responseCode import RETCODE
 import logging
 from index.models import Carousel
+from photo.models import PhotoCategory
 from user.models import User
 
 logger = logging.getLogger('blog')
@@ -35,6 +37,8 @@ class IndexView(View):
         context['like_articles'] = self.get_like_articles()[0:6]
         # 个人信息
         context['profile'] = self.get_profile()
+        # 相册分类
+        context['photo_category'] = get_photo_category()
 
         return render(request, 'index.html', context=context)
 
@@ -88,9 +92,10 @@ class IndexView(View):
             })
         return article_labels
 
-class CategoryView(IndexView):
+
+class CategoryView(View):
     """分类"""
 
     def get(self, request):
-        cat_list = IndexView.get_cat_lst(self)
+        cat_list = get_cat_lst()
         return http.JsonResponse({'code': RETCODE.OK, 'cat_list': cat_list})

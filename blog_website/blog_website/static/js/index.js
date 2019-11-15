@@ -10,7 +10,6 @@ var vm = new Vue({
         article_count: '',
         pv: '',
         days: '',
-        photo_categories: [],
         labels: [], // 标签
 
     },
@@ -20,7 +19,6 @@ var vm = new Vue({
         this.get_top();
         this.get_recommend();
         this.get_article_count();
-        this.get_photo_categories();
         this.get_labels();
 
 
@@ -82,18 +80,6 @@ var vm = new Vue({
                 })
         },
 
-        get_photo_categories() {
-            var url = '/photo/categories/';
-            axios.get(url, {
-                responseType: 'json',
-            })
-                .then(response => {
-                    this.photo_categories = response.data.photo_categories;
-                })
-                .catch(error => {
-                    console.log(error.response)
-                })
-        },
 
         get_labels() {
             var url = '/labels/';

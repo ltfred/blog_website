@@ -164,9 +164,7 @@ class CategoryAllArticleView(View):
             'photo_category': get_photo_category()
         }
 
-        context = {'data': data_dict}
-
-        return render(request, 'list.html', context=context)
+        return render(request, 'list.html', context=data_dict)
 
     def get_articles(self, category):
         # 判断是否为一级分类

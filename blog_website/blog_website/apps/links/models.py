@@ -6,8 +6,8 @@ from blog_website.utils.models import BaseModel
 
 class Link(BaseModel):
     """链接模型类"""
-    name = models.CharField(max_length=20, verbose_name='名字')
-    url = models.CharField(max_length=100, verbose_name='链接', help_text='必须以http/https开头')
+    name = models.CharField(max_length=20, verbose_name='名字', help_text='不超过20字')
+    url = models.CharField(max_length=1000, verbose_name='链接', help_text='必须以http/https开头')
     is_recommend = models.BooleanField(default=False, verbose_name='是否推荐')
 
     class Meta:

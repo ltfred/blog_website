@@ -4,7 +4,6 @@ import urllib
 from PIL import Image
 from django.core.paginator import Paginator, EmptyPage
 from django.http import Http404
-
 from article.models import ArticleCategory
 from photo.models import PhotoCategory
 

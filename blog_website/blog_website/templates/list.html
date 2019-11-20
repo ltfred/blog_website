@@ -24,11 +24,11 @@
     <header id="header">
         <div class="navbox">
             <h2 id="mnavh"><span class="navicon"></span></h2>
-            <div class="logo"><a href={{ url('index:index_list') }}>Fred的个人网站</a></div>
+            <div class="logo"><a href={{ url('index:index_list') }}><img src="{{ static('images/logo.png') }}" alt=""></a></div>
             <nav>
                 <ul id="starlist">
                     <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    {% for cat in data.cat_list %}
+                    {% for cat in cat_list %}
                         <li class="menu"><a
                                 href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
                             <ul class="sub">
@@ -43,7 +43,7 @@
                     {% endfor %}
                     <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
                         <ul class="sub">
-                            {% for category in data.photo_category %}
+                            {% for category in photo_category %}
                                 <li>
                                     <a href="{{ url('photo:photo_category', args=(category.id, 1)) }}">{{ category.name }}</a>
                                 </li>
@@ -75,15 +75,15 @@
     <article>
         <!--lbox begin-->
         <div class="lbox">
-            <div class="whitebg lanmu"><img src="{{ data.category.image_url }}">
-                <h1>{{ data.category.name }}</h1>
-                <p>{{ data.category.describe }}</p>
+            <div class="whitebg lanmu"><img src="{{ category.image_url }}">
+                <h1>{{ category.name }}</h1>
+                <p>{{ category.describe }}</p>
             </div>
             <div class="whitebg bloglist">
                 <h2 class="htitle"><span class="hnav">
-      </span>{{ data.category }}</h2>
+      </span>{{ category.name }}</h2>
                 <ul>
-                    {% for article in data.articles %}
+                    {% for article in articles %}
                         <li>
                             <h3 class="blogtitle"><a
                                     href="{{ url('article:article_detail', args=(article.article.id,)) }}"
@@ -107,7 +107,7 @@
 
                 <div class="pagelist">
                     <a href="javascript:;" onclick="pretpage()">上一页</a>
-                    <a title="Total record">&nbsp;<b>共{{ data.article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
+                    <a title="Total record">&nbsp;<b>共{{ article_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
                     <a href="javascript:;" onclick="nextpage()">下一页</a>&nbsp;
                 </div>
             </div>
@@ -165,22 +165,22 @@
 <script type="text/javascript" src="{{ static('js/list2_1.js') }}"></script>
 <script>
     function nextpage() {
-        var curpage = {{ data.page_num }} +1;
-        var total_page = {{ data.total_page }};
+        var curpage = {{ page_num }} +1;
+        var total_page = {{ total_page }};
         if (curpage > total_page) {
             alert('已经是最后一页了')
         } else {
-            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+            location.href = '/list/' + {{ category_id }} +'/' + curpage + '/';
         }
 
     }
     function pretpage() {
-        var curpage = {{ data.page_num }} - 1;
-        var total_page = {{ data.total_page }};
+        var curpage = {{ page_num }} - 1;
+        var total_page = {{ total_page }};
         if (curpage == 0) {
             alert('前面没有了')
         } else {
-            location.href = '/list/' + {{ data.category_id }} +'/' + curpage + '/';
+            location.href = '/list/' + {{ category_id }} +'/' + curpage + '/';
         }
 
     }

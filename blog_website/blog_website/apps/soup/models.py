@@ -5,7 +5,7 @@ from django.db import models
 
 class Soup(models.Model):
     """鸡汤"""
-    content = models.CharField(max_length=50, verbose_name='内容')
+    content = models.CharField(max_length=50, verbose_name='内容', help_text='不超过50字')
 
     class Meta:
         db_table = 'soup'

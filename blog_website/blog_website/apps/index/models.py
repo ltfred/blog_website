@@ -6,8 +6,8 @@ from blog_website.utils.models import BaseModel
 
 class Carousel(BaseModel):
     title = models.CharField(max_length=200, verbose_name='标题', default='')
-    image_url = models.CharField(max_length=200, verbose_name='图片地址')
-    url = models.CharField(max_length=200, verbose_name='指向地址')
+    image_url = models.CharField(max_length=1000, verbose_name='图片地址')
+    url = models.CharField(max_length=1000, verbose_name='指向地址')
     is_active = models.BooleanField(default=True, verbose_name='是否激活')
 
     class Meta:

@@ -82,5 +82,5 @@ class PhotoDetailView(View):
         user = User.objects.get(is_staff=True)
 
         return render(request, 'photoDetail.html',
-                      context={'photo': photo, 'size': size, 'user': user, 'cat_list': get_cat_lst(),
+                      context={'photo': photo, 'size': size, 'webname': user.webname, 'avatar': user.avatar_url, 'cat_list': get_cat_lst(),
                                'photo_category': get_photo_category()})

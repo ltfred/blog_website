@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
-    'myadmin',
 
 ]
 

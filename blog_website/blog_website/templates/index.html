@@ -100,8 +100,7 @@
                 <ul>
                     {% for article in static_articles %}
                         <li><a href="{{ url('article:article_detail', args=(article.id,)) }}"
-                               title="{{ article.title }}"><img src="{{ article.index_image }}"
-                                                                alt="{{ article.title }}"><span>{{ article.title }}</span></a>
+                               title="{{ article.title }}"><img src="{{ article.index_image }}" alt=""></a>
                         </li>
                     {% endfor %}
                 </ul>

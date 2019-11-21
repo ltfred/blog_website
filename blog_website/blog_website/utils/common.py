@@ -4,7 +4,7 @@ import urllib
 from PIL import Image
 from django.core.paginator import Paginator, EmptyPage
 from django.http import Http404
-from article.models import ArticleCategory
+from article.models import ArticleCategory, Article
 from photo.models import PhotoCategory
 
 
@@ -66,3 +66,8 @@ def get_cat_lst():
             'subs': subs
         })
     return cat_list
+
+
+def get_article_count():
+    count = Article.objects.count()
+    return count

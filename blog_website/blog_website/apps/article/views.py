@@ -6,7 +6,8 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
-from blog_website.utils.common import get_ip, paginator_function, str2datetime, get_cat_lst, get_photo_category
+from blog_website.utils.common import get_ip, paginator_function, str2datetime, get_cat_lst, get_photo_category, \
+    get_article_count
 from blog_website.utils.responseCode import RETCODE
 import logging
 
@@ -101,7 +102,7 @@ class ArticleCountView(View):
         days = (now_time - begin_time).days
 
         try:
-            count = Article.objects.count()
+            count = get_article_count()
         except Exception as e:
             logger.error('ArticleCountView:get:' + str(e))
             # return http.HttpResponse('数据库错误')

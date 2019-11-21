@@ -7,7 +7,7 @@ from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
 from blog_website.utils.common import get_ip, paginator_function, str2datetime, get_cat_lst, get_photo_category, \
-    get_article_count
+    get_article_count, get_recommend, get_top, get_labels, get_site_info
 from blog_website.utils.responseCode import RETCODE
 import logging
 
@@ -61,14 +61,7 @@ class ArticleTopView(View):
     """点击排行"""
 
     def get(self, request):
-
-        try:
-            articles = Article.objects.order_by('-read_count').all().only('id', 'title')[0:7]
-        except Exception as e:
-            logger.error('ArticleTopView:get:' + str(e))
-            raise Http404
-        top_list = [{'title': article.title, 'id': article.id} for article in articles]
-
+        top_list = get_top()
         return http.JsonResponse({'code': RETCODE.OK, 'top_list': top_list})
 
 
@@ -76,16 +69,7 @@ class RecommendView(View):
     """站长推荐"""
 
     def get(self, request):
-
-        try:
-            articles = Article.objects.filter(is_top=True).only('id', 'title', 'index_image')[0:6]
-        except Exception as e:
-            logger.error('RecommendView:get:' + str(e))
-            # return http.HttpResponse('数据库错误')
-            raise Http404
-        recommend_list = [{'title': article.title, 'id': article.id, 'index_image': article.index_image} for article in
-                          articles]
-
+        recommend_list = get_recommend()
         return http.JsonResponse({'code': RETCODE.OK, 'recommend_list': recommend_list})
 
 
@@ -93,21 +77,8 @@ class ArticleCountView(View):
     """获取文章数量和pv"""
 
     def get(self, request):
-
-        conn = get_redis_connection('default')
-        pv = conn.get('24_hours_pv')
-        now_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-        now_time = str2datetime(now_time)
-        begin_time = str2datetime('2019-08-29')
-        days = (now_time - begin_time).days
-
-        try:
-            count = get_article_count()
-        except Exception as e:
-            logger.error('ArticleCountView:get:' + str(e))
-            # return http.HttpResponse('数据库错误')
-            raise Http404
-        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count, 'pv': int(pv), 'days': days})
+        count, pv, days = get_site_info()
+        return http.JsonResponse({'code': RETCODE.OK, 'article_count': count, 'pv': pv, 'days': days})
 
 
 class AllArticleView(View):
@@ -183,22 +154,7 @@ class LabelView(View):
     """获取标签"""
 
     def get(self, request):
-
-        try:
-            # 获取所有标签
-            labels_queryset = Label.objects.all()
-        except Exception as e:
-            logger.error('LabelView:get:' + str(e))
-            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取标签失败'})
-
-        labels = []
-        for label in labels_queryset:
-            labels.append({
-                'id': label.id,
-                'name': label.name,
-                'article_count': label.article_set.all().count()  # 每个标签下的文章的数量
-            })
-
+        labels = get_labels()
         return http.JsonResponse({'code': RETCODE.OK, 'labels': labels})
 
 

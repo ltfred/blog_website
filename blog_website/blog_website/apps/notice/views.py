@@ -2,8 +2,7 @@ from django import http
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
-
-from blog_website.utils.common import get_cat_lst, get_photo_category
+from blog_website.utils.common import get_cat_lst, get_photo_category, get_notice
 from blog_website.utils.responseCode import RETCODE
 from notice.models import Notice
 import logging
@@ -15,19 +14,7 @@ class NoticeView(View):
     """获取前8条公告"""
 
     def get(self, request):
-
-        try:
-            notices = Notice.objects.all().only('id', 'title').order_by('-create_time')[0:8]
-        except Exception as e:
-            logger.error(e)
-            # return http.HttpResponse('数据库查询错误')
-            raise Http404
-        notice_list = []
-        for notice in notices:
-            if notice.is_up is True:
-                notice_list.insert(0, {'title': notice.title, 'id': notice.id})
-            else:
-                notice_list.append({'title': notice.title, 'id': notice.id})
+        notice_list = get_notice()
         return http.JsonResponse({"code": RETCODE.OK, "notice_list": notice_list})
 
 

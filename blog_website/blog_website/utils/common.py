@@ -1,10 +1,14 @@
 import datetime
 import ssl
+import time
 import urllib
 from PIL import Image
 from django.core.paginator import Paginator, EmptyPage
 from django.http import Http404
-from article.models import ArticleCategory, Article
+from django_redis import get_redis_connection
+
+from article.models import ArticleCategory, Article, Label
+from notice.models import Notice
 from photo.models import PhotoCategory
 
 
@@ -71,3 +75,67 @@ def get_cat_lst():
 def get_article_count():
     count = Article.objects.count()
     return count
+
+
+def get_notice():
+    try:
+        notices = Notice.objects.all().only('id', 'title').order_by('-create_time')[0:8]
+    except:
+        raise Http404
+    notice_list = []
+    for notice in notices:
+        if notice.is_up is True:
+            notice_list.insert(0, {'title': notice.title, 'id': notice.id})
+        else:
+            notice_list.append({'title': notice.title, 'id': notice.id})
+    return notice_list
+
+
+def get_recommend():
+    try:
+        articles = Article.objects.filter(is_top=True).only('id', 'title', 'index_image')[0:6]
+    except Exception as e:
+        raise Http404
+    recommend_list = [{'title': article.title, 'id': article.id, 'index_image': article.index_image} for article in
+                      articles]
+    return recommend_list
+
+
+def get_top():
+    try:
+        articles = Article.objects.order_by('-read_count').all().only('id', 'title')[0:7]
+    except Exception as e:
+        raise Http404
+    top_list = [{'title': article.title, 'id': article.id} for article in articles]
+    return top_list
+
+
+def get_labels():
+    try:
+        # 获取所有标签
+        labels_queryset = Label.objects.all()
+    except Exception as e:
+       raise Http404
+    labels = []
+    for label in labels_queryset:
+        labels.append({
+            'id': label.id,
+            'name': label.name,
+            'article_count': label.article_set.all().count()  # 每个标签下的文章的数量
+        })
+    return labels
+
+
+def get_site_info():
+    conn = get_redis_connection('default')
+    pv = conn.get('24_hours_pv')
+    now_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    now_time = str2datetime(now_time)
+    begin_time = str2datetime('2019-08-29')
+    days = (now_time - begin_time).days
+
+    try:
+        count = get_article_count()
+    except Exception as e:
+        raise Http404
+    return count, int(pv), days

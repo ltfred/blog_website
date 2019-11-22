@@ -1,78 +1,7 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Fred的个人网站-只要还有明天，今天永远都是起跑线</title>
-    <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
-    <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
-    <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ static('css/base.css') }}" rel="stylesheet">
-    <link href="{{ static('css/m.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ static('js/vue-2.5.16.js') }}"></script>
-    <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
-    <script src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
-    <script src="{{ static('js/comm.js') }}"></script>
-    <!--[if lt IE 9]>
-<script src="js/modernizr.js"></script>
-<![endif]-->
-</head>
-<body>
-<!--top begin-->
-<div id="app">
-    <header id="header">
-        <div class="navbox">
-            <h2 id="mnavh"><span class="navicon"></span></h2>
-            <div class="logo"><a href={{ url('index:index_list') }}><img src="{{ static('images/logo.png') }}" alt=""></a></div>
-            <nav>
-                <ul id="starlist">
-                    <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    {% for cat in cat_list %}
-                        <li class="menu"><a
-                                href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
-                            <ul class="sub">
-                                {% for sub in cat.subs %}
-                                    <li>
-                                        <a href="{{ url('article:category_list', args=(sub.id, 1)) }}">{{ sub.name }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                            <span></span>
-                        </li>
-                    {% endfor %}
-                    <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
-                        <ul class="sub">
-                            {% for category in photo_category %}
-                                <li>
-                                    <a href="{{ url('photo:photo_category', args=(category.id, 1)) }}">{{ category.name }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        <span></span></li>
-                    <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>
-                    <li><a href={{ url('links:list') }}>友情链接</a></li>
-                    <li><a href={{ url('user:about') }}>关于我</a></li>
-                    <li><a href="/comment" target="_blank">留言</a></li>
-                </ul>
-            </nav>
-            <div class="searchico"></div>
-        </div>
-    </header>
-    <div class="searchbox">
-        <div class="search">
-            <form action="/search/" method="get" name="searchform" id="searchform">
-                <input name="q" id="keyboard" class="input_text" value="请输入关键字词"
-                       style="color: rgb(153, 153, 153);"
-                       onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
-                       onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-                <input class="input_submit" value="搜索" type="submit">
-            </form>
-        </div>
-        <div class="searchclose"></div>
-    </div>
-    <!--top end-->
-    <article>
-        <div class="whitebg">
+{% extends 'base.html' %}
+
+{% block article %}
+     <div class="whitebg">
             <h2 class="htitle"><span class="hnav">{{ soup }}</span>站长推荐</h2>
             <ul class="site_tj">
                 {% for link in recommend_links %}
@@ -89,20 +18,7 @@
                 {% endfor %}
             </ul>
         </div>
-    </article>
-{#    <footer>#}
-{#        <div class="box">#}
-{#            <div class="endnav">#}
-{#                <p><b>关于本站：</b></p>#}
-{#                <p>基于Django构建｜托管于阿里云｜阿里云OSS </p>#}
-{#                <p>Copyright @ Fred的个人网站 保留所有权利｜备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank">备案中...</a></p>#}
-{#            </div>#}
-{#        </div>#}
-{#        <a href="#">#}
-{#            <div class="top"></div>#}
-{#        </a>#}
-{#    </footer>#}
-<script type="text/javascript" src="{{ static('html_js/footer.js') }}"></script>
-</div>
-</body>
-</html>
+{% endblock article %}
+
+{% block tabel %}
+{% endblock tabel %}

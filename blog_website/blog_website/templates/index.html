@@ -1,82 +1,7 @@
-<!doctype html>
+{% extends 'base.html' %}
 
-
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Fred的个人网站-只要还有明天，今天永远都是起跑线</title>
-    <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
-    <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
-    <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ static('css/base.css') }}" rel="stylesheet">
-    <link href="{{ static('css/m.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ static('js/vue-2.5.16.js') }}"></script>
-    <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
-    <script src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
-    <script src="{{ static('js/comm.js') }}"></script>
-    <!--[if lt IE 9]>
-<script src="js/modernizr.js"></script>
-<![endif]-->
-</head>
-<body>
-<div id="app">
-    <!--top begin-->
-    <header id="header">
-        <div class="navbox">
-            <h2 id="mnavh"><span class="navicon"></span></h2>
-{#            <div class="logo"><a href={{ url('index:index_list') }}>Fred的个人网站</a></div>#}
-            <div class="logo"><a href={{ url('index:index_list') }}><img src="{{ static('images/logo.png') }}" alt=""></a></div>
-            <nav>
-                <ul id="starlist">
-                    <li><a href={{ url('index:index_list') }}>首页</a></li>
-                    {% for cat in cat_list %}
-                        <li class="menu"><a
-                                href="{{ url('article:category_list', args=(cat.id, 1)) }}">{{ cat.name }}</a>
-                            <ul class="sub">
-                                {% for sub in cat.subs %}
-                                    <li>
-                                        <a href="{{ url('article:category_list', args=(sub.id, 1)) }}">{{ sub.name }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                            <span></span>
-                        </li>
-                    {% endfor %}
-                    <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
-                        <ul class="sub">
-                            {% for category in photo_category %}
-                                <li>
-                                    <a href="{{ url('photo:photo_category', args=(category.id, 1)) }}">{{ category.name }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        <span></span></li>
-                    <li><a href='{{ url('article:article', args=(1,)) }}'>文章归档</a></li>
-                    <li><a href={{ url('links:list') }}>友情链接</a></li>
-                    <li><a href={{ url('user:about') }}>关于我</a></li>
-                    <li><a href="/comment" target="_blank">留言</a></li>
-                </ul>
-            </nav>
-            <div class="searchico"></div>
-        </div>
-    </header>
-    <div class="searchbox">
-        <div class="search">
-            <form action="/search/" method="get" name="searchform" id="searchform">
-                <input name="q" id="keyboard" class="input_text" value="请输入关键字词"
-                       style="color: rgb(153, 153, 153);"
-                       onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
-                       onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
-                <input class="input_submit" value="搜索" type="submit">
-            </form>
-        </div>
-        <div class="searchclose"></div>
-    </div>
-    <!--top end-->
-    <article>
-        <!--lbox begin-->
-        <div class="lbox">
+{% block article %}
+ <div class="lbox">
             <!--banbox begin-->
             <div class="banbox">
                 <div class="banner">
@@ -94,8 +19,6 @@
                     </div>
                 </div>
             </div>
-            <!--banbox end-->
-            <!--headline begin-->
             <div class="headline">
                 <ul>
                     {% for article in static_articles %}
@@ -147,8 +70,9 @@
             </div>
             <!--bloglist end-->
         </div>
-        <div class="rbox">
-            <div class="card">
+{% endblock article %}
+{% block card %}
+                <div class="card">
                 <h2>我的名片</h2>
                 <p>网名：{{ profile.webname }}</p>
                 <p>职业：{{ profile.profession }}</p>
@@ -165,7 +89,9 @@
                                        title="Github"></a></li>
                 </ul>
             </div>
-            <div class="whitebg notice">
+{% endblock card %}
+{% block notice %}
+                <div class="whitebg notice">
                 <h2 class="htitle">网站公告</h2>
                 <ul>
                     {% for notice in notice_list %}
@@ -173,46 +99,20 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="whitebg paihang">
-                <h2 class="htitle">点击排行</h2>
-                <ul>
-                    {% for article in top_list %}
-                         <li><i></i><a href="/article/detail/{{ article.id }}">{{ article.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="whitebg tuijian">
-                <h2 class="htitle">站长推荐</h2>
-                <ul>
-                    {% for article in recommend_list %}
-                        <li><a href="/article/detail/{{ article.id }}"><i><img src="{{ article.index_image }}"></i><p>{{ article.title }}</p></a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="whitebg cloud">
-                <h2 class="htitle">标签云</h2>
-                <ul>
-                    {% for label in labels %}
-                        <a href="/label/articles/{{ label.id }}/1" target="_blank"> {{ label.name }}({{ label.article_count }})</a>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="ad whitebg imgscale">
-                <ul>
-                    <a href="/"><img src="{{ static('images/01.jpg') }}"></a>
-                </ul>
-            </div>
-            <div class="whitebg tongji">
-                <h2 class="htitle">站点信息</h2>
-                <ul>
-                    <li><b>文章统计</b>：{{ count }}</li>
-                    <li><b>24小时PV</b>：{{ pv }}</li>
-                    <li><b>运行时间</b>：{{ days }}天</li>
-                </ul>
-            </div>
-        </div>
-    </article>
-    <script type="text/javascript" src="{{ static('html_js/footer.js') }}"></script>
+{% endblock notice %}
+
+{% block siteinfo %}
+<div class="ad whitebg imgscale">
+    <ul>
+        <a href="/"><img src="{{ static('images/01.jpg') }}"></a>
+    </ul>
 </div>
-</body>
-</html>
+<div class="whitebg tongji">
+    <h2 class="htitle">站点信息</h2>
+    <ul>
+        <li><b>文章统计</b>：{{ count }}</li>
+        <li><b>24小时PV</b>：{{ pv }}</li>
+        <li><b>运行时间</b>：{{ days }}天</li>
+    </ul>
+</div>
+{% endblock siteinfo %}

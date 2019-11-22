@@ -38,6 +38,9 @@ class ArticleDetailView(View):
         context['cat_list'] = get_cat_lst()
         # 相册分类
         context['photo_category'] = get_photo_category()
+        context['recommend_list'] = get_recommend()
+        context['top_list'] = get_top()
+        context['labels'] = get_labels()
 
         return render(request, 'info.html', context=context)
 
@@ -93,7 +96,7 @@ class AllArticleView(View):
             logger.error('AllArticleView:get:' + str(e))
             raise Http404
         context['page_articles'], context['total_page'] = paginator_function(articles, page_num,
-                                                                             constants.ARTICLE_LIST_LIMIT)
+                                                                             constants.HISTORY_ARTICLE_LIST_LIMIT)
         context['page_num'] = page_num
         # 分类信息
         context['cat_list'] = get_cat_lst()
@@ -133,7 +136,10 @@ class CategoryAllArticleView(View):
             'total_page': total_page,
             'page_num': page_num,
             'cat_list': get_cat_lst(),
-            'photo_category': get_photo_category()
+            'photo_category': get_photo_category(),
+            'recommend_list': get_recommend(),
+            'top_list': get_top(),
+            'labels': get_labels(),
         }
 
         return render(request, 'list.html', context=data_dict)
@@ -188,7 +194,10 @@ class LabelArticlesView(View):
             'total_page': total_page,
             'page_num': page_num,
             'cat_list': get_cat_lst(),
-            'photo_category': get_photo_category()
+            'photo_category': get_photo_category(),
+            'recommend_list': get_recommend(),
+            'top_list': get_top(),
+            'labels': get_labels(),
         }
 
         return render(request, 'labelList.html', context=context)

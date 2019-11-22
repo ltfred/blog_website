@@ -2,7 +2,7 @@ from django import http
 from django.http import Http404
 from django.shortcuts import render
 from django.views import View
-from blog_website.utils.common import get_cat_lst, get_photo_category, get_notice
+from blog_website.utils.common import get_cat_lst, get_photo_category, get_notice, get_recommend, get_top, get_labels
 from blog_website.utils.responseCode import RETCODE
 from notice.models import Notice
 import logging
@@ -45,7 +45,12 @@ class NoticeDetailView(View):
             'pre_notice': pre_notice,
             'notices': notices,
             'cat_list': get_cat_lst(),
-            'photo_category': get_photo_category()
+            'photo_category': get_photo_category(),
+            'recommend_list': get_recommend(),
+            'top_list': get_top(),
+            'labels': get_labels(),
+
+
         }
 
         return render(request, 'noticeDetail.html', context=context)
@@ -72,15 +77,17 @@ class AllNoticeView(View):
     """所有公告"""
 
     def get(self, request):
+        context = dict()
         try:
             notices = Notice.objects.all()
         except Exception as e:
             logger.error(e)
             # return http.HttpResponse('服务器出错了')
             raise Http404
-        context = {
-            'notices': notices,
-            'cat_list': get_cat_lst(),
-            'photo_category': get_photo_category()
-        }
+        context['notices'] = notices
+        context['cat_list'] = get_cat_lst()
+        context['photo_category'] = get_photo_category()
+        context['recommend_list'] = get_recommend()
+        context['top_list'] = get_top()
+        context['labels'] = get_labels()
         return render(request, 'noticeList.html', context=context)

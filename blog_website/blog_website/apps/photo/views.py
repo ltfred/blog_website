@@ -3,7 +3,8 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from blog_website.utils import constants
-from blog_website.utils.common import get_image_size, paginator_function, get_cat_lst, get_photo_category
+from blog_website.utils.common import get_image_size, paginator_function, get_cat_lst, get_photo_category, get_labels, \
+    get_top, get_recommend
 from blog_website.utils.responseCode import RETCODE
 from photo.models import PhotoCategory, Photo
 import logging
@@ -73,14 +74,23 @@ class CategoryPhotoView(View):
 class PhotoDetailView(View):
 
     def get(self, request):
-        id = request.GET.get('photo_id')
-        photo = Photo.objects.get(id=id)
+        context = {}
+        photo_id = request.GET.get('photo_id')
+        photo = Photo.objects.get(id=photo_id)
         try:
             size = get_image_size(photo.url)
         except:
             size = ''
         user = User.objects.get(is_staff=True)
 
-        return render(request, 'photoDetail.html',
-                      context={'photo': photo, 'size': size, 'webname': user.webname, 'avatar': user.avatar_url, 'cat_list': get_cat_lst(),
-                               'photo_category': get_photo_category()})
+        context['recommend_list'] = get_recommend()
+        context['top_list'] = get_top()
+        context['labels'] = get_labels()
+        context['photo'] = photo
+        context['size'] = size
+        context['webname'] = user.webname
+        context['avatar'] = user.avatar_url
+        context['cat_list'] = get_cat_lst()
+        context['photo_category'] = get_photo_category()
+
+        return render(request, 'photoDetail.html', context=context)

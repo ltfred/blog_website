@@ -56,7 +56,7 @@ class ArticleDetailView(View):
         return pre_article
 
     def get_connected_article(self, article):
-        articles = Article.objects.filter(category2=article.category2).only('id', 'title')[0:9]
+        articles = Article.objects.filter(category2=article.category2).exclude(id=article.id).only('id', 'title')[0:9]
         return articles
 
 

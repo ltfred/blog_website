@@ -30,7 +30,7 @@ class NoticeDetailView(View):
             next_notice = Notice.objects.filter(id__gt=notice.id).first()
             pre_notice = Notice.objects.filter(id__lt=notice.id).order_by('-id').first()
             # 相关数据10条
-            notices = Notice.objects.all()[0:9]
+            notices = Notice.objects.exclude(id=notice.id)[0:9]
         except Exception as e:
             logger.error(e)
             return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})

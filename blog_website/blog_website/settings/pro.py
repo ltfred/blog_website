@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+import datetime
 import os
 import sys
 
@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_app'))
 SECRET_KEY = 'n7-t&@=+ovjlqc*3=zsrw+9-8+0^i+uauxwasgx$4_3m29v&^p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -270,7 +270,7 @@ CKEDITOR_CONFIGS = {
             # 字体风格
             ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote', 'FontSize', 'Font'],
             # 图片
-            ['Image',],
+            ['Image', ],
             # 字体颜色
             ['TextColor', 'BGColor'],
             # 链接

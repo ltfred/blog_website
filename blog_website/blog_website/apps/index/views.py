@@ -106,3 +106,12 @@ class CategoryView(View):
     def get(self, request):
         cat_list = get_cat_lst()
         return http.JsonResponse({'code': RETCODE.OK, 'cat_list': cat_list})
+
+
+class MusicView(View):
+
+    def get(self, request):
+        context = dict()
+        context['cat_list'] = get_cat_lst()
+        context['photo_category'] = get_photo_category()
+        return render(request, 'player.html', context=context)

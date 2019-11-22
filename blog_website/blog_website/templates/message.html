@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="{{ static('comment/vendor/select2/select2.min.css') }}">
 	<link rel="stylesheet" href="{{ static('comment/css/util.css') }}">
 	<link rel="stylesheet" href="{{ static('comment/css/main.css') }}">
+    <script src="{{ static('js/mouse.js') }}"></script>
 </head>
 
 <body>
@@ -18,9 +19,9 @@
              <input type ='hidden' name='csrfmiddlewaretoken' value ='{{csrf_token}}'>
 			<span class="contact100-form-title">给我留言</span>
 
-			<div class="wrap-input100 validate-input" data-validate="姓名不能为空">
-				<label class="label-input100" for="name">姓名</label>
-				<input id="name" class="input100" type="text" name="name" placeholder="请输入姓名">
+			<div class="wrap-input100 validate-input" data-validate="昵称不能为空">
+				<label class="label-input100" for="name">昵称</label>
+				<input id="name" class="input100" type="text" name="name" placeholder="请输入昵称">
 				<span class="focus-input100"></span>
 			</div>
 

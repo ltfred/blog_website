@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Fred的个人网站-只要还有明天，今天永远都是起跑线</title>
     <link rel="shortcut icon" href="{{ static('images/favicon.ico') }}">
-    <meta name="keywords" content="个人网站，个人博客，Fred的个人网站"/>
+    <meta name="keywords" content="个人网站，个人博客，个人日记，Fred的个人网站"/>
     <meta name="description" content="Fred个人网站-只要还有明天，今天永远都是起跑线"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ static('css/base.css') }}" rel="stylesheet">
@@ -15,6 +15,7 @@
     <script type="text/javascript" src="{{ static('js/axios-0.18.0.min.js') }}"></script>
     <script src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
     <script src="{{ static('js/comm.js') }}"></script>
+    <script src="{{ static('js/mouse.js') }}"></script>
     {% block link %}
     {% endblock link %}
     <!--[if lt IE 9]>
@@ -64,10 +65,10 @@
     <div class="searchbox">
         <div class="search">
             <form action="/search/" method="get" name="searchform" id="searchform">
-                <input name="q" id="keyboard" class="input_text" value="请输入关键字词"
+                <input name="q" id="keyboard" class="input_text" value="输入你想要搜索的文章"
                        style="color: rgb(153, 153, 153);"
-                       onFocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
-                       onBlur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+                       onFocus="if(value=='输入你想要搜索的文章'){this.style.color='#000';value=''}"
+                       onBlur="if(value==''){this.style.color='#999';value='输入你想要搜索的文章'}" type="text">
                 <input class="input_submit" value="搜索" type="submit">
             </form>
         </div>

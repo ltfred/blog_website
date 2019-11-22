@@ -62,7 +62,7 @@
 {% endblock article %}
 
 {% block endjs %}
-    <script>
+<script>
     function like_article() {
         var url = '/article/like/{{ article.id }}';
         axios.get(url, {

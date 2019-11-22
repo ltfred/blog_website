@@ -23,7 +23,7 @@
                 <ul>
                     {% for article in static_articles %}
                         <li><a href="{{ url('article:article_detail', args=(article.id,)) }}"
-                               title="{{ article.title }}"><img src="{{ article.index_image }}" alt=""></a>
+                               title="{{ article.title }}"><img src="{{ article.index_image }}" alt=""><span>{{ article.title }}</span></a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -72,33 +72,30 @@
         </div>
 {% endblock article %}
 {% block card %}
-                <div class="card">
-                <h2>我的名片</h2>
-                <p>网名：{{ profile.webname }}</p>
-                <p>职业：{{ profile.profession }}</p>
-                <p>现居：{{ profile.address }}</p>
-                <p>Email：{{ profile.email }}</p>
-                <ul class="linkmore">
-                    <li><a href="http://www.yangqq.com" target="_blank" class="iconfont icon-zhuye" title="网站地址"></a>
-                    </li>
-                    <li><a href="mailto:ltfred@163.com"
-                           target="_blank" class="iconfont icon-youxiang" title="我的邮箱"></a></li>
-                    <li><a href="http://wpa.qq.com/msgrd?v=3&uin=813298239&site=qq&menu=yes" target="_blank"
-                           class="iconfont icon---" title="QQ联系我"></a></li>
-                    <li id="weixin"><a href="https://github.com/ltfred" target="_blank" class="iconfont icon-weixin"
-                                       title="Github"></a></li>
-                </ul>
-            </div>
+        <div class="card">
+        <h2>我的名片</h2>
+        <p>网名：{{ profile.webname }}</p>
+        <p>职业：{{ profile.profession }}</p>
+        <p>现居：{{ profile.address }}</p>
+        <p>Email：{{ profile.email }}</p>
+        <ul class="linkmore">
+            <li><a href="http://www.yangqq.com" target="_blank" class="iconfont icon-zhuye" title="网站地址"></a>
+            </li>
+            <li><a href="mailto:ltfred@163.com" target="_blank" class="iconfont icon-youxiang" title="我的邮箱"></a></li>
+            <li><a href="http://wpa.qq.com/msgrd?v=3&uin=813298239&site=qq&menu=yes" target="_blank" class="iconfont icon---" title="QQ联系我"></a></li>
+            <li id="weixin"><a href="https://github.com/ltfred" target="_blank" class="iconfont icon-weixin" title="Github"></a></li>
+        </ul>
+    </div>
 {% endblock card %}
 {% block notice %}
-                <div class="whitebg notice">
-                <h2 class="htitle">网站公告</h2>
-                <ul>
-                    {% for notice in notice_list %}
-                        <li><a href="notice/detail/{{ notice.id }}">{{ notice.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+        <div class="whitebg notice">
+        <h2 class="htitle">网站公告</h2>
+        <ul>
+            {% for notice in notice_list %}
+                <li><a href="notice/detail/{{ notice.id }}">{{ notice.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock notice %}
 
 {% block siteinfo %}

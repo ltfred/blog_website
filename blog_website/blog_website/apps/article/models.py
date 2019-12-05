@@ -6,7 +6,7 @@ from user.models import User
 
 class ArticleCategory(BaseModel):
     """文章分类"""
-    name = models.CharField(max_length=10, verbose_name='名称', help_text='不超过10个字')
+    name = models.CharField(max_length=20, verbose_name='名称', help_text='不超过20个字')
     parent = models.ForeignKey('self', null=True, blank=True, related_name='subs',
                                on_delete=models.CASCADE, verbose_name='父类别')
     describe = models.CharField(max_length=100, default='', verbose_name='类别描述', help_text='不超过100个字')

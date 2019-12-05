@@ -20,7 +20,7 @@ class Photo(BaseModel):
     """照片"""
 
     title = models.CharField(max_length=10, verbose_name='照片标题', help_text=_('No more than 10 characters'))
-    url = models.CharField(max_length=1000, verbose_name='照片地址')
+    url = models.CharField(max_length=1000, verbose_name='照片地址', null=True)
     category = models.ForeignKey(PhotoCategory, on_delete=models.PROTECT, verbose_name='照片类别', related_name='photos')
 
     class Meta:

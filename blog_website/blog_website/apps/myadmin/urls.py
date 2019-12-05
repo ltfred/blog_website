@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
-from myadmin.views import users, statistical
+from myadmin.views import users, statistical, article
 from myadmin.views.users import AdminUserView
 
 
@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^statistical/day_active/$', statistical.AdminUserDayActiveCount.as_view()),
     url(r'^statistical/month_increment/$', statistical.AdminArticleMonthCountView.as_view()),
     url(r'^statistical/label_article/$',statistical.AdminLabelArticle.as_view()),
+    url(r'^articles/simple/$', article.AdminArticleSimpleView.as_view()),
 ]
 
 router = DefaultRouter()

@@ -315,3 +315,9 @@ JWT_AUTH = {
     # 设置生成jwt token的有效时间
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
 }
+
+# OSS
+OSS_CONF = {
+    'key': 'LTAI4FvW7yqfAUsNfTo174GQ',
+    'access_key': 'QYROlZq381D0XD4V2qUWe4PsU3r6ds'
+}

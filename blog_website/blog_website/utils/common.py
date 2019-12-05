@@ -2,12 +2,13 @@ import datetime
 import ssl
 import time
 import urllib
+import oss2
 from PIL import Image
 from django.core.paginator import Paginator, EmptyPage
 from django.http import Http404
 from django_redis import get_redis_connection
-
 from article.models import ArticleCategory, Article, Label
+from blog_website.settings.dev import OSS_CONF
 from notice.models import Notice
 from photo.models import PhotoCategory
 
@@ -139,3 +140,10 @@ def get_site_info():
     except Exception as e:
         raise Http404
     return count, int(pv), days
+
+
+def upload(filename, content):
+    auth = oss2.Auth(OSS_CONF['key'], OSS_CONF['access_key'])
+    bucket = oss2.Bucket(auth, 'oss-cn-shanghai.aliyuncs.com', 'ltfreddeblog')
+    bucket.put_object(filename, content)
+    return 'https://ltfreddeblog.oss-cn-shanghai.aliyuncs.com/' + filename

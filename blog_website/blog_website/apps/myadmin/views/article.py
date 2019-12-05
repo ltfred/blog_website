@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from article.models import Article, ArticleCategory
+from article.models import Article, ArticleCategory, Label
 from myadmin.serializers.article import ArticleSimpleSerializer
 from user.models import User
 
@@ -49,3 +49,13 @@ class AdminArticleCategory2View(APIView):
         categories2 = ArticleCategory.objects.filter(parent_id=category_id)
         subs = [{'id': category2.id, 'name': category2.name} for category2 in categories2]
         return Response({'id': category.id, 'subs': subs})
+
+
+class AdminLabelView(APIView):
+    permission_classes = [IsAdminUser]
+    """标签获取"""
+
+    def get(self, request):
+        labels = Label.objects.all()
+        lists = [{'id': label.id, 'name': label.name} for label in labels]
+        return Response({'code': 200, 'lists': lists})

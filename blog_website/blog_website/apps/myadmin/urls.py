@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^author/simple/$', article.AdminAuthorSimpleView.as_view()),
     url(r'^articles/categories/$', article.AdminArticleCategory1View.as_view()),
     url(r'^articles/categories/(?P<category_id>\d+)/$', article.AdminArticleCategory2View.as_view()),
+    url(r'^labels/simple/$', article.AdminLabelView.as_view()),
 ]
 
 router = DefaultRouter()

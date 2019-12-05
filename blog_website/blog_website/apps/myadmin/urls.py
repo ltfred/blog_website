@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^statistical/month_increment/$', statistical.AdminArticleMonthCountView.as_view()),
     url(r'^statistical/label_article/$',statistical.AdminLabelArticle.as_view()),
     url(r'^articles/simple/$', article.AdminArticleSimpleView.as_view()),
+    url(r'^author/simple/$', article.AdminAuthorSimpleView.as_view()),
 ]
 
 router = DefaultRouter()

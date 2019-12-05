@@ -9,3 +9,14 @@ class ArticleSimpleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('id', 'title', 'category1', 'category2', 'read_count', 'like_count')
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    category1_id = serializers.PrimaryKeyRelatedField(label='一级分类', read_only=True)
+    category2_id = serializers.PrimaryKeyRelatedField(label='一级分类', read_only=True)
+
+    class Meta:
+        model = Article
+        fields = ('id', 'author_id', 'author','index_image', 'title', 'category1_id', 'category2_id',
+                  'content', 'describe', 'read_count', 'like_count', 'is_top', 'category1', 'category2',
+                  'labels')

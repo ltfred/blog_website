@@ -23,3 +23,7 @@ urlpatterns = [
 router = DefaultRouter()
 router.register('users', AdminUserView, base_name='users')
 urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('articles', AdminArticleView, base_name='articles')
+urlpatterns += router.urls

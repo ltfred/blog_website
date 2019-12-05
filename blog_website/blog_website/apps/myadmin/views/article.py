@@ -2,8 +2,10 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+
 from article.models import Article, ArticleCategory, Label
-from myadmin.serializers.article import ArticleSimpleSerializer
+from myadmin.serializers.article import ArticleSimpleSerializer, ArticleSerializer
 from user.models import User
 
 
@@ -59,3 +61,11 @@ class AdminLabelView(APIView):
         labels = Label.objects.all()
         lists = [{'id': label.id, 'name': label.name} for label in labels]
         return Response({'code': 200, 'lists': lists})
+
+
+# 文章修改，添加，删除
+class AdminArticleView(ModelViewSet):
+    permission_classes = [IsAdminUser]
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    lookup_value_regex = '\d+'

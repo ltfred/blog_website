@@ -1,8 +1,9 @@
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
-from myadmin.views import users, statistical, article
+from myadmin.views import users, statistical, article, photo
 from myadmin.views.article import AdminArticleView
 from myadmin.views.link import AdminLinkView
+from myadmin.views.photo import AdminPhotoCategoryView, AdminPhotoView
 from myadmin.views.users import AdminUserView
 
 urlpatterns = [
@@ -24,6 +25,9 @@ urlpatterns = [
     url(r'^article/categories/(?P<category_id>\d+)/$', article.AdminArticleCategoryUpdateView.as_view()),
     url(r'^article/categories/$', article.AdminArticleCategory.as_view()),
     url(r'^article/category/image/$', article.AdminCategoryImageView.as_view()),
+    url(r'^photos/categories/$', photo.AdminPhotoCategory.as_view()),
+    url(r'^photos/image/$', photo.AdminPhotoImageView.as_view()),
+    url(r'^photos/simple/$', photo.AdminPhotosSimpleView.as_view()),
 ]
 
 router = DefaultRouter()
@@ -36,4 +40,12 @@ urlpatterns += router.urls
 
 router = DefaultRouter()
 router.register('link', AdminLinkView, base_name='link')
+urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('photo/categories', AdminPhotoCategoryView, base_name='photo_category')
+urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('photos', AdminPhotoView, base_name='photos')
 urlpatterns += router.urls

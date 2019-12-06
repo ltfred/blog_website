@@ -10,7 +10,6 @@ from blog_website.utils.common import get_photo_category, get_cat_lst, get_notic
 from blog_website.utils.responseCode import RETCODE
 import logging
 from index.models import Carousel
-from photo.models import PhotoCategory
 from user.models import User
 
 logger = logging.getLogger('blog')
@@ -26,21 +25,13 @@ class IndexView(View):
             conn.expire('24_hours_pv', constants.PV_EXPIRE)
         conn.incr('24_hours_pv')
         context = dict()
-        # 最新博文
         context['articles'] = self.get_new_articles()
-        # 分类信息
         context['cat_list'] = self.get_cat_lst()
-        # 静态随机图
         context['static_articles'] = self.get_static_articles()
-        # 轮播图
         context['carousel_articles'] = self.get_carousel_articles()
-        # 精彩专题数据
         context['like_articles'] = self.get_like_articles()[0:6]
-        # 个人信息
         context['profile'] = self.get_profile()
-        # 相册分类
         context['photo_category'] = get_photo_category()
-        # 公告
         context['notice_list'] = get_notice()
         context['recommend_list'] = get_recommend()
         context['top_list'] = get_top()

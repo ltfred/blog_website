@@ -1,8 +1,7 @@
-import time
 from django import http
-from django.http import Http404
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import TemplateView
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
@@ -24,19 +23,14 @@ class ArticleDetailView(View):
             article = Article.objects.get(id=article_id)
         except Exception as e:
             logger.error('ArticleDetailView:get:' + str(e))
-            raise Http404
-        # 获取上一条数据和下一条数据
+            raise
         context['next_article'] = self.get_next_article(article)
         context['pre_article'] = self.get_pre_article(article)
-        # 相关数据10条
         context['articles'] = self.get_connected_article(article)
-        # 阅读次数+1
         article.read_count += 1
         article.save()
         context['article'] = article
-        # 分类信息
         context['cat_list'] = get_cat_lst()
-        # 相册分类
         context['photo_category'] = get_photo_category()
         context['recommend_list'] = get_recommend()
         context['top_list'] = get_top()
@@ -94,7 +88,7 @@ class AllArticleView(View):
             context['all_counts'] = articles.count()
         except Exception as e:
             logger.error('AllArticleView:get:' + str(e))
-            raise Http404
+            raise
         context['page_articles'], context['total_page'] = paginator_function(articles, page_num,
                                                                              constants.HISTORY_ARTICLE_LIST_LIMIT)
         context['page_num'] = page_num
@@ -110,18 +104,14 @@ class CategoryAllArticleView(View):
 
     def get(self, request, category_id, page_num):
         try:
-            # 查出该类别
             category = ArticleCategory.objects.get(id=category_id)
-            # 获取文章及数量
             articles, category_article_count = self.get_articles(category)
         except Exception as e:
             logger.error('CategoryAllArticleView:get:' + str(e))
-            # return http.HttpResponse('数据库错误')
-            raise Http404
+            raise
         page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
         article_labels = []
         for article in page_query_set:
-            # 该文章的标签
             labels = article.labels.all()
             article_labels.append({
                 'article': article,
@@ -173,14 +163,11 @@ class LabelArticlesView(View):
             label = Label.objects.get(id=label_id)
         except Exception as e:
             logger.error('LabelArticlesView:get:' + str(e))
-            # return http.JsonResponse('标签错误')
-            raise Http404
-        # 查出该标签下所有文章
+            raise
         articles, article_count = self.get_label_articles(label)
         page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
         article_labels = []
         for article in page_query_set:
-            # 该文章的标签
             labels = article.labels.all()
             article_labels.append({
                 'article': article,
@@ -215,11 +202,10 @@ class ArticleLikeView(View):
     def get(self, request, article_id):
 
         try:
-            # 查出该文章
             article = Article.objects.get(id=article_id)
         except Exception as e:
             logger.error(e)
-            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取文章失败'})
+            raise
         ip = get_ip(request)
         redis = get_redis_connection('default')
         key = 'like_{}_flag_{}'.format(article_id, ip)

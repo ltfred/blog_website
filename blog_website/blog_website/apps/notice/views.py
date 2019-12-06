@@ -1,7 +1,7 @@
 from django import http
-from django.http import Http404
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import TemplateView
 from blog_website.utils.common import get_cat_lst, get_photo_category, get_notice, get_recommend, get_top, get_labels
 from blog_website.utils.responseCode import RETCODE
 from notice.models import Notice
@@ -22,19 +22,14 @@ class NoticeDetailView(View):
     """公告详情"""
 
     def get(self, request, notice_id):
-
         try:
-            # 获取本条数据
             notice = Notice.objects.get(id=notice_id)
-            # 获取上一条数据和下一条数据
             next_notice = Notice.objects.filter(id__gt=notice.id).first()
             pre_notice = Notice.objects.filter(id__lt=notice.id).order_by('-id').first()
-            # 相关数据10条
             notices = Notice.objects.exclude(id=notice.id)[0:9]
         except Exception as e:
             logger.error(e)
-            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '数据库错误'})
-
+            raise
         # 每访问一次此页面阅读数+1
         notice.read_count += 1
         notice.save()
@@ -49,10 +44,7 @@ class NoticeDetailView(View):
             'recommend_list': get_recommend(),
             'top_list': get_top(),
             'labels': get_labels(),
-
-
         }
-
         return render(request, 'noticeDetail.html', context=context)
 
 
@@ -60,34 +52,26 @@ class NoticeLikeView(View):
     """公告点赞"""
 
     def get(self, request, notice_id):
-
         try:
             notice = Notice.objects.get(id=notice_id)
         except Exception as e:
             logger.error(e)
-            return http.JsonResponse({'code': RETCODE.DBERR, 'errmsg': '获取失败'})
-        # 阅读数 + 1
+            raise
         notice.like_count += 1
         notice.save()
-
         return http.JsonResponse({'code': RETCODE.OK, 'errmsg': 'ok'})
 
 
-class AllNoticeView(View):
-    """所有公告"""
+class AllNoticeView(TemplateView):
+    template_name = 'noticeList.html'
 
-    def get(self, request):
-        context = dict()
-        try:
-            notices = Notice.objects.all()
-        except Exception as e:
-            logger.error(e)
-            # return http.HttpResponse('服务器出错了')
-            raise Http404
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        notices = Notice.objects.all()
         context['notices'] = notices
         context['cat_list'] = get_cat_lst()
         context['photo_category'] = get_photo_category()
         context['recommend_list'] = get_recommend()
         context['top_list'] = get_top()
         context['labels'] = get_labels()
-        return render(request, 'noticeList.html', context=context)
+        return context

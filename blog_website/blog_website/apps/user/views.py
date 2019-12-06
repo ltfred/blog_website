@@ -1,38 +1,30 @@
-from django import http
-from django.http import Http404
-from django.shortcuts import render
-from django.views import View
+from django.views.generic import TemplateView
 from blog_website.utils.common import get_cat_lst, get_photo_category
-from blog_website.utils.responseCode import RETCODE
 from user.models import User
 import logging
 
 logger = logging.getLogger('blog')
 
 
-class AboutUserView(View):
-    """关于我"""
-
-    def get(self, request):
-
-        try:
-            user = User.objects.all()[0]
-        except Exception as e:
-            logger.error(e)
-            # return http.HttpResponse('数据库错误')
-            raise Http404
-
-        context = {'bio': user.bio, 'dubai': user.soliloquy, 'name': user.webname,
-                   'avatar': user.avatar_url, 'cat_list': get_cat_lst(),
-                   'photo_category': get_photo_category()}
-
-        return render(request, 'about.html', context=context)
-
-
-class MusicView(View):
-
-    def get(self, request):
-        context = dict()
+class AboutUserView(TemplateView):
+    template_name = 'about.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = User.objects.all()[0]
+        context['bio'] = user.bio
+        context['dubai'] = user.soliloquy
+        context['name'] = user.webname
+        context['avatar'] = user.avatar_url
         context['cat_list'] = get_cat_lst()
         context['photo_category'] = get_photo_category()
-        return render(request, 'player.html', context=context)
+        return context
+
+
+class MusicView(TemplateView):
+    template_name = 'player.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cat_list'] = get_cat_lst()
+        context['photo_category'] = get_photo_category()
+        return context

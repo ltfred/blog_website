@@ -21,11 +21,10 @@ class CommentView(View):
 
         if not all([name, email, message]):
             return http.HttpResponse('请输入完整的内容')
-
         try:
             Message.objects.create(name=name, email=email, content=message)
         except Exception as e:
             logger.error('CommentView:post:' + str(e))
-            return http.HttpResponse('留言失败')
+            raise
 
         return redirect(reverse('index:index_list'))

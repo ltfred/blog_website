@@ -1,5 +1,4 @@
 from django import http
-from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 from blog_website.utils import constants
@@ -30,11 +29,8 @@ class AllPhotosView(View):
             photo_query_set = Photo.objects.all().order_by('-create_time')
         except Exception as e:
             logger.error(e)
-            # return http.HttpResponse('获取照片页失败')
-            raise Http404
-
+            raise
         page_photos, total_page = paginator_function(photo_query_set, page_num, constants.PHOTO_LIST_LIMIT)
-
         context = {
             'photos': page_photos,
             'total_page': total_page,
@@ -55,8 +51,7 @@ class CategoryPhotoView(View):
             photos = Photo.objects.filter(category_id=category_id).order_by('-create_time')
         except Exception as e:
             logger.error(e)
-            # return http.HttpResponse('获取照片失败')
-            raise Http404
+            raise
         page_photos, total_page = paginator_function(photos, page_num, constants.PHOTO_LIST_LIMIT)
 
         context = {

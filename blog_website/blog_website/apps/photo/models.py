@@ -6,6 +6,7 @@ from blog_website.utils.models import BaseModel
 class PhotoCategory(BaseModel):
     """照片分类"""
     name = models.CharField(max_length=10, verbose_name='相册类名', help_text='不超过10个字')
+    is_secret = models.BooleanField(default=False, verbose_name='是否秘密的')
 
     class Meta:
         db_table = 'photo_category'

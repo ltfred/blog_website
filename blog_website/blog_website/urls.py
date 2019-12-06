@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^myadmin/', include('myadmin.urls', namespace='myadmin')),
     # Haystack 注册
     url(r'^search/', include('haystack.urls')),
-    # 增加以下一行，以识别静态资源
+    # 识别静态资源
     # url(r'^static/(?P<path>.*)$', static.serve,
     #     {'document_root': settings.STATIC_ROOT}, name='static')
 

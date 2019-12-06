@@ -1,11 +1,12 @@
+from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-
 from article.models import Article, ArticleCategory, Label
-from myadmin.serializers.article import ArticleSimpleSerializer, ArticleSerializer
+from blog_website.utils.common import upload
+from myadmin.serializers.article import ArticleSimpleSerializer, ArticleSerializer, ArticleCategorySimpleSerializer
 from user.models import User
 
 
@@ -69,3 +70,63 @@ class AdminArticleView(ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
     lookup_value_regex = '\d+'
+
+
+class AdminArticleIndexImageView(APIView):
+    permission_classes = [IsAdminUser]
+    """文章主图添加"""
+
+    def post(self, request):
+        id = request.data.get('id')
+        image = request.data.get('image')
+        article = Article.objects.get(id=id)
+        url = upload(image.name, image.read())
+        article.index_image = url
+        article.save()
+        return Response(status=201)
+
+
+class AdminArticleCategorySimpleView(ListAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = ArticleCategorySimpleSerializer
+    queryset = ArticleCategory.objects.all().order_by('-create_time')
+
+
+class AdminArticleCategoryUpdateView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def put(self, request, category_id):
+        name = request.data.get('name')
+        parent_id = request.data.get('parent_id')
+        describe = request.data.get('describe')
+        category = ArticleCategory.objects.get(id=category_id)
+        category.name = name
+        category.parent_id = parent_id
+        category.describe = describe
+        category.save()
+        return Response(status=status.HTTP_201_CREATED)
+
+    def delete(self, request, category_id):
+        category = ArticleCategory.objects.get(id=category_id)
+        category.delete()
+        return Response(status=204)
+
+    def get(self, request, category_id):
+        category = ArticleCategory.objects.get(id=category_id)
+        return Response({
+            'image_url': category.image_url, 'name': category.name,
+            'parent_id': category.parent_id, 'describe': category.describe
+        })
+
+
+class AdminArticleCategory(APIView):
+    permission_classes = [IsAdminUser]
+    def post(self, request):
+        name = request.data.get('name')
+        parent_id = request.data.get('parent')
+        describe = request.data.get('describe')
+        if parent_id == 'undefined':
+            ArticleCategory.objects.create(name=name, describe=describe)
+        else:
+            ArticleCategory.objects.create(name=name, parent_id=parent_id, describe=describe)
+        return Response(status=status.HTTP_201_CREATED)

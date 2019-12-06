@@ -1,8 +1,8 @@
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from myadmin.views import users, statistical, article
+from myadmin.views.article import AdminArticleView
 from myadmin.views.users import AdminUserView
-
 
 urlpatterns = [
     url(r'^authorizations/$', users.AdminAuthorizeView.as_view()),
@@ -12,12 +12,16 @@ urlpatterns = [
     url(r'^statistical/label_count/$', statistical.AdminLabelCount.as_view()),
     url(r'^statistical/day_active/$', statistical.AdminUserDayActiveCount.as_view()),
     url(r'^statistical/month_increment/$', statistical.AdminArticleMonthCountView.as_view()),
-    url(r'^statistical/label_article/$',statistical.AdminLabelArticle.as_view()),
+    url(r'^statistical/label_article/$', statistical.AdminLabelArticle.as_view()),
     url(r'^articles/simple/$', article.AdminArticleSimpleView.as_view()),
     url(r'^author/simple/$', article.AdminAuthorSimpleView.as_view()),
     url(r'^articles/categories/$', article.AdminArticleCategory1View.as_view()),
     url(r'^articles/categories/(?P<category_id>\d+)/$', article.AdminArticleCategory2View.as_view()),
     url(r'^labels/simple/$', article.AdminLabelView.as_view()),
+    url(r'^article/index_image/$', article.AdminArticleIndexImageView.as_view()),
+    url(r'^article/categories/simple$', article.AdminArticleCategorySimpleView.as_view()),
+    url(r'^article/categories/(?P<category_id>\d+)/$', article.AdminArticleCategoryUpdateView.as_view()),
+    url(r'^article/categories/$', article.AdminArticleCategory.as_view()),
 ]
 
 router = DefaultRouter()

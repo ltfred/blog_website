@@ -4,7 +4,6 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from article.models import Article, Label
-from blog_website.utils.common import get_labels
 from photo.models import Photo
 from user.models import User
 

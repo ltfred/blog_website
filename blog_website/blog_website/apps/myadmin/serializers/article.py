@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from article.models import Article, ArticleCategory
+from article.models import Article, ArticleCategory, Label
+from index.models import Carousel
 
 
 class ArticleSimpleSerializer(serializers.ModelSerializer):
@@ -28,3 +29,24 @@ class ArticleCategorySimpleSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArticleCategory
         fields = ('id', 'name', 'parent')
+
+
+class ArticleCategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ArticleCategory
+        fields = ('id', 'name', 'parent', 'parent_id', 'image_url', 'describe')
+
+
+class ArticleLabelSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Label
+        fields = ('id', 'name')
+
+
+class CarouselSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Carousel
+        fields = ('id', 'title', 'url', 'image_url', 'is_active')

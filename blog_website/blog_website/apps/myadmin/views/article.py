@@ -6,7 +6,9 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils.common import upload
-from myadmin.serializers.article import ArticleSimpleSerializer, ArticleSerializer, ArticleCategorySimpleSerializer
+from index.models import Carousel
+from myadmin.serializers.article import ArticleSimpleSerializer, ArticleSerializer, ArticleCategorySimpleSerializer, \
+    ArticleLabelSerializer, CarouselSerializer
 from user.models import User
 
 
@@ -143,3 +145,22 @@ class AdminCategoryImageView(APIView):
         category.image_url = url
         category.save()
         return Response(status=status.HTTP_201_CREATED)
+
+
+class AdminArticleLabelView(ModelViewSet):
+    permission_classes = [IsAdminUser]
+    serializer_class = ArticleLabelSerializer
+    queryset = Label.objects.all().order_by('-create_time')
+
+
+class AdminCarouselView(ModelViewSet):
+    permission_classes = [IsAdminUser]
+    serializer_class = CarouselSerializer
+
+    def get_queryset(self):
+        keyword = self.request.query_params.get('keyword')
+        if keyword:
+            queryset = Carousel.objects.filter(title__contains=keyword).order_by('-create_time')
+        else:
+            queryset = Carousel.objects.all().order_by('-create_time')
+        return queryset

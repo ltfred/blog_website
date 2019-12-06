@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from myadmin.views import users, statistical, article, photo
-from myadmin.views.article import AdminArticleView
+from myadmin.views.article import AdminArticleView, AdminArticleLabelView, AdminCarouselView
 from myadmin.views.link import AdminLinkView
 from myadmin.views.photo import AdminPhotoCategoryView, AdminPhotoView
 from myadmin.views.users import AdminUserView
@@ -48,4 +48,12 @@ urlpatterns += router.urls
 
 router = DefaultRouter()
 router.register('photos', AdminPhotoView, base_name='photos')
+urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('labels', AdminArticleLabelView, base_name='labels')
+urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('carousel', AdminCarouselView, base_name='carousel')
 urlpatterns += router.urls

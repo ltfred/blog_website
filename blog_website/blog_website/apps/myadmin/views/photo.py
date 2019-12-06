@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-
 from blog_website.utils.common import upload
 from myadmin.serializers.photo import PhotoCategorySerializer, PhotoSerializer, PhotosSimpleSerializer
 from photo.models import PhotoCategory, Photo

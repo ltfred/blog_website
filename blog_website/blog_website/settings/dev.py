@@ -318,6 +318,6 @@ JWT_AUTH = {
 
 # OSS
 OSS_CONF = {
-    'key': 'LTAI4FvW7yqfAUsNfTo174GQ',
-    'access_key': 'QYROlZq381D0XD4V2qUWe4PsU3r6ds'
+    'key': '********',
+    'access_key': '*********'
 }

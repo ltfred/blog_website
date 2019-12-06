@@ -2,6 +2,7 @@ from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from myadmin.views import users, statistical, article
 from myadmin.views.article import AdminArticleView
+from myadmin.views.link import AdminLinkView
 from myadmin.views.users import AdminUserView
 
 urlpatterns = [
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^article/categories/simple$', article.AdminArticleCategorySimpleView.as_view()),
     url(r'^article/categories/(?P<category_id>\d+)/$', article.AdminArticleCategoryUpdateView.as_view()),
     url(r'^article/categories/$', article.AdminArticleCategory.as_view()),
+    url(r'^article/category/image/$', article.AdminCategoryImageView.as_view()),
 ]
 
 router = DefaultRouter()
@@ -30,4 +32,8 @@ urlpatterns += router.urls
 
 router = DefaultRouter()
 router.register('articles', AdminArticleView, base_name='articles')
+urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('link', AdminLinkView, base_name='link')
 urlpatterns += router.urls

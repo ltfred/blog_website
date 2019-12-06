@@ -130,3 +130,16 @@ class AdminArticleCategory(APIView):
         else:
             ArticleCategory.objects.create(name=name, parent_id=parent_id, describe=describe)
         return Response(status=status.HTTP_201_CREATED)
+
+
+class AdminCategoryImageView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def post(self, request):
+        id = request.data.get('id')
+        image = request.data.get('image')
+        category = ArticleCategory.objects.get(id=id)
+        url = upload(image.name, image.read())
+        category.image_url = url
+        category.save()
+        return Response(status=status.HTTP_201_CREATED)

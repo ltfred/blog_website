@@ -5,6 +5,7 @@ from .models import *
 class PhotoCategoryAdmin(object):
     list_filter = ('create_time',)
     ordering = ('-create_time',)
+    list_display = ['name', 'is_secret']
 
 
 class PhotoAdmin(object):

@@ -4,6 +4,7 @@ from myadmin.views import users, statistical, article, photo
 from myadmin.views.article import AdminArticleView, AdminArticleLabelView, AdminCarouselView
 from myadmin.views.link import AdminLinkView
 from myadmin.views.photo import AdminPhotoCategoryView, AdminPhotoView
+from myadmin.views.soup import AdminSoupView
 from myadmin.views.users import AdminUserView
 
 urlpatterns = [
@@ -56,4 +57,8 @@ urlpatterns += router.urls
 
 router = DefaultRouter()
 router.register('carousel', AdminCarouselView, base_name='carousel')
+urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('soup', AdminSoupView, base_name='soup')
 urlpatterns += router.urls

@@ -1,5 +1,7 @@
+import random
+
 from django import http
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
@@ -41,17 +43,49 @@ class LoginView(TemplateView):
     def post(self, request):
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = User.objects.get(username=username)
+        if not all([username, password]):
+            return http.JsonResponse({'code': 400, 'msg': '请填写完整的参数'})
+        try:
+            user = User.objects.get(username=username)
+        except:
+            return http.JsonResponse({'code': 401, 'msg': '账号或密码错误'})
         if not user.check_password(password):
             return http.JsonResponse({'code': 401, 'msg': '账号或密码错误'})
         login(request, user)
-        return redirect(request.COOKIES.get('next'))
+        return http.JsonResponse({'code': 200, 'msg': '登录成功', 'next': request.COOKIES.get('next')})
 
 class ForgetPasswordView(View):
 
     def post(self, request):
         email = request.POST.get('email')
-        user = User.objects.get(email=email)
+        if not all([email]):
+            return http.JsonResponse({'code': 400, 'msg': '请填写完整的参数'})
+        try:
+            user = User.objects.get(email=email)
+        except:
+            return http.JsonResponse({'code': 400, 'msg': '该邮箱未注册'})
         username = user.username
-        user.set_password('123456789')
+        password = '%09d' % random.randint(0, 999999999)
+        user.set_password(password)
+        print(password)
+        return redirect(reverse('user:login'))
+
+
+class ModifyPasswordView(View):
+
+    def post(self, request):
+        oldpassword = request.POST.get('oldpassword')
+        newpassword = request.POST.get('newpassword')
+        newpassword2 = request.POST.get('newpassword2')
+        if not all([oldpassword, newpassword, newpassword2]):
+            return http.JsonResponse({'code': 400, 'msg': '请填写完整的参数'})
+        if request.user.is_anonymous:
+            return http.JsonResponse({'code': 401, 'msg': '请先登录'})
+        user = request.user
+        if newpassword != newpassword2:
+            return http.JsonResponse({'code': 400, 'msg': '两次密码不相同'})
+        if not user.check_password(oldpassword):
+            return http.JsonResponse({'code': 401, 'msg': '旧密码不正确'})
+        user.set_password(newpassword)
+        logout(request)
         return redirect(reverse('user:login'))

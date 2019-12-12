@@ -13,7 +13,6 @@
   <script src="{{ static('js/jquery-1.8.3.min.js') }}"></script>
 </head>
 <body>
-
 <div id="app">
 <div class="temp-popup-form-wrapper">
 <nav class="navbar navbar-inverse temp-custom-navigation">
@@ -36,7 +35,6 @@
   </div>
 </nav>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="LogInModal" role="dialog">
   <div class="temp-custom-modal-wrap">
@@ -58,8 +56,6 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="temp-form-column-wrap">
                   <h2>登录</h2>
-{#                  <form action="/login/" method="post">#}
-{#                    <input type ='hidden' name='csrfmiddlewaretoken' value ='{{csrf_token}}'>#}
                     <div class="form-group">
                       <span class="temp-span-wrap temp-span-input-label-wrap">
                         <input class="temp_input_field" type="text" name="username" id="username">
@@ -86,7 +82,6 @@
                     <div class="temp-login-button-wrap">
                       <button class="btn btn-info temp-form-button" type="button" onclick="login()">登录</button>
                     </div>
-{#                  </form>#}
                 </div>  
               </div>
             </div>
@@ -119,13 +114,11 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="temp-form-column-wrap">
                   <h2>忘记密码?</h2>
-                  <form action="/forget/password/" method="post">
-                    <input type ='hidden' name='csrfmiddlewaretoken' value ='{{csrf_token}}'>
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                           <span class="temp-span-wrap temp-span-input-label-wrap">
-                            <input  class="temp_input_field" type="text" name="email">
+                            <input  class="temp_input_field" type="text" name="email" id="email">
                             <label class="temp_input_label">
                               <span class="temp_input_label-content">邮箱</span>
                             </label>
@@ -134,12 +127,11 @@
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="temp-login-button-wrap">
-                          <button class="btn btn-info temp-form-button" type="submit">提交发送</button>
+                          <button class="btn btn-info temp-form-button" type="button" onclick="forgetpas()">提交发送</button>
                         </div>
                       </div>
                     </div>
-                  </form>
-                </div>  
+                </div>
               </div>
             </div>
           </div>
@@ -169,13 +161,11 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="temp-form-column-wrap">
                   <h2>重置密码</h2>
-                  <form action="/modify/password/" method="post">
-                     <input type ='hidden' name='csrfmiddlewaretoken' value ='{{csrf_token}}'>
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                           <span class="temp-span-wrap temp-span-input-label-wrap">
-                            <input class="temp_input_field" type="password" name="oldpassword">
+                            <input class="temp_input_field" type="password" name="oldpassword" id="oldpassword">
                             <label class="temp_input_label">
                               <span class="temp_input_label-content">当前密码</span>
                             </label>
@@ -185,7 +175,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                           <span class="temp-span-wrap temp-span-input-label-wrap">
-                            <input class="temp_input_field" type="password" name="newpassword">
+                            <input class="temp_input_field" type="password" name="newpassword" id="newpassword">
                             <label class="temp_input_label">
                               <span class="temp_input_label-content">新密码</span>
                             </label>
@@ -195,7 +185,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                           <span class="temp-span-wrap temp-span-input-label-wrap">
-                            <input class="temp_input_field" type="password" name="newpassword2">
+                            <input class="temp_input_field" type="password" name="newpassword2" id="newpassword2">
                             <label class="temp_input_label">
                               <span class="temp_input_label-content">确认密码</span>
                             </label>
@@ -204,11 +194,10 @@
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="temp-login-button-wrap">
-                          <button class="btn btn-info temp-form-button" type="submit">重置密码</button>
+                          <button class="btn btn-info temp-form-button" type="submit" onclick="modifypas()">重置密码</button>
                         </div>
                       </div>
                     </div>
-                  </form>
                 </div>  
               </div>
             </div>
@@ -223,7 +212,6 @@
 <script src="{{ static('assets/js/bootstrap.js') }}"></script>
 <script src="{{ static('assets/js/form.js') }}"></script>
 <script>
-
   function login() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
@@ -236,9 +224,58 @@
           if (res.code==200){
             location.href = res.next
           }
+          if (res.code==400){
+            alert(res.msg)
+          }
+          if (res.code==401){
+            alert(res.msg)
+          }
     }
-
   })
+}
+
+function forgetpas() {
+   var email = document.getElementById('email').value;
+   $.ajax({
+     url: '/forget/password/',
+     type: 'post',
+     dataType: 'json',
+     data: {'email': email, csrfmiddlewaretoken:'{{ csrf_token }}'},
+     success: function (res) {
+       if (res.code==400){
+         alert(res.msg)
+       }
+       if (res.code==401){
+         alert(res.msg)
+       }
+     }
+   })
+}
+
+function modifypas() {
+   var oldpassword = document.getElementById('oldpassword').value;
+   var newpassword = document.getElementById('newpassword').value;
+   var newpassword2 = document.getElementById('newpassword2').value;
+   $.ajax({
+     url: '/modify/password/',
+     type: 'post',
+     dataType: 'json',
+     data: {'oldpassword': oldpassword, 'newpassword': newpassword, 'newpassword2': newpassword2, csrfmiddlewaretoken:'{{ csrf_token }}'},
+     success: function (res) {
+       if (res.code==400){
+         alert(res.msg)
+       }
+       if (res.code==403){
+         alert(res.msg)
+       }
+       if (res.code==405){
+         alert(res.msg)
+       }
+       if (res.code==401){
+         alert(res.msg)
+       }
+     }
+   })
 }
 </script>
 </body>

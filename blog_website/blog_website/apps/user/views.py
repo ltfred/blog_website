@@ -67,8 +67,7 @@ class ForgetPasswordView(View):
         username = user.username
         password = '%09d' % random.randint(0, 999999999)
         user.set_password(password)
-        print(password)
-        return redirect(reverse('user:login'))
+        return http.JsonResponse({'code': 201, 'msg': u'你的用户名为：{},密码为：{},请尽快修改密码'.format(username, password)})
 
 
 class ModifyPasswordView(View):

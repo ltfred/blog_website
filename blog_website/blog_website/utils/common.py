@@ -5,12 +5,13 @@ import urllib
 import oss2
 from PIL import Image
 from django.core.paginator import Paginator, EmptyPage
-from django.http import Http404
 from django_redis import get_redis_connection
 from article.models import ArticleCategory, Article, Label
 from blog_website.settings.dev import OSS_CONF
 from notice.models import Notice
 from photo.models import PhotoCategory
+import logging
+logger = logging.getLogger('blog')
 
 
 def get_image_size(url):
@@ -36,7 +37,7 @@ def paginator_function(query_set, page_num, page_size):
     try:
         page_query_set = paginator.page(page_num)
     except EmptyPage:
-        raise Http404
+        raise
     # 获取列表页总页数
     total_page = paginator.num_pages
     return page_query_set, total_page
@@ -81,8 +82,9 @@ def get_article_count():
 def get_notice():
     try:
         notices = Notice.objects.all().only('id', 'title').order_by('-create_time')[0:8]
-    except:
-        raise Http404
+    except Exception as e:
+        logger.error('get_notice:' + str(e))
+        raise
     notice_list = []
     for notice in notices:
         if notice.is_up is True:
@@ -96,7 +98,8 @@ def get_recommend():
     try:
         articles = Article.objects.filter(is_top=True).only('id', 'title', 'index_image')[0:6]
     except Exception as e:
-        raise Http404
+        logger.error('get_recommend:' + str(e))
+        raise
     recommend_list = [{'title': article.title, 'id': article.id, 'index_image': article.index_image} for article in
                       articles]
     return recommend_list
@@ -106,7 +109,8 @@ def get_top():
     try:
         articles = Article.objects.order_by('-read_count').all().only('id', 'title')[0:7]
     except Exception as e:
-        raise Http404
+        logger.error('get_top:' + str(e))
+        raise
     top_list = [{'title': article.title, 'id': article.id} for article in articles]
     return top_list
 
@@ -116,7 +120,8 @@ def get_labels():
         # 获取所有标签
         labels_queryset = Label.objects.all()
     except Exception as e:
-       raise Http404
+        logger.error('get_labels:'+ str(e))
+        raise
     labels = []
     for label in labels_queryset:
         labels.append({
@@ -138,7 +143,8 @@ def get_site_info():
     try:
         count = get_article_count()
     except Exception as e:
-        raise Http404
+        logger.error('get_site_info:'+ str(e))
+        raise
     return count, int(pv), days
 
 

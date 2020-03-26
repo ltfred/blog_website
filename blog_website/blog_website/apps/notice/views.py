@@ -51,7 +51,7 @@ class NoticeDetailView(View):
 class NoticeLikeView(View):
     """公告点赞"""
 
-    def get(self, request, notice_id):
+    def post(self, request, notice_id):
         try:
             notice = Notice.objects.get(id=notice_id)
         except Exception as e:
@@ -59,7 +59,7 @@ class NoticeLikeView(View):
             raise
         notice.like_count += 1
         notice.save()
-        return http.JsonResponse({'code': RETCODE.OK, 'errmsg': 'ok'})
+        return http.HttpResponse('success')
 
 
 class AllNoticeView(TemplateView):

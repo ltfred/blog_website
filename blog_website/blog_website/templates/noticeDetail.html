@@ -2,6 +2,7 @@
 
 {% block link %}
     <script src="{{ static('lib/prism/prism_patched.min.js') }}"></script>
+    <script src="{{ static('js/csrf.js') }}"></script>
     <link rel="stylesheet" href="{{ static('prism/prism.css') }}">
 {% endblock link %}
 
@@ -21,7 +22,7 @@
                 <div class="con_text">
                     <p>{{ notice.content | safe }}</p>
                     <p class="share"><b>转载：</b>感谢您对原创作品以及文章的青睐，非常欢迎各位朋友分享到个人站点或者朋友圈，但转载请说明文章出处“来源Fred个人网站”。</p>
-                    <p><span class="diggit" onclick="like_notice()"><a href="javascript:;">很赞哦！({{ notice.like_count }})</a></span></p>
+                    <a href="javascript:;"><p><span class="diggit" onclick="validate_is_like()" id="likes_number">很赞哦！({{ notice.like_count }})</span></p></a>
                     <div class="nextinfo">
                         {% if pre_notice %}
                             <p>上一篇：<a
@@ -50,23 +51,74 @@
 
 {% block endjs %}
     <script>
-    function like_notice() {
-        var url = '/notice/like/{{ notice.id }}';
-        axios.get(url, {
-            responseType: 'json',
-        })
-            .then(response => {
-                code = response.data.code;
-                if (code == '4009') {
-                    alert('只能点赞一次')
-                } else {
-                    window.location.reload();
+        // 点赞功能主函数
+        function validate_is_like() {
+            var url = '/notice/like/{{ notice.id }}/';
+            var id = {{ notice.id }};
+            var likes = {{ notice.like_count }};
+            // 取出 LocalStorage 中的数据
+            let storage = window.localStorage;
+            const storage_str_data = storage.getItem("my_notice");
+            let storage_json_data = JSON.parse(storage_str_data);
+            // 若数据不存在，则创建空字典
+            if (!storage_json_data) {
+                storage_json_data = {}
+            };
+            // 检查当前文章是否已点赞。是则 status = true
+            const status = check_status(storage_json_data, id);
+            if (status) {
+                alert('已经点过赞了哟~');
+                // 点过赞则立即退出函数
+                return;
+            } else {
+                // 用 Jquery 找到点赞数量，并 +1
+                var starCount = likes + 1
+                $('span#likes_number').text('很赞哦！('+starCount+')');
+            }
+            // 用 ajax 向后端发送 post 请求
+            $.post(
+                url,
+                // post 只是为了做 csrf 校验，因此数据为空
+                {},
+                function(result) {
+                    if (result === 'success') {
+                        // 尝试修改点赞数据
+                        try {
+                            storage_json_data[id] = true;
+                        } catch (e) {
+                            window.localStorage.clear();
+                        };
+                        // 将字典转换为字符串，以便存储到 LocalStorage
+                        const d = JSON.stringify(storage_json_data);
+                        // 尝试存储点赞数据到 LocalStorage
+                        try {
+                            storage.setItem("my_notice", d);
+                        } catch (e) {
+                            // code 22 错误表示 LocalStorage 空间满了
+                            if (e.code === 22) {
+                                window.localStorage.clear();
+                                storage.setItem("my_notice", d);
+                            }
+                        };
+                    } else {
+                        alert("与服务器通信失败..过一会儿再试试呗~");
+                    }
                 }
-
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
-    }
-</script>
+            );
+        };
+        // 辅助点赞主函数，验证点赞状态
+        function check_status(data, id) {
+            // 尝试查询点赞状态
+            try {
+                if (id in data && data[id]) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (e) {
+                window.localStorage.clear();
+                return false;
+            };
+        };
+    </script>
 {% endblock endjs %}

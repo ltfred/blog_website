@@ -1,4 +1,5 @@
 from django import http
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
@@ -199,22 +200,9 @@ class LabelArticlesView(View):
 class ArticleLikeView(View):
     """文章点赞"""
 
-    def get(self, request, article_id):
+    def post(self, request, article_id):
 
-        try:
-            article = Article.objects.get(id=article_id)
-        except Exception as e:
-            logger.error(e)
-            raise
-        ip = get_ip(request)
-        redis = get_redis_connection('default')
-        key = 'like_{}_flag_{}'.format(article_id, ip)
-        if redis.get(key):
-            return http.JsonResponse({'code': RETCODE.ALLOWERR, 'errmsg': '只能点赞一次'})
-        # 24小时内只能点赞一次
-        redis.set(key, 'article_stars', constants.ARTICLE_STARS_EXPIRE)
-        # 文章点赞次数+1
-        article.like_count += 1
-        article.save()
-
-        return http.JsonResponse({'code': RETCODE.OK, 'errmsg': 'ok'})
+        article_obj = Article.objects.get(id=article_id)
+        article_obj.like_count += 1
+        article_obj.save()
+        return HttpResponse('success')

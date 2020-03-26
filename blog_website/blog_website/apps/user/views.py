@@ -14,6 +14,7 @@ logger = logging.getLogger('blog')
 
 class AboutUserView(TemplateView):
     template_name = 'about.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = User.objects.all()[0]
@@ -51,8 +52,9 @@ class LoginView(TemplateView):
         if not user.check_password(password):
             return http.JsonResponse({'code': 401, 'msg': '账号或密码错误'})
         login(request, user)
-        next =request.COOKIES.get('next', '/')
+        next = request.COOKIES.get('next', '/')
         return http.JsonResponse({'code': 200, 'msg': '登录成功', 'next': next})
+
 
 class ForgetPasswordView(View):
 

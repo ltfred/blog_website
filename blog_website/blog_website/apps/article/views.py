@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from django_redis import get_redis_connection
+from haystack.views import SearchView
+
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
 from blog_website.utils.common import get_ip, paginator_function, str2datetime, get_cat_lst, get_photo_category, \
@@ -199,10 +201,19 @@ class LabelArticlesView(View):
 
 class ArticleLikeView(View):
     """文章点赞"""
-
     def post(self, request, article_id):
 
         article_obj = Article.objects.get(id=article_id)
         article_obj.like_count += 1
         article_obj.save()
         return HttpResponse('success')
+
+
+class ArticleSearchView(SearchView):
+    template = 'search.html'
+
+    def extra_context(self):
+        content = super(ArticleSearchView, self).extra_context()
+        content['cat_list'] = get_cat_lst()
+        content['photo_category'] = get_photo_category()
+        return content

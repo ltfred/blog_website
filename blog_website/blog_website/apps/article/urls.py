@@ -20,5 +20,7 @@ urlpatterns = [
     # 文章点赞
     url(r'article/like/(?P<article_id>\d+)/$', views.ArticleLikeView.as_view(), name='article_like'),
     # 获取该标签下的所有文章
-    url(r'^label/articles/(?P<label_id>\d+)/(?P<page_num>\d+)/$', views.LabelArticlesView.as_view(), name='label_articles')
+    url(r'^label/articles/(?P<label_id>\d+)/(?P<page_num>\d+)/$', views.LabelArticlesView.as_view(), name='label_articles'),
+
+    url(r'search/', views.ArticleSearchView())
 ]

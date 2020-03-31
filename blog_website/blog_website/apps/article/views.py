@@ -1,5 +1,6 @@
 from django import http
-from django.http import HttpResponse
+from django.core.paginator import Paginator, InvalidPage
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
@@ -216,4 +217,5 @@ class ArticleSearchView(SearchView):
         content = super(ArticleSearchView, self).extra_context()
         content['cat_list'] = get_cat_lst()
         content['photo_category'] = get_photo_category()
+        content['total_count'] = self.results.count()
         return content

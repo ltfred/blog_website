@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog_website/templates/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/search/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/search/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/time.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,16 +57,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>data</find>
-      <find>category</find>
-      <find>user</find>
-      <find>admin</find>
-      <find>raise</find>
-      <find>banner1.jpg</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
@@ -107,19 +96,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/blog_website/static" />
+      <recent name="$PROJECT_DIR$/blog_website/static/js" />
+      <recent name="$PROJECT_DIR$/blog_website/static/images" />
+      <recent name="$PROJECT_DIR$/blog_website/static/myadmin/images/icon" />
+      <recent name="$PROJECT_DIR$/blog_website/templates/myadmin" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/blog_website/templates/search" />
       <recent name="$PROJECT_DIR$/blog_website/templates" />
       <recent name="$PROJECT_DIR$/blog_website/static/myadmin/images" />
       <recent name="$PROJECT_DIR$/blog_website/apps/comment" />
       <recent name="$PROJECT_DIR$/blog_website/static/images" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/blog_website/static/js" />
-      <recent name="$PROJECT_DIR$/blog_website/static/images" />
-      <recent name="$PROJECT_DIR$/blog_website/static" />
-      <recent name="$PROJECT_DIR$/blog_website/static/myadmin/images/icon" />
-      <recent name="$PROJECT_DIR$/blog_website/templates/myadmin" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.blog_website">
@@ -397,7 +386,7 @@
       <workItem from="1584349694419" duration="2072000" />
       <workItem from="1585211849213" duration="3163000" />
       <workItem from="1585535575251" duration="595000" />
-      <workItem from="1585640814046" duration="1069000" />
+      <workItem from="1585640814046" duration="3118000" />
     </task>
     <servers />
   </component>
@@ -436,22 +425,22 @@
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state x="627" y="277" key="FileChooserDialogImpl/0.23.1680.986@0.23.1680.986" timestamp="1584091405418" />
-    <state width="1502" height="248" key="GridCell.Tab.0.bottom" timestamp="1585641934919">
+    <state width="1502" height="248" key="GridCell.Tab.0.bottom" timestamp="1585643991875">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.bottom/0.23.1680.986@0.23.1680.986" timestamp="1585641934919" />
-    <state width="1502" height="248" key="GridCell.Tab.0.center" timestamp="1585641934918">
+    <state width="1502" height="248" key="GridCell.Tab.0.bottom/0.23.1680.986@0.23.1680.986" timestamp="1585643991875" />
+    <state width="1502" height="248" key="GridCell.Tab.0.center" timestamp="1585643991874">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.center/0.23.1680.986@0.23.1680.986" timestamp="1585641934918" />
-    <state width="1502" height="248" key="GridCell.Tab.0.left" timestamp="1585641934917">
+    <state width="1502" height="248" key="GridCell.Tab.0.center/0.23.1680.986@0.23.1680.986" timestamp="1585643991874" />
+    <state width="1502" height="248" key="GridCell.Tab.0.left" timestamp="1585643991874">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.left/0.23.1680.986@0.23.1680.986" timestamp="1585641934917" />
-    <state width="1502" height="248" key="GridCell.Tab.0.right" timestamp="1585641934918">
+    <state width="1502" height="248" key="GridCell.Tab.0.left/0.23.1680.986@0.23.1680.986" timestamp="1585643991874" />
+    <state width="1502" height="248" key="GridCell.Tab.0.right" timestamp="1585643991875">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.right/0.23.1680.986@0.23.1680.986" timestamp="1585641934918" />
+    <state width="1502" height="248" key="GridCell.Tab.0.right/0.23.1680.986@0.23.1680.986" timestamp="1585643991875" />
     <state x="341" y="155" key="SettingsEditor" timestamp="1584091410023">
       <screen x="0" y="23" width="1680" height="986" />
     </state>

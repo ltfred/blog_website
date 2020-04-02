@@ -39,6 +39,7 @@ class AllPhotosView(View):
             'total_page': total_page,
             'page_num': page_num,
             'cat_list': get_cat_lst(),
+            'photo_count': photo_query_set.count(),
             'photo_category': get_photo_category()
         }
 
@@ -68,6 +69,7 @@ class CategoryPhotoView(View):
             'total_page': total_page,
             'page_num': page_num,
             'cat_list': get_cat_lst(),
+            'photos_count': photos.count(),
             'photo_category': get_photo_category()
         }
 

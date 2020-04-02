@@ -12,11 +12,7 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="pagelist">
-             <a href="javascript:;" onclick="pretpage()">上一页</a>
-            <a title="Total record">&nbsp;<b>共{{ total_page }}页</b></a>&nbsp;&nbsp;&nbsp;
-            <a href="javascript:;" onclick="nextpage()">下一页</a>&nbsp;
-        </div>
+                <div id="test1" style="text-align: center; color: #666; width: 100%; clear: both; margin: 0 0 10px;"></div>
     </div>
 {% endblock article %}
 {% block tabel %}
@@ -24,27 +20,26 @@
 
 {% block endjs %}
     <script>
-    function nextpage() {
-        var curpage = {{ page_num }} + 1;
-        var total_page = {{ total_page }};
-        if(curpage > total_page){
-            alert('已经是最后一页了')
-        }
-        else{
-            location.href = '/photos/' + {{ category_id }}+ '/'+ curpage + '/';
-        }
+        layui.use('laypage', function(){
+            var laypage = layui.laypage;
 
-    }
-
-    function pretpage() {
-    var curpage = {{ page_num }} - 1;
-    var total_page = {{ total_page }};
-    if(curpage == 0){
-        alert('前面没有了')
-    }
-    else{
-        location.href = '/photos/' + {{ category_id }}+ '/'+ curpage + '/';
-        }
-    }
-</script>
+            laypage.render({
+                elem: 'test1'
+                ,limit:16
+                ,theme:'#34495e'
+                ,count:  {{ photos_count }}//数据总数，从服务端得到
+                ,jump: function(obj, first){
+                    //obj包含了当前分页的所有参数，比如：
+                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    console.log(obj.limit); //得到每页显示的条数
+                    //首次不执行
+                    if(!first){
+                        //do something
+                        current_page = obj.curr
+                        location.href = '/photos/' + {{ category_id }}+ '/'+ current_page + '/';
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock endjs %}

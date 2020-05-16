@@ -5,8 +5,15 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory
 from blog_website.utils import constants
-from blog_website.utils.common import get_photo_category, get_cat_lst, get_notice, get_recommend, get_top, get_labels, \
+from blog_website.utils.common import (
+    get_photo_category,
+    get_cat_lst,
+    get_notice,
+    get_recommend,
+    get_top,
+    get_labels,
     get_site_info
+)
 from blog_website.utils.responseCode import RETCODE
 import logging
 from index.models import Carousel
@@ -37,7 +44,6 @@ class IndexView(View):
         context['top_list'] = get_top()
         context['labels'] = get_labels()
         context['count'], context['pv'], context['days'] = get_site_info()
-
         return render(request, 'index.html', context=context)
 
     def get_profile(self):

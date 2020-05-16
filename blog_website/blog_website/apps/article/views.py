@@ -1,16 +1,19 @@
 from django import http
-from django.core.paginator import Paginator, InvalidPage
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
-from django_redis import get_redis_connection
 from haystack.views import SearchView
-
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
-from blog_website.utils.common import get_ip, paginator_function, str2datetime, get_cat_lst, get_photo_category, \
-    get_article_count, get_recommend, get_top, get_labels, get_site_info
+from blog_website.utils.common import (
+    paginator_function,
+    get_cat_lst,
+    get_photo_category,
+    get_recommend,
+    get_top,
+    get_labels,
+    get_site_info
+)
 from blog_website.utils.responseCode import RETCODE
 import logging
 
@@ -39,18 +42,16 @@ class ArticleDetailView(View):
         context['recommend_list'] = get_recommend()
         context['top_list'] = get_top()
         context['labels'] = get_labels()
-
         return render(request, 'info.html', context=context)
 
     def get_next_article(self, article):
-        next_article = Article.objects.filter(id__gt=article.id, category2=article.category2).only('id',
-                                                                                                   'title').first()
+        next_article = Article.objects.filter(
+            id__gt=article.id, category2=article.category2).only('id','title').first()
         return next_article
 
     def get_pre_article(self, article):
-        pre_article = Article.objects.filter(id__lt=article.id, category2=article.category2).only('id',
-                                                                                                  'title').order_by(
-            '-id').first()
+        pre_article = Article.objects.filter(
+            id__lt=article.id, category2=article.category2).only('id','title').order_by('-id').first()
         return pre_article
 
     def get_connected_article(self, article):
@@ -135,7 +136,6 @@ class CategoryAllArticleView(View):
             'top_list': get_top(),
             'labels': get_labels(),
         }
-
         return render(request, 'list.html', context=data_dict)
 
     def get_articles(self, category):

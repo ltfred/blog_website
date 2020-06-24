@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:pip" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:pip" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:blog_website" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/blog_website/apps/article/feed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/static/images/c03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,21 +91,14 @@
         <option value="CSS File" />
         <option value="Jupyter Notebook" />
         <option value="JavaScript File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="$PROJECT_DIR$/.idea" />
-      </set>
-    </option>
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -76,12 +110,12 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -109,11 +143,33 @@
       <recent name="$PROJECT_DIR$/blog_website/static/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Django server.blog_website">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/blog_website/blog_website/templates/login.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="noticeList.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/blog_website/blog_website/templates/noticeList.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="blog_website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="tests (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -183,26 +239,23 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django Server.blog_website" />
+      <item itemvalue="JavaScript Debug.login.html" />
+      <item itemvalue="JavaScript Debug.noticeList.html" />
+      <item itemvalue="Python.manage" />
+      <item itemvalue="Python.tests" />
+      <item itemvalue="Python.tests (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.manage" />
         <item itemvalue="JavaScript Debug.login.html" />
         <item itemvalue="Python.tests (1)" />
         <item itemvalue="JavaScript Debug.noticeList.html" />
         <item itemvalue="Python.tests" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -394,20 +447,21 @@
       <workItem from="1589368537729" duration="533000" />
       <workItem from="1589434113997" duration="74000" />
       <workItem from="1589540057132" duration="422000" />
+      <workItem from="1589636248854" duration="126000" />
+      <workItem from="1590461100762" duration="133000" />
+      <workItem from="1592987789044" duration="846000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -426,34 +480,56 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="627" y="277" key="FileChooserDialogImpl" timestamp="1584091405418">
+    <state x="287" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592988268558">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state x="627" y="277" key="FileChooserDialogImpl/0.23.1680.986@0.23.1680.986" timestamp="1584091405418" />
-    <state width="1502" height="248" key="GridCell.Tab.0.bottom" timestamp="1586157562235">
+    <state x="287" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988268558" />
+    <state x="561" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592988551752">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="561" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988551752" />
+    <state x="101" y="114" key="DiffContextDialog" timestamp="1590461223418">
+      <screen x="0" y="23" width="1920" height="1016" />
+    </state>
+    <state x="101" y="114" key="DiffContextDialog/0.23.1920.1016@0.23.1920.1016" timestamp="1590461223418" />
+    <state x="611" y="277" key="FileChooserDialogImpl" timestamp="1592987901353">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="611" y="277" key="FileChooserDialogImpl/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592987901353" />
+    <state width="1536" height="266" key="GridCell.Tab.0.bottom" timestamp="1592988348085">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.bottom/0.23.1680.986@0.23.1680.986" timestamp="1586157562235" />
-    <state width="1502" height="248" key="GridCell.Tab.0.center" timestamp="1586157562234">
+    <state width="1536" height="266" key="GridCell.Tab.0.bottom/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348085" />
+    <state width="1536" height="266" key="GridCell.Tab.0.center" timestamp="1592988348083">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.center/0.23.1680.986@0.23.1680.986" timestamp="1586157562234" />
-    <state width="1502" height="248" key="GridCell.Tab.0.left" timestamp="1586157562233">
+    <state width="1536" height="266" key="GridCell.Tab.0.center/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348083" />
+    <state width="1536" height="266" key="GridCell.Tab.0.left" timestamp="1592988348083">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.left/0.23.1680.986@0.23.1680.986" timestamp="1586157562233" />
-    <state width="1502" height="248" key="GridCell.Tab.0.right" timestamp="1586157562234">
+    <state width="1536" height="266" key="GridCell.Tab.0.left/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348083" />
+    <state width="1536" height="266" key="GridCell.Tab.0.right" timestamp="1592988348084">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.right/0.23.1680.986@0.23.1680.986" timestamp="1586157562234" />
-    <state x="341" y="155" key="SettingsEditor" timestamp="1584091410023">
+    <state width="1536" height="266" key="GridCell.Tab.0.right/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348084" />
+    <state x="141" y="61" width="1008" height="681" key="find.popup" timestamp="1592988498842">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
-    <state x="341" y="155" key="SettingsEditor/0.23.1680.986@0.23.1680.986" timestamp="1584091410023" />
+    <state x="141" y="61" width="1008" height="681" key="find.popup/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988498842" />
+    <state x="633" y="251" key="git4idea.branch.GitSmartOperationDialog" timestamp="1590461228271">
+      <screen x="0" y="23" width="1920" height="1016" />
+    </state>
+    <state x="633" y="251" key="git4idea.branch.GitSmartOperationDialog/0.23.1920.1016@0.23.1920.1016" timestamp="1590461228271" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/blog_website$manage.coverage" NAME="manage Coverage Results" MODIFIED="1592988876287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/blog_website$tests__1_.coverage" NAME="tests (1) Coverage Results" MODIFIED="1572590154024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog_website/apps/photo" />
     <SUITE FILE_PATH="coverage/blog_website$tests.coverage" NAME="tests Coverage Results" MODIFIED="1569216274221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog_website/apps/index" />
   </component>

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from article import views
+from article import views, feed
 
 urlpatterns = [
     # 文章详情
@@ -22,5 +22,7 @@ urlpatterns = [
     # 获取该标签下的所有文章
     url(r'^label/articles/(?P<label_id>\d+)/(?P<page_num>\d+)/$', views.LabelArticlesView.as_view(), name='label_articles'),
 
-    url(r'search/', views.ArticleSearchView())
+    url(r'search/', views.ArticleSearchView()),
+    url('rss/', feed.BlogFeed(), name='rss'),
+
 ]

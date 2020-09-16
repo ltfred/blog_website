@@ -138,7 +138,8 @@ class CategoryAllArticleView(View):
         }
         return render(request, 'list.html', context=data_dict)
 
-    def get_articles(self, category):
+    @staticmethod
+    def get_articles(category):
         # 判断是否为一级分类
         if category.parent is None:
             # 获取一级下的所有文章
@@ -193,7 +194,8 @@ class LabelArticlesView(View):
 
         return render(request, 'labelList.html', context=context)
 
-    def get_label_articles(self, label):
+    @staticmethod
+    def get_label_articles(label):
 
         articles = label.article_set.all().order_by('-create_time')
         article_count = articles.count()

@@ -46,7 +46,8 @@ class IndexView(View):
         context['count'], context['pv'], context['days'] = get_site_info()
         return render(request, 'index.html', context=context)
 
-    def get_profile(self):
+    @staticmethod
+    def get_profile():
         user = User.objects.all()[0]
         profile = dict()
         profile['webname'] = user.webname
@@ -55,11 +56,13 @@ class IndexView(View):
         profile['email'] = user.email
         return profile
 
-    def get_like_articles(self):
+    @staticmethod
+    def get_like_articles():
         like_articles = Article.objects.order_by('-like_count').only('id', 'title', 'index_image', 'describe')
         return like_articles
 
-    def get_carousel_articles(self):
+    @staticmethod
+    def get_carousel_articles():
         carousel_articles = Carousel.objects.filter(is_active=True)
         return carousel_articles
 
@@ -70,7 +73,8 @@ class IndexView(View):
             static_articles = random.sample(list(index_images), 2)
         return static_articles
 
-    def get_cat_lst(self):
+    @staticmethod
+    def get_cat_lst():
 
         cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
         cat_list = []
@@ -84,7 +88,8 @@ class IndexView(View):
             })
         return cat_list
 
-    def get_new_articles(self):
+    @staticmethod
+    def get_new_articles():
         articles = Article.objects.order_by('-create_time')[0:10]
         article_labels = list()
         for article in articles:

@@ -41,11 +41,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog_website/apps/article/feed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/static/images/c03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +102,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="JupyterTrust" id="7c4d7870-7fe6-4f84-91f2-956105b1a8c9" />
   <component name="ProjectId" id="1Sn2hcF5jfcr6nMlbz3XpDQh7Gj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -120,7 +117,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog_website/static/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -128,19 +125,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/blog_website/static/images" />
+      <recent name="$PROJECT_DIR$/blog_website/templates/search" />
+      <recent name="$PROJECT_DIR$/blog_website/templates" />
+      <recent name="$PROJECT_DIR$/blog_website/static/myadmin/images" />
+      <recent name="$PROJECT_DIR$/blog_website/apps/comment" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/blog_website/static" />
       <recent name="$PROJECT_DIR$/blog_website/static/js" />
       <recent name="$PROJECT_DIR$/blog_website/static/images" />
       <recent name="$PROJECT_DIR$/blog_website/static/myadmin/images/icon" />
       <recent name="$PROJECT_DIR$/blog_website/templates/myadmin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/blog_website/templates/search" />
-      <recent name="$PROJECT_DIR$/blog_website/templates" />
-      <recent name="$PROJECT_DIR$/blog_website/static/myadmin/images" />
-      <recent name="$PROJECT_DIR$/blog_website/apps/comment" />
-      <recent name="$PROJECT_DIR$/blog_website/static/images" />
     </key>
   </component>
   <component name="RunManager" selected="Python.manage">
@@ -257,6 +254,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -449,12 +447,16 @@
       <workItem from="1589540057132" duration="422000" />
       <workItem from="1589636248854" duration="126000" />
       <workItem from="1590461100762" duration="133000" />
-      <workItem from="1592987789044" duration="846000" />
+      <workItem from="1592987789044" duration="1312000" />
+      <workItem from="1592993436276" duration="763000" />
+      <workItem from="1592994678165" duration="5000" />
+      <workItem from="1592995508049" duration="306000" />
+      <workItem from="1598664535843" duration="137000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -491,34 +493,39 @@
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state x="561" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988551752" />
-    <state x="101" y="114" key="DiffContextDialog" timestamp="1590461223418">
-      <screen x="0" y="23" width="1920" height="1016" />
+    <state x="18" y="54" width="1344" height="788" key="DiffContextDialog" timestamp="1592993763695">
+      <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state x="101" y="114" key="DiffContextDialog/0.23.1920.1016@0.23.1920.1016" timestamp="1590461223418" />
+    <state x="18" y="54" width="1344" height="788" key="DiffContextDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592993763695" />
     <state x="611" y="277" key="FileChooserDialogImpl" timestamp="1592987901353">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state x="611" y="277" key="FileChooserDialogImpl/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592987901353" />
-    <state width="1536" height="266" key="GridCell.Tab.0.bottom" timestamp="1592988348085">
+    <state width="1536" height="266" key="GridCell.Tab.0.bottom" timestamp="1592989155515">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.bottom/0.23.1680.986@0.23.1680.986" timestamp="1586157562235" />
-    <state width="1536" height="266" key="GridCell.Tab.0.bottom/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348085" />
-    <state width="1536" height="266" key="GridCell.Tab.0.center" timestamp="1592988348083">
+    <state width="1536" height="266" key="GridCell.Tab.0.bottom/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155515" />
+    <state width="1536" height="266" key="GridCell.Tab.0.center" timestamp="1592989155514">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.center/0.23.1680.986@0.23.1680.986" timestamp="1586157562234" />
-    <state width="1536" height="266" key="GridCell.Tab.0.center/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348083" />
-    <state width="1536" height="266" key="GridCell.Tab.0.left" timestamp="1592988348083">
+    <state width="1536" height="266" key="GridCell.Tab.0.center/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155514" />
+    <state width="1536" height="266" key="GridCell.Tab.0.left" timestamp="1592989155514">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.left/0.23.1680.986@0.23.1680.986" timestamp="1586157562233" />
-    <state width="1536" height="266" key="GridCell.Tab.0.left/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348083" />
-    <state width="1536" height="266" key="GridCell.Tab.0.right" timestamp="1592988348084">
+    <state width="1536" height="266" key="GridCell.Tab.0.left/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155514" />
+    <state width="1536" height="266" key="GridCell.Tab.0.right" timestamp="1592989155515">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
     <state width="1502" height="248" key="GridCell.Tab.0.right/0.23.1680.986@0.23.1680.986" timestamp="1586157562234" />
-    <state width="1536" height="266" key="GridCell.Tab.0.right/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988348084" />
+    <state width="1536" height="266" key="GridCell.Tab.0.right/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155515" />
+    <state x="572" y="223" key="VCS.ChangeListViewerDialog" timestamp="1592993740541">
+      <screen x="0" y="23" width="1680" height="986" />
+    </state>
+    <state x="572" y="223" key="VCS.ChangeListViewerDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592993740541" />
     <state x="141" y="61" width="1008" height="681" key="find.popup" timestamp="1592988498842">
       <screen x="0" y="23" width="1680" height="986" />
     </state>
@@ -530,8 +537,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/blog_website$manage.coverage" NAME="manage Coverage Results" MODIFIED="1592988876287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/blog_website$tests__1_.coverage" NAME="tests (1) Coverage Results" MODIFIED="1572590154024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog_website/apps/photo" />
     <SUITE FILE_PATH="coverage/blog_website$tests.coverage" NAME="tests Coverage Results" MODIFIED="1569216274221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog_website/apps/index" />
+    <SUITE FILE_PATH="coverage/blog_website$tests__1_.coverage" NAME="tests (1) Coverage Results" MODIFIED="1572590154024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog_website/apps/photo" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">

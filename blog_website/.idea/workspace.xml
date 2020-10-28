@@ -42,8 +42,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,12 +238,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django Server.blog_website" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.noticeList.html" />
       <item itemvalue="Python.manage" />
-      <item itemvalue="Python.tests" />
       <item itemvalue="Python.tests (1)" />
+      <item itemvalue="Python.tests" />
+      <item itemvalue="Django Server.blog_website" />
     </list>
     <recent_temporary>
       <list>

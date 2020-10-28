@@ -113,3 +113,21 @@
     </ul>
 </div>
 {% endblock siteinfo %}
+
+{% block endjs %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        swal("", "此网站主要记录生活琐事和分享一些个人喜欢的文章，诗词，句子，我的另一个网站主要分享技术", "success", {
+          buttons: {
+            cancel: "稍后再去",
+            defeat: "点击前往",
+          },
+        })
+        .then((value) => {
+          switch (value) {
+            case "defeat":
+                  window.open("https://www.ltfred.com")
+          }
+        });
+    </script>
+{% endblock %}

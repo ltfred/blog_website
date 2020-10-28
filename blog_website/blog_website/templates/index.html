@@ -115,19 +115,24 @@
 {% endblock siteinfo %}
 
 {% block endjs %}
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        swal("", "此网站主要记录生活琐事和分享一些个人喜欢的文章，诗词，句子，我的另一个网站主要分享技术", "success", {
-          buttons: {
-            cancel: "稍后再去",
-            defeat: "点击前往",
-          },
-        })
-        .then((value) => {
-          switch (value) {
-            case "defeat":
-                  window.open("https://www.ltfred.com")
-          }
-        });
+        var is_alert = Cookies.get("is_alert")
+        if (!is_alert) {
+            swal("", "此网站主要记录生活琐事和分享一些个人喜欢的文章，诗词，句子，我的另一个网站主要分享技术", "success", {
+              buttons: {
+                cancel: "稍后再去",
+                defeat: "点击前往",
+              },
+            })
+            Cookies.set("is_alert", true, {expires: 1 / 48 / 6})
+            .then((value) => {
+              switch (value) {
+                case "defeat":
+                      window.open("https://www.ltfred.com")
+              }
+            });
+        }
     </script>
 {% endblock %}

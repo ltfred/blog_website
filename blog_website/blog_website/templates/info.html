@@ -63,6 +63,7 @@
 {% endblock article %}
 
 {% block endjs %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         // 点赞功能主函数
         function validate_is_like() {
@@ -80,7 +81,7 @@
             // 检查当前文章是否已点赞。是则 status = true
             const status = check_status(storage_json_data, id);
             if (status) {
-                alert('已经点过赞了哟~');
+                swal("", "你已经点过赞了哦！", "warning");
                 // 点过赞则立即退出函数
                 return;
             } else {
@@ -114,7 +115,7 @@
                             }
                         };
                     } else {
-                        alert("与服务器通信失败..过一会儿再试试呗~");
+                        swal("", "与服务器通信失败..过一会儿再试试呗~", "error");
                     }
                 }
             );

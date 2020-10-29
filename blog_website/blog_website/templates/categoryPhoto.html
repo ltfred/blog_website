@@ -34,7 +34,7 @@
                     curPage: {{ page_num }}, //初始页码
                     pageTotal: {{ total_page }}, //总页数
                     pageAmount: 16,  //每页多少条
-                    dataTotal: {{ photo_count }}, //总共多少条数据
+                    dataTotal: {{ photos_count }}, //总共多少条数据
                     pageSize: 3, //可选,分页个数
                     showPageTotalFlag: true, //是否显示数据统计
                     showSkipInputFlag: true, //是否支持跳转
@@ -42,7 +42,7 @@
                         //获取当前页数
                         {#console.log(page);#}
                         // 点击之后跳转:
-                        location.href = '/photos/' + {{ category_id }}+ '/'+ current_page + '/';
+                        location.href = '/photos/' + {{ category_id }}+ '/'+ page + '/';
                     }
                 })
 

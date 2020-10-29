@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block link %}
-        <script src="{{ static('js/page.js') }}"></script>
+    <link rel="stylesheet" href="{{ static('css/myPagination.css') }}">
+    <script src="{{ static('js/myPagination.js') }}"></script>
+    <script src="{{ static('js/page.js') }}"></script>
 {% endblock link %}
-
+:
 {% block article %}
     <div class="lbox">
             <div class="whitebg bloglist">
                 <h2 class="htitle"><span class="hnav">
                 </span>{{ label.name }}</h2>
-                <ul>
+                <ul style="overflow: hidden">
                     {% for article in articles %}
                         <li>
                             <h3 class="blogtitle"><a
@@ -32,33 +34,32 @@
 
                 </ul>
                 <!--pagelist-->
-                <div id="test1" style="margin:0 auto;text-align: center"></div>
+               <div id="pagination" class="pagination" style="margin:0 auto;text-align: center"></div>
             </div>
 
             <!--bloglist end-->
         </div>
 {% endblock article %}
 {% block endjs %}
-    <script>
-        layui.use('laypage', function(){
-            var laypage = layui.laypage;
-            laypage.render({
-                elem: 'test1'
-                ,limit:10
-                ,theme:'#34495e'
-                ,count:  {{ article_count }}//数据总数，从服务端得到
-                ,jump: function(obj, first){
-                    //obj包含了当前分页的所有参数，比如：
-                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                    console.log(obj.limit); //得到每页显示的条数
-                    //首次不执行
-                    if(!first){
-                        //do something
-                        current_page = obj.curr
-                        location.href = '/label/articles/' + {{ label.id }} +'/' + current_page + '/';
+            <script>
+            window.onload = function () {
+                new myPagination({
+                    id: 'pagination',
+                    curPage: {{ page_num }}, //初始页码
+                    pageTotal: {{ total_page }}, //总页数
+                    pageAmount: 10,  //每页多少条
+                    dataTotal: {{ photos_count }}, //总共多少条数据
+                    pageSize: 3, //可选,分页个数
+                    showPageTotalFlag: true, //是否显示数据统计
+                    showSkipInputFlag: true, //是否支持跳转
+                    getPage: function (page) {
+                        //获取当前页数
+                        {#console.log(page);#}
+                        // 点击之后跳转:
+                        location.href = '/label/articles/' + {{ label.id }} +'/' + page + '/';
                     }
-                }
-            });
-        });
-    </script>
+                })
+
+            }
+        </script>
 {% endblock endjs %}

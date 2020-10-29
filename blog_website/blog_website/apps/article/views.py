@@ -215,9 +215,15 @@ class ArticleLikeView(View):
 class ArticleSearchView(SearchView):
     template = 'search.html'
 
+    def get_total_page(self):
+        paginator, page = self.build_page()
+        return paginator.num_pages
+
     def extra_context(self):
         content = super(ArticleSearchView, self).extra_context()
         content['cat_list'] = get_cat_lst()
         content['photo_category'] = get_photo_category()
         content['total_count'] = self.results.count()
+        content["page_num"] = int(self.request.GET.get('page', 1))
+        content["total_page"] = self.get_total_page()
         return content

@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block link %}
+    <link rel="stylesheet" href="{{ static('css/myPagination.css') }}">
+    <script src="{{ static('js/myPagination.js') }}"></script>
+    <script src="{{ static('js/page.js') }}"></script>
+{% endblock link %}
+
 {% block article %}
     <div class="lbox">
         <div class="whitebg bloglist">
@@ -29,10 +35,7 @@
 
             </ul>
             <!--pagelist-->
-{#            <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ paginator.num_pages }}页</b> </a>&nbsp;&nbsp;&nbsp;#}
-{#                <a href="#" onclick="nextpage()">下一页</a>&nbsp;#}
-{#            </div>#}
-            <div id="test1" style="margin:0 auto;text-align: center"></div>
+             <div id="pagination" class="pagination" style="margin:0 auto;text-align: center"></div>
             <!--pagelist end-->
         </div>
 
@@ -46,27 +49,25 @@
 {% endblock %}
 
 {% block endjs %}
-    <script>
-        layui.use('laypage', function(){
-            var laypage = layui.laypage;
-
-            laypage.render({
-                elem: 'test1'
-                ,limit:10
-                ,theme:'#34495e'
-                ,count:  {{ total_count }}//数据总数，从服务端得到
-                ,jump: function(obj, first){
-                    //obj包含了当前分页的所有参数，比如：
-                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                    console.log(obj.limit); //得到每页显示的条数
-                    //首次不执行
-                    if(!first){
-                        //do something
-                        current_page = obj.curr
-                        location.href = '/search?q={{ query }}&page=' + current_page
-                    }
+        <script>
+        window.onload = function () {
+            new myPagination({
+                id: 'pagination',
+                curPage: {{ page_num }}, //初始页码
+                pageTotal: {{ total_page }}, //总页数
+                pageAmount: 10,  //每页多少条
+                dataTotal: {{ total_count }}, //总共多少条数据
+                pageSize: 3, //可选,分页个数
+                showPageTotalFlag: true, //是否显示数据统计
+                showSkipInputFlag: true, //是否支持跳转
+                getPage: function (page) {
+                    //获取当前页数
+                    {#console.log(page);#}
+                    // 点击之后跳转:
+                    location.href = '/search?q={{ query }}&page=' + page
                 }
-            });
-        });
+            })
+
+        }
     </script>
 {% endblock %}

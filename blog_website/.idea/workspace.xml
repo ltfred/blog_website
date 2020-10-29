@@ -42,7 +42,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/labelList.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/labelList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/time.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/time.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +127,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -238,12 +242,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django Server.blog_website" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.noticeList.html" />
       <item itemvalue="Python.manage" />
       <item itemvalue="Python.tests (1)" />
       <item itemvalue="Python.tests" />
-      <item itemvalue="Django Server.blog_website" />
     </list>
     <recent_temporary>
       <list>
@@ -455,6 +459,8 @@
       <workItem from="1598664535843" duration="137000" />
       <workItem from="1600235554325" duration="433000" />
       <workItem from="1602467987845" duration="624000" />
+      <workItem from="1603867216690" duration="437000" />
+      <workItem from="1603940900427" duration="4998000" />
     </task>
     <servers />
   </component>
@@ -488,55 +494,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="287" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592988268558">
-      <screen x="0" y="23" width="1680" height="986" />
+    <state x="2251" y="248" width="781" height="534" key="find.popup" timestamp="1603941383985">
+      <screen x="1680" y="23" width="1920" height="1057" />
     </state>
-    <state x="287" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988268558" />
-    <state x="561" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592988551752">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state x="561" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988551752" />
-    <state x="18" y="54" width="1344" height="788" key="DiffContextDialog" timestamp="1592993763695">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state x="101" y="114" key="DiffContextDialog/0.23.1920.1016@0.23.1920.1016" timestamp="1590461223418" />
-    <state x="18" y="54" width="1344" height="788" key="DiffContextDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592993763695" />
-    <state x="611" y="277" key="FileChooserDialogImpl" timestamp="1592987901353">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state x="611" y="277" key="FileChooserDialogImpl/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592987901353" />
-    <state width="1536" height="266" key="GridCell.Tab.0.bottom" timestamp="1592989155515">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.bottom/0.23.1680.986@0.23.1680.986" timestamp="1586157562235" />
-    <state width="1536" height="266" key="GridCell.Tab.0.bottom/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155515" />
-    <state width="1536" height="266" key="GridCell.Tab.0.center" timestamp="1592989155514">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.center/0.23.1680.986@0.23.1680.986" timestamp="1586157562234" />
-    <state width="1536" height="266" key="GridCell.Tab.0.center/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155514" />
-    <state width="1536" height="266" key="GridCell.Tab.0.left" timestamp="1592989155514">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.left/0.23.1680.986@0.23.1680.986" timestamp="1586157562233" />
-    <state width="1536" height="266" key="GridCell.Tab.0.left/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155514" />
-    <state width="1536" height="266" key="GridCell.Tab.0.right" timestamp="1592989155515">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state width="1502" height="248" key="GridCell.Tab.0.right/0.23.1680.986@0.23.1680.986" timestamp="1586157562234" />
-    <state width="1536" height="266" key="GridCell.Tab.0.right/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592989155515" />
-    <state x="572" y="223" key="VCS.ChangeListViewerDialog" timestamp="1592993740541">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state x="572" y="223" key="VCS.ChangeListViewerDialog/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592993740541" />
-    <state x="141" y="61" width="1008" height="681" key="find.popup" timestamp="1592988498842">
-      <screen x="0" y="23" width="1680" height="986" />
-    </state>
-    <state x="141" y="61" width="1008" height="681" key="find.popup/1680.173.1920.1057/0.23.1680.986@0.23.1680.986" timestamp="1592988498842" />
-    <state x="633" y="251" key="git4idea.branch.GitSmartOperationDialog" timestamp="1590461228271">
-      <screen x="0" y="23" width="1920" height="1016" />
-    </state>
-    <state x="633" y="251" key="git4idea.branch.GitSmartOperationDialog/0.23.1920.1016@0.23.1920.1016" timestamp="1590461228271" />
+    <state x="2251" y="248" width="781" height="534" key="find.popup/1680.23.1920.1057/0.23.1680.986/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1603941383985" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/blog_website$manage.coverage" NAME="manage Coverage Results" MODIFIED="1592988876287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

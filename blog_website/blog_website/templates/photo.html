@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 
+{% block link %}
+<link rel="stylesheet" href="{{ static('css/myPagination.css') }}">
+<script src="{{ static('js/myPagination.js') }}"></script>
+<script src="{{ static('js/page.js') }}"></script>
+{% endblock link %}
+
 {% block article %}
             <div class="whitebg about">
-            <div><h2 class="gd_title">照片墙</h2></div>
-            <ul class="xinlu">
-                {% for photo in photos %}
-                    <li>
-                        <a href="/photo?photo_id={{ photo.id }}" target="_blank"><i><img src="{{ photo.url }}"></i>
-                            <p>{{ photo.title }}</p>
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-                <div id="test1" style="text-align: center; color: #666; width: 100%; clear: both; margin: 0 0 10px;"></div>
-        </div>
+                <div><h2 class="gd_title">照片墙</h2></div>
+                <ul class="xinlu" style="overflow: hidden">
+                    {% for photo in photos %}
+                        <li>
+                            <a href="/photo?photo_id={{ photo.id }}" target="_blank"><i><img src="{{ photo.url }}"></i>
+                                <p>{{ photo.title }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if photos %}
+                    <div id="pagination" class="pagination" style="margin:0 auto;text-align: center"></div>
+                {% endif %}
+            </div>
 {% endblock article %}
 
 {% block tabel %}
@@ -21,26 +29,24 @@
 
 {% block endjs %}
     <script>
-        layui.use('laypage', function(){
-            var laypage = layui.laypage;
+    window.onload = function () {
+        new myPagination({
+            id: 'pagination',
+            curPage: {{ page_num }}, //初始页码
+            pageTotal: {{ total_page }}, //总页数
+            pageAmount: 16,  //每页多少条
+            dataTotal: {{ photo_count }}, //总共多少条数据
+            pageSize: 3, //可选,分页个数
+            showPageTotalFlag: true, //是否显示数据统计
+            showSkipInputFlag: true, //是否支持跳转
+            getPage: function (page) {
+                //获取当前页数
+                {#console.log(page);#}
+                // 点击之后跳转:
+                location.href = '/photos/' + page + '/';
+            }
+        })
 
-            laypage.render({
-                elem: 'test1'
-                ,limit:16
-                ,theme:'#34495e'
-                ,count:  {{ photo_count }}//数据总数，从服务端得到
-                ,jump: function(obj, first){
-                    //obj包含了当前分页的所有参数，比如：
-                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                    console.log(obj.limit); //得到每页显示的条数
-                    //首次不执行
-                    if(!first){
-                        //do something
-                        current_page = obj.curr
-                        location.href = '/photos/' + current_page
-                    }
-                }
-            });
-        });
-    </script>
+    }
+</script>
 {% endblock endjs %}

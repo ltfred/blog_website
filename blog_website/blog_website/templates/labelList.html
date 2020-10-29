@@ -8,7 +8,7 @@
     <div class="lbox">
             <div class="whitebg bloglist">
                 <h2 class="htitle"><span class="hnav">
-      </span>{{ label.name }}</h2>
+                </span>{{ label.name }}</h2>
                 <ul>
                     {% for article in articles %}
                         <li>
@@ -42,7 +42,6 @@
     <script>
         layui.use('laypage', function(){
             var laypage = layui.laypage;
-
             laypage.render({
                 elem: 'test1'
                 ,limit:10

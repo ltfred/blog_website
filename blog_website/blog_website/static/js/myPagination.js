@@ -170,7 +170,7 @@ myPagination.prototype = {
                     that.curPage = val;
                     that.getPage(that.curPage);
                 }else{
-                    alert("跳转页数不能大于总页数 !")
+                    swal("", "跳转页数不能大于总页数 !", "error");
                 }
                 that.init();
             }

@@ -42,11 +42,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c3df22-772c-4e80-9183-3ecb29eca03c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/labelList.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/labelList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/static/js/myPagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/static/js/myPagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -461,7 +459,7 @@
       <workItem from="1600235554325" duration="433000" />
       <workItem from="1602467987845" duration="624000" />
       <workItem from="1603867216690" duration="437000" />
-      <workItem from="1603940900427" duration="7881000" />
+      <workItem from="1603940900427" duration="9527000" />
     </task>
     <servers />
   </component>
@@ -507,6 +505,11 @@
           <url>file://$PROJECT_DIR$/blog_website/templates/search.html</url>
           <line>25</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/blog_website/apps/article/views.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

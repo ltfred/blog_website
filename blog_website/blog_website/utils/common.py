@@ -153,3 +153,13 @@ def upload(filename, content):
     bucket = oss2.Bucket(auth, 'oss-cn-shanghai.aliyuncs.com', 'ltfreddeblog')
     bucket.put_object(filename, content)
     return 'https://ltfreddeblog.oss-cn-shanghai.aliyuncs.com/' + filename
+
+
+def increase_view_count(request, article):
+    ip = get_ip(request)
+    con = get_redis_connection("default")
+    key = ip + str(article.id)
+    if not con.get(key):
+        article.read_count += 1
+        article.save(update_fields=["read_count"])
+        con.set(key, 60 * 30)

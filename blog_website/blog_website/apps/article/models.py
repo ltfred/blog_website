@@ -20,6 +20,17 @@ class ArticleCategory(BaseModel):
     def __str__(self):
         return self.name
 
+    def get_articles(self):
+        # 判断是否为一级分类
+        if self.parent is None:
+            # 获取一级下的所有文章
+            articles = Article.objects.filter(category1=self).order_by('-create_time')
+        else:
+            # 为二级分类，二级类下的所有文章
+            articles = Article.objects.filter(category2=self).order_by('-create_time')
+        category_article_count = articles.count()
+        return articles, category_article_count
+
 
 class Article(BaseModel):
     """文章"""
@@ -46,6 +57,20 @@ class Article(BaseModel):
     def __str__(self):
         return self.title
 
+    def get_next_article(self):
+        next_article = Article.objects.filter(
+            id__gt=self.id, category2=self.category2).only('id', 'title').first()
+        return next_article
+
+    def get_pre_article(self):
+        pre_article = Article.objects.filter(
+            id__lt=self.id, category2=self.category2).only('id', 'title').order_by('-id').first()
+        return pre_article
+
+    def get_connected_article(self):
+        articles = Article.objects.filter(category2=self.category2).exclude(id=self.id).only('id', 'title')[0:9]
+        return articles
+
 
 class Label(BaseModel):
     """文章标签"""
@@ -58,3 +83,8 @@ class Label(BaseModel):
 
     def __str__(self):
         return self.name
+
+    def get_label_articles(self):
+        articles = self.article_set.all().order_by('-create_time')
+        article_count = articles.count()
+        return articles, article_count

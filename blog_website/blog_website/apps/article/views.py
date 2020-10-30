@@ -1,7 +1,8 @@
 from django import http
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.views import View
+from django_redis import get_redis_connection
 from haystack.views import SearchView
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
@@ -12,7 +13,7 @@ from blog_website.utils.common import (
     get_recommend,
     get_top,
     get_labels,
-    get_site_info
+    get_site_info, get_ip, increase_view_count
 )
 from blog_website.utils.responseCode import RETCODE
 import logging
@@ -30,12 +31,11 @@ class ArticleDetailView(View):
             article = Article.objects.get(id=article_id)
         except Exception as e:
             logger.error('ArticleDetailView:get:' + str(e))
-            raise
-        context['next_article'] = self.get_next_article(article)
-        context['pre_article'] = self.get_pre_article(article)
-        context['articles'] = self.get_connected_article(article)
-        article.read_count += 1
-        article.save()
+            raise Http404
+        increase_view_count(request, article)
+        context['next_article'] = article.get_next_article()
+        context['pre_article'] = article.get_pre_article()
+        context['articles'] = article.get_connected_article()
         context['article'] = article
         context['cat_list'] = get_cat_lst()
         context['photo_category'] = get_photo_category()
@@ -43,20 +43,6 @@ class ArticleDetailView(View):
         context['top_list'] = get_top()
         context['labels'] = get_labels()
         return render(request, 'info.html', context=context)
-
-    def get_next_article(self, article):
-        next_article = Article.objects.filter(
-            id__gt=article.id, category2=article.category2).only('id','title').first()
-        return next_article
-
-    def get_pre_article(self, article):
-        pre_article = Article.objects.filter(
-            id__lt=article.id, category2=article.category2).only('id','title').order_by('-id').first()
-        return pre_article
-
-    def get_connected_article(self, article):
-        articles = Article.objects.filter(category2=article.category2).exclude(id=article.id).only('id', 'title')[0:9]
-        return articles
 
 
 class ArticleTopView(View):
@@ -94,8 +80,9 @@ class AllArticleView(View):
         except Exception as e:
             logger.error('AllArticleView:get:' + str(e))
             raise
-        context['page_articles'], context['total_page'] = paginator_function(articles, page_num,
-                                                                             constants.HISTORY_ARTICLE_LIST_LIMIT)
+        context['page_articles'], context['total_page'] = paginator_function(
+            articles, page_num, constants.HISTORY_ARTICLE_LIST_LIMIT
+        )
         context['page_num'] = page_num
         # 分类信息
         context['cat_list'] = get_cat_lst()
@@ -110,7 +97,7 @@ class CategoryAllArticleView(View):
     def get(self, request, category_id, page_num):
         try:
             category = ArticleCategory.objects.get(id=category_id)
-            articles, category_article_count = self.get_articles(category)
+            articles, category_article_count = category.get_articles()
         except Exception as e:
             logger.error('CategoryAllArticleView:get:' + str(e))
             raise
@@ -138,18 +125,6 @@ class CategoryAllArticleView(View):
         }
         return render(request, 'list.html', context=data_dict)
 
-    @staticmethod
-    def get_articles(category):
-        # 判断是否为一级分类
-        if category.parent is None:
-            # 获取一级下的所有文章
-            articles = Article.objects.filter(category1=category).order_by('-create_time')
-        else:
-            # 为二级分类，二级类下的所有文章
-            articles = Article.objects.filter(category2=category).order_by('-create_time')
-        category_article_count = articles.count()
-        return articles, category_article_count
-
 
 class LabelView(View):
     """获取标签"""
@@ -169,7 +144,7 @@ class LabelArticlesView(View):
         except Exception as e:
             logger.error('LabelArticlesView:get:' + str(e))
             raise
-        articles, article_count = self.get_label_articles(label)
+        articles, article_count = label.get_label_articles()
         page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
         article_labels = []
         for article in page_query_set:
@@ -194,18 +169,10 @@ class LabelArticlesView(View):
 
         return render(request, 'labelList.html', context=context)
 
-    @staticmethod
-    def get_label_articles(label):
-
-        articles = label.article_set.all().order_by('-create_time')
-        article_count = articles.count()
-        return articles, article_count
-
 
 class ArticleLikeView(View):
     """文章点赞"""
     def post(self, request, article_id):
-
         article_obj = Article.objects.get(id=article_id)
         article_obj.like_count += 1
         article_obj.save()

@@ -6,7 +6,7 @@ class ArticleAdmin(object):
     list_filter = ('create_time',)
     ordering = ('-create_time',)
     list_display = ['title', 'author', 'category1', 'category2']
-
+    
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == 'category1':
             kwargs['queryset'] = ArticleCategory.objects.filter(parent__isnull=True)

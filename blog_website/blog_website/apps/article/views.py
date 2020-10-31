@@ -194,3 +194,4 @@ class ArticleSearchView(SearchView):
         content["page_num"] = int(self.request.GET.get('page', 1))
         content["total_page"] = self.get_total_page()
         return content
+

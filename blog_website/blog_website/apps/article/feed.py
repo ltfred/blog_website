@@ -13,7 +13,7 @@ class BlogFeed(Feed):
 
     def items(self):
         # 返回所有文章
-        return Article.objects.all()
+        return Article.objects.all().order_by("-create_time")
 
     def item_title(self, item):
         # 返回文章标题
@@ -21,7 +21,7 @@ class BlogFeed(Feed):
 
     def item_description(self, item):
         # 返回文章内容
-        return item.content[:30]
+        return item.describe
 
     def item_link(self, item):
         # 返回文章详情页的路由

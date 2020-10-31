@@ -88,3 +88,4 @@ class Label(BaseModel):
         articles = self.article_set.all().order_by('-create_time')
         article_count = articles.count()
         return articles, article_count
+

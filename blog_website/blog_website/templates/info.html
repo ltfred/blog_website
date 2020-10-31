@@ -54,16 +54,22 @@
             <div class="whitebg gbook">
                 <h2 class="htitle">文章评论</h2>
                 <ul>
-                    <link rel="stylesheet" href="//c.fansx.com/tc.css"/>
-                    <div id="tc_s77p{{ article.id }}"></div>
-                    <script src="//c.fansx.com/?m=c1&sid=77&pid={{ article.id }}"></script>
+			<!--PC版-->
+<div id="SOHUCS" sid="{{ article.id }}"></div>
+<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cyurPKNuR',
+conf: 'prod_40f065b65d473b2fd62db802aa069635'
+});
+</script>
                 </ul>
             </div>
         </div>
 {% endblock article %}
 
 {% block endjs %}
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         // 点赞功能主函数
         function validate_is_like() {

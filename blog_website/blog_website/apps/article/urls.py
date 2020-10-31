@@ -24,5 +24,4 @@ urlpatterns = [
 
     url(r'search/', views.ArticleSearchView()),
     url('rss/', feed.BlogFeed(), name='rss'),
-
 ]

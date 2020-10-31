@@ -5,15 +5,8 @@ from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory
 from blog_website.utils import constants
-from blog_website.utils.common import (
-    get_photo_category,
-    get_cat_lst,
-    get_notice,
-    get_recommend,
-    get_top,
-    get_labels,
+from blog_website.utils.common import get_photo_category, get_cat_lst, get_notice, get_recommend, get_top, get_labels, \
     get_site_info
-)
 from blog_website.utils.responseCode import RETCODE
 import logging
 from index.models import Carousel
@@ -44,10 +37,10 @@ class IndexView(View):
         context['top_list'] = get_top()
         context['labels'] = get_labels()
         context['count'], context['pv'], context['days'] = get_site_info()
+
         return render(request, 'index.html', context=context)
 
-    @staticmethod
-    def get_profile():
+    def get_profile(self):
         user = User.objects.all()[0]
         profile = dict()
         profile['webname'] = user.webname
@@ -56,13 +49,11 @@ class IndexView(View):
         profile['email'] = user.email
         return profile
 
-    @staticmethod
-    def get_like_articles():
+    def get_like_articles(self):
         like_articles = Article.objects.order_by('-like_count').only('id', 'title', 'index_image', 'describe')
         return like_articles
 
-    @staticmethod
-    def get_carousel_articles():
+    def get_carousel_articles(self):
         carousel_articles = Carousel.objects.filter(is_active=True)
         return carousel_articles
 
@@ -73,8 +64,7 @@ class IndexView(View):
             static_articles = random.sample(list(index_images), 2)
         return static_articles
 
-    @staticmethod
-    def get_cat_lst():
+    def get_cat_lst(self):
 
         cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
         cat_list = []
@@ -88,8 +78,7 @@ class IndexView(View):
             })
         return cat_list
 
-    @staticmethod
-    def get_new_articles():
+    def get_new_articles(self):
         articles = Article.objects.order_by('-create_time')[0:10]
         article_labels = list()
         for article in articles:

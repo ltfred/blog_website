@@ -79,7 +79,7 @@
         <p>现居：{{ profile.address }}</p>
         <p>Email：{{ profile.email }}</p>
         <ul class="linkmore">
-            <li><a href="http://www.ltfred.com" target="_blank" class="iconfont icon-zhuye" title="网站地址"></a>
+            <li><a href="http://www.ltfred.top" target="_blank" class="iconfont icon-zhuye" title="网站地址"></a>
             </li>
             <li><a href="mailto:ltfred@163.com" target="_blank" class="iconfont icon-youxiang" title="我的邮箱"></a></li>
             <li><a href="/article/rss" target="_blank" class="iconfont icon---" title="RSS订阅"></a></li>
@@ -116,6 +116,7 @@
 
 {% block endjs %}
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         var is_alert = Cookies.get("is_alert")
         if (!is_alert) {

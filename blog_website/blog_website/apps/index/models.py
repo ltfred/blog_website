@@ -14,3 +14,11 @@ class Carousel(BaseModel):
         db_table = 'carousel'
         verbose_name = '轮播图'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.title
+
+    @staticmethod
+    def get_carousel_articles():
+        carousel_articles = Carousel.objects.filter(is_active=True)
+        return carousel_articles

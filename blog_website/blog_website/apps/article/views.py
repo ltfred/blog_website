@@ -2,18 +2,17 @@ from django import http
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.views import View
-from django_redis import get_redis_connection
 from haystack.views import SearchView
 from article.models import Article, ArticleCategory, Label
 from blog_website.utils import constants
 from blog_website.utils.common import (
     paginator_function,
-    get_cat_lst,
     get_photo_category,
     get_recommend,
     get_top,
     get_labels,
-    get_site_info, get_ip, increase_view_count
+    get_site_info,
+    increase_view_count,
 )
 from blog_website.utils.responseCode import RETCODE
 import logging
@@ -37,7 +36,7 @@ class ArticleDetailView(View):
         context['pre_article'] = article.get_pre_article()
         context['articles'] = article.get_connected_article()
         context['article'] = article
-        context['cat_list'] = get_cat_lst()
+        context['cat_list'] = ArticleCategory.get_cat_lst()
         context['photo_category'] = get_photo_category()
         context['recommend_list'] = get_recommend()
         context['top_list'] = get_top()
@@ -85,7 +84,7 @@ class AllArticleView(View):
         )
         context['page_num'] = page_num
         # 分类信息
-        context['cat_list'] = get_cat_lst()
+        context['cat_list'] = ArticleCategory.get_cat_lst()
         # 相册分类
         context['photo_category'] = get_photo_category()
         return render(request, 'time.html', context=context)
@@ -117,7 +116,7 @@ class CategoryAllArticleView(View):
             'article_count': category_article_count,
             'total_page': total_page,
             'page_num': page_num,
-            'cat_list': get_cat_lst(),
+            'cat_list': ArticleCategory.get_cat_lst(),
             'photo_category': get_photo_category(),
             'recommend_list': get_recommend(),
             'top_list': get_top(),
@@ -160,7 +159,7 @@ class LabelArticlesView(View):
             'article_count': article_count,
             'total_page': total_page,
             'page_num': page_num,
-            'cat_list': get_cat_lst(),
+            'cat_list': ArticleCategory.get_cat_lst(),
             'photo_category': get_photo_category(),
             'recommend_list': get_recommend(),
             'top_list': get_top(),
@@ -188,7 +187,7 @@ class ArticleSearchView(SearchView):
 
     def extra_context(self):
         content = super(ArticleSearchView, self).extra_context()
-        content['cat_list'] = get_cat_lst()
+        content['cat_list'] = ArticleCategory.get_cat_lst()
         content['photo_category'] = get_photo_category()
         content['total_count'] = self.results.count()
         content["page_num"] = int(self.request.GET.get('page', 1))

@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="daa7fbcc-3e15-4266-9204-9c00254eafd3" name="Default Changelist" comment="" />
+    <list default="true" id="daa7fbcc-3e15-4266-9204-9c00254eafd3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/links/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/settings/dev.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/utils/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/utils/common.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="JupyterTrust" id="7c4d7870-7fe6-4f84-91f2-956105b1a8c9" />
   <component name="ProjectId" id="1jamVL3IQgIiCB6SlRVf10efN74" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,10 +53,20 @@
       <option name="presentableId" value="Default" />
       <updated>1604050599334</updated>
       <workItem from="1604050600376" duration="30000" />
+      <workItem from="1604155063081" duration="256000" />
+      <workItem from="1604311206955" duration="1256000" />
+      <workItem from="1604312543957" duration="1021000" />
+      <workItem from="1604576343435" duration="16000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2254" y="250" width="735" height="534" key="find.popup" timestamp="1604312533769">
+      <screen x="1680" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2254" y="250" width="735" height="534" key="find.popup/1680.23.1920.1057/0.23.1680.986/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1604312533769" />
   </component>
 </project>

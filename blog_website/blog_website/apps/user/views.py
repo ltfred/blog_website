@@ -5,7 +5,9 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
-from blog_website.utils.common import get_cat_lst, get_photo_category
+
+from article.models import ArticleCategory
+from blog_website.utils.common import get_photo_category
 from user.models import User
 import logging
 
@@ -22,7 +24,7 @@ class AboutUserView(TemplateView):
         context['dubai'] = user.soliloquy
         context['name'] = user.webname
         context['avatar'] = user.avatar_url
-        context['cat_list'] = get_cat_lst()
+        context['cat_list'] = ArticleCategory.get_cat_lst()
         context['photo_category'] = get_photo_category()
         return context
 
@@ -32,7 +34,7 @@ class MusicView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cat_list'] = get_cat_lst()
+        context['cat_list'] = ArticleCategory.get_cat_lst()
         context['photo_category'] = get_photo_category()
         return context
 

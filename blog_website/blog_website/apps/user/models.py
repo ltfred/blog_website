@@ -20,3 +20,13 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    @staticmethod
+    def get_profile():
+        user = User.objects.filter(is_superuser=True).first()
+        profile = dict()
+        profile['webname'] = user.webname
+        profile['profession'] = user.profession
+        profile['address'] = user.address
+        profile['email'] = user.email
+        return profile

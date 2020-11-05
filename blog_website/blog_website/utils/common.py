@@ -60,20 +60,6 @@ def get_photo_category():
     return photo_categories
 
 
-def get_cat_lst():
-    cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
-    cat_list = []
-    for cat1 in cat1_list:
-        cat2_list = ArticleCategory.objects.filter(parent=cat1)
-        subs = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
-        cat_list.append({
-            'id': cat1.id,
-            'name': cat1.name,
-            'subs': subs
-        })
-    return cat_list
-
-
 def get_article_count():
     count = Article.objects.count()
     return count

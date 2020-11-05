@@ -2,7 +2,9 @@ from django import http
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
-from blog_website.utils.common import get_cat_lst, get_photo_category, get_notice, get_recommend, get_top, get_labels
+
+from article.models import ArticleCategory
+from blog_website.utils.common import get_photo_category, get_notice, get_recommend, get_top, get_labels
 from blog_website.utils.responseCode import RETCODE
 from notice.models import Notice
 import logging
@@ -39,7 +41,7 @@ class NoticeDetailView(View):
             'next_notice': next_notice,
             'pre_notice': pre_notice,
             'notices': notices,
-            'cat_list': get_cat_lst(),
+            'cat_list': ArticleCategory.get_cat_lst(),
             'photo_category': get_photo_category(),
             'recommend_list': get_recommend(),
             'top_list': get_top(),
@@ -69,7 +71,7 @@ class AllNoticeView(TemplateView):
         context = super().get_context_data(**kwargs)
         notices = Notice.objects.all()
         context['notices'] = notices
-        context['cat_list'] = get_cat_lst()
+        context['cat_list'] = ArticleCategory.get_cat_lst()
         context['photo_category'] = get_photo_category()
         context['recommend_list'] = get_recommend()
         context['top_list'] = get_top()

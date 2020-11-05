@@ -1,3 +1,5 @@
+import random
+
 from ckeditor.fields import RichTextField
 from django.db import models
 from blog_website.utils.models import BaseModel
@@ -30,6 +32,20 @@ class ArticleCategory(BaseModel):
             articles = Article.objects.filter(category2=self).order_by('-create_time')
         category_article_count = articles.count()
         return articles, category_article_count
+
+    @staticmethod
+    def get_cat_lst():
+        cat1_list = ArticleCategory.objects.filter(parent__isnull=True)
+        cat_list = []
+        for cat1 in cat1_list:
+            cat2_list = ArticleCategory.objects.filter(parent=cat1)
+            subs = [{'id': cat2.id, 'name': cat2.name} for cat2 in cat2_list]
+            cat_list.append({
+                'id': cat1.id,
+                'name': cat1.name,
+                'subs': subs
+            })
+        return cat_list
 
 
 class Article(BaseModel):
@@ -70,6 +86,31 @@ class Article(BaseModel):
     def get_connected_article(self):
         articles = Article.objects.filter(category2=self.category2).exclude(id=self.id).only('id', 'title')[0:9]
         return articles
+
+    @staticmethod
+    def get_new_articles():
+        articles = Article.objects.order_by('-create_time')[0:10]
+        article_labels = list()
+        for article in articles:
+            # 该文章的标签
+            labels = article.labels.all()
+            article_labels.append({
+                'article': article,
+                'labels': labels
+            })
+        return article_labels
+
+    @staticmethod
+    def get_like_articles():
+        like_articles = Article.objects.order_by('-like_count').only('id', 'title', 'index_image', 'describe')
+        return like_articles
+
+    def get_static_articles(self):
+        index_images = self.get_like_articles()
+        static_articles = []
+        if index_images.count() > 3:
+            static_articles = random.sample(list(index_images), 2)
+        return static_articles
 
 
 class Label(BaseModel):

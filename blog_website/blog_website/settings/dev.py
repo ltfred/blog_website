@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'photo',
     'soup',
     'comment',
-    'site_statistics',
     'xadmin',
     'crispy_forms',
     'reversion',

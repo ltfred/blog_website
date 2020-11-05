@@ -1,9 +1,11 @@
 from django import http
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
+
+from article.models import ArticleCategory
 from blog_website.utils import constants
-from blog_website.utils.common import get_image_size, paginator_function, get_cat_lst, get_photo_category, get_labels, \
+from blog_website.utils.common import get_image_size, paginator_function, get_photo_category, get_labels, \
     get_top, get_recommend
 from blog_website.utils.responseCode import RETCODE
 from photo.models import PhotoCategory, Photo
@@ -38,7 +40,7 @@ class AllPhotosView(View):
             'photos': page_photos,
             'total_page': total_page,
             'page_num': page_num,
-            'cat_list': get_cat_lst(),
+            'cat_list': ArticleCategory.get_cat_lst(),
             'photo_count': photo_query_set.count(),
             'photo_category': get_photo_category()
         }
@@ -68,7 +70,7 @@ class CategoryPhotoView(View):
             'photos': page_photos,
             'total_page': total_page,
             'page_num': page_num,
-            'cat_list': get_cat_lst(),
+            'cat_list': ArticleCategory.get_cat_lst(),
             'photos_count': photos.count(),
             'photo_category': get_photo_category()
         }
@@ -95,7 +97,7 @@ class PhotoDetailView(TemplateView):
         context['size'] = size
         context['webname'] = user.webname
         context['avatar'] = user.avatar_url
-        context['cat_list'] = get_cat_lst()
+        context['cat_list'] = ArticleCategory.get_cat_lst()
         context['photo_category'] = get_photo_category()
         return context
 

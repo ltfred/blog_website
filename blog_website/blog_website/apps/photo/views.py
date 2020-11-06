@@ -1,10 +1,10 @@
+from blog_website.utils.constants import Const
 from django import http
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 
 from article.models import ArticleCategory
-from blog_website.utils import constants
 from blog_website.utils.common import get_image_size, paginator_function, get_photo_category, get_labels, \
     get_top, get_recommend
 from blog_website.utils.responseCode import RETCODE
@@ -35,7 +35,7 @@ class AllPhotosView(View):
         except Exception as e:
             logger.error(e)
             raise
-        page_photos, total_page = paginator_function(photo_query_set, page_num, constants.PHOTO_LIST_LIMIT)
+        page_photos, total_page = paginator_function(photo_query_set, page_num, Const.EXTREMUM.PHOTO_LIST)
         context = {
             'photos': page_photos,
             'total_page': total_page,
@@ -63,7 +63,7 @@ class CategoryPhotoView(View):
         except Exception as e:
             logger.error(e)
             raise
-        page_photos, total_page = paginator_function(photos, page_num, constants.PHOTO_LIST_LIMIT)
+        page_photos, total_page = paginator_function(photos, page_num, Const.EXTREMUM.PHOTO_LIST)
 
         context = {
             'category_id': category_id,

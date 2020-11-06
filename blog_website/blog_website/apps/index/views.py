@@ -1,3 +1,4 @@
+from blog_website.utils.constants import Const
 import random
 from django import http
 from django.shortcuts import render
@@ -22,7 +23,7 @@ class IndexView(View):
         # 24小时内PV记录
         conn = get_redis_connection('default')
         if conn.setnx('24_hours_pv', 0):
-            conn.expire('24_hours_pv', constants.PV_EXPIRE)
+            conn.expire('24_hours_pv', Const.EXTREMUM.PV_EXPIRE)
         conn.incr('24_hours_pv')
         context = dict()
         context['articles'] = Article.get_new_articles()

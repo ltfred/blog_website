@@ -3,24 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="daa7fbcc-3e15-4266-9204-9c00254eafd3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/links/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/site_statistics/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/user/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/settings/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/utils/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/utils/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/utils/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +41,10 @@
       <workItem from="1604311206955" duration="1256000" />
       <workItem from="1604312543957" duration="1021000" />
       <workItem from="1604576343435" duration="16000" />
+      <workItem from="1604576369188" duration="765000" />
+      <workItem from="1604628254889" duration="1359000" />
+      <workItem from="1604629824420" duration="18000" />
+      <workItem from="1604630048655" duration="225000" />
     </task>
     <servers />
   </component>
@@ -64,9 +52,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2254" y="250" width="735" height="534" key="find.popup" timestamp="1604312533769">
-      <screen x="1680" y="23" width="1920" height="1057" />
+    <state x="2254" y="232" width="735" height="546" key="find.popup" timestamp="1604630152793">
+      <screen x="1680" y="0" width="1920" height="1080" />
     </state>
+    <state x="2254" y="232" width="735" height="546" key="find.popup/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604630152793" />
     <state x="2254" y="250" width="735" height="534" key="find.popup/1680.23.1920.1057/0.23.1680.986/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1604312533769" />
   </component>
 </project>

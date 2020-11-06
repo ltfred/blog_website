@@ -1,10 +1,10 @@
+from blog_website.utils.constants import Const
 from django import http
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.views import View
 from haystack.views import SearchView
 from article.models import Article, ArticleCategory, Label
-from blog_website.utils import constants
 from blog_website.utils.common import (
     paginator_function,
     get_photo_category,
@@ -80,7 +80,7 @@ class AllArticleView(View):
             logger.error('AllArticleView:get:' + str(e))
             raise
         context['page_articles'], context['total_page'] = paginator_function(
-            articles, page_num, constants.HISTORY_ARTICLE_LIST_LIMIT
+            articles, page_num, Const.EXTREMUM.HISTORY_ARTICLE_LIST
         )
         context['page_num'] = page_num
         # 分类信息
@@ -100,7 +100,7 @@ class CategoryAllArticleView(View):
         except Exception as e:
             logger.error('CategoryAllArticleView:get:' + str(e))
             raise
-        page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
+        page_query_set, total_page = paginator_function(articles, page_num, Const.EXTREMUM.ARTICLE_LIST)
         article_labels = []
         for article in page_query_set:
             labels = article.labels.all()
@@ -144,7 +144,7 @@ class LabelArticlesView(View):
             logger.error('LabelArticlesView:get:' + str(e))
             raise
         articles, article_count = label.get_label_articles()
-        page_query_set, total_page = paginator_function(articles, page_num, constants.ARTICLE_LIST_LIMIT)
+        page_query_set, total_page = paginator_function(articles, page_num, Const.EXTREMUM.ARTICLE_LIST)
         article_labels = []
         for article in page_query_set:
             labels = article.labels.all()

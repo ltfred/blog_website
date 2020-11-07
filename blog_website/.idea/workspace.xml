@@ -2,14 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daa7fbcc-3e15-4266-9204-9c00254eafd3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/blog_website/templates/photos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blog_website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog_website.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/utils/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/adminx.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/adminx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/settings/dev.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/templates/photoDetail.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -26,7 +39,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/blog_website/static/photo" />
+      <recent name="$PROJECT_DIR$/blog_website/templates" />
+      <recent name="$PROJECT_DIR$/blog_website/static/photos" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -44,7 +65,9 @@
       <workItem from="1604576369188" duration="765000" />
       <workItem from="1604628254889" duration="1359000" />
       <workItem from="1604629824420" duration="18000" />
-      <workItem from="1604630048655" duration="225000" />
+      <workItem from="1604630048655" duration="7541000" />
+      <workItem from="1604646622445" duration="1567000" />
+      <workItem from="1604649036617" duration="2612000" />
     </task>
     <servers />
   </component>
@@ -52,10 +75,22 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2254" y="232" width="735" height="546" key="find.popup" timestamp="1604630152793">
+    <state x="2359" y="371" key="#Notifications" timestamp="1604649060356">
       <screen x="1680" y="0" width="1920" height="1080" />
     </state>
-    <state x="2254" y="232" width="735" height="546" key="find.popup/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604630152793" />
-    <state x="2254" y="250" width="735" height="534" key="find.popup/1680.23.1920.1057/0.23.1680.986/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1604312533769" />
+    <state x="2359" y="371" key="#Notifications/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604649060356" />
+    <state x="2378" y="293" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604644699332">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2378" y="293" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604644699332" />
+    <state x="1909" y="111" key="SettingsEditor" timestamp="1604649169897">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1909" y="111" key="SettingsEditor/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604649169897" />
+    <state x="1996" y="249" width="735" height="546" key="find.popup" timestamp="1604650149005">
+      <screen x="1680" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2326" y="339" width="735" height="546" key="find.popup/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604649332479" />
+    <state x="1996" y="249" width="735" height="546" key="find.popup/1680.23.1920.1057/0.23.1680.986/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1604650149005" />
   </component>
 </project>

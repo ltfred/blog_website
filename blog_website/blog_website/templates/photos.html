@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{ group.title }}</title>
+
+<link href="{{ static('photo/css/style.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ static('photo/css/lightbox.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ static('photo/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function(){	
+	$(".zoom,.ilike").hide();
+
+	$(".zoom").each(function(){//遍历所有对象
+	var src=$(this).siblings("img").attr("src");
+		$(this).attr({href:src});
+	});
+	
+	$("#nav li").click(function(){
+		$("#nav a").removeClass("hover");
+		$(this).find("a").addClass("hover");
+	});
+	
+	$("#waterfall li").mouseover(function(){
+		$(this).addClass("hover");
+		$(this).find(".zoom,.ilike").show();
+	});
+	
+	$("#waterfall li").mouseout(function(){
+		$(this).removeClass("hover");
+		$(this).find(".zoom,.ilike").hide();
+	});
+});
+</script>
+</head>
+
+<body>
+
+<div id="main">
+	<ul id="waterfall">
+    	{% for photo in photos %}
+        <li>
+        	<div class="img_block">
+            	<img src="{{ photo.url }}" />
+                <a href="#" rel="lightbox[plants]" title="{{ photo.title }}" class="zoom">放大</a>
+          </div>
+		</li>
+        {% endfor %}
+    </ul>
+	
+	<div class="clear"></div>
+	
+	<div style="visibility:hidden" id="loading" class="loading"><p><img src="/static/photo/images/loading.gif" /><img src="/static/photo/images/load.gif" /></p></div>
+
+</div>
+
+<script type="text/javascript" src="{{ static('photo/js/lightbox.js') }}"></script>
+<script type="text/javascript" src="{{ static('photo/js/jquery.masonry.min.js') }}"></script>
+<script type="text/javascript">
+$(function(){
+
+	var $waterfall = $('#waterfall');
+	
+	$waterfall.masonry({
+		columnWidth: 230
+	});
+	
+});
+</script>
+
+</body>
+</html>

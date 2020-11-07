@@ -47,11 +47,11 @@
                             <span></span>
                         </li>
                     {% endfor %}
-                    <li class="menu"><a href="{{ url('photo:photos', args=(1,)) }}">相册</a>
+                    <li class="menu"><a href="{{ url('photo:all_groups', args=(1,)) }}">相册</a>
                         <ul class="sub">
                             {% for category in photo_category %}
                                 <li>
-                                    <a href="{{ url('photo:photo_category', args=(category.id, 1)) }}">{{ category.name }}</a>
+                                    <a href="{{ url('photo:category_group', args=(category.id, 1)) }}">{{ category.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>

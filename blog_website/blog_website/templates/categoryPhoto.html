@@ -10,15 +10,15 @@
             <div class="whitebg about">
         <div><h2 class="gd_title">照片墙</h2></div>
         <ul class="xinlu" style="overflow: hidden">
-            {% for photo in photos %}
+            {% for photo_group in photo_groups %}
                 <li>
-                    <a href="/photo?photo_id={{ photo.id }}" target="_blank"><i><img src="{{ photo.url }}"></i>
-                        <p>{{ photo.title }}</p>
+                    <a href="{{ url('photo:photos', args=(photo_group.id,)) }}" target="_blank"><i><img src="{{ photo_group.index_image }}"></i>
+                        <p>{{ photo_group.title }}</p>
                     </a>
                 </li>
             {% endfor %}
         </ul>
-        {% if photos %}
+        {% if photo_groups %}
             <div id="pagination" class="pagination" style="margin:0 auto;text-align: center"></div>
         {% endif %}
     </div>
@@ -34,7 +34,7 @@
                     curPage: {{ page_num }}, //初始页码
                     pageTotal: {{ total_page }}, //总页数
                     pageAmount: 16,  //每页多少条
-                    dataTotal: {{ photos_count }}, //总共多少条数据
+                    dataTotal: {{ photo_group_count }}, //总共多少条数据
                     pageSize: 3, //可选,分页个数
                     showPageTotalFlag: true, //是否显示数据统计
                     showSkipInputFlag: true, //是否支持跳转
@@ -42,7 +42,7 @@
                         //获取当前页数
                         {#console.log(page);#}
                         // 点击之后跳转:
-                        location.href = '/photos/' + {{ category_id }}+ '/'+ page + '/';
+                        location.href = '/photo/category/groups/' + {{ category_id }}+ '/'+ page + '/';
                     }
                 })
 

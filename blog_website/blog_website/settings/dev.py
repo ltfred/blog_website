@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_app'))
 
 SECRET_KEY = 'n7-t&@=+ovjlqc*3=zsrw+9-8+0^i+uauxwasgx$4_3m29v&^p'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 

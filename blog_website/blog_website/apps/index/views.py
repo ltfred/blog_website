@@ -28,7 +28,7 @@ class IndexView(View):
         context = dict()
         context['articles'] = Article.get_new_articles()
         context['cat_list'] = ArticleCategory.get_cat_lst()
-        context['static_articles'] = Article.get_static_articles()
+        context['static_articles'] = Article().get_static_articles()
         context['carousel_articles'] = Carousel.get_carousel_articles()
         context['like_articles'] = Article.get_like_articles()[0:6]
         context['profile'] = User.get_profile()

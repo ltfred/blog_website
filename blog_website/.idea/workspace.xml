@@ -2,19 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daa7fbcc-3e15-4266-9204-9c00254eafd3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog_website/templates/photos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/blog_website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog_website.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/adminx.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/adminx.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/settings/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/settings/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/categoryPhoto.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/templates/photo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/templates/photoDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0002_auto_20190919_2305.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0003_auto_20190919_2328.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0004_article_like_count.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0005_article_describe.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0006_auto_20190925_2323.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0007_auto_20190927_1217.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0008_auto_20190928_2111.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0009_label.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0010_auto_20190929_2346.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0011_auto_20191001_1338.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0012_auto_20191023_1759.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0013_auto_20191119_1624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0014_auto_20191119_1638.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0015_auto_20191120_0945.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0016_auto_20191206_1500.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0017_auto_20200313_1730.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/migrations/0018_auto_20200313_1734.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/comment/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/comment/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/migrations/0002_carousel_is_active.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/migrations/0003_carousel_title.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/migrations/0004_auto_20191119_1624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/migrations/0005_auto_20191119_1638.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/links/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0002_auto_20190927_1217.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0003_auto_20190928_2111.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0004_auto_20190928_2324.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0005_auto_20191119_1624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0006_auto_20191119_1638.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/migrations/0007_auto_20191120_0945.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0002_notice_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0002_notice_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0003_notice_like_count.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0004_auto_20190928_2111.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0005_auto_20190929_1735.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/migrations/0006_auto_20190929_2337.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0002_auto_20190928_2111.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0003_auto_20191104_1032.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0004_auto_20191119_1624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0005_auto_20191119_1638.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0006_auto_20191120_0945.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0007_auto_20191206_1500.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/migrations/0008_auto_20201106_1133.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/soup/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/soup/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/soup/migrations/0002_auto_20191119_1624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/user/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/migrations/0002_auto_20190920_1827.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/migrations/0003_auto_20190925_1459.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/migrations/0004_user_webname.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/migrations/0005_auto_20191119_1624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/migrations/0006_auto_20191119_1638.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

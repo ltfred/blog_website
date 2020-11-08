@@ -28,7 +28,7 @@ class PhotoGroupView(View):
             if request.user.is_anonymous:
                 photo_groups = PhotoGroup.objects.filter(category__is_secret=False).order_by('-create_time')
             else:
-                photo_groups = Photo.objects.all().order_by('-create_time')
+                photo_groups = PhotoGroup.objects.all().order_by('-create_time')
         except Exception as e:
             logger.error(e)
             raise

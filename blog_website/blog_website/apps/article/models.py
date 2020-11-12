@@ -112,6 +112,10 @@ class Article(BaseModel):
             static_articles = random.sample(list(index_images), 2)
         return static_articles
 
+    @classmethod
+    def get_article_count(cls):
+        return cls.objects.count()
+
 
 class Label(BaseModel):
     """文章标签"""

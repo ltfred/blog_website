@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="daa7fbcc-3e15-4266-9204-9c00254eafd3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/comment/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/links/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/notice/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/photo/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/soup/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_website/apps/user/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/article/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/comment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/comment/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/apps/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/apps/index/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_website/utils/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog_website/utils/common.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +42,35 @@
       <recent name="$PROJECT_DIR$/blog_website/static/photos" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="common" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="blog_website" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/blog_website/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/blog_website/utils/common.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.common" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,6 +91,9 @@
       <workItem from="1604646622445" duration="1567000" />
       <workItem from="1604649036617" duration="2612000" />
       <workItem from="1604798552227" duration="1211000" />
+      <workItem from="1605064876928" duration="1369000" />
+      <workItem from="1605089644414" duration="2138000" />
+      <workItem from="1605148082091" duration="1258000" />
     </task>
     <servers />
   </component>
@@ -80,14 +109,33 @@
       <screen x="1680" y="0" width="1920" height="1080" />
     </state>
     <state x="2378" y="293" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604644699332" />
+    <state width="1875" height="302" key="GridCell.Tab.0.bottom" timestamp="1605095056537">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="302" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1605095056537" />
+    <state width="1875" height="302" key="GridCell.Tab.0.center" timestamp="1605095056535">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="302" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1605095056535" />
+    <state width="1875" height="302" key="GridCell.Tab.0.left" timestamp="1605095056533">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="302" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1605095056533" />
+    <state width="1875" height="302" key="GridCell.Tab.0.right" timestamp="1605095056536">
+      <screen x="1680" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="302" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1605095056536" />
     <state x="1909" y="111" key="SettingsEditor" timestamp="1604649169897">
       <screen x="1680" y="0" width="1920" height="1080" />
     </state>
     <state x="1909" y="111" key="SettingsEditor/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604649169897" />
-    <state x="1996" y="249" width="735" height="546" key="find.popup" timestamp="1604650149005">
-      <screen x="1680" y="23" width="1920" height="1057" />
+    <state x="2326" y="339" width="735" height="546" key="find.popup" timestamp="1605159393885">
+      <screen x="1680" y="0" width="1920" height="1080" />
     </state>
-    <state x="2326" y="339" width="735" height="546" key="find.popup/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1604649332479" />
+    <state x="2326" y="339" width="735" height="546" key="find.popup/1680.0.1920.1080/0.0.1680.1050/-1920.0.1920.1080@1680.0.1920.1080" timestamp="1605159393885" />
     <state x="1996" y="249" width="735" height="546" key="find.popup/1680.23.1920.1057/0.23.1680.986/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1604650149005" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/blog_website$common.coverage" NAME="common Coverage Results" MODIFIED="1605091125446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog_website/utils" />
   </component>
 </project>

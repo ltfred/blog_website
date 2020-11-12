@@ -1,7 +1,7 @@
 from blog_website.utils.constants import Const
 from django import http
-from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from haystack.views import SearchView
 from article.models import Article, ArticleCategory, Label
@@ -13,6 +13,7 @@ from blog_website.utils.common import (
     get_labels,
     get_site_info,
     increase_view_count,
+    get_context_data
 )
 from blog_website.utils.responseCode import RETCODE
 import logging
@@ -24,23 +25,19 @@ class ArticleDetailView(View):
     """文章详情"""
 
     def get(self, request, article_id):
-        context = {}
-        try:
-            # 获取本条数据
-            article = Article.objects.get(id=article_id)
-        except Exception as e:
-            logger.error('ArticleDetailView:get:' + str(e))
-            raise Http404
+        article = get_object_or_404(Article, id=article_id)
         increase_view_count(request, article)
-        context['next_article'] = article.get_next_article()
-        context['pre_article'] = article.get_pre_article()
-        context['articles'] = article.get_connected_article()
-        context['article'] = article
-        context['cat_list'] = ArticleCategory.get_cat_lst()
-        context['photo_category'] = get_photo_category()
-        context['recommend_list'] = get_recommend()
-        context['top_list'] = get_top()
-        context['labels'] = get_labels()
+        context = get_context_data(
+            next_article=article.get_next_article(),
+            pre_article=article.get_pre_article(),
+            articles=article.get_connected_article(),
+            article=article,
+            cat_list=ArticleCategory.get_cat_lst(),
+            photo_category=get_photo_category(),
+            recommend_list=get_recommend(),
+            top_list=get_top(),
+            labels=get_labels()
+        )
         return render(request, 'info.html', context=context)
 
 
@@ -94,12 +91,8 @@ class CategoryAllArticleView(View):
     """当前类别下的所有文章"""
 
     def get(self, request, category_id, page_num):
-        try:
-            category = ArticleCategory.objects.get(id=category_id)
-            articles, category_article_count = category.get_articles()
-        except Exception as e:
-            logger.error('CategoryAllArticleView:get:' + str(e))
-            raise
+        category = get_object_or_404(ArticleCategory, id=category_id)
+        articles, category_article_count = category.get_articles()
         page_query_set, total_page = paginator_function(articles, page_num, Const.EXTREMUM.ARTICLE_LIST)
         article_labels = []
         for article in page_query_set:
@@ -137,12 +130,7 @@ class LabelArticlesView(View):
     """获取该标签下所有文章"""
 
     def get(self, request, label_id, page_num):
-
-        try:
-            label = Label.objects.get(id=label_id)
-        except Exception as e:
-            logger.error('LabelArticlesView:get:' + str(e))
-            raise
+        label = get_object_or_404(Label, id=label_id)
         articles, article_count = label.get_label_articles()
         page_query_set, total_page = paginator_function(articles, page_num, Const.EXTREMUM.ARTICLE_LIST)
         article_labels = []

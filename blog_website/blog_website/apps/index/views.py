@@ -1,11 +1,9 @@
 from blog_website.utils.constants import Const
-import random
 from django import http
 from django.shortcuts import render
 from django.views import View
 from django_redis import get_redis_connection
 from article.models import Article, ArticleCategory
-from blog_website.utils import constants
 from blog_website.utils.common import get_photo_category, get_notice, get_recommend, get_top, get_labels, \
     get_site_info
 from blog_website.utils.responseCode import RETCODE

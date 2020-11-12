@@ -6,7 +6,7 @@ import oss2
 from PIL import Image
 from django.core.paginator import Paginator, EmptyPage
 from django_redis import get_redis_connection
-from article.models import ArticleCategory, Article, Label
+from article.models import Article, Label
 from blog_website.settings.dev import OSS_CONF
 from notice.models import Notice
 from photo.models import PhotoCategory
@@ -58,11 +58,6 @@ def get_photo_category():
                         photo_category_query_set]
 
     return photo_categories
-
-
-def get_article_count():
-    count = Article.objects.count()
-    return count
 
 
 def get_notice():
@@ -125,12 +120,7 @@ def get_site_info():
     now_time = str2datetime(now_time)
     begin_time = str2datetime('2019-08-29')
     days = (now_time - begin_time).days
-
-    try:
-        count = get_article_count()
-    except Exception as e:
-        logger.error('get_site_info:'+ str(e))
-        raise
+    count = Article.get_article_count()
     return count, int(pv), days
 
 
@@ -149,3 +139,10 @@ def increase_view_count(request, article):
         article.read_count += 1
         article.save(update_fields=["read_count"])
         con.set(key, 60 * 30)
+
+
+def get_context_data(**kwargs):
+    context = {}
+    for key, value in kwargs.items():
+        context[key] = value
+    return context

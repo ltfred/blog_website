@@ -32,7 +32,7 @@ idna==2.8
 importlib-metadata==0.23
 jdcal==1.4.1
 jieba==0.39
-Jinja2==2.10.1
+Jinja2==2.11.3
 jmespath==0.9.4
 kombu==4.6.5
 Markdown==3.1.1

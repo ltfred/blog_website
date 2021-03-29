@@ -44,7 +44,7 @@ openpyxl==3.0.0
 oss2==2.9.0
 Pillow==6.2.1
 pycryptodome==3.9.4
-Pygments==2.4.2
+Pygments==2.7.4
 PyJWT==1.7.1
 PyMySQL==0.9.3
 pytz==2019.2

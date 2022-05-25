@@ -45,7 +45,7 @@ oss2==2.9.0
 Pillow==6.2.1
 pycryptodome==3.9.4
 Pygments==2.4.2
-PyJWT==1.7.1
+PyJWT==2.4.0
 PyMySQL==0.9.3
 pytz==2019.2
 PyYAML==5.1.2
